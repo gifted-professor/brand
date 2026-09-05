@@ -1,0 +1,27 @@
+{
+  "id": "warm-editorial",
+  "version": "1.0.0",
+  "name": "温暖编辑风",
+  "description": "表现方式示例，不是品牌事实或强制产品规则。",
+  "paletteHints": [
+    "米白",
+    "深绿",
+    "暖棕"
+  ],
+  "compositionHints": [
+    "单个主产品作为焦点",
+    "预留海报标题空间",
+    "避免堆砌无关配件"
+  ],
+  "materialHints": [
+    "保留合理纸张或器物纹理",
+    "不过度塑料化"
+  ],
+  "avoid": [
+    "未在规格中出现的赠品",
+    "未经提供的官方标识",
+    "与产品条件冲突的装饰"
+  ],
+  "referenceAssetIds": [],
+  "precedence": "用户硬条件和当前 DesignSpec 优先于本风格包。"
+}

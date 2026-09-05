@@ -1,0 +1,48 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "record": {
+      "update": {
+        "不宜照搬": null,
+        "主要市场": "中国",
+        "原报告结果分类": [
+          "销售表现有据"
+        ],
+        "参考用途": [
+          "机制参考",
+          "结果口径核对"
+        ],
+        "可供Skill": [
+          "联名创意",
+          "设计规格",
+          "质量检查"
+        ],
+        "合作类型": "品牌×品牌／原料联名",
+        "品牌A": "瑞幸",
+        "品牌B或合作方": "椰树",
+        "待补证": "联名单品后续留存、折扣后利润、椰树方收益",
+        "报告差异": null,
+        "提取机制": "椰汁进入咖啡产品，既有口味搭配又有视觉辨识度。",
+        "时间范围": "2022",
+        "来源说明": "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/1\n原报告结果分类「销售表现有据」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "来源链接": "[https://investor.luckincoffee.com/news-releases/news-release-details/luckin-coffee-inc-announces-unaudited-first-quarter-2022](https://investor.luckincoffee.com/news-releases/news-release-details/luckin-coffee-inc-announces-unaudited-first-quarter-2022)",
+        "案例产物": "椰云拿铁、椰树式高识别度包装",
+        "案例名称": "瑞幸 × 椰树",
+        "案例编号": "C02",
+        "研究处理状态": [
+          "已整理可检索"
+        ],
+        "示例任务": null,
+        "证据摘要": "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C02-GPT-event｜事件｜unverified] 椰云拿铁、椰树式高识别度包装\n[C02-GPT-outcome｜结果｜unverified] 首周销量超过495万杯；瑞幸财报披露同名新品首周数据。\n[C02-GPT-mechanism｜研究解释｜unverified] 椰汁进入咖啡产品，既有口味搭配又有视觉辨识度。\n[C02-GPT-risk｜研究解释｜unverified] 不能把整个生椰拿铁产品线的多年销量归到这次联名。",
+        "证据状态": [
+          "待核验"
+        ],
+        "迁移做法": null,
+        "适用约束": null,
+        "风险与反面教训": "不能把整个生椰拿铁产品线的多年销量归到这次联名。"
+      }
+    },
+    "updated": true
+  }
+}

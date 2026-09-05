@@ -1,0 +1,37 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "已跑通指本地检索、资料包生成、迁移分析或数字审核；不表示真实生图或商业落地。",
+      "id": "fldACWlbwh",
+      "multiple": false,
+      "name": "研究处理状态",
+      "options": [
+        {
+          "hue": "Blue",
+          "lightness": "Lighter",
+          "name": "已跑通证据包生成"
+        },
+        {
+          "hue": "Gray",
+          "lightness": "Lighter",
+          "name": "已整理可检索"
+        },
+        {
+          "hue": "Purple",
+          "lightness": "Lighter",
+          "name": "已跑通数字审核"
+        },
+        {
+          "hue": "Green",
+          "lightness": "Lighter",
+          "name": "已跑通迁移分析"
+        }
+      ],
+      "type": "select"
+    }
+  }
+}

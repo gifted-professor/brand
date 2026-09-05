@@ -1,0 +1,268 @@
+{
+  "schemaVersion": "1.0",
+  "libraryRef": {
+    "revision": 1,
+    "sha256": "c621df4f5d55bc8bde37ff606675a3c4fe2c4e403e3ece922d4b49e28da7259c",
+    "path": "/Users/gpfs/Desktop/coding/brand/品牌物料/案例库/library.json"
+  },
+  "query": "",
+  "filters": {
+    "brands": [],
+    "caseIds": [
+      "C11"
+    ],
+    "limit": 8
+  },
+  "matchedCount": 1,
+  "cases": [
+    {
+      "id": "C11",
+      "title": "Louis Vuitton × Supreme",
+      "participants": [
+        {
+          "name": "Louis Vuitton",
+          "contribution": null,
+          "benefit": null,
+          "economics": null
+        },
+        {
+          "name": "Supreme",
+          "contribution": null,
+          "benefit": null,
+          "economics": null
+        }
+      ],
+      "timeframe": "2017",
+      "market": "多市场",
+      "collaborationType": "品牌×品牌／奢侈与街头",
+      "deliverables": [
+        "箱包、服装、鞋履和配饰胶囊系列"
+      ],
+      "sourceRefs": [
+        {
+          "sourceId": "SRC-GPT-JSON",
+          "locator": "/10"
+        },
+        {
+          "sourceId": "SRC-GEMINI-REPORT",
+          "locator": "chars:1485-1524"
+        }
+      ],
+      "candidateUrls": [
+        "https://www.lvmh.com/en/publications/2017-record-results",
+        "https://www.gq.com/story/louis-vuitton-x-supreme-is-not-cancelled"
+      ],
+      "claims": [
+        {
+          "id": "C11-GPT-event",
+          "text": "箱包、服装、鞋履和配饰胶囊系列",
+          "type": "event",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/10/最终产物"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C11-GPT-outcome",
+          "text": "LVMH将其列为2017年关键事件；媒体记录快闪发售热度。",
+          "type": "outcome",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/10/公开结果（事实）"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C11-GPT-mechanism",
+          "text": "奢侈工艺载体与街头标识结合，完成文化身份而非只交换流量。",
+          "type": "interpretation",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/10/可借鉴机制或失败解释（分析）"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C11-GPT-risk",
+          "text": "集团全年增长不能归因于单次联名；二级市场溢价也不是品牌收入。",
+          "type": "interpretation",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/10/风险与不可直接照搬之处（分析）"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C11-GEM-01",
+          "text": "报告称 2017 年推出胶囊系列。",
+          "type": "event",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GEMINI-REPORT",
+              "locator": "chars:1485-1524"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C11-GEM-02",
+          "text": "报告称产物融合 Epi 皮革、Monogram 与红色 Box Logo。",
+          "type": "event",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GEMINI-REPORT",
+              "locator": "chars:1585-1649"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C11-GEM-03",
+          "text": "报告称该系列完全跳过常规零售渠道，采用全球限量快闪店发售。",
+          "type": "event",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GEMINI-REPORT",
+              "locator": "chars:1650-1679"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C11-GEM-04",
+          "text": "报告称万人排队、二级市场最高溢价超过 10 倍、直营销售额超过 1 亿美元。",
+          "type": "outcome",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GEMINI-REPORT",
+              "locator": "chars:1680-1723"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C11-GEM-05",
+          "text": "报告将合作视为开启奢侈品行业街头化转型。",
+          "type": "interpretation",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GEMINI-REPORT",
+              "locator": "chars:1752-1776"
+            }
+          ],
+          "verification": []
+        }
+      ],
+      "insights": {
+        "mechanism": "奢侈工艺载体与街头标识结合，完成文化身份而非只交换流量。",
+        "risks": "集团全年增长不能归因于单次联名；二级市场溢价也不是品牌收入。",
+        "missingEvidence": "联名独立收入、毛利、双方客群迁移"
+      },
+      "tags": [
+        "品牌地位",
+        "文化互补",
+        "归因",
+        "文化身份",
+        "材质符号",
+        "收入口径差异",
+        "量化待核验"
+      ],
+      "sourceLabels": {
+        "gptId": "C11",
+        "outcomeCategory": "产品机制参考",
+        "evidenceGrade": "A｜品牌/企业原始披露",
+        "reportedVerifiedAt": "2026-09-05",
+        "outcomeWindow": "2017活动与年度回顾",
+        "geminiTitle": "Louis Vuitton × Supreme"
+      },
+      "metrics": [],
+      "timeline": [],
+      "aliases": [
+        "Louis Vuitton × Supreme"
+      ],
+      "contentSha256": "0b517f5b8ee3bdd9902755e2e517769cb1d7c415c295e7c694274b4b5e1715fc"
+    }
+  ],
+  "sources": [
+    {
+      "id": "SRC-GEMINI-REPORT",
+      "kind": "ai_report",
+      "path": "sources/gemini-research.txt",
+      "url": null,
+      "sha256": "8ff4098926f3e0b7aacb02999b88587026629ac664a8af16d8fc736bae246744",
+      "lineageGroup": "gemini-research",
+      "status": "read",
+      "title": "用户提供的 Gemini 调研报告",
+      "importedAt": "2026-09-05T06:14:58.919462+00:00"
+    },
+    {
+      "id": "SRC-GPT-JSON",
+      "kind": "structured_dataset",
+      "path": "../brand_collaboration_data_csv_json/brand_collaboration_60_cases.json",
+      "url": null,
+      "sha256": "8c2c3a092982523b4014a1ac85cdcb5e530be93eabf06b84ef95e330559b51b4",
+      "lineageGroup": "gpt-research",
+      "status": "read",
+      "title": "GPT 60 个案例 JSON",
+      "importedAt": "2026-09-05T06:14:58.919462+00:00"
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "DIFF-03",
+      "caseId": "C11",
+      "topic": "独立直营收入",
+      "gptStatement": "联名独立收入、毛利、双方客群迁移",
+      "geminiStatement": "报告称联名直营销售额超过1亿美元，二级市场最高溢价超过10倍。",
+      "note": "待核对差异：独立收入缺口与明确金额之间存在待核对差异；二手市场不是品牌收入。",
+      "status": "pending_verification",
+      "kind": "report_scope_or_evidence_difference",
+      "sourceRefs": [
+        {
+          "sourceId": "SRC-GPT-JSON",
+          "locator": "/10"
+        },
+        {
+          "sourceId": "SRC-GEMINI-REPORT",
+          "locator": "chars:1485-1524"
+        }
+      ],
+      "claimIds": [
+        "C11-GPT-outcome",
+        "C11-GPT-mechanism",
+        "C11-GPT-risk",
+        "C11-GEM-04",
+        "C11-GEM-05"
+      ]
+    }
+  ],
+  "rankingMeaning": "Text relevance only; not a collaboration score, commercial forecast, or probability.",
+  "consumer": "campaign-copy",
+  "kind": "researchContext",
+  "status": "local_draft",
+  "usageGuidance": [
+    "本包是本地 researchContext 草案；没有 artifactId，不授予项目、品牌或素材使用权限。",
+    "保留所有 claim 的证据状态、核验记录与来源；原始报告标签和多个同源转述不能替代独立核验。",
+    "null 表示未知，不是 0；只把已支持的相应事实用于事实性陈述，仍需检查适用时间与条件。",
+    "参考表达方式和叙事结构；不得把案例销量、收入、增长或宣传承诺套用到当前联名。",
+    "对外事实性表述须由当前项目证据支持；未核验或有争议的说法不得写成确定事实。"
+  ]
+}

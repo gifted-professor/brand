@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "本次试用提取的可迁移假设，需结合当前 brief 和资源确认。",
+      "id": "flde7Dz663",
+      "name": "迁移做法",
+      "style": {
+        "type": "plain"
+      },
+      "type": "text"
+    }
+  }
+}

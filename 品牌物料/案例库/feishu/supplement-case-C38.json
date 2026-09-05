@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "record": {
+      "update": {
+        "全部来源链接": "【已读正文】TheStreet（作者：Thomas Lee）｜2023-05-30｜Target Just Dumped Its Pride Merchandise — Here's Where It All May Go\nhttps://www.thestreet.com/retail/target-just-dumped-its-pride-merchandise-heres-where-it-all-may-go\n\n【报告链接，尚未逐页核查】www.adidas-group.com\nhttps://www.adidas-group.com/en/media/press-releases/adidas-terminates-partnership-with-ye-immediately\n\n【报告链接，尚未逐页核查】www.reuters.com\nhttps://www.reuters.com/business/retail-consumer/adidas-sold-last-pair-yeezy-sneakers-2025-03-05/",
+        "来源核查状态": [
+          "已读外部正文（限定范围）"
+        ],
+        "来源核查说明": "用户补充清单逐页核查：\nGS36｜已读正文｜Target Just Dumped Its Pride Merchandise — Here's Where It All May Go\nTheStreet（作者：Thomas Lee）｜2023-05-30\n支持范围：主文讨论Target撤下部分Pride商品后可能的库存去向。；正文确有Target与Neiman Marcus历史联名的回顾，包括产品定价、销售不佳和后续大幅折价。；正文提及Adidas与Gap结束同Ye的合作后面临未售商品，并称Adidas当时有价值超过10亿美元的未售运动鞋。\n局限：提供条目把两段旁证重写成整篇标题，真实文章主题是Target Pride商品。；本文没有直接支持12亿欧元这一精确金额及货币口径，也没有支持Neiman Marcus联名70% off这一具体数字。；文中回顾Target与Neiman Marcus的宣布年份写为2011，与其它来源的2012年项目时间存在差异；不得未经交叉核查沿用。；有关Target商品捐赠去向主要是文章当时的讨论或推测，不能写成已发生结果。；库存叙述是2023年历史状态，不能解释为当前库存。\n核查结论：并非不相关来源：正文确实覆盖C38/C40/C41，但只能据实际段落使用；须恢复真实标题并删除无正文支撑的12亿欧元和70%等精确说法。\nhttps://www.thestreet.com/retail/target-just-dumped-its-pride-merchandise-heres-where-it-all-may-go",
+        "来源说明": "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/37\nSRC-GEMINI-REPORT｜用户提供的 Gemini 调研报告｜chars:6243-6264\n原报告结果分类「风险与混合结果」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。\n用户补充的41条引用清单：GS36；原始归类和标题与实际页面分别保留，详见“补充来源核查”表。",
+        "来源链接": "[https://www.thestreet.com/retail/target-just-dumped-its-pride-merchandise-heres-where-it-all-may-go](https://www.thestreet.com/retail/target-just-dumped-its-pride-merchandise-heres-where-it-all-may-go)"
+      }
+    },
+    "updated": true
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "views": [
+      {
+        "_meta": {
+          "filter": null,
+          "group": [],
+          "sort": [],
+          "visible_fields": "24 fields"
+        },
+        "id": "vew08Bep1Z",
+        "name": "全部案例库",
+        "type": "grid"
+      }
+    ]
+  }
+}

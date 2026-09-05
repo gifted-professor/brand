@@ -1,0 +1,1305 @@
+{
+  "schemaVersion": "1.0",
+  "status": "待验证",
+  "provenance": {
+    "sourcePath": "/Users/gpfs/.codex/attachments/afed8efe-e6ad-4e40-a404-3fdfa7519edd/pasted-text.txt",
+    "sourceLabel": "Gemini用户提供报告",
+    "sourceSha256": "8ff4098926f3e0b7aacb02999b88587026629ac664a8af16d8fc736bae246744",
+    "sourceCharacterLength": 10667,
+    "locatorConvention": "Python Unicode code-point offsets; zero-based; start inclusive, end exclusive; source text unchanged",
+    "verificationScope": "仅校验原文定位与结构；未联网核验事实。原报告没有来源链接。"
+  },
+  "cases": [
+    {
+      "gptCaseId": "C01",
+      "title": "瑞幸咖啡 × 贵州茅台",
+      "participants": [
+        "瑞幸",
+        "贵州茅台"
+      ],
+      "timeframe": "2023",
+      "market": "中国",
+      "collaborationType": "品牌×品牌／原料与品牌",
+      "deliverables": [
+        "酱香拿铁",
+        "联名包装",
+        "贴纸"
+      ],
+      "claims": [
+        {
+          "text": "报告称双方于 2023 年推出酱香拿铁。",
+          "type": "event",
+          "locator": "chars:896-920",
+          "originalText": "瑞幸咖啡与贵州茅台在2023年推出的“酱香拿铁”",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称饮品采用含 53 度贵州茅台酒的白酒风味厚奶。",
+          "type": "event",
+          "locator": "chars:1002-1036",
+          "originalText": "以白酒风味厚奶（含53度贵州茅台酒）打造出具备物理感知差异的核心饮品",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称全网曝光达数十亿次，单日微博话题阅读量超过 6.6 亿。",
+          "type": "outcome",
+          "locator": "chars:1085-1111",
+          "originalText": "撬动全网数十亿次曝光，单日微博话题阅读量突破6.6亿",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称单日销量超过 542 万杯、销售流水超过 1 亿元。",
+          "type": "outcome",
+          "locator": "chars:1119-1139",
+          "originalText": "单日超542万杯的销量与破亿元的销售流水",
+          "status": "待验证"
+        },
+        {
+          "text": "报告将合作解释为茅台完成 Z 世代心智启蒙、瑞幸扩展高端商务人群品牌认知。",
+          "type": "interpretation",
+          "locator": "chars:1140-1190",
+          "originalText": "不仅让茅台以极低门槛完成对Z世代年轻人的白酒心智启蒙，更使瑞幸在高端商务人群中确立了品牌资产的丰富度",
+          "status": "待验证"
+        }
+      ],
+      "mechanism": "报告分析：原料参与与低门槛体验结合，使双方交换价格层级与受众认知资源。",
+      "risks": [
+        "传播读数、交易读数与品牌认知提升不得互相替代",
+        "不能以饮品销量推断茅台主营转化或双方利润"
+      ],
+      "missingEvidence": [
+        "销量和曝光原始披露",
+        "指标时间窗口与去重口径",
+        "双方利润与成本",
+        "新客和品牌认知变化的因果证据"
+      ],
+      "tags": [
+        "原料共创",
+        "价格梯度",
+        "品牌认知",
+        "量化待核验"
+      ],
+      "status": "待验证"
+    },
+    {
+      "gptCaseId": "C03",
+      "title": "喜茶 × FENDI",
+      "participants": [
+        "喜茶",
+        "FENDI"
+      ],
+      "timeframe": "未明确",
+      "market": "中国；北京",
+      "collaborationType": "品牌×品牌／形象与体验",
+      "deliverables": [
+        "FENDI喜悦黄特调果茶",
+        "联名杯垫",
+        "徽章",
+        "纸袋",
+        "北京手工艺术展空间"
+      ],
+      "claims": [
+        {
+          "text": "报告称产物包括特调果茶、杯垫、徽章与纸袋。",
+          "type": "event",
+          "locator": "chars:1270-1305",
+          "originalText": "推出限定特调果茶“FENDI喜悦黄”，并配套明黄色联名杯垫、徽章与纸袋",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称北京设有手工艺术展空间。",
+          "type": "event",
+          "locator": "chars:1308-1332",
+          "originalText": "在北京落地融合罗马文化与中国非遗的手工艺术展空间",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称发售当日点单系统瘫痪、线下物料迅速售罄。",
+          "type": "outcome",
+          "locator": "chars:1363-1389",
+          "originalText": "在发售当日直接导致喜茶点单系统瘫痪，线下物料迅速售罄",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称数十万青年手持纸袋，并判断 FENDI 以极低成本获得城市视觉曝光。",
+          "type": "interpretation",
+          "locator": "chars:1390-1427",
+          "originalText": "FENDI借助数十万青年手持的亮黄纸袋，以极低成本完成了城市高密度视觉占领",
+          "status": "待验证"
+        },
+        {
+          "text": "报告将合作解释为巩固喜茶审美领导地位。",
+          "type": "interpretation",
+          "locator": "chars:1428-1467",
+          "originalText": "喜茶则通过奢侈品牌的严苛审美与调性背书，巩固了自身在新茶饮行业中的审美领导地位",
+          "status": "待验证"
+        }
+      ],
+      "mechanism": "报告分析：以可携带的标志色包装为低门槛品牌体验入口，交换奢侈品牌视觉与茶饮渠道。",
+      "risks": [
+        "纸袋覆盖人数及系统故障范围未有来源",
+        "作者直接将热度延伸为低成本与品牌提升，需与 GPT 的产品机制参考分类并列保留"
+      ],
+      "missingEvidence": [
+        "活动日期",
+        "系统及物料售罄原始记录",
+        "双方成本与利润",
+        "品牌提升和客群迁移研究"
+      ],
+      "tags": [
+        "视觉系统",
+        "体验入口",
+        "结果分类差异",
+        "品牌效果待核验"
+      ],
+      "status": "待验证"
+    },
+    {
+      "gptCaseId": "C11",
+      "title": "Louis Vuitton × Supreme",
+      "participants": [
+        "Louis Vuitton",
+        "Supreme"
+      ],
+      "timeframe": "2017",
+      "market": "多市场",
+      "collaborationType": "品牌×品牌／奢侈与街头",
+      "deliverables": [
+        "成衣",
+        "箱包",
+        "滑板",
+        "配件"
+      ],
+      "claims": [
+        {
+          "text": "报告称 2017 年推出胶囊系列。",
+          "type": "event",
+          "locator": "chars:1485-1524",
+          "originalText": "2017年Louis Vuitton与街头先锋品牌Supreme的胶囊系列合作",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称产物融合 Epi 皮革、Monogram 与红色 Box Logo。",
+          "type": "event",
+          "locator": "chars:1585-1649",
+          "originalText": "将LV经典的Epi皮革、Monogram印花与Supreme醒目的红色Box Logo深度交融，推出了成衣、箱包、滑板及全套配件",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称该系列完全跳过常规零售渠道，采用全球限量快闪店发售。",
+          "type": "event",
+          "locator": "chars:1650-1679",
+          "originalText": "该系列完全跳过常规零售渠道，在全球各大都市设立超限量快闪店",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称万人排队、二级市场最高溢价超过 10 倍、直营销售额超过 1 亿美元。",
+          "type": "outcome",
+          "locator": "chars:1680-1723",
+          "originalText": "引发连续数日的万人通宵排队，二级市场溢价最高超10倍，直接创造了超1亿美元的直营销售额",
+          "status": "待验证"
+        },
+        {
+          "text": "报告将合作视为开启奢侈品行业街头化转型。",
+          "type": "interpretation",
+          "locator": "chars:1752-1776",
+          "originalText": "正式开启了奢侈品行业街头化、潮流化转型的时代浪潮",
+          "status": "待验证"
+        }
+      ],
+      "mechanism": "报告分析：将奢侈材质与街头标识放入完整产品系列，形成文化身份结合。",
+      "risks": [
+        "直营收入与二级市场溢价必须拆分",
+        "行业转型归因不能由一个案例确认",
+        "GPT 将独立收入列为缺失，不能用本报告数值直接补齐"
+      ],
+      "missingEvidence": [
+        "联名独立收入披露",
+        "二级市场成交而非挂牌样本",
+        "实际渠道与限量规则",
+        "行业影响的对照证据"
+      ],
+      "tags": [
+        "文化身份",
+        "材质符号",
+        "收入口径差异",
+        "量化待核验"
+      ],
+      "status": "待验证"
+    },
+    {
+      "gptCaseId": null,
+      "title": "瑞幸咖啡 ×《黑神话：悟空》",
+      "participants": [
+        "瑞幸",
+        "《黑神话：悟空》"
+      ],
+      "timeframe": "2024",
+      "market": "中国",
+      "collaborationType": "品牌×游戏IP／饮品与周边",
+      "deliverables": [
+        "黑神话腾云美式",
+        "定制纸袋",
+        "黑金主题杯套",
+        "3D限定光影变光海报",
+        "主题门店"
+      ],
+      "claims": [
+        {
+          "text": "报告称合作发生于 2024 年。",
+          "type": "event",
+          "locator": "chars:1836-1865",
+          "originalText": "2024年瑞幸咖啡与中国首款3A游戏《黑神话：悟空》的联名",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称产物包括特调咖啡、杯袋和 3D 光影海报。",
+          "type": "event",
+          "locator": "chars:1899-1949",
+          "originalText": "推出“黑神话腾云美式”特调咖啡，配套定制纸袋、黑金主题杯套，以及核心实体周边“3D限定光影变光海报”",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称开售当日周边售空，多地门店系统承压。",
+          "type": "outcome",
+          "locator": "chars:2001-2029",
+          "originalText": "开售当天周边秒空，全国多地门店系统因瞬时高并发而濒临瘫痪",
+          "status": "待验证"
+        },
+        {
+          "text": "报告表格称周边秒级售罄、瑞幸粉单市场单日涨幅超过 7%。",
+          "type": "outcome",
+          "locator": "chars:3571-3593",
+          "originalText": "周边上线秒级售罄，瑞幸粉单市场单日涨幅逾7%",
+          "status": "待验证"
+        },
+        {
+          "text": "报告将股价及男性客群激活归因于联名。",
+          "type": "interpretation",
+          "locator": "chars:2030-2074",
+          "originalText": "该项目不仅显著拉动了瑞幸母公司的短期资本市场估值，更颠覆性地激活了消费惯性较低的男性客群",
+          "status": "待验证"
+        }
+      ],
+      "mechanism": "报告分析：围绕游戏首发节点，将玩家情绪与收藏周边连接到咖啡渠道。",
+      "risks": [
+        "股价同期变化不能直接归因于联名",
+        "不能把男性概括为消费惯性较低的人群",
+        "周边售罄不能证明主商品复购"
+      ],
+      "missingEvidence": [
+        "官方合作发布与产品清单",
+        "发售日期和库存基数",
+        "证券主体、市场、日期和价格记录",
+        "分性别新客与复购数据",
+        "其他同期事件"
+      ],
+      "tags": [
+        "游戏首发",
+        "收藏周边",
+        "新增候选",
+        "股价归因待核验"
+      ],
+      "status": "待验证"
+    },
+    {
+      "gptCaseId": null,
+      "title": "名创优品 × Chiikawa",
+      "participants": [
+        "名创优品",
+        "Chiikawa"
+      ],
+      "timeframe": "未明确",
+      "market": "中国；上海静安大悦城等",
+      "collaborationType": "零售商×IP／商品与快闪",
+      "deliverables": [
+        "超100款毛绒公仔与生活杂货",
+        "快闪店",
+        "直播销售"
+      ],
+      "claims": [
+        {
+          "text": "报告称在上海等地设快闪店，销售超过 100 款公仔和生活杂货。",
+          "type": "event",
+          "locator": "chars:2198-2239",
+          "originalText": "在上海静安大悦城等全国核心商场落地首发快闪店，涵盖超100款正版毛绒公仔与生活杂货",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称单店 10 小时销售额超过 268 万元、三天累计超过 800 万元、客单价千元级。",
+          "type": "outcome",
+          "locator": "chars:2277-2317",
+          "originalText": "单店10小时销售额突破268万元，三天累计销售超800万元，客单价跃升至千元级别",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称同期线上直播间 GMV 达数百万元。",
+          "type": "outcome",
+          "locator": "chars:2318-2338",
+          "originalText": "并同步拉动了线上直播间数百万GMV的转化",
+          "status": "待验证"
+        },
+        {
+          "text": "报告推断项目获得巨大直接利润并推动品牌心智升级。",
+          "type": "interpretation",
+          "locator": "chars:2339-2396",
+          "originalText": "名创优品借此不仅兑现了巨大的直接商业利润，更实现了由传统“十元低价百货”向“高情感附加值IP综合零售商”的心智升级",
+          "status": "待验证"
+        }
+      ],
+      "mechanism": "报告分析：用平价零售供应链承接情感型 IP 需求，结合快闪与直播。",
+      "risks": [
+        "销售额、GMV和利润不可替代",
+        "三天累计的门店范围与客单价样本不清",
+        "品牌心智升级仍需测量"
+      ],
+      "missingEvidence": [
+        "活动年份和日期",
+        "门店及直播销售原始披露",
+        "退货和净收入口径",
+        "授权与供应链成本",
+        "品牌认知变化证据"
+      ],
+      "tags": [
+        "情感IP",
+        "快闪",
+        "新增候选",
+        "销量利润混淆"
+      ],
+      "status": "待验证"
+    },
+    {
+      "gptCaseId": "C21",
+      "title": "华为 × Leica",
+      "participants": [
+        "华为",
+        "Leica"
+      ],
+      "timeframe": "报告称合作历时六年，具体起止未明确",
+      "market": "全球；欧洲",
+      "collaborationType": "品牌×品牌／技术共研",
+      "deliverables": [
+        "双摄手机",
+        "联合影像算法与色彩模式",
+        "快门声学模拟"
+      ],
+      "claims": [
+        {
+          "text": "报告称双方战略合作历时六年。",
+          "type": "event",
+          "locator": "chars:2639-2669",
+          "originalText": "华为与德国百年光学巨头徕卡（Leica）的长达六年的战略合作",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称合作涵盖光学、算法、色彩与快门声。",
+          "type": "event",
+          "locator": "chars:2699-2757",
+          "originalText": "深入光学硬件与底层算法的联合开发，从镜头光学素质认证、感光元件色彩调校，到标志性的徕卡鲜艳色彩模式与机械快门声学模拟",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称合作首年华为全球手机出货量增长超过 30%、位居前三。",
+          "type": "outcome",
+          "locator": "chars:2800-2832",
+          "originalText": "在合作首年，华为智能手机全球出货量逆势增长超30%，稳居全球前三",
+          "status": "待验证"
+        },
+        {
+          "text": "报告将欧洲中高端市场和 5000 元以上价格带认知提升归因于合作。",
+          "type": "interpretation",
+          "locator": "chars:2833-2879",
+          "originalText": "并以此成功攻破欧洲中高端市场，在5000元以上价格带建立了与苹果、三星分庭抗礼的高端品牌认知",
+          "status": "待验证"
+        }
+      ],
+      "mechanism": "报告分析：将专业光学与影像审美融入手机核心使用功能。",
+      "risks": [
+        "公司整体出货与具体系列出货不可混用",
+        "出货、终端零售、品牌认知是不同指标",
+        "技术贡献范围需要联合研发原始说明"
+      ],
+      "missingEvidence": [
+        "六年合作起止日期",
+        "首年增长数据与年份",
+        "研发分工证据",
+        "联名对市场增长的独立贡献",
+        "价格带认知研究"
+      ],
+      "tags": [
+        "技术共研",
+        "出货口径",
+        "因果待核验",
+        "时间范围差异"
+      ],
+      "status": "待验证"
+    },
+    {
+      "gptCaseId": "C13",
+      "title": "OMEGA × Swatch／MoonSwatch",
+      "participants": [
+        "OMEGA",
+        "Swatch"
+      ],
+      "timeframe": "未明确",
+      "market": "全球",
+      "collaborationType": "同集团跨品牌／设计与材料",
+      "deliverables": [
+        "11款行星主题MoonSwatch石英腕表"
+      ],
+      "claims": [
+        {
+          "text": "报告称使用 Bioceramic，约 2000 元人民币，11 款行星主题石英表。",
+          "type": "event",
+          "locator": "chars:2988-3047",
+          "originalText": "创新性运用斯沃琪专利Bioceramic（植物陶瓷）材料制造，以约2000元人民币的亲民价格推出11款行星主题石英腕表",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称累计出货数百万枚，未写观测截止日期。",
+          "type": "outcome",
+          "locator": "chars:3081-3089",
+          "originalText": "累计出货数百万枚",
+          "status": "待验证"
+        },
+        {
+          "text": "报告表格称全球千万级抢购，并带动正价欧米茄登月表销量回升。",
+          "type": "outcome",
+          "locator": "chars:3899-3925",
+          "originalText": "全球千万级抢购，带动专柜正价欧米茄机械登月表销量回升",
+          "status": "待验证"
+        },
+        {
+          "text": "报告正文将正价欧米茄登月表专柜关注度提升归因于合作。",
+          "type": "interpretation",
+          "locator": "chars:3117-3141",
+          "originalText": "更奇迹般地拉动了欧米茄正价机械登月表的专柜关注度",
+          "status": "待验证"
+        }
+      ],
+      "mechanism": "报告分析：同集团内把高端标志设计转为大众材料与价位的产品。",
+      "risks": [
+        "出货、抢购、关注度、正价销量不可混用",
+        "不得将材料译名直接当作技术定义",
+        "同集团利益协调条件需保留"
+      ],
+      "missingEvidence": [
+        "累计出货时间和原始数据",
+        "千万级抢购的统计定义",
+        "正价产品销量和关注度数据",
+        "材料官方定义",
+        "集团内双方成本收益"
+      ],
+      "tags": [
+        "同集团",
+        "价格梯度",
+        "材料转译",
+        "指标口径差异"
+      ],
+      "status": "待验证"
+    },
+    {
+      "gptCaseId": null,
+      "title": "肯德基 × 泡泡玛特／DIMOO",
+      "participants": [
+        "KFC",
+        "泡泡玛特"
+      ],
+      "timeframe": "未明确",
+      "market": "中国",
+      "collaborationType": "餐饮品牌×潮玩IP／套餐与盲盒",
+      "deliverables": [
+        "家庭桶套餐",
+        "DIMOO盲盒",
+        "隐藏款机制"
+      ],
+      "claims": [
+        {
+          "text": "报告称套餐结合 DIMOO 盲盒，隐藏款概率为 1:72。",
+          "type": "event",
+          "locator": "chars:4169-4207",
+          "originalText": "引入抽奖式获取泡泡玛特DIMOO盲盒的机制，更设置了1:72的极低概率隐藏款",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称有人单次花费万元购上百份快餐，盲盒二手价格达到原价十余倍。",
+          "type": "outcome",
+          "locator": "chars:4226-4259",
+          "originalText": "部分消费者单次豪掷万元购买上百份快餐，二手市场盲盒被炒至原价十余倍",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称出现职业代吃与大量食物遗弃。",
+          "type": "outcome",
+          "locator": "chars:4260-4289",
+          "originalText": "更催生了“职业代吃”并将大量新鲜汉堡炸鸡随手遗弃的极端现象",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称中消协通报批评，并以反食品浪费法倡导的共识解释风险。",
+          "type": "interpretation",
+          "locator": "chars:4290-4343",
+          "originalText": "该举措直接触碰了《中华人民共和国反食品浪费法》倡导的社会节约共识，最终引来中国消费者协会的指名道姓通报批评",
+          "status": "待验证"
+        },
+        {
+          "text": "报告表格称盲盒食品模式被叫停。",
+          "type": "outcome",
+          "locator": "chars:6557-6566",
+          "originalText": "盲盒食品模式被叫停",
+          "status": "待验证"
+        }
+      ],
+      "mechanism": "报告分析：易腐食品与随机稀缺收藏机制耦合，可能使购买数量脱离食用需求。",
+      "risks": [
+        "通报批评、违法认定、监管命令与项目停止需分别核验",
+        "个别消费行为不能推成所有购买者行为",
+        "二手高价需区分挂牌与成交"
+      ],
+      "missingEvidence": [
+        "活动日期及官方玩法",
+        "隐藏概率与套餐购买规则",
+        "中消协原文",
+        "叫停的主体、范围与文件",
+        "浪费与交易样本"
+      ],
+      "tags": [
+        "盲盒",
+        "食品浪费",
+        "新增候选",
+        "法律断言待核验"
+      ],
+      "status": "待验证"
+    },
+    {
+      "gptCaseId": "C46",
+      "title": "喜茶 × 景德镇中国陶瓷博物馆",
+      "participants": [
+        "喜茶",
+        "景德镇中国陶瓷博物馆"
+      ],
+      "timeframe": "未明确",
+      "market": "中国",
+      "collaborationType": "品牌×博物馆／图像与包装",
+      "deliverables": [
+        "佛喜茶拿铁",
+        "罗汉图像杯套",
+        "冰箱贴"
+      ],
+      "claims": [
+        {
+          "text": "报告称以沉思罗汉为灵感推出饮品、杯套和冰箱贴。",
+          "type": "event",
+          "locator": "chars:4426-4475",
+          "originalText": "以馆藏文物“沉思罗汉”（网络戏称“无语佛”）为灵感，推出“佛喜茶拿铁”及配套禅意杯套、冰箱贴等周边",
+          "status": "待验证"
+        },
+        {
+          "text": "报告直接判断项目触犯宗教事务条例相关红线。",
+          "type": "interpretation",
+          "locator": "chars:4542-4579",
+          "originalText": "触犯了《宗教事务条例》中关于严禁以宗教名义进行商业炒作和广告推销的明确红线",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称上线数日后被约谈，全面下架联名物料并更名。",
+          "type": "outcome",
+          "locator": "chars:4580-4626",
+          "originalText": "上线仅数日，该项目即遭到宗教主管部门的严肃约谈，喜茶被迫全面下架所有联名物料并对产品更名整改",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称发生大量包材报废损失与品牌口碑损害。",
+          "type": "interpretation",
+          "locator": "chars:4627-4656",
+          "originalText": "不仅承担了大量包材报废损失，更对品牌沉淀的美学口碑造成损害",
+          "status": "待验证"
+        },
+        {
+          "text": "报告表格另以广告法解释其违法性。",
+          "type": "interpretation",
+          "locator": "chars:6621-6635",
+          "originalText": "违反广告法中宗教商业推销禁令",
+          "status": "待验证"
+        }
+      ],
+      "mechanism": "报告分析：馆藏内容进入一次性消费包装后，文化语境和商业表达需另行审查。",
+      "risks": [
+        "正文与表格引用不同法律框架，须保留为待核对差异",
+        "约谈不能自动升级为违法或处罚",
+        "损失与品牌影响没有量化证据"
+      ],
+      "missingEvidence": [
+        "产品与物料官方清单",
+        "主管机关书面结论",
+        "准确适用法条及法域",
+        "授权范围",
+        "报废损失与口碑研究"
+      ],
+      "tags": [
+        "馆藏图像",
+        "文化语境",
+        "法律表述差异",
+        "损失待核验"
+      ],
+      "status": "待验证"
+    },
+    {
+      "gptCaseId": null,
+      "title": "劳斯莱斯 × 晚晚及林瀚夫妇",
+      "participants": [
+        "劳斯莱斯",
+        "晚晚",
+        "林瀚"
+      ],
+      "timeframe": "未明确",
+      "market": "大中华区",
+      "collaborationType": "品牌×人物／推广内容",
+      "deliverables": [
+        "品牌体验视频"
+      ],
+      "claims": [
+        {
+          "text": "报告称官方发布二人参与的品牌体验视频。",
+          "type": "event",
+          "locator": "chars:4744-4782",
+          "originalText": "劳斯莱斯官方发布了一则由初代互联网艺术网红晚晚及林瀚夫妇为主角的品牌体验视频",
+          "status": "待验证"
+        },
+        {
+          "text": "报告转述一位企业家车主公开表达不再购买的意见。",
+          "type": "outcome",
+          "locator": "chars:4801-4836",
+          "originalText": "知名企业家车主甚至在社交平台公开表示“觉得品牌变廉价了，以后不再购买”",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称品牌关闭评论并撤下视频。",
+          "type": "outcome",
+          "locator": "chars:4928-4948",
+          "originalText": "最终品牌不得不关闭互动评论并紧急撤下视频",
+          "status": "待验证"
+        },
+        {
+          "text": "报告将事件原因归结为缺乏高净值客群压力测试和追求下沉流量。",
+          "type": "interpretation",
+          "locator": "chars:4887-4927",
+          "originalText": "由于事前缺乏针对高净值客群心理边界的压力测试，盲目追求下沉流量而引入负面争议人物",
+          "status": "待验证"
+        },
+        {
+          "text": "报告判断品牌格调发生实质性减损。",
+          "type": "interpretation",
+          "locator": "chars:4949-4964",
+          "originalText": "导致顶级品牌格调遭遇实质性减损",
+          "status": "待验证"
+        }
+      ],
+      "mechanism": "报告分析：人物推广中的既有用户身份认同边界，可能与新触达人群发生冲突。",
+      "risks": [
+        "少数公开意见不代表全部车主",
+        "作者对内部决策及品牌资产损失的判断未有证据",
+        "推广内容合作应与零售商品联名分类型"
+      ],
+      "missingEvidence": [
+        "发布日期和原视频",
+        "官方撤回说明",
+        "评论样本与覆盖范围",
+        "内部决策依据",
+        "品牌态度及交易变化"
+      ],
+      "tags": [
+        "人物合作",
+        "身份认同",
+        "新增候选",
+        "品牌损失待核验"
+      ],
+      "status": "待验证"
+    },
+    {
+      "gptCaseId": "C41",
+      "title": "Target × Neiman Marcus",
+      "participants": [
+        "Target",
+        "Neiman Marcus"
+      ],
+      "timeframe": "2012年圣诞季",
+      "market": "美国",
+      "collaborationType": "零售商×零售商／多设计师系列",
+      "deliverables": [
+        "50款节日家居、配饰及服装杂货"
+      ],
+      "claims": [
+        {
+          "text": "报告称 24 位设计师参与，推出 50 款节日杂货。",
+          "type": "event",
+          "locator": "chars:5042-5083",
+          "originalText": "双方集结了24位顶级时装设计师，试图将奢华品位注入大众卖场，推出50款联名节日杂货",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称两家零售端全面滞销、最终 3 折清仓。",
+          "type": "outcome",
+          "locator": "chars:5086-5113",
+          "originalText": "该系列在两家零售端全面滞销，最终被迫以3折进行清仓甩卖",
+          "status": "待验证"
+        },
+        {
+          "text": "报告以 Target 客群认为价格过高解释销售表现。",
+          "type": "interpretation",
+          "locator": "chars:5122-5159",
+          "originalText": "Target的核心客群对价格极度敏感，认为动辄上百美元的设计师杂货过于昂贵",
+          "status": "待验证"
+        },
+        {
+          "text": "报告以 Neiman Marcus 客群认为商品廉价粗糙解释销售表现。",
+          "type": "interpretation",
+          "locator": "chars:5161-5209",
+          "originalText": "Neiman Marcus的富裕阶层消费者则认为摆在廉价大卖场货架上的量产商品做工粗糙、质感俗气",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称双方直接库存折损达数千万美元。",
+          "type": "outcome",
+          "locator": "chars:5265-5285",
+          "originalText": "给双方带来了数以千万美元计的直接库存折损",
+          "status": "待验证"
+        }
+      ],
+      "mechanism": "报告分析：合作声望未必解决具体礼品的价格、品类与购物任务匹配。",
+      "risks": [
+        "全线3折与具体SKU折扣范围需分开",
+        "消费者心理解释不能替代拒购研究",
+        "库存损失数额与归属待核验"
+      ],
+      "missingEvidence": [
+        "实际SKU与价格清单",
+        "折价时间和范围",
+        "双方库存减记披露",
+        "消费者拒购样本",
+        "单品销售与毛利"
+      ],
+      "tags": [
+        "价格品类",
+        "库存",
+        "损失数字差异",
+        "原因待核验"
+      ],
+      "status": "待验证"
+    },
+    {
+      "gptCaseId": null,
+      "title": "喜茶 × 杜蕾斯",
+      "participants": [
+        "喜茶",
+        "杜蕾斯"
+      ],
+      "timeframe": "2019",
+      "market": "中国；微博",
+      "collaborationType": "品牌×品牌／社交互动营销",
+      "deliverables": [
+        "互动海报",
+        "微博文案与评论"
+      ],
+      "claims": [
+        {
+          "text": "报告称双方于 2019 年进行社交互动营销。",
+          "type": "event",
+          "locator": "chars:5354-5382",
+          "originalText": "喜茶与计生用品品牌杜蕾斯在2019年的社交媒体互动营销中",
+          "status": "待验证"
+        },
+        {
+          "text": "报告转述海报及喜茶跟评文案。",
+          "type": "event",
+          "locator": "chars:5383-5440",
+          "originalText": "杜蕾斯发布了配有“第一口最珍贵”、“今夜一滴都不许剩”字样的海报，喜茶官方微博随后互动跟评“你唇上始终有我的芝士”",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称喜茶次日早晨道歉整改。",
+          "type": "outcome",
+          "locator": "chars:5551-5566",
+          "originalText": "迫使喜茶在次日清早紧急道歉整改",
+          "status": "待验证"
+        },
+        {
+          "text": "报告提出所谓语义场契合规律作为解释框架。",
+          "type": "interpretation",
+          "locator": "chars:5298-5322",
+          "originalText": "品牌联名必须遵循认知心理学中的“语义场契合规律”",
+          "status": "待验证"
+        },
+        {
+          "text": "报告以必然的体液联想和感官错位解释反感。",
+          "type": "interpretation",
+          "locator": "chars:5506-5550",
+          "originalText": "避孕药具必然唤起两性体液联想，双方在消费感官上的极端错位直接摧毁了食品应有的美感与安全感",
+          "status": "待验证"
+        }
+      ],
+      "mechanism": "报告分析：具体文字与品类联想可能引起食品感官和品牌预期冲突。",
+      "risks": [
+        "不把作者命名的规律当作既定心理学定律",
+        "不把具体文案事件推广为两类品牌绝不适合合作",
+        "社交互动不等同于已生产的联名商品"
+      ],
+      "missingEvidence": [
+        "原始海报与互动记录",
+        "道歉原文及日期",
+        "受众反应样本",
+        "心理学理论来源",
+        "品牌或交易影响"
+      ],
+      "tags": [
+        "文案风险",
+        "品类联想",
+        "新增候选",
+        "泛化风险"
+      ],
+      "status": "待验证"
+    },
+    {
+      "gptCaseId": null,
+      "title": "沪上阿姨 ×《光与夜之恋》",
+      "participants": [
+        "沪上阿姨",
+        "《光与夜之恋》"
+      ],
+      "timeframe": "未明确",
+      "market": "中国",
+      "collaborationType": "茶饮品牌×游戏IP／未完成合作",
+      "deliverables": [
+        "拟议联名活动",
+        "预热物料；正式售品未明确"
+      ],
+      "claims": [
+        {
+          "text": "报告称游戏方于合作官宣 3 小时后宣布终止合作。",
+          "type": "outcome",
+          "locator": "chars:5705-5741",
+          "originalText": "在官方宣布合作仅仅3个小时后，游戏制作方即发布紧急声明单方面终止一切合作",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称筹备期有加盟店员工违规转卖和提前流出物料。",
+          "type": "event",
+          "locator": "chars:5759-5790",
+          "originalText": "沪上阿姨基层加盟店员工发生多起物料违规转卖、私自偷跑物料的行为",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称有员工在社群侮辱角色及玩家。",
+          "type": "event",
+          "locator": "chars:5791-5833",
+          "originalText": "更有员工在公共社群中公然对游戏男性角色使用极其侮辱性的词汇，甚至语言攻击游戏玩家群体",
+          "status": "待验证"
+        },
+        {
+          "text": "报告将事件归因于缺乏基层 SOP 培训和文化教育。",
+          "type": "interpretation",
+          "locator": "chars:5834-5863",
+          "originalText": "这类由于缺乏基层人员SOP培训和文化教育导致的“前线暴走”",
+          "status": "待验证"
+        },
+        {
+          "text": "报告判断品牌失去整个目标圈层的信任。",
+          "type": "interpretation",
+          "locator": "chars:5889-5908",
+          "originalText": "使得品牌在瞬间失去了整个垂直圈层的信任",
+          "status": "待验证"
+        }
+      ],
+      "mechanism": "报告分析：门店物料管理与面向 IP 社群的沟通执行可能影响合作存续。",
+      "risks": [
+        "角色辱骂、物料流出、终止时间及因果需分别核验",
+        "不能由部分员工行为推断全部门店",
+        "不能将整个圈层信任丧失当作可测事实",
+        "未发布或取消的产物不能写作正式售品"
+      ],
+      "missingEvidence": [
+        "双方官宣及终止声明时间戳",
+        "涉事员工身份与事件核查",
+        "拟议产品及物料清单",
+        "培训和管理记录",
+        "受众态度样本"
+      ],
+      "tags": [
+        "前线履约",
+        "圈层沟通",
+        "新增候选",
+        "取消项目"
+      ],
+      "status": "待验证"
+    },
+    {
+      "gptCaseId": null,
+      "title": "Samsung × Supreme Italia",
+      "participants": [
+        "Samsung",
+        "Supreme Italia"
+      ],
+      "timeframe": "2018",
+      "market": "中国",
+      "collaborationType": "消费电子品牌×品牌主体／拟议合作",
+      "deliverables": [
+        "新品发布会合作宣布",
+        "舞台品牌展示；零售产物未明确"
+      ],
+      "claims": [
+        {
+          "text": "报告称三星于 2018 年中国新品发布会宣布与 Supreme 合作。",
+          "type": "event",
+          "locator": "chars:5967-6013",
+          "originalText": "三星电子在2018年中国新品发布会上，曾高调宣布与知名街头潮牌“Supreme”达成战略合作",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称实际合作主体为 Supreme Italia，并将其定性为恶意抢注的山寨公司。",
+          "type": "interpretation",
+          "locator": "chars:6054-6116",
+          "originalText": "三星合作的并非纽约正版Supreme，而是注册在欧洲、利用法律漏洞进行商标恶意抢注的山寨公司“Supreme Italia”",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称三星随后取消合作。",
+          "type": "outcome",
+          "locator": "chars:6140-6160",
+          "originalText": "最终在巨大的舆论嘲讽中被迫单方面取消合作",
+          "status": "待验证"
+        },
+        {
+          "text": "报告表格将事件归因于尽调缺位及轻信跨国中介。",
+          "type": "interpretation",
+          "locator": "chars:7100-7122",
+          "originalText": "商务与法务尽职调查彻底缺位，轻信跨国中介机构",
+          "status": "待验证"
+        },
+        {
+          "text": "报告表格另称三星撤回合作并致歉。",
+          "type": "outcome",
+          "locator": "chars:7141-7150",
+          "originalText": "最终撤回合作并致歉",
+          "status": "待验证"
+        }
+      ],
+      "mechanism": "报告分析：合作主体与公众认知品牌不一致，凸显主体、商标及许可范围核验需求。",
+      "risks": [
+        "主体身份与商标合法性需按时间、地域、类别核验",
+        "不能直接继承恶意抢注、侵权等法律定性",
+        "宣布合作与最终零售交付须区分",
+        "取消与致歉是两项待核实事件"
+      ],
+      "missingEvidence": [
+        "发布会及官方宣布",
+        "合作主体名称与注册记录",
+        "商标权利及相关裁判",
+        "官方取消和致歉原文",
+        "中介与尽调相关证据"
+      ],
+      "tags": [
+        "主体核验",
+        "商标",
+        "新增候选",
+        "法律定性待核验"
+      ],
+      "status": "待验证"
+    },
+    {
+      "gptCaseId": "C38",
+      "title": "adidas × Kanye West／Yeezy",
+      "participants": [
+        "adidas",
+        "Kanye West／Yeezy"
+      ],
+      "timeframe": "2022年末解约；其他时期未明确",
+      "market": "全球",
+      "collaborationType": "品牌×人物及设计师品牌",
+      "deliverables": [
+        "Yeezy鞋服系列"
+      ],
+      "claims": [
+        {
+          "text": "报告称 Yeezy 长期贡献 adidas 过半净利润。",
+          "type": "outcome",
+          "locator": "chars:6243-6264",
+          "originalText": "长期贡献了阿迪达斯过半的净利润与潮流领导力",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称 Kanye West 于 2022 年末发表反犹言论。",
+          "type": "event",
+          "locator": "chars:6265-6305",
+          "originalText": "然而2022年末，Kanye West在公开场合接连发表反犹太主义等极端仇恨言论",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称 adidas 单方面解除合作。",
+          "type": "event",
+          "locator": "chars:6321-6334",
+          "originalText": "阿迪达斯被迫单方面解除合作",
+          "status": "待验证"
+        },
+        {
+          "text": "报告称解约造成近 12 亿欧元库存难销，并直接导致罕见年度亏损。",
+          "type": "interpretation",
+          "locator": "chars:6335-6394",
+          "originalText": "此举导致近12亿欧元的Yeezy存货瞬间沦为无法正常销售的报废边缘资产，直接拖累阿迪达斯陷入30年来罕见的年度亏损境地",
+          "status": "待验证"
+        },
+        {
+          "text": "报告表格称 12 亿欧元死库存导致年度运营亏损。",
+          "type": "interpretation",
+          "locator": "chars:7232-7260",
+          "originalText": "被迫单方解约并承受12亿欧元死库存，导致年度巨额运营亏损",
+          "status": "待验证"
+        }
+      ],
+      "mechanism": "报告分析：对单一外部人物 IP 的依赖可将声誉事件传导为库存与经营风险。",
+      "risks": [
+        "净利润贡献与库存估值要有年份和口径",
+        "事件发生时库存风险不得自动作为当前库存状态",
+        "终止合作与公司年度亏损不能简化为唯一因果"
+      ],
+      "missingEvidence": [
+        "利润贡献原始披露及期间",
+        "库存数量、估值与减值口径",
+        "解约声明",
+        "后续库存出售时间线",
+        "年度亏损的组成与其他因素"
+      ],
+      "tags": [
+        "人物风险",
+        "集中度",
+        "库存时间线差异",
+        "利润口径待核验"
+      ],
+      "status": "待验证"
+    }
+  ],
+  "reportRules": [
+    {
+      "text": "建议以预估 ROI 大于 1.5，或能形成规模复购常驻 SKU 作为合格条件。",
+      "type": "recommendation",
+      "locator": "chars:9689-9723",
+      "originalText": "合格：综合预估ROI大于1.5，或能形成具备规模复购的常驻SKU储备",
+      "status": "作者建议",
+      "id": "GR01",
+      "adoptionStatus": "待验证",
+      "note": "报告未定义 ROI 的分子、分母、时间范围，也未提供阈值校准依据。"
+    },
+    {
+      "text": "建议五维决策权重：品牌势能与战略契合度25%，客群画像与心理共振力20%，产品交付与供应链承载20%，商业模型与财务ROI20%，法规合规与风控熔断15%。",
+      "type": "recommendation",
+      "locator": "chars:9304-9835",
+      "originalText": "品牌势能与战略契合度品牌身位对等性、公关美誉度、调性相容性、长期资产沉淀价值历史舆情情感倾向分析、品牌定位知觉映射图（Perceptual Mapping）红线：任一方存在严重舆情污点，或底层品类认知产生生理/道德排斥25%客群画像与心理共振力人口学属性互补度、圈层交叉比例、购买力承受区间、情绪价值挖掘私域大数据分析、社群舆论聚类挖掘、小红书用户情绪标签图谱合格：具备明确的新增客群补充性，且能精准击中群体情绪解压诉求20%产品交付与供应链承载SKU研发壁垒、实体形态感知度、峰值产能极限、翻单响应时效实验室打样评审、代工厂ERP排产弹性测算、防刷防黄牛风控压测红线：纯纸袋杯套贴牌且无物理创新；物料产能无法支撑发售首周基线20%商业模型与财务ROI商务计费架构、综合边际毛利、CAC拉新成本、长期留存转化率单元经济（UE）测算模型、保底金损益平衡表、私域沉淀漏斗分析合格：综合预估ROI大于1.5，或能形成具备规模复购的常驻SKU储备20%法规合规与风控熔断机制商标产权合法性、公共政策合规性、前线培训SOP、道德危机解约条款全球商标检索、法务尽调报告、民俗宗教法规排查、危机公关预案红线：IP存在知识产权纠纷；触碰宗教/浪费法规；缺失声誉熔断解约条款15%",
+      "status": "作者建议",
+      "id": "GR02",
+      "adoptionStatus": "待验证",
+      "note": "作者建议的权重，不是行业标准；合规评分不能抵销未核验硬门槛。"
+    },
+    {
+      "text": "建议评估断货后 48 小时返单能力。",
+      "type": "recommendation",
+      "locator": "chars:8410-8424",
+      "originalText": "断货情况下的48小时返单能力",
+      "status": "作者建议",
+      "id": "GR03",
+      "adoptionStatus": "待验证",
+      "note": "响应时效需按产物、地域、供应链与预算设定，不能套用为全部项目准入线。"
+    },
+    {
+      "text": "建议将纯纸袋杯套且无物理创新、产能不足首周基线列为红线。",
+      "type": "recommendation",
+      "locator": "chars:9586-9617",
+      "originalText": "红线：纯纸袋杯套贴牌且无物理创新；物料产能无法支撑发售首周基线",
+      "status": "作者建议",
+      "id": "GR04",
+      "adoptionStatus": "待验证",
+      "note": "作者同时正面描述轻量化包材联名，需保留内部方法差异；产物类型应与项目目标共同判断。"
+    },
+    {
+      "text": "主张当下联名需要优质实体商品承载。",
+      "type": "recommendation",
+      "locator": "chars:8157-8183",
+      "originalText": "缺乏优质实体商品承载的联名已难以在当下的存量市场立足",
+      "status": "作者建议",
+      "id": "GR05",
+      "adoptionStatus": "待验证",
+      "note": "不能扩展为会员权益、数字服务、内容、渠道合作必须有实体商品。"
+    },
+    {
+      "text": "建议将母婴或食品与特定成人潮牌的联名一概排除。",
+      "type": "recommendation",
+      "locator": "chars:7659-7701",
+      "originalText": "主打自然纯净、家庭健康的母婴或食品品牌，决不可与具有反叛破坏、夜店标签的成人潮牌联名",
+      "status": "作者建议",
+      "id": "GR06",
+      "adoptionStatus": "待验证",
+      "note": "绝对化品类规则；应将具体表达、受众与情境拆成待验证风险。"
+    },
+    {
+      "text": "建议专业工业品牌避免戏谑网络 IP。",
+      "type": "recommendation",
+      "locator": "chars:7702-7733",
+      "originalText": "崇尚严谨硬核的专业工业品牌，不可轻易涉足戏谑搞怪的网络低幼IP",
+      "status": "作者建议",
+      "id": "GR07",
+      "adoptionStatus": "待验证",
+      "note": "作者偏好与风险判断，不是客观适配定律。"
+    },
+    {
+      "text": "建议约定无条件单方解约、全额退费及商誉损害赔偿。",
+      "type": "recommendation",
+      "locator": "chars:9146-9183",
+      "originalText": "己方有权无条件单方面单方解约、要求合作方全额退还已付费用并赔偿相关商誉损失",
+      "status": "作者建议",
+      "id": "GR08",
+      "adoptionStatus": "待验证",
+      "note": "仅保留为谈判议题，实际权利依合同、法域及事实核验，不能声称自动生效。"
+    },
+    {
+      "text": "建议经济测算同时检查授权保底、开发、宣发、CAC 与留存。",
+      "type": "recommendation",
+      "locator": "chars:8687-8749",
+      "originalText": "企业不仅要核算直接销售收入扣除保底金、模具开发与专项宣发费用后的净利润，更要将新客获取成本（CAC）与长效留存率纳入评估体系",
+      "status": "作者建议",
+      "id": "GR09",
+      "adoptionStatus": "待验证",
+      "note": "该段非完整损益公式；双方内部转移、履约、税费和现金占用仍需另列。"
+    },
+    {
+      "text": "建议收尾后 30 至 90 天追踪新客 LTV 与二次触达。",
+      "type": "recommendation",
+      "locator": "chars:10490-10533",
+      "originalText": "在活动收尾后的30天至90天内，持续开展联名新客的生命周期价值（LTV）追踪与二次唤醒",
+      "status": "作者建议",
+      "id": "GR10",
+      "adoptionStatus": "待验证",
+      "note": "短观察窗口只能测阶段性表现，不能将预测 LTV 当作已实现收益。"
+    },
+    {
+      "text": "建议鼓励二次创作，并预期数十倍于官方宣发的 UGC 效应。",
+      "type": "recommendation",
+      "locator": "chars:10389-10409",
+      "originalText": "以此形成数十倍于官方宣发的UGC裂变效应",
+      "status": "作者建议",
+      "id": "GR11",
+      "adoptionStatus": "待验证",
+      "note": "数十倍未给指标定义、样本或证据，不应写作计划保底结果。"
+    },
+    {
+      "text": "建议立项按五维打分并对确权或政策合规问题设置一票否决。",
+      "type": "recommendation",
+      "locator": "chars:9963-10011",
+      "originalText": "任何联名立项都必须对照五维决策模型进行打分，对未经完备确权或存在政策合规瑕疵的项目推行一票否决制",
+      "status": "作者建议",
+      "id": "GR12",
+      "adoptionStatus": "待验证",
+      "note": "作者治理建议；具体门槛和决策权限须由项目定义，未核验不等于已违法。"
+    }
+  ],
+  "conflictCandidates": [
+    {
+      "gptCaseId": "C01",
+      "topic": "传播与品牌认知效果",
+      "gptStatement": "项目利润、净新增客户、对茅台主营的可归因提升",
+      "geminiStatement": "报告称完成Z世代白酒心智启蒙，并提升瑞幸高端商务人群品牌认知。",
+      "note": "待核对差异：GPT把品牌可归因提升列为缺口；Gemini给出已发生的因果式判断。销售数字表面相近也不能作为相互独立佐证。",
+      "status": "待验证",
+      "gptSource": "/Users/gpfs/Desktop/coding/brand/品牌物料/brand_collaboration_data_csv_json/brand_collaboration_60_cases.json",
+      "gptField": "仍缺少的证据"
+    },
+    {
+      "gptCaseId": "C03",
+      "topic": "结果等级与品牌效果",
+      "gptStatement": "公开报道记录排队与部分售罄；联名单独利润未披露。",
+      "geminiStatement": "报告称发售当日系统瘫痪、物料迅速售罄，并以极低成本视觉占领和审美领导地位解释结果。",
+      "note": "待核对差异：GPT分类为产品机制参考且利润未披露；需分别核验故障、售罄范围、成本与品牌效果。",
+      "status": "待验证",
+      "gptSource": "/Users/gpfs/Desktop/coding/brand/品牌物料/brand_collaboration_data_csv_json/brand_collaboration_60_cases.json",
+      "gptField": "公开结果（事实）"
+    },
+    {
+      "gptCaseId": "C11",
+      "topic": "独立直营收入",
+      "gptStatement": "联名独立收入、毛利、双方客群迁移",
+      "geminiStatement": "报告称联名直营销售额超过1亿美元，二级市场最高溢价超过10倍。",
+      "note": "待核对差异：独立收入缺口与明确金额之间存在待核对差异；二手市场不是品牌收入。",
+      "status": "待验证",
+      "gptSource": "/Users/gpfs/Desktop/coding/brand/品牌物料/brand_collaboration_data_csv_json/brand_collaboration_60_cases.json",
+      "gptField": "仍缺少的证据"
+    },
+    {
+      "gptCaseId": "C13",
+      "topic": "销量、抢购与后续影响",
+      "gptStatement": "2022年度业绩相关披露记录销量超过100万只。",
+      "geminiStatement": "报告称累计出货数百万枚、全球千万级抢购，并带动正价欧米茄登月表销量回升。",
+      "note": "待核对差异：GPT有2022年度观测窗口，Gemini累计窗口未明；可能是时间或指标差异，不能先判矛盾。",
+      "status": "待验证",
+      "gptSource": "/Users/gpfs/Desktop/coding/brand/品牌物料/brand_collaboration_data_csv_json/brand_collaboration_60_cases.json",
+      "gptField": "公开结果（事实）"
+    },
+    {
+      "gptCaseId": "C21",
+      "topic": "指标主体与归因",
+      "gptStatement": "华为确认P9为双方联合工程开发产品；媒体转述该系列出货超过1000万台。",
+      "geminiStatement": "报告称合作首年华为全球手机出货增长超过30%，并据此建立欧洲高端品牌认知。",
+      "note": "待核对差异：P9系列出货、华为整体增长、品牌认知不是同一指标，须先对齐时期与主体。",
+      "status": "待验证",
+      "gptSource": "/Users/gpfs/Desktop/coding/brand/品牌物料/brand_collaboration_data_csv_json/brand_collaboration_60_cases.json",
+      "gptField": "公开结果（事实）"
+    },
+    {
+      "gptCaseId": "C38",
+      "topic": "库存事件时间线",
+      "gptStatement": "2022年因Ye反犹言论终止；路透2025报道最后库存于2024年第四季度售完。",
+      "geminiStatement": "报告描述近12亿欧元库存成为死库存，并将年度亏损归因于解约。",
+      "note": "待核对差异：GPT包含2024年末库存售完的后续节点；Gemini未写后续处置，不能作为当前库存结论。",
+      "status": "待验证",
+      "gptSource": "/Users/gpfs/Desktop/coding/brand/品牌物料/brand_collaboration_data_csv_json/brand_collaboration_60_cases.json",
+      "gptField": "公开结果（事实）"
+    },
+    {
+      "gptCaseId": "C41",
+      "topic": "库存损失及消费者原因",
+      "gptStatement": "公开报道记录销售低于预期、上市后较快折价清货。",
+      "geminiStatement": "报告称两端全面滞销、3折清仓、数千万美元库存折损，并断言两端消费者的拒购心理。",
+      "note": "待核对差异：GPT只写销售低预期及较快折价，缺少SKU、损失和拒购研究；应逐断言补证据。",
+      "status": "待验证",
+      "gptSource": "/Users/gpfs/Desktop/coding/brand/品牌物料/brand_collaboration_data_csv_json/brand_collaboration_60_cases.json",
+      "gptField": "公开结果（事实）"
+    },
+    {
+      "gptCaseId": "C46",
+      "topic": "法律定性与损失",
+      "gptStatement": "媒体报道当地宗教事务部门约谈；联名随后下架，馆方表示合作结束。",
+      "geminiStatement": "报告正文称触犯宗教事务条例，表格另称违反广告法，并称全面报废损失及品牌口碑损害。",
+      "note": "待核对差异：GPT区分约谈与违法处罚，损失未知；Gemini法律依据内部也需核对。",
+      "status": "待验证",
+      "gptSource": "/Users/gpfs/Desktop/coding/brand/品牌物料/brand_collaboration_data_csv_json/brand_collaboration_60_cases.json",
+      "gptField": "公开结果（事实）"
+    }
+  ],
+  "briefMentions": [
+    {
+      "participants": [
+        "瑞幸",
+        "Loopy",
+        "线条小狗",
+        "《原神》"
+      ],
+      "claims": [
+        {
+          "text": "报告将瑞幸×Loopy、线条小狗、《原神》三类合作一并称为单周销量破千万杯，尚未逐项目、年份和产品口径拆分。",
+          "type": "outcome",
+          "locator": "chars:2432-2485",
+          "originalText": "先后联动韩国爆笑粉红小狸猫Loopy、萌系插画线条小狗及开放世界游戏《原神》，均录得单周破千万杯的销量成绩",
+          "status": "待验证"
+        }
+      ],
+      "status": "待验证",
+      "note": "简略提及，未纳入15个重点案例；不得把三项同组声称当成逐案例已核验数字。"
+    }
+  ]
+}

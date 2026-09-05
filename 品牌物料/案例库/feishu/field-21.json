@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "原报告的首条外部来源线索；仅登记链接不等于已经核验。",
+      "id": "fldENzfjYm",
+      "name": "来源链接",
+      "style": {
+        "type": "url"
+      },
+      "type": "text"
+    }
+  }
+}

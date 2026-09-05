@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "record": {
+      "update": {
+        "全部来源链接": "【原报告链接，未逐条核查】www.reuters.com\nhttps://www.reuters.com/business/mcdonalds-shuts-some-indonesia-outlets-over-bts-meal-frenzy-2021-06-11/\n\n【原报告链接，未逐条核查】www.reuters.com\nhttps://www.reuters.com/business/retail-consumer/mcdonalds-sales-surge-bts-meal-craze-easing-restrictions-2021-07-28/",
+        "来源核查状态": [
+          "仅原报告链接（未逐条核查）"
+        ],
+        "来源核查说明": "已完整恢复原报告所附外部链接。本轮尚未逐条读取这些页面，不能据此认定链接有效或全部案例事实已核验；原报告出处保留在“来源说明”。"
+      }
+    },
+    "updated": true
+  }
+}

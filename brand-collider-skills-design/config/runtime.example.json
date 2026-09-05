@@ -1,0 +1,35 @@
+{
+  "_note": "本项目适配器配置草案，不是 SDK 原生参数；需实现适配器和前置守卫。",
+  "adapter": "claude-agent-sdk",
+  "loadProjectSettingsOnly": true,
+  "skillDirectory": ".claude/skills",
+  "approvedSkillNames": [
+    "brand-profile",
+    "collab-ideation",
+    "design-spec",
+    "campaign-copy",
+    "visual-production",
+    "quality-review"
+  ],
+  "nativeTools": [
+    "Skill",
+    "Read"
+  ],
+  "blockedNativeTools": [
+    "Bash",
+    "Write",
+    "Edit"
+  ],
+  "projectTools": [
+    "get_context",
+    "read_asset",
+    "submit_artifact",
+    "image_generate",
+    "poster_compose"
+  ],
+  "permissionMode": "dontAsk",
+  "requirePreToolUseGuard": true,
+  "readPolicy": "仅允许受信任 Skill 的只读目录及本任务授权资源，解析真实路径后检查边界。",
+  "identityPolicy": "项目归属由任务上下文注入；每个自定义工具处理函数再次验证。",
+  "skillUpdatePolicy": "每个任务固定版本与文件哈希，新部署只影响新任务。"
+}

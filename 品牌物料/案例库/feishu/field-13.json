@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "报告风险解释与反例线索；历史风险不自动构成当前项目结论。",
+      "id": "fldKzuv6yM",
+      "name": "风险与反面教训",
+      "style": {
+        "type": "plain"
+      },
+      "type": "text"
+    }
+  }
+}

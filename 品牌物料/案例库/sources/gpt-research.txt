@@ -1,0 +1,485 @@
+我把这次调研整理成了一个可以继续扩充的 **“60个合作案例＋20项调研维度＋合作评分卡＋双方经济账”**。
+
+先给你文件，下面展开讲案例和分析方法：
+
+**[下载完整研究工作簿：60个品牌合作案例与尽调模板](sandbox:/mnt/data/brand_collaboration_research_60_cases.xlsx)**
+[下载结构化数据包：CSV＋JSON，可导入你的项目](sandbox:/mnt/data/brand_collaboration_data_csv_json.zip)
+
+工作簿包含8张表：研究总览、60个案例、案例速览、20项调研维度、合作评分卡、双方经济账、执行与访谈、字段与证据。每个案例都记录了**最终产物、公开结果、机制分析、风险、证据缺口和来源**。
+
+我对这个项目最重要的建议是：
+
+> **不要把它做成“哪些品牌曾经联名”的资料墙，而要做成“双方拿出什么资源，为什么有人愿意买，最终做成什么，双方各自获得什么，又可能在哪一步失败”的研究系统。**
+
+另外，我把狭义商品联名，与IP授权、技术共研、会员互通、渠道联盟分开标记。它们都值得研究，但不能用同一把尺子评价。
+
+---
+
+# 一、先把“成功”和“失败”分清楚
+
+这60例不是简单地分成“成功30个、失败30个”，而是分成下面五类：
+
+| 分类          | 数量 | 可以据此判断什么                | 不能据此判断什么    |
+| ----------- | -: | ----------------------- | ----------- |
+| **销售表现有据**  | 15 | 有销量、销售额、出货或明确售罄信息       | 不代表双方都盈利    |
+| **合作延续有据**  |  7 | 合作形成重复系列、跨年产品或持续机制      | 不代表每一期都成功   |
+| **产品机制参考**  | 20 | 产物确实落地，值得研究其设计和合作方式     | 商业效果不足以判定   |
+| **商业受挫**    |  5 | 有销售低于预期、停止产品或经济模式不持续的证据 | 未必能确认唯一失败原因 |
+| **风险与混合结果** | 13 | 出现履约、声誉、授权、治理或退出问题      | 不能一概说成卖不动   |
+
+**以下“机制”和“原因解释”是我的研究判断；销量、停止合作等事实则单独列出。**
+
+还有一个很容易忽略的问题：**联名对双方的影响并不一定对称。** 品牌联盟研究发现，消费者对合作的评价会反过来影响各个参与品牌，而且双方受到的影响不必相等。因此，不能只给“这个组合”打一个总分，还要分别看A和B的收益与风险。([Sage Journals][1])
+
+---
+
+# 二、成功案例：最终究竟做出了什么？
+
+## 1. 有销售表现支持的15个案例
+
+表中编号与工作簿一致，方便你检索。
+
+| 案例                                 | 最终产物                       | 公开结果                                                                  | 值得借鉴的机制——分析                               |
+| ---------------------------------- | -------------------------- | --------------------------------------------------------------------- | ----------------------------------------- |
+| **C01 瑞幸×贵州茅台，2023**               | 酱香拿铁、联名杯袋，后续主题店            | 瑞幸披露首日销售542万杯、销售额超1亿元；截至2023年底累计4583万杯、超9亿元。([Luckin Coffee Inc.][2]) | 把高门槛品牌变成低门槛体验，而且品牌资产进入配方，不只是印在包装上。        |
+| **C02 瑞幸×椰树，2022**                 | 椰云拿铁、椰树式高识别度包装             | 首周销量超过495万杯。([Luckin Coffee Inc.][3])                                 | 原料适配和视觉辨识度同时成立：消费者既能理解味道，也能识别合作。          |
+| **C04 喜茶×《梦华录》，2022**              | 剧集主题饮品与包装                  | 报道援引喜茶小程序数据：7日销量超过140万杯。([人民网纸媒][4])                                  | 将追剧情绪接到现实消费场景，合作理由容易理解。                   |
+| **C05 喜茶×《甄嬛传》，2022**              | 人物主题饮品、包装及周边               | 报道援引喜茶小程序数据：推出3日销量超过50万杯。([人民网纸媒][4])                                 | 人物和台词可以成为消费者表达身份、情绪和关系的素材。                |
+| **C06 喜茶×《原神》，2022**               | 角色主题饮品、包装及赠品               | 报道援引喜茶小程序数据：推出一周销量超过100万杯。([人民网纸媒][4])                                | 角色喜爱与收藏需求，为线下购买提供具体理由。                    |
+| **C09 H&M×Karl Lagerfeld，2004**    | 大众价格的设计师成衣系列               | 发售后迅速售出，后来被H&M回顾为设计师联名起点；但合作方也曾表达不满。([H&M Group][5])                  | 将高端设计语言放进大众渠道；同时提醒我们，热销不等于合作治理没有问题。       |
+| **C10 H&M×Balmain，2015**           | 服装、配饰胶囊系列                  | 媒体记录迅速售罄，同时出现网站拥堵和抢购。([FashionUnited][6])                             | 保留合作品牌足够鲜明的设计语言，让消费者知道自己买到了什么。            |
+| **C13 Swatch×OMEGA，2022**          | MoonSwatch腕表               | 2023年初的年度业绩相关披露记录累计销量超过100万只。([瑞士钟表工业联合会][7])                         | 将标志性高端设计转为不同材质、不同价格的新商品。但双方同属一个集团，协调条件特殊。 |
+| **C21 华为×Leica，2016**              | P9/P9 Plus手机及联合影像体验        | 华为确认联合开发；媒体转述该系列当年出货超过1000万台。注意是出货，不是全部由联名带来的销量。([Huawei][8])         | 合作服务于手机核心功能，而不是仅增加一个品牌标识。                 |
+| **C22 Samsung×Thom Browne，2020**   | 折叠屏手机、手表、耳机组成的设计套装         | 韩联社援引三星称，韩国首发约2.5小时售罄；首批数量未披露。([韩联社][9])                              | 从单件商品扩展到统一设计的完整套装，强化整体体验。                 |
+| **C27 Taco Bell×Doritos，2012**     | Doritos风味玉米脆壳塔可，后续反向推出袋装零食 | 百事披露：截至2013年4月，Nacho Cheese款自上市以来已售逾3.75亿个。([百事公司][10])               | 把对方最有辨识度的味觉资产，嵌入自己的主力产品结构。                |
+| **C28 KFC×Crocs，2020**             | 炸鸡图案洞洞鞋、鸡腿鞋饰               | 官方页面标示售罄；媒体报道上线不到半小时售罄。([卡骆驰][11])                                    | 食物符号转成可穿戴的幽默与社交表达。不能把宣传用高台鞋误当实际零售款。       |
+| **C30 Nike SB×Ben & Jerry’s，2020** | Chunky Dunky联名运动鞋          | Nike档案确认产品；媒体记录发售迅速售罄。([Nike.com][12])                                | 将奶牛、天空、冰淇淋融化等视觉转成鞋材和结构，不只是贴一张图。           |
+| **C35 Sephora×Kohl’s，2021起**       | 美妆店中店、选品与服务体系              | Kohl’s披露2023年该业务销售额超过14亿美元。([科尔士企业][13])                              | 专业选品与现成门店网络结合，产物不是限量商品，而是一条持续经营的渠道。       |
+| **C36 Nestlé×Starbucks，2018起**     | 星巴克胶囊、咖啡豆、研磨与速溶产品等         | Nestlé称2022年Starbucks业务为其带来16亿美元增量销售；这是企业披露口径。([Nestlé Global][14])   | 品牌、咖啡知识，与制造、胶囊平台、全球分销能力互补。这属于长期授权联盟。      |
+
+### 这里最值得深入研究的不是“谁卖得最多”，而是三种不同的成功结构
+
+**第一种：让消费者以更低成本接触原本难以接触的品牌。**
+瑞幸×茅台、H&M×设计师、MoonSwatch，都适合研究这种结构。但要验证的是：消费者究竟在购买产品、品牌体验，还是一次社交谈资。([Luckin Coffee Inc.][2])
+
+**第二种：把对方的能力变成产品本身的改进。**
+华为×Leica、Taco Bell×Doritos值得放在一起研究：前者涉及影像能力，后者涉及味觉与食品结构。我的判断是，这类合作更应该先做产品测试，再做传播设计。([Huawei][8])
+
+**第三种：直接创造一条新的经营渠道。**
+Sephora×Kohl’s、Nestlé×Starbucks的分析重点应是店级收益、分销、投资回收、授权和持续需求，而不是单次话题量。([科尔士企业][13])
+
+---
+
+## 2. 形成持续合作机制的7个案例
+
+这些案例的价值是“可以继续做”，但不能因此推断每一期都盈利。
+
+| 案例                       | 最终产物及延续证据                                                           | 值得研究的方向                        |
+| ------------------------ | ------------------------------------------------------------------- | ------------------------------ |
+| **C08 UNIQLO×KAWS**      | UT服装与艺术相关商品；UNIQLO在2024年回顾已合作9个系列，2025年宣布KAWS成为驻留艺术家。([UNIQLO][15]) | 稳定产品载体＋持续更新的艺术资产，怎样形成系列化。      |
+| **C15 LEGO×Star Wars**   | 积木及延伸内容生态；2024年庆祝合作25周年。([乐高商城][16])                                | 可持续更新的故事世界，如何与可重组的产品系统结合。      |
+| **C20 Apple×Hermès**     | 智能手表、皮革表带、专属表盘；2015推出后，2016继续发布新款式与颜色。([Apple][17])                 | 同一技术平台如何服务不同价格与审美需求。           |
+| **C29 McDonald’s×Crocs** | 2023年鞋履、袜子和鞋饰；2024年延伸为Happy Meal迷你鞋玩具。([麦当劳][18])                   | 同一组资产怎样反向进入双方渠道，覆盖不同客单价。       |
+| **C31 LOEWE×吉卜力**        | 《龙猫》《千与千寻》《哈尔的移动城堡》系列；官方将2023系列称为第三个也是最后一个系列。([Loewe][19])          | IP如何转化成工艺，以及“按计划结束”为什么不应被标成失败。 |
+| **C34 Starbucks×Delta**  | 关联账户后的消费里程和会员权益；2022推出，2026年再次调整规则。([商业电讯][20])                     | 高频咖啡消费如何与低频旅行权益结合，积分成本由谁承担。    |
+| **C37 adidas×Parley**    | 使用相关再生材料的鞋服；adidas在2020年披露双方五年合作。([阿迪达斯报告][21])                     | 材料、供应链和价值主张如何进入产品。环境效益仍需独立证据。  |
+
+---
+
+# 三、另外20个“产物值得研究，但不能直接宣称商业成功”的案例
+
+这一部分特别适合你的项目做**创意机制库**。
+
+上图的可口可乐×奥利奥就属于这一类：双方实际做出了“奥利奥风味可乐”和“可乐风味奥利奥”，很适合研究双向产品共创，但不能仅凭发布声量断言盈利。([可口可乐公司][22])
+
+| 案例                                  | 实际产物                                                | 可以提炼的合作方式——分析                          |
+| ----------------------------------- | --------------------------------------------------- | -------------------------------------- |
+| **C03 喜茶×FENDI，2023**               | 黄色主题饮品、包装周边、展览茶室及烘焙。([新华网][23])                     | **品牌体验入口**：用低门槛商品接触高端品牌视觉。             |
+| **C07 茉莉奶白×《恋与深空》，2026**            | 角色对应饮品、主题杯袋和收藏周边；报道有排队抢购，长期结果仍待观察。([36氪][24])       | **角色级需求匹配**：不是只看整个IP，要看不同角色的购买与备货差异。   |
+| **C11 Louis Vuitton×Supreme，2017**  | 箱包、服装、鞋履和配饰系列；被LVMH列为年度关键事件。([LVMH][25])            | **文化身份结合**：奢侈工艺与街头标识相互转译。              |
+| **C12 Dior×Jordan，2020**            | Air Dior运动鞋及成衣配饰。([YouTube][26])                    | **熟悉产品的新价值层**：经典鞋型叠加不同材质与审美。           |
+| **C14 Swatch×Blancpain，2023**       | Scuba Fifty Fathoms机械腕表。([Swatch Group][27])        | **价格梯度扩展**：但不能因为MoonSwatch成功，就假设本次也成功。 |
+| **C16 IKEA×LEGO，2020**              | BYGGLEK收纳盒与积木产品，盒子本身可用于搭建。([lego.com][28])          | **共同解决一个问题**：收拾玩具与保留作品，不再完全冲突。         |
+| **C17 adidas×LEGO，2020起**           | 积木元素运动鞋、服装和儿童产品。([乐高商城][29])                        | **设计语言延伸**：颜色、拼装感与运动产品结合。              |
+| **C19 Apple×Nike，2016**             | Apple Watch Nike+、表带和跑步服务体验。([Apple][30])           | **技术进入习惯**：以跑步行为为中心设计硬件与服务。            |
+| **C23 GoPro×Red Bull，2016**         | 运动事件影像、联合制作和跨平台分发内容。([GoPro][31])                   | **能力×场景**：一方会拍，一方拥有值得拍的事件与受众。          |
+| **C24 Starbucks×Spotify，2015—2016** | 门店音乐发现、歌单与数字互动。([The Drum][32])                     | **延长消费体验**：离开门店以后，体验仍有数字入口。            |
+| **C25 Coca-Cola×OREO，2024**         | 两款互换风味的食品饮料，以及数字互动。([可口可乐公司][22])                   | **双向产品共创**：不是只有一方卖产品，另一方贡献Logo。        |
+| **C26 Heinz×Absolut，2023**          | 番茄伏特加意面酱。([The Absolut Company][33])                | **真实配方连接**：两个品牌在一道菜里自然相遇。              |
+| **C32 Xbox×Barbie，2023**            | 游戏内车辆、抽奖定制主机和手柄等。([XBOX Wire][34])                  | **多层产物**：游戏内容、传播道具和实体赠品分别承担不同目标。       |
+| **C33 Airbnb×Barbie，2023**          | Malibu DreamHouse限量住宿体验。([Airbnb Newsroom][35])     | **世界观实体化**：把虚构场景变成可以进入的现实空间。           |
+| **C51 麦当劳×Mr Doodle，2024**          | 涂鸦包装、主题餐厅和快闪体验。([麦当劳][36])                          | **整套视觉系统**：包装、空间、活动保持一致。               |
+| **C52 UNIQLO×卢浮宫，2021起**            | 馆藏相关UT和文化活动合作。([迅销][37])                            | **文化资产日常化**：从参观博物馆，延伸到可穿戴载体。           |
+| **C53 Nike×Tiffany，2023**           | Air Force 1 1837、银饰细节及相关配件。([Tiffany & Co. US][38]) | **标志材质与颜色转译**：不把审美争议直接等同于商业失败。         |
+| **C54 PUMA×FENTY，2023重启阶段**         | Avanti等鞋履产品。([PUMA SE][39])                         | **主理人参与产品创造**：同时需要重新验证重启后的市场需求。        |
+| **C55 Supreme×OREO，2020**           | 红色、印有Supreme标识的三枚装饼干。([Supreme][40])                | **低价格的身份表达**：但二手挂牌高价不是品牌销售证据。          |
+| **C56 H&M×Mugler，2023**             | 成衣与配饰胶囊系列。([H&M][41])                               | **设计转译**：辨识度、实穿性、尺码和制造成本要同时成立。         |
+
+### 这20例可以抽象成什么？
+
+我建议你的创意机制库至少支持以下几种产物，而不只是“联名款商品”：
+
+**新配方、新功能、设计系列、收藏周边、沉浸空间、联合内容、会员权益、渠道产品。**
+
+一个候选合作可以同时有几种产物，但必须区分：
+
+> **哪个是消费者真正付钱买的主商品，哪个负责传播，哪个负责转化，哪个负责后续留存。**
+
+例如，定制主机可能是抽奖赠品，而不是零售新品；限量住宿可能主要服务传播，而不是靠房费回本。把这些混在一起，后续评价就会失真。([XBOX Wire][34])
+
+---
+
+# 四、失败案例：先看有明确商业受挫证据的5个
+
+## 1. 麦当劳×Krispy Kreme：渠道看起来互补，但一方的账算不过来
+
+**最终产物：**在麦当劳门店销售Krispy Kreme甜甜圈。
+
+**已知结果：**双方宣布合作于2025年7月2日结束，曾覆盖约2400家麦当劳门店。共同声明里，麦当劳表示合作达到自身及加盟商的预期；Krispy Kreme则表示，未能让成本与单店需求相匹配，因此无法持续。([商业电讯][42])
+
+这对你的研究框架非常重要：
+
+**“A觉得不错”与“B赚不到钱”，可以同时发生。**
+
+我的分析是，这类合作必须具体算到：每店每天卖多少、每次配送多少、配送频率、保质期、报损、店员操作成本和供应方毛利，而不是停留在“麦当劳有门店、甜甜圈品牌有产品，所以天然互补”。
+
+**应提炼的失败标签：双边收益失衡、单店需求不足以覆盖服务成本、渠道扩张过早。**其中“成本无法匹配需求”有官方依据，其他标签是需要进一步验证的解释。
+
+---
+
+## 2. adidas×Ivy Park：粉丝数量没有转化为预期销量
+
+**最终产物：**Ivy Park运动休闲服饰与鞋履。
+
+**已知结果：**《华尔街日报》报道，2022年销售额约4000万美元，而内部预期约2.5亿美元；2023年双方结束合作。数字属于媒体报道口径，不是完整公开财报。([The Wall Street Journal][43])
+
+**可以确认的是销售显著低于预期，不能直接确认的是“到底因为贵、款式、渠道，还是购买频率”。**
+
+真正要调研的应该是：粉丝喜欢人物，还是喜欢其服装设计？愿意买一次，还是会持续买？在真实售价下，会选联名款还是其他运动品牌？
+
+**应提炼的失败标签：把影响力当需求、销售预测缺乏验证。**
+
+---
+
+## 3. Target×Neiman Marcus：合作阵容很强，具体商品却没有打中购物任务
+
+**最终产物：**24位设计师参与的约50款节日礼品，涵盖家居、配饰和服装。
+
+**已知结果：**公开报道记录销售表现不佳，上市后较快折价清货。([Target Corporation][44])
+
+我的优先解释是：**品牌组合本身有吸引力，不代表具体品类、价格和节日购物需求也匹配。**这应通过SKU数据和消费者拒购访谈验证，而不是简单归结为“高端与大众不能合作”。
+
+它与H&M设计师系列适合配对研究：同样跨价格层级，为什么消费者对某些具体产品有明确购买理由，对另一些没有？
+
+**应提炼的失败标签：品类与价格错配、合作名气替代选品判断、库存风险。**
+
+---
+
+## 4. Beyond Meat×PepsiCo：赶上趋势，也不代表产品经济性成立
+
+**最终产物：**合资合作中的Beyond Meat植物肉干。
+
+**已知结果：**2024年报道公司停止该产品，属于改善成本和利润率的调整。([Reuters][45])
+
+适合研究的问题是：消费者会不会复购？制造难度和成本是多少？渠道增加后，新增收入是否足以覆盖生产与服务成本？
+
+**应提炼的失败标签：趋势替代需求验证、单位经济不成立。**但不能把Beyond Meat整家公司的业绩问题全部归给这款产品。
+
+---
+
+## 5. 麦当劳×Beyond Meat美国McPlant试点：宏观趋势没有变成当地门店需求
+
+**最终产物：**美国试点的McPlant植物肉汉堡。
+
+**已知结果：**美国测试结束；2024年麦当劳美国负责人表示，当地试点没有获得足够消费者需求。这个结论不能外推为所有国家的McPlant都失败。([Business Insider][46])
+
+**应提炼的失败标签：地域错配、使用场景错配、把品类趋势当成当地购买需求。**
+
+---
+
+# 五、另外13个风险案例：有的卖得好，但合作仍然出了问题
+
+这些案例尤其适合做你的**风险预警库**。
+
+| 案例                        | 实际产物与发生的问题                                                               | 应提炼的警示                                       |
+| ------------------------- | ------------------------------------------------------------------------ | -------------------------------------------- |
+| **C18 IKEA×Sonos**        | 家具音箱多年迭代后，2025年停止后续合作并逐步售完库存。([IKEA][47])                                | **退出与售后**：合作结束不自动等于亏损；联网产品还要处理软件和支持责任。       |
+| **C38 adidas×Yeezy**      | 鞋服系列前期热销；2022年因Ye反犹言论终止。最后库存于2024年第四季度售完。([阿迪达斯集团][48])                  | **人物与声誉风险传导**：销量成功不能消除集中依赖和退出风险。             |
+| **C40 Gap×Yeezy**         | 连帽衫、外套等；2022年先发生履约与治理争议，之后撤下剩余产品。([Reuters][49])                         | **合同和决策权**：分销、门店、创意控制要明确。Ye方违约指称不是已被法院证实的事实。 |
+| **C45 LEGO×Shell**        | 积木促销合作；环境组织施压后，LEGO宣布到期不再续约。([Reuters][50])                              | **价值观关联风险**：对方的公共争议可能影响自己的品牌。不是已经证明玩具卖不动。    |
+| **C46 喜茶×景德镇中国陶瓷博物馆**     | “佛喜”饮品及相关包装；媒体报道被约谈，联名随后下架。([新京报][51])                                   | **文化语境审查**：能合作，不等于每一种商业表达都合适；不能把约谈直接写成已认定违法。 |
+| **C47 乐乐茶×译林出版社**         | “烟腔乌龙”、鲁迅画像杯袋和立牌；2024撤文宣并致歉，2026又就画像著作权侵害认定后的使用问题致歉。([m.gmw.cn][52])     | **逐素材授权**：出版社合作不自动覆盖画像作者的权利。不同权利问题必须分开。      |
+| **C48 Gucci×adidas**      | 联名伞具明示不防水，引发讨论。([Business Insider][53])                                  | **功能预期错位**：装饰定位与“伞”的消费者预期可能冲突；舆论争议不是销量失败证据。  |
+| **C49 麦当劳×BTS**           | 主题套餐与包装；印尼部分门店因拥挤短暂关闭。([Reuters][54])                                    | **需求过强也有风险**：粉丝峰值、取餐分流、门店容量要提前设计。            |
+| **C50 奈雪×薄盒「范特西音乐宇宙」**    | 主题茶饮、包装及数字互动；消费者对是否为周杰伦本人合作存在理解争议。([证券时报][55])                           | **授权对象与传播对象一致**：不能把项目授权直接表述为艺人本人代言。          |
+| **C57 Target×Missoni**    | 服装、家居等系列需求强，但网站崩溃，部分订单延误或取消。([MPR News][56])                             | **成交不等于交付**：不能用售罄掩盖消费者没收到货。                  |
+| **C58 KFC×《原神》**          | 套餐、徽章等；2021年上海、杭州部分线下活动因聚集等原因取消。([PlayStation LifeStyle][57])            | **赠品就是核心履约**：不能把周边当作“不重要的附赠”。也不能说全国联名全部失败。   |
+| **C59 HTC／AT&T×Facebook** | 预装Facebook Home的HTC First；合约价快速下调，英国上市暂缓。([The Wall Street Journal][58]) | **喜欢应用不等于需要整部专用手机**：技术合作也必须验证用户任务。           |
+| **C60 Apple×U2**          | 专辑自动加入iTunes用户曲库，引发反感，Apple后来提供移除工具。([Pitchfork][59])                    | **免费也需要选择权**：能触达所有用户，不代表所有用户都需要。             |
+
+### 失败库不应该只有“失败原因”一列
+
+我建议至少拆成：
+
+**发生了什么 → 哪个环节失效 → 哪一方受损 → 原因证据有多强 → 当时能否提前发现 → 应该设置什么检查。**
+
+比如：
+
+* **麦当劳×Krispy Kreme**，核心检查是双方经济账与单店成本。
+* **乐乐茶×译林**，核心检查是每一张图的授权链。
+* **Target×Missoni**，核心检查是库存、支付和交付系统。
+* **Apple×U2**，核心检查是用户选择与退出设计。
+
+它们不是同一种“品牌不匹配”。([商业电讯][42])
+
+---
+
+# 六、真的有两个品牌要联名，应从哪些维度分析？
+
+下面这20项，是我建议你采用的完整框架。**它不是只评价创意，而是从合作意愿一直检查到交付、利润和退出。**
+
+| 维度                 | 核心问题                                  | 必须形成的研究产出               |
+| ------------------ | ------------------------------------- | ----------------------- |
+| **1. 双方目标**        | A和B分别要销量、拉新、提价、认知、渠道还是会员？目标冲突时谁优先？    | **A/B分别列目标、指标、底线与时间。**  |
+| **2. 品牌定位与边界**     | 消费者如何理解两个品牌？哪些形象、承诺和价格预期不能被破坏？        | 品牌认知图、可借用资产、禁用清单。       |
+| **3. 实际资源与权属**     | 每方到底提供技术、IP、设计、原料、场地、预算还是渠道？资源真的可用吗？  | 资源—负责人—权利—交付物矩阵。        |
+| **4. 受众分层与重合**     | 谁是A老客、B老客、共同客和潜在新客？购买力、偏好和使用频率如何？     | 四组受众画像，而不是两个“年轻人”标签。    |
+| **5. 可转化的新客**      | 谁本来不会来，但会因为这次合作来？我们真的能触达他吗？           | 新客来源、触达路径、转化假设与验证方法。    |
+| **6. 真实需求与场景**     | 在什么时间、地点、任务中使用？相比现有商品解决了什么？           | 场景—问题—替代方案—新价值说明。       |
+| **7. 功能互补与故事合理性**  | 两种品牌资产为什么应该结合？消费者能否一句话讲清楚？            | 分别写功能价值和情感价值，避免只说“反差感”。 |
+| **8. 最终产物组合**      | 主商品、包装、周边、体验、内容、会员权益分别是什么？            | 产物树、SKU清单、主次关系与库存规则。    |
+| **9. 价格与支付意愿**     | 溢价来自哪里？真实价格下，消费者会买它还是替代品？             | 净成交价、价格阶梯、分群价格测试。       |
+| **10. 渠道与转化**      | 看见以后到哪里下单？谁负责支付、配送、取货和售后？             | 从曝光到复购的完整路径及归因入口。       |
+| **11. 供应链与峰值履约**   | 起订量、产能、交期、保质期、补货、赠品能否承接？              | 备货计划、容量上限、缺货与延期方案。      |
+| **12. 技术、数据与选择权**  | 是否关联账户和会员？谁处理数据？如何知情、退出与获得支持？         | 数据流、权限、用户同意与退出设计。       |
+| **13. 双边经济与现金**    | A和B分别赚什么、付什么、垫多少？卖不完时谁承担？             | 两份损益、内部收费抵销、现金峰值、三种情景。  |
+| **14. 授权与合同**      | 商标、人物、画像、音乐、字体、设计分别由谁授权？覆盖哪里、多久、什么品类？ | 逐资产授权表、审批权、责任与退出条款。     |
+| **15. 文化、声誉与合规**   | 有没有容易被误读的表达？是否涉及特殊敏感内容、产品安全或环保声明？     | 风险分级、不可接受事项、暂停和回应方案。    |
+| **16. 合作意愿与治理**    | 谁能拍板？预算和资源是否获批？谁有权改设计、改价格、停卖？         | 决策人、责任表、审批期限与升级机制。      |
+| **17. 档期与生命周期**    | 热度窗口与研发、审批、生产周期是否冲突？                  | 关键路径、最迟决策点与替代档期。        |
+| **18. 竞争、排他与替代方案** | 对方最近和谁合作？有什么排他限制？自己做或换伙伴是否更好？         | 候选比较、独立开发基线、排他代价。       |
+| **19. 效果衡量与增量归因**  | 如何排除折扣、开店、季节和其他投放的影响？                 | 指标口径、对照设计、数据负责人。        |
+| **20. 长期资产与退出**    | 项目结束留下什么？剩余库存、内容许可、软件和售后怎么办？          | 续做／停做条件、资产归档和退出计划。      |
+
+这里面，**第4项“受众相似”与第5项“新增客户”必须分开。**
+
+两家客群高度重合，可能容易卖，但新增用户有限；客群完全不重合，也可能根本没有购买理由。你的系统不应该默认“越像越好”，而应该回答：
+
+> **在哪个共同场景里，一方现有客户会因为另一方提供的价值，愿意采取一次新的行动？**
+
+---
+
+# 七、最容易被做浅的五项，具体应该怎样调研？
+
+## 1. 用户研究：不要只问“你喜欢这个联名吗？”
+
+我建议至少覆盖四组：**A的客户、B的客户、双方共同客户、双方都不是但可能购买的人。**
+
+比“你喜欢吗”更有用的问题是：
+
+“最近一次买这类商品是什么时候，花了多少钱？”
+“在这个价格下，你选原商品、联名款，还是都不买？”
+“拿掉赠品，或者拿掉Logo，你还会买吗？”
+“你认为两家品牌分别做了什么？”
+“买完第一次，什么条件会让你再买？”
+
+这些问题分别帮助区分：真实需求、价格接受度、收藏需求、合作认知和复购条件。
+
+**尤其是IP联名，必须把“喜欢角色”“想要赠品”“愿意长期消费主商品”分开记录。**
+
+---
+
+## 2. 产品研究：至少比较三个方案
+
+不要只拿一个很好看的联名概念去问用户。
+
+我建议比较：
+
+**原商品 → 不联名但改良的商品 → 联名商品。**
+
+尽量控制价格、基本质量和展示方式。这样才有机会区分：消费者是因为产品改良而购买，还是因为合作品牌而购买。
+
+例如，一款新品本来就更好喝，那么销量提升不能全部归到联名；一款产品拿掉联名标识仍然很受欢迎，说明其价值可能主要来自产品本身。这是你设计测试时需要分开的解释。
+
+---
+
+## 3. 经济研究：必须分别做A和B的账
+
+建议采用这个基本结构：
+
+> **某一方的增量贡献利润**
+> ＝联名相关净收入
+> －本方新增的生产、履约、授权、投放、运营等成本
+> －被挤占的原业务贡献利润。
+
+然后再检查双方内部往来：A支付的授权费，可能正是B的收入；A向B采购的货款，也不能在项目合计中被重复当成对外收入。
+
+还要单独检查**现金峰值**：一个项目最终可能赚钱，但前期库存、保底授权和投放垫资，已经超出某一方能承受的范围。
+
+以品牌认知为主要目标时，短期不盈利可以是被批准的营销投入；但预算上限和有效结果必须事先确定，不能事后用“品牌价值”解释所有超支。
+
+---
+
+## 4. 授权研究：不是“有合作协议”就结束
+
+应将素材拆成独立对象审核：
+
+**品牌名称、商标、角色、人物形象、具体画像、音乐、字体、摄影、设计文件。**
+
+每个对象都核对权利方、许可品类、地域、期限、使用媒体、能否改编、能否转授权，以及结束后库存和内容如何处理。
+
+乐乐茶案例尤其适合说明：**与出版机构合作，和取得某一幅人物画像的商业使用权，是不同的问题。**其2026年声明涉及的正是具体画像的著作权权益。([m.gmw.cn][52])
+
+实际项目需要由相应法域的法务核验，不能仅依赖AI或品牌代理商的口头确认。
+
+---
+
+## 5. 效果研究：不要把“活动期间卖了多少”直接当增量
+
+至少同时记录四组结果：
+
+| 结果层次   | 应关注的指标                     |
+| ------ | -------------------------- |
+| **传播** | 有效触达、合作认知是否正确、品牌态度变化       |
+| **交易** | 净成交、原价售出率、完成交付率、退款与投诉      |
+| **经营** | 双方增量贡献、库存报损、现金占用           |
+| **长期** | 真正新增客户、联名结束后的复购、会员活跃及可复用资产 |
+
+条件允许时，可以采用试点门店与对照门店：
+
+**初步增量估计＝试点门店前后变化－对照门店前后变化。**
+
+但前提是趋势可比，没有其他重要同步差异；能随机分配、控制促销和渠道串扰更好。对照不足时，结论应保留不确定性，而不是直接宣布“联名贡献了全部增长”。
+
+---
+
+# 八、怎样把研究转成“这两个品牌值不值得做”的判断？
+
+我建议用 **“硬门槛＋匹配评分＋证据覆盖＋试点”**，不要只用一个匹配分。
+
+## 第一层：先检查硬门槛
+
+权利链无法确认、产品安全存在不可接受风险、现金损失超出承受范围、关键资源没有承诺、严重排他冲突等问题，**不能被一个很高的创意分抵消。**
+
+硬门槛没有核验，不代表默认通过。
+
+## 第二层：再评估匹配质量
+
+工作簿提供了12项、总权重100的评分卡，包含目标、需求、增量受众、品牌叙事、能力互补、产品价格、渠道、供应链、经济性、治理、衡量与复用。
+
+每项按0—5评分：
+
+**总分＝各项“权重×评分÷5”之和。**
+
+这些权重是可调整的工作建议，不是行业公认标准。
+
+## 第三层：把分数和证据分开
+
+“看起来85分，但多数依据来自猜测”，与“75分，关键假设已经被用户测试和报价确认”，不是同一种项目。
+
+因此，评分卡单独计算**已验证证据所覆盖的权重比例**。
+
+表里设置了75分、60分和80%证据覆盖等可编辑参考门槛，用于安排“进入试点、继续验证、重新考虑”，**不是预测成功概率，更不是批准直接大规模铺货。**
+
+## 第四层：用试点解决剩余未知
+
+对第一版合作，我建议优先验证最可能致命的假设：
+
+产品没人愿意付钱，就先测价格与购买；
+双方成本不清楚，就先拿报价和小批量履约数据；
+用户主要冲赠品，就先验证赠品供应和主商品复购；
+权益涉及账户关联，就先验证用户理解、使用与退出。
+
+**试点的目的不是做一个小一点的发布会，而是尽快弄清：这次合作最可能错在哪里。**
+
+---
+
+# 九、这个“大集合体”最终应该怎样组织？
+
+我建议底层至少分成八类数据，而不是一张越来越长的品牌表：
+
+| 数据对象     | 记录什么                      |
+| -------- | ------------------------- |
+| **品牌**   | 定位、价格、受众、资源、边界、来源与更新时间    |
+| **合作项目** | 目标、时期、地区、类型、阶段和状态         |
+| **参与方**  | 每一方的角色、投入、收益、责任、审批与限制     |
+| **最终产物** | 商品、赠品、体验、内容、权益；区分原型与正式售品  |
+| **效果指标** | 数值、单位、时间、地区、分母、口径与来源      |
+| **证据来源** | 哪条事实由哪个原始来源支持，有无独立交叉验证    |
+| **风险事件** | 事件、原因证据、受损方、后续纠正和最终结果     |
+| **匹配研究** | 两个品牌的合作假设、依据、未知项、评分和下一步测试 |
+
+这样，它以后才能回答不只是“谁和谁联过”，而是：
+
+**“有没有相似客群但不同渠道的案例？”**
+**“哪些合作把对方技术真正放进了产品？”**
+**“哪些项目卖得很好，却因为履约或授权出问题？”**
+**“这个组合最像哪三个成功机制，又接近哪两种失败路径？”**
+
+尤其要保留**反证和未知项**。没有披露利润，就写没有披露；只有首发售罄，就不要自动生成“长期商业成功”；后续出现判决、解约或库存结局，就追加时间线。
+
+最后，真正比较两个品牌时，研究报告应该能落到这一段话：
+
+> **A希望通过本次合作获得什么，B希望获得什么；双方用哪些真实资源，为哪类人在什么场景下创造什么产物；为什么用户会愿意付钱或参与；双方如何承担成本、取得收益；最危险的假设是什么；用什么试点验证，什么情况下停止。**
+
+**能够把这段话用证据填完整，才算完成了一次品牌联名调研。仅仅生成一个好看的联名概念，还只是其中的创意环节。**
+
+[1]: https://journals.sagepub.com/doi/abs/10.1177/002224379803500105 "https://journals.sagepub.com/doi/abs/10.1177/002224379803500105"
+[2]: https://investor.lkcoffee.com/news-releases/news-release-details/luckin-coffee-x-kweichow-moutai-theme-store-opens-committed "https://investor.lkcoffee.com/news-releases/news-release-details/luckin-coffee-x-kweichow-moutai-theme-store-opens-committed"
+[3]: https://investor.luckincoffee.com/news-releases/news-release-details/luckin-coffee-inc-announces-unaudited-first-quarter-2022 "https://investor.luckincoffee.com/news-releases/news-release-details/luckin-coffee-inc-announces-unaudited-first-quarter-2022"
+[4]: https://paper.people.com.cn/zgcsbwap/html/2023-05/29/content_25990154.htm "https://paper.people.com.cn/zgcsbwap/html/2023-05/29/content_25990154.htm"
+[5]: https://hmgroup.com/news/hm-celebrates-20-years-of-designer-collaborations-with-limited-pre-loved-pieces/ "https://hmgroup.com/news/hm-celebrates-20-years-of-designer-collaborations-with-limited-pre-loved-pieces/"
+[6]: https://fashionunited.com/news/retail/h-m-balmain-collaboration-sells-out-as-expected/201511058778 "https://fashionunited.com/news/retail/h-m-balmain-collaboration-sells-out-as-expected/201511058778"
+[7]: https://www.fhs.swiss/eng/2023_02_09_01_Swatch_Group.html "https://www.fhs.swiss/eng/2023_02_09_01_Swatch_Group.html"
+[8]: https://www.huawei.com/en/news/2016/4/huawei-p9-debuts-in-london "https://www.huawei.com/en/news/2016/4/huawei-p9-debuts-in-london"
+[9]: https://en.yna.co.kr/view/AEN20200221002800320 "https://en.yna.co.kr/view/AEN20200221002800320"
+[10]: https://www.pepsico.com/en/newsroom/press-releases/2013/doritos-locos-tacos-tortilla-chips-hit-the-chip-aisle "https://www.pepsico.com/en/newsroom/press-releases/2013/doritos-locos-tacos-tortilla-chips-hit-the-chip-aisle"
+[11]: https://www.crocs.com/KFC.html "https://www.crocs.com/KFC.html"
+[12]: https://www.nike.com/launch/t/dna-artifacts-sb-dunk-low-x-ben-jerrys-chunky-dunky "https://www.nike.com/launch/t/dna-artifacts-sb-dunk-low-x-ben-jerrys-chunky-dunky"
+[13]: https://corporate.kohls.com/news/nqqydduj4u2cv2xihf05p6s1udu4y5 "https://corporate.kohls.com/news/nqqydduj4u2cv2xihf05p6s1udu4y5"
+[14]: https://www.nestle.com/media/news/nestle-starbucks-five-years-global-coffee-alliance "https://www.nestle.com/media/news/nestle-starbucks-five-years-global-coffee-alliance"
+[15]: https://www.uniqlo.com/jp/en/contents/lifewear-magazine/archives/24fw/hello-kaws/?srsltid=AfmBOoqN40OJl96R1CX8zAWf40jzDvzkVGS4tT97GN9z9y3JfdV7YC-I "https://www.uniqlo.com/jp/en/contents/lifewear-magazine/archives/24fw/hello-kaws/?srsltid=AfmBOoqN40OJl96R1CX8zAWf40jzDvzkVGS4tT97GN9z9y3JfdV7YC-I"
+[16]: https://www.lego.com/en-us/aboutus/news/2024/january/lego-star-wars-25-anniversary "https://www.lego.com/en-us/aboutus/news/2024/january/lego-star-wars-25-anniversary"
+[17]: https://www.apple.com/ml/newsroom/2015/09/09Apple-and-Herm-s-Unveil-the-Apple-Watch-Herm-s-Collection/ "https://www.apple.com/ml/newsroom/2015/09/09Apple-and-Herm-s-Unveil-the-Apple-Watch-Herm-s-Collection/"
+[18]: https://corporate.mcdonalds.com/corpmcd/our-stories/article/mcd-crocs-dropping-global-collab-designedfor-nextlevel-fandom.html "https://corporate.mcdonalds.com/corpmcd/our-stories/article/mcd-crocs-dropping-global-collab-designedfor-nextlevel-fandom.html"
+[19]: https://www.loewe.com/int/en/stories-collection/loewe-howls-moving-castle.html "https://www.loewe.com/int/en/stories-collection/loewe-howls-moving-castle.html"
+[20]: https://www.businesswire.com/news/home/20221012005304/en/Delta-Air-Lines-and-Starbucks-Launch-Loyalty-Partnership "https://www.businesswire.com/news/home/20221012005304/en/Delta-Air-Lines-and-Starbucks-Launch-Loyalty-Partnership"
+[21]: https://report.adidas-group.com/2020/en/at-a-glance/2020-stories/our-sustainability-initiatives.html "https://report.adidas-group.com/2020/en/at-a-glance/2020-stories/our-sustainability-initiatives.html"
+[22]: https://www.coca-colacompany.com/media-center/coca-cola-and-the-oreo-brand-are-teaming-up "https://www.coca-colacompany.com/media-center/coca-cola-and-the-oreo-brand-are-teaming-up"
+[23]: https://www.xinhuanet.com/fashion/20230518/583947debd73474dafad7ea82b66e93e/c.html "https://www.xinhuanet.com/fashion/20230518/583947debd73474dafad7ea82b66e93e/c.html"
+[24]: https://m.36kr.com/p/3867222774469633 "https://m.36kr.com/p/3867222774469633"
+[25]: https://www.lvmh.com/en/publications/2017-record-results "https://www.lvmh.com/en/publications/2017-record-results"
+[26]: https://www.youtube.com/watch?v=3Lf3bbYcNd4 "https://www.youtube.com/watch?v=3Lf3bbYcNd4"
+[27]: https://www.swatchgroup.com/en/services/archive/2023/swatch-bioceramic-scuba-fifty-fathoms "https://www.swatchgroup.com/en/services/archive/2023/swatch-bioceramic-scuba-fifty-fathoms"
+[28]: https://www.lego.com/en-us/aboutus/news/2020/august/ikea-bygglek?utm_source=chatgpt.com "IKEA BYGGLEK - About Us"
+[29]: https://www.lego.com/en-us/aboutus/news/2020/october/adidas-lego-group-multi-year-partnership "https://www.lego.com/en-us/aboutus/news/2020/october/adidas-lego-group-multi-year-partnership"
+[30]: https://www.apple.com/newsroom/2016/09/apple-nike-launch-apple-watch-nike/ "https://www.apple.com/newsroom/2016/09/apple-nike-launch-apple-watch-nike/"
+[31]: https://gopro.com/en/sa/news/gopro-and-red-bull-form-exclusive-global-partnership?srsltid=AfmBOopdzT5sabmpmweqgJvyj5D49ImbJxFYFZmSjaigazW3cscNvlaC "https://gopro.com/en/sa/news/gopro-and-red-bull-form-exclusive-global-partnership?srsltid=AfmBOopdzT5sabmpmweqgJvyj5D49ImbJxFYFZmSjaigazW3cscNvlaC"
+[32]: https://www.thedrum.com/news/starbucks-kicks-action-its-store-music-discovery-venture-spotify "https://www.thedrum.com/news/starbucks-kicks-action-its-store-music-discovery-venture-spotify"
+[33]: https://theabsolutcompany.com/media-room/press-release/absolut-vodka-partners-with-heinz-to-launch-a-new-limited-edition-pasta-sauce/ "https://theabsolutcompany.com/media-room/press-release/absolut-vodka-partners-with-heinz-to-launch-a-new-limited-edition-pasta-sauce/"
+[34]: https://news.xbox.com/en-us/2023/06/26/xbox-barbie/ "https://news.xbox.com/en-us/2023/06/26/xbox-barbie/"
+[35]: https://news.airbnb.com/barbies-malibu-dreamhouse-is-back-on-airbnb-but-this-time-kens-hosting "https://news.airbnb.com/barbies-malibu-dreamhouse-is-back-on-airbnb-but-this-time-kens-hosting"
+[36]: https://www.mcdonalds.com.cn/news/20240522-Childrens-Day "https://www.mcdonalds.com.cn/news/20240522-Childrens-Day"
+[37]: https://www.fastretailing.com/eng/sustainability/community/sports_and_culture.html "https://www.fastretailing.com/eng/sustainability/community/sports_and_culture.html"
+[38]: https://www.tiffany.com/world-of-tiffany/collaborations/tiffany-nike-air-force.html "https://www.tiffany.com/world-of-tiffany/collaborations/tiffany-nike-air-force.html"
+[39]: https://about.puma.com/en/newsroom/news/fenty-x-puma-officially-back-rihanna-launches-avanti "https://about.puma.com/en/newsroom/news/fenty-x-puma-officially-back-rihanna-launches-avanti"
+[40]: https://supreme.com/previews/springsummer2020/accessories/supreme-oreo-cookies-pack-of-3 "https://supreme.com/previews/springsummer2020/accessories/supreme-oreo-cookies-pack-of-3"
+[41]: https://www.hm.com/az/mugler-hm-announcement/ "https://www.hm.com/az/mugler-hm-announcement/"
+[42]: https://www.businesswire.com/news/home/20250624271564/en/Krispy-Kreme-and-McDonalds-USA-Announce-Joint-Decision-to-End-Partnership "https://www.businesswire.com/news/home/20250624271564/en/Krispy-Kreme-and-McDonalds-USA-Announce-Joint-Decision-to-End-Partnership"
+[43]: https://www.wsj.com/articles/adidas-and-beyonce-to-part-ways-after-ivy-park-sales-struggles-1467552 "https://www.wsj.com/articles/adidas-and-beyonce-to-part-ways-after-ivy-park-sales-struggles-1467552"
+[44]: https://corporate.target.com/press/release/2012/10/target-and-neiman-marcus-reveal-highly-anticipated-holiday-collection "https://corporate.target.com/press/release/2012/10/target-and-neiman-marcus-reveal-highly-anticipated-holiday-collection"
+[45]: https://www.reuters.com/business/retail-consumer/beyond-meat-tops-quarterly-revenue-estimates-2024-02-27/ "https://www.reuters.com/business/retail-consumer/beyond-meat-tops-quarterly-revenue-estimates-2024-02-27/"
+[46]: https://www.businessinsider.com/mcdonalds-mcplant-us-trial-failed-not-enough-demand-beyond-meat-2024-6 "https://www.businessinsider.com/mcdonalds-mcplant-us-trial-failed-not-enough-demand-beyond-meat-2024-6"
+[47]: https://www.ikea.com/global/en/newsroom/collaborations/ikea-and-sonos-shine-a-new-light-on-sound-190408/ "https://www.ikea.com/global/en/newsroom/collaborations/ikea-and-sonos-shine-a-new-light-on-sound-190408/"
+[48]: https://www.adidas-group.com/en/media/press-releases/adidas-terminates-partnership-with-ye-immediately "https://www.adidas-group.com/en/media/press-releases/adidas-terminates-partnership-with-ye-immediately"
+[49]: https://www.reuters.com/business/retail-consumer/kanye-west-severs-ties-with-apparel-chain-gap-wsj-2022-09-15/ "https://www.reuters.com/business/retail-consumer/kanye-west-severs-ties-with-apparel-chain-gap-wsj-2022-09-15/"
+[50]: https://www.reuters.com/article/business/lego-to-drop-shell-contract-but-criticises-greenpeace-idUSKCN0HY245/ "https://www.reuters.com/article/business/lego-to-drop-shell-contract-but-criticises-greenpeace-idUSKCN0HY245/"
+[51]: https://m.bjnews.com.cn/detail/1701741875169857.html "https://m.bjnews.com.cn/detail/1701741875169857.html"
+[52]: https://m.gmw.cn/2026-03/13/content_1304375087.htm "乐乐茶向鲁迅画像作者致歉！此前与译林推联名奶茶致敬鲁迅引争议，鲁迅家属怒发律师函"
+[53]: https://www.businessinsider.com/adidas-and-gucci-selling-1600-umbrella-that-is-not-waterproof-2022-5 "https://www.businessinsider.com/adidas-and-gucci-selling-1600-umbrella-that-is-not-waterproof-2022-5"
+[54]: https://www.reuters.com/business/mcdonalds-shuts-some-indonesia-outlets-over-bts-meal-frenzy-2021-06-11/ "https://www.reuters.com/business/mcdonalds-shuts-some-indonesia-outlets-over-bts-meal-frenzy-2021-06-11/"
+[55]: https://www.stcn.com/article/detail/979671.html "https://www.stcn.com/article/detail/979671.html"
+[56]: https://www.mprnews.org/story/2011/09/22/target-missoni-problems "https://www.mprnews.org/story/2011/09/22/target-missoni-problems"
+[57]: https://www.playstationlifestyle.net/2021/03/15/genshin-impact-kfc-collaboration-cancelled/ "https://www.playstationlifestyle.net/2021/03/15/genshin-impact-kfc-collaboration-cancelled/"
+[58]: https://allthingsd.com/20130508/htc-first-that-facebook-phone-drops-from-99-bucks-to-99-cents-at-att/ "https://allthingsd.com/20130508/htc-first-that-facebook-phone-drops-from-99-bucks-to-99-cents-at-att/"
+[59]: https://pitchfork.com/news/56713-apple-launches-site-to-help-you-remove-the-u2-album-from-your-itunes "https://pitchfork.com/news/56713-apple-launches-site-to-help-you-remove-the-u2-album-from-your-itunes"

@@ -1,0 +1,42 @@
+{
+  "importedAt": "2026-09-05T06:14:58.919462+00:00",
+  "gptCases": 60,
+  "geminiDetailedCases": 15,
+  "mergedCases": 8,
+  "newGeminiCases": 7,
+  "totalCases": 67,
+  "totalClaims": 312,
+  "supportedClaims": 1,
+  "unverifiedClaims": 311,
+  "pendingDifferences": 8,
+  "methodRecords": 34,
+  "duplicateWorkbook": {
+    "paths": [
+      "../brand_collaboration_research_60_cases.xlsx",
+      "../brand_collaboration_research_60_cases (1).xlsx"
+    ],
+    "sha256": "51e55e9187eca71b74572ed39ec5d2ef9aba4f46e9f50e64dd9acc462ece522b"
+  },
+  "scope": "原始60例和Gemini重点案例已入库；仅C01指定历史销售披露实际打开官网核验。其他断言是待核验线索。",
+  "briefMentions": [
+    {
+      "participants": [
+        "瑞幸",
+        "Loopy",
+        "线条小狗",
+        "《原神》"
+      ],
+      "claims": [
+        {
+          "text": "报告将瑞幸×Loopy、线条小狗、《原神》三类合作一并称为单周销量破千万杯，尚未逐项目、年份和产品口径拆分。",
+          "type": "outcome",
+          "locator": "chars:2432-2485",
+          "originalText": "先后联动韩国爆笑粉红小狸猫Loopy、萌系插画线条小狗及开放世界游戏《原神》，均录得单周破千万杯的销量成绩",
+          "status": "待验证"
+        }
+      ],
+      "status": "待验证",
+      "note": "简略提及，未纳入15个重点案例；不得把三项同组声称当成逐案例已核验数字。"
+    }
+  ]
+}

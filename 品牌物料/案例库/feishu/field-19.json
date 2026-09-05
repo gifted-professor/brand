@@ -1,0 +1,47 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "资料可供哪些能力参考，不代表这些能力都已在此案例上实际执行。",
+      "id": "fldMeiDNoL",
+      "multiple": true,
+      "name": "可供Skill",
+      "options": [
+        {
+          "hue": "Blue",
+          "lightness": "Lighter",
+          "name": "品牌整理"
+        },
+        {
+          "hue": "Blue",
+          "lightness": "Lighter",
+          "name": "联名创意"
+        },
+        {
+          "hue": "Blue",
+          "lightness": "Lighter",
+          "name": "质量检查"
+        },
+        {
+          "hue": "Blue",
+          "lightness": "Lighter",
+          "name": "设计规格"
+        },
+        {
+          "hue": "Blue",
+          "lightness": "Lighter",
+          "name": "视觉制作"
+        },
+        {
+          "hue": "Blue",
+          "lightness": "Lighter",
+          "name": "文案创作"
+        }
+      ],
+      "type": "select"
+    }
+  }
+}

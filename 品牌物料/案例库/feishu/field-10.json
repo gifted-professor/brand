@@ -1,0 +1,27 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "本轮实际核验状态。只有 C01 的指定历史销售披露有官网支持，其余仍待核验。",
+      "id": "fldl3PQmtP",
+      "multiple": false,
+      "name": "证据状态",
+      "options": [
+        {
+          "hue": "Green",
+          "lightness": "Lighter",
+          "name": "部分断言有来源支持"
+        },
+        {
+          "hue": "Orange",
+          "lightness": "Lighter",
+          "name": "待核验"
+        }
+      ],
+      "type": "select"
+    }
+  }
+}

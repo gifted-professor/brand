@@ -1,0 +1,98 @@
+{
+  "kind": "task-research-handoff",
+  "consumer": "collab-ideation",
+  "status": "draft",
+  "libraryPath": "/Users/gpfs/Desktop/coding/brand/品牌物料/案例库/library.json",
+  "libraryRef": {
+    "revision": 1,
+    "sha256": "c621df4f5d55bc8bde37ff606675a3c4fe2c4e403e3ece922d4b49e28da7259c"
+  },
+  "evidencePacket": "research-context.json",
+  "currentBrief": {
+    "participants": [
+      "社区咖啡馆",
+      "独立书店"
+    ],
+    "goal": "周末到店活动",
+    "hardConstraints": [
+      "不新增印刷",
+      "不新增实体赠品"
+    ],
+    "unconfirmedResources": [
+      "店内空间与时段",
+      "现有社交账号/屏幕/菜单可否使用",
+      "选书内容和主持人员",
+      "双方预算、意愿、授权及店内容量"
+    ]
+  },
+  "usageDecision": "所选四个案例事件/结果在库中均为 unverified；机制只作为注明来源的研究解释或待验证假设，不能引用为已核实成功案例。当前不联网，未升级任何事实。",
+  "migrationNotes": [
+    {
+      "caseId": "C24",
+      "claimIds": [
+        "C24-GPT-mechanism",
+        "C24-GPT-risk"
+      ],
+      "role": "主参考",
+      "transferHypothesis": "将店内阅读体验延伸为用户自愿打开的选书/阅读内容，利用已经确认可用的数字触点。",
+      "differences": [
+        "咖啡与选书内容互补，不涉及音乐平台或播放清单授权",
+        "不能假设本地两店已有 App、会员互通或跨平台数据能力"
+      ],
+      "hardConstraintFit": "不新增杯套、书签、印刷书单或赠品；现有数字渠道仍待确认",
+      "measurementQuestion": "分别观察报名、实际到店、阅读参与和消费，不把点击当作到店。"
+    },
+    {
+      "caseId": "C23",
+      "claimIds": [
+        "C23-GPT-mechanism",
+        "C23-GPT-risk"
+      ],
+      "role": "双方贡献参考",
+      "transferHypothesis": "咖啡馆提供已确认的饮品服务与空间，书店提供已确认的选书知识与主持；共同形成体验或内容。",
+      "differences": [
+        "大型品牌的运动事件、股权及分发协议不适用社区活动",
+        "内容素材不得把案例或其他品牌素材直接当本项目资产"
+      ],
+      "hardConstraintFit": "研究现有饮品、书籍和口头/数字内容的组合，不要求新增实体产物",
+      "measurementQuestion": "双方分别记录投入工时、活动收入及新增客流，费用分配仍待确认。"
+    },
+    {
+      "caseId": "C47",
+      "claimIds": [
+        "C47-GPT-mechanism",
+        "C47-GPT-risk"
+      ],
+      "role": "注意事项线索",
+      "transferHypothesis": "把书封、插画、人物画像、引文、朗读及数字发布逐项列为待确认素材/用途。",
+      "differences": [
+        "此库中的撤文、致歉及法院认定均未核验，不能在提案中作为已确认法律事实",
+        "书店合作意愿不能自动替代素材权利确认"
+      ],
+      "hardConstraintFit": "历史杯袋、立牌、小册子不迁移；不新增印刷并不代表数字素材已获授权",
+      "measurementQuestion": "哪些内容由书店原创，哪些需单独核实可用范围？"
+    },
+    {
+      "caseId": "C60",
+      "claimIds": [
+        "C60-GPT-mechanism",
+        "C60-GPT-risk"
+      ],
+      "role": "体验边界参考",
+      "transferHypothesis": "阅读活动与后续内容均由顾客自主选择，普通到店顾客保留安静消费的选择。",
+      "differences": [
+        "不能把平台自动入库事件等同线下活动；历史争议在库中未核验"
+      ],
+      "hardConstraintFit": "不依赖赠品、自动加群或强制订阅",
+      "measurementQuestion": "怎样将活动参与、加入后续联系与一般消费分开？"
+    }
+  ],
+  "researchGaps": [
+    "库中没有社区咖啡馆 × 独立书店周末活动的直接可比案例",
+    "缺少本地客群、规模、选书与饮品偏好及非活动周末基线",
+    "没有可用于预测本活动到店、销售或利润的证据"
+  ],
+  "notAuthorizedAssets": "案例 URL、Logo 和图像不是当前 assetId/resourceId；资料包 ID 不是业务产物保存凭证。",
+  "successNumberAssessment": "lv-number-assessment.md",
+  "exampleNote": "独立行为试用示例，不是已确认的真实品牌项目。"
+}

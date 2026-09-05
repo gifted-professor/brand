@@ -1,0 +1,161 @@
+[
+  {
+    "id": "GS03",
+    "providedUrl": "https://www.foodtalks.cn/news/49627",
+    "readUrl": "https://www.foodtalks.cn/news/49627",
+    "accessStatus": "unavailable",
+    "actualTitle": null,
+    "publisher": "FoodTalks（站点可识别，文章署名未核实）",
+    "publishedAt": null,
+    "kind": "web_secondary",
+    "caseIds": [],
+    "relevance": "unresolved",
+    "supports": [],
+    "limitations": [
+      "网页工具与原 URL HTML 只返回需 JavaScript 的应用外壳，没有取回文章正文、文章标题或日期；本次无可用交互浏览器。",
+      "不能确认该 URL 是否对应所给标题，也不能支持增长飞轮、全域链路或酱香拿铁的具体断言。"
+    ],
+    "titleMismatch": null,
+    "assessment": "保留为未读链接线索，不按用户提供的概述补造支持关系。",
+    "readAt": "2026-09-05T07:02:25+00:00",
+    "sourceId": "SRC-SUPPLEMENT-GS03"
+  },
+  {
+    "id": "GS12",
+    "providedUrl": "https://user.guancha.cn/main/content?id=1353031&s=fwzwyzzwzbt",
+    "readUrl": "https://user.guancha.cn/main/content?id=1353031&s=fwzwyzzwzbt",
+    "accessStatus": "read",
+    "actualTitle": "联名：瑞幸 X 原神",
+    "publisher": "观察者网风闻用户社区／栈外（引用久谦中台用户研究工具）",
+    "publishedAt": "2024-12-24T09:00:00+08:00",
+    "kind": "web_secondary",
+    "caseIds": [],
+    "relevance": "case",
+    "supports": [
+      "正文讨论枫丹锡兰轻乳茶、枫丹红酒美式及角色周边，声称归纳社媒 5,030+ 条用户评论，按口感、周边、互动等维度分正负反馈。"
+    ],
+    "limitations": [
+      "这是瑞幸与原神新案例，不是 C61 悟空，也不是 C06 喜茶与原神或 C58 肯德基与原神。",
+      "未给原始评论、抽样平台与时间窗口、去重或分类验证方法；文中关于忠诚度和因果机制是推理。",
+      "风闻账号标注“官方账号”指栈外账号身份，不等于观察者网编辑部或瑞幸官方披露。"
+    ],
+    "titleMismatch": true,
+    "assessment": "网页工具报错后从同一原 URL 取回完整 HTML 正文；提供标题是扩写。可作待复核评论研究材料，暂不关联已有案例 ID。",
+    "readAt": "2026-09-05T07:02:25+00:00",
+    "lineageGroup": "zhanwai-jiuqian-luckin-genshin-20241224",
+    "sourceId": "SRC-SUPPLEMENT-GS12"
+  },
+  {
+    "id": "GS37",
+    "providedUrl": "https://www.emerald.com/ijrdm/article/48/4/380/230952/Retailer-brand-collaborations-testing-key",
+    "readUrl": "https://www.emerald.com/ijrdm/article-abstract/48/4/380/230952/Retailer-brand-collaborations-testing-key?redirectedFrom=fulltext",
+    "accessStatus": "partial",
+    "actualTitle": "Retailer-brand collaborations: testing key strategies to increase consumers' urgency to buy",
+    "publisher": "Emerald Publishing／International Journal of Retail & Distribution Management（作者：Michelle Childs、Byoungho Ellie Jin）",
+    "publishedAt": "2020-03-30",
+    "kind": "web_primary",
+    "caseIds": [],
+    "relevance": "method",
+    "supports": [
+      "可读摘要报告三项实验、合计499名参与者，考察限时/持续合作和感知合作契合度对消费者购买紧迫感的影响。",
+      "摘要称限时策略、较高契合度及两者结合有助于提升购买紧迫感，可作为后续查阅原论文的方法线索。",
+      "论文可识别为IJRDM第48卷第4期380–394页，DOI为10.1108/IJRDM-06-2019-0199。"
+    ],
+    "limitations": [
+      "仅获得摘要和论文元数据，全文需要登录或购买，未阅读完整方法、量表、刺激材料、统计检验和局限。",
+      "购买紧迫感不等于实际销量、复购、利润或ROI。",
+      "可见摘要未对库中Target×Neiman Marcus案例给出专门验证，不能据此补写其失败因果。",
+      "不能从摘要推出所有联名必须限量或高契合度必然成功的硬规则。",
+      "2020年3月30日为文章页面发布日期，所属期刊期次日期为2020年5月1日，二者应区分。"
+    ],
+    "titleMismatch": true,
+    "assessment": "可作为部分可读的原始学术研究摘要；提供标题把研究的具体因变量替换成泛化的success factors，引用应改正并声明只读摘要。",
+    "lineageGroup": "doi-10.1108-IJRDM-06-2019-0199",
+    "readAt": "2026-09-05T07:00:41Z",
+    "sourceId": "SRC-SUPPLEMENT-GS37"
+  },
+  {
+    "id": "GS39",
+    "providedUrl": "https://www.woshipm.com/marketing/6227402.html",
+    "readUrl": "https://www.woshipm.com/marketing/6227402.html",
+    "accessStatus": "read",
+    "actualTitle": "瑞幸联名的两条丑鱼，让百万打工人疯狂上头!（一文讲透IP联名玩法）",
+    "publisher": "人人都是产品经理（木兰姐专栏）",
+    "publishedAt": "2025-06-09",
+    "kind": "web_secondary",
+    "caseIds": [],
+    "relevance": "method",
+    "supports": [
+      "作者提出IP联名类型、授权模式、收入项和成本项等策划清单，可作为作者观点供比较。",
+      "文章使用ROI＝（收入－成本）/成本×100%，并把直接销售、品牌溢价、流量价值放入收入侧，把授权、研发和营销放入成本侧。"
+    ],
+    "limitations": [
+      "文中150%以上才算成功的所谓行业基准未提供可核查出处，不能当作公认标准或项目验收阈值。",
+      "品牌溢价与流量价值需要明确可计量、可归因及防重复计算的方法；不能把它们无条件当作现金收入相加。",
+      "多处案例销量、新用户或增长百分比没有足够可核查的一手引文，本次未证实。",
+      "正文主例瑞幸×海绵宝宝未在当前库中匹配到对应caseId，不应映射到其它瑞幸案例。",
+      "文章署名作者观点，不是会计标准、学术共识或官方ROI规范。",
+      "清单公式是“收入/成本”，原网页第05节是“（收入－成本）/成本×100%”，并非等价改写；在相同收入、成本口径下，收入/成本为1.5倍对应ROI为50%，不能当作150%。"
+    ],
+    "titleMismatch": true,
+    "assessment": "可保留为营销作者的方法观点，不能将提供条目中的科学二字和无引证的150%阈值转化成权威背书。 清单公式是“收入/成本”，原网页第05节是“（收入－成本）/成本×100%”，并非等价改写；在相同收入、成本口径下，收入/成本为1.5倍对应ROI为50%，不能当作150%。",
+    "lineageGroup": "mulanjie-woshipm-20250609",
+    "readAt": "2026-09-05T07:00:41Z",
+    "sourceId": "SRC-SUPPLEMENT-GS39"
+  },
+  {
+    "id": "GS40",
+    "providedUrl": "https://www.brandstar.com.cn/in-depth/6357",
+    "readUrl": "https://www.brandstar.com.cn/in-depth/6357",
+    "accessStatus": "read",
+    "actualTitle": "The Trade Desk™：品牌资产建设，一场长期主义的经营之道｜DTC 大会 2023",
+    "publisher": "品牌星球BrandStar（The Trade Desk萃弈中国业务拓展总监Ashley Wu演讲整理）",
+    "publishedAt": "2023-09-22",
+    "kind": "web_primary",
+    "caseIds": [],
+    "relevance": "method",
+    "supports": [
+      "演讲整理讨论长期品牌资产、产品利益、情感联系与品牌记忆等营销目标。",
+      "演讲者提出从品牌认知到社交互动、转化和留存的营销漏斗，以及针对人群和媒介调整触达频次的观点。"
+    ],
+    "limitations": [
+      "这是营销技术服务商代表的公开演讲整理，作为其提出的方法的一手记录，不等于独立第三方对方法有效性的验证。",
+      "文章主题是一般品牌建设，未提供针对品牌联名的专门实验或成功率模型。",
+      "发表的是整理稿；本次读完网页正文，但未核对整场演讲录音或完整逐字稿。",
+      "演讲中的平台数据与示例未在本次审计中单独核验，不宜外推为普适的销量或利润增量。"
+    ],
+    "titleMismatch": true,
+    "assessment": "可作为方法提出者的演讲来源，支持漏斗与长期经营观点；提供条目是概念概括而非真实标题，不能把它包装成专门验证联名效果的研究。",
+    "lineageGroup": "ttd-ashley-wu-dtc-2023",
+    "readAt": "2026-09-05T07:00:41Z",
+    "sourceId": "SRC-SUPPLEMENT-GS40"
+  },
+  {
+    "id": "GS41",
+    "providedUrl": "https://www.cbndata.com/information/294840",
+    "readUrl": "https://www.cbndata.com/information/294840",
+    "accessStatus": "read",
+    "actualTitle": "复盘今年269次茶饮咖啡联名代言：喜茶刹车，瑞幸翻车？",
+    "publisher": "CBNData（授权转载剁椒Spicy，作者：Jolene）",
+    "publishedAt": "2025-12-30",
+    "kind": "web_secondary",
+    "caseIds": [],
+    "relevance": "method",
+    "supports": [
+      "文章称梳理2025年1–12月47家品牌，共240次联名与29次明星代言，合计269次联名代言事件。",
+      "可支持该作者样本中的茶饮咖啡合作频率、IP偏好及情绪价值等行业观察。"
+    ],
+    "limitations": [
+      "统计来自剁椒Spicy文章，CBNData是转载平台；不能标记为CBNData自有大数据研究。",
+      "269包含29次明星代言，不能写成269次全部为品牌或IP联名。",
+      "未提供完整可复核数据集、样本覆盖规则或所有原始事件链接，不能外推为全行业总体或成功率。",
+      "行业观点和具体案例表现仍需各自原始来源，不构成因果结论。",
+      "文章中不同品牌与同一IP的合作不能合并为已有案例，例如喜茶×Chiikawa不等于名创优品×Chiikawa。"
+    ],
+    "titleMismatch": true,
+    "assessment": "可读且有明确样本口径，适合行业背景与方法参考；应修正原始作者来源和269次构成，不应把转载站点品牌当作数据研究机构背书。",
+    "lineageGroup": "duojiao-spicy-20251230-269",
+    "readAt": "2026-09-05T07:00:41Z",
+    "sourceId": "SRC-SUPPLEMENT-GS41"
+  }
+]

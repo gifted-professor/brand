@@ -1,0 +1,330 @@
+[
+  {
+    "id": "GS01",
+    "part": "一、 经典成功案例相关来源",
+    "section": "1. 瑞幸咖啡 × 贵州茅台（酱香拿铁）",
+    "providedEntry": "* **华龙网 / 重庆新闻网**：《品牌跨界联名观察》",
+    "url": "https://www.cqnews.net/1/detail/1326855557575610368/app/content_1326855557575610368.html",
+    "locator": "chars:346-437"
+  },
+  {
+    "id": "GS02",
+    "part": "一、 经典成功案例相关来源",
+    "section": "1. 瑞幸咖啡 × 贵州茅台（酱香拿铁）",
+    "providedEntry": "* **柏年商联**：《酱香拿铁打破代际圈层壁垒》",
+    "url": "https://www.boip.com.cn/news/811.html",
+    "locator": "chars:564-604"
+  },
+  {
+    "id": "GS03",
+    "part": "一、 经典成功案例相关来源",
+    "section": "1. 瑞幸咖啡 × 贵州茅台（酱香拿铁）",
+    "providedEntry": "* **FoodTalks 食品新消费智库**：《瑞幸联名营销增长飞轮与酱香拿铁全域数字化链路拆解》",
+    "url": "https://www.foodtalks.cn/news/49627",
+    "locator": "chars:757-795"
+  },
+  {
+    "id": "GS04",
+    "part": "一、 经典成功案例相关来源",
+    "section": "2. 喜茶 × FENDI（喜悦黄）与奢侈品跨界",
+    "providedEntry": "* **36氪**：《新消费品牌联名如何拓展消费圈层与提升品牌势能》",
+    "url": "https://m.36kr.com/p/2579814216164743",
+    "locator": "chars:955-995"
+  },
+  {
+    "id": "GS05",
+    "part": "一、 经典成功案例相关来源",
+    "section": "2. 喜茶 × FENDI（喜悦黄）与奢侈品跨界",
+    "providedEntry": "* **潮新闻**：《Gucci×Adidas到喜茶×FENDI：奢侈品与大众消费品牌的联名热潮》",
+    "url": "https://tidenews.com.cn/news.html?id=2572981",
+    "locator": "chars:1147-1194"
+  },
+  {
+    "id": "GS06",
+    "part": "一、 经典成功案例相关来源",
+    "section": "3. Louis Vuitton × Supreme（街头与高级时装融合）",
+    "providedEntry": "* **东方财富证券行业研报**：《跨界联名与品牌资产变迁》",
+    "url": "https://pdf.dfcfw.com/pdf/H3_AP202112281537124413_1.pdf?1640705738000.pdf",
+    "locator": "chars:1403-1479"
+  },
+  {
+    "id": "GS07",
+    "part": "一、 经典成功案例相关来源",
+    "section": "3. Louis Vuitton × Supreme（街头与高级时装融合）",
+    "providedEntry": "* **虎嗅网**：《Supreme与Louis Vuitton合作的商业奇迹》",
+    "url": "https://m.huxiu.com/article/393967.html",
+    "locator": "chars:1608-1650"
+  },
+  {
+    "id": "GS08",
+    "part": "一、 经典成功案例相关来源",
+    "section": "4. 瑞幸咖啡 × 《黑神话：悟空》及二次元/流行IP",
+    "providedEntry": "* **赢商网**：《黑神话腾云美式买爆：男性购买力颠覆想象》",
+    "url": "https://m.winshang.com/news726901.html",
+    "locator": "chars:1813-1854"
+  },
+  {
+    "id": "GS09",
+    "part": "一、 经典成功案例相关来源",
+    "section": "4. 瑞幸咖啡 × 《黑神话：悟空》及二次元/流行IP",
+    "providedEntry": "* **新浪科技**：《瑞幸咖啡与首款国产3A大作跨界合作》",
+    "url": "https://finance.sina.com.cn/tech/roll/2024-08-21/doc-inckihwu3270276.shtml",
+    "locator": "chars:2006-2083"
+  },
+  {
+    "id": "GS10",
+    "part": "一、 经典成功案例相关来源",
+    "section": "4. 瑞幸咖啡 × 《黑神话：悟空》及二次元/流行IP",
+    "providedEntry": "* **亿邦动力**：《瑞幸黑神话周边秒空，高并发考验后台系统承载》",
+    "url": "https://www.ebrun.com/20240821/557136.shtml",
+    "locator": "chars:2204-2250"
+  },
+  {
+    "id": "GS11",
+    "part": "一、 经典成功案例相关来源",
+    "section": "4. 瑞幸咖啡 × 《黑神话：悟空》及二次元/流行IP",
+    "providedEntry": "* **人人都是产品经理**：《瑞幸联名原神、Loopy及草间弥生系列爆款复盘》",
+    "url": "https://www.woshipm.com/marketing/6176325.html",
+    "locator": "chars:2392-2441"
+  },
+  {
+    "id": "GS12",
+    "part": "一、 经典成功案例相关来源",
+    "section": "4. 瑞幸咖啡 × 《黑神话：悟空》及二次元/流行IP",
+    "providedEntry": "* **观察者网**：《瑞幸与游戏《原神》跨界联动及年轻客群黏性运营》",
+    "url": "https://user.guancha.cn/main/content?id=1353031&s=fwzwyzzwzbt",
+    "locator": "chars:2547-2611"
+  },
+  {
+    "id": "GS13",
+    "part": "一、 经典成功案例相关来源",
+    "section": "4. 瑞幸咖啡 × 《黑神话：悟空》及二次元/流行IP",
+    "providedEntry": "* **SocialBeta**：《从纸袋到硬核周边：瑞幸联名物料设计进化》",
+    "url": "https://socialbeta.com/article/109488",
+    "locator": "chars:2696-2736"
+  },
+  {
+    "id": "GS14",
+    "part": "一、 经典成功案例相关来源",
+    "section": "5. 名创优品 × Chiikawa（治愈系IP与情绪经济）",
+    "providedEntry": "* **观点网**：《名创优品与Chiikawa上海静安大悦城快闪店10小时销售额突破268万元》",
+    "url": "https://www.guandian.cn/m/show/396579",
+    "locator": "chars:2870-2910"
+  },
+  {
+    "id": "GS15",
+    "part": "一、 经典成功案例相关来源",
+    "section": "5. 名创优品 × Chiikawa（治愈系IP与情绪经济）",
+    "providedEntry": "* **新浪财经**：《名创优品Chiikawa快闪店单店3天销售破800万，客单价超千元》",
+    "url": "https://finance.sina.cn/hkstock/sckxjfx/2024-04-08/detail-inarawfa3451765.d.html?vt=4",
+    "locator": "chars:3051-3139"
+  },
+  {
+    "id": "GS16",
+    "part": "一、 经典成功案例相关来源",
+    "section": "5. 名创优品 × Chiikawa（治愈系IP与情绪经济）",
+    "providedEntry": "* **人民网日本经济频道**：《知名IP Chiikawa中国首发快闪与100余款联名好物》",
+    "url": "http://cjkeizai.j.people.com.cn/n1/2024/0402/c368506-40208636.html",
+    "locator": "chars:3262-3331"
+  },
+  {
+    "id": "GS17",
+    "part": "一、 经典成功案例相关来源",
+    "section": "5. 名创优品 × Chiikawa（治愈系IP与情绪经济）",
+    "providedEntry": "* **创业邦**：《Chiikawa成为“成年人的电子布洛芬”：名创优品排队经济与直播全域转化》",
+    "url": "https://m.cyzone.cn/article/760623",
+    "locator": "chars:3466-3503"
+  },
+  {
+    "id": "GS18",
+    "part": "一、 经典成功案例相关来源",
+    "section": "5. 名创优品 × Chiikawa（治愈系IP与情绪经济）",
+    "providedEntry": "* **第一财经**与**爱顶流营销**：《IP主题设计与名创优品全球顶流供应链变现》",
+    "url": "https://www.yicai.com/news/102049431.html",
+    "locator": "chars:3597-3641"
+  },
+  {
+    "id": "GS19",
+    "part": "一、 经典成功案例相关来源",
+    "section": "5. 名创优品 × Chiikawa（治愈系IP与情绪经济）",
+    "providedEntry": "* **第一财经**与**爱顶流营销**：《IP主题设计与名创优品全球顶流供应链变现》",
+    "url": "https://www.itopmarketing.com/info19372",
+    "locator": "chars:3684-3726"
+  },
+  {
+    "id": "GS20",
+    "part": "一、 经典成功案例相关来源",
+    "section": "5. 名创优品 × Chiikawa（治愈系IP与情绪经济）",
+    "providedEntry": "* **CBNData 第一财经商业数据中心**：《Loopy到Chiikawa：名创优品超级IP矩阵与单月数百万GMV分析》",
+    "url": "https://www.cbndata.com/information/292549",
+    "locator": "chars:3841-3886"
+  },
+  {
+    "id": "GS21",
+    "part": "一、 经典成功案例相关来源",
+    "section": "5. 名创优品 × Chiikawa（治愈系IP与情绪经济）",
+    "providedEntry": "* **人人都是产品经理**：《Chiikawa快闪限购、黄牛转卖与终端排队问题观察》",
+    "url": "https://www.woshipm.com/it/6162320.html",
+    "locator": "chars:3978-4020"
+  },
+  {
+    "id": "GS22",
+    "part": "一、 经典成功案例相关来源",
+    "section": "6. 华为 × 徕卡（技术研发与高端化）",
+    "providedEntry": "* **观察者网**：《华为与徕卡跨界影像合作复盘：首年出货量同比增超30%》",
+    "url": "https://www.guancha.cn/economy/2022_05_25_641363.shtml",
+    "locator": "chars:4192-4249"
+  },
+  {
+    "id": "GS23",
+    "part": "二、 典型失败与争议案例相关来源",
+    "section": "1. 肯德基 × 泡泡玛特（盲盒食品与反浪费红线）",
+    "providedEntry": "* **新华网 / 工人日报**：《中消协点名肯德基泡泡玛特：用“盲盒”诱导食品过度消费当抵制》",
+    "url": "http://www.news.cn/food/20220112/efbfa8418d7f4cb1a3bdea0544cb14a1/c.html",
+    "locator": "chars:4480-4555"
+  },
+  {
+    "id": "GS24",
+    "part": "二、 典型失败与争议案例相关来源",
+    "section": "1. 肯德基 × 泡泡玛特（盲盒食品与反浪费红线）",
+    "providedEntry": "* **人民网科技财经**：《餐饮反浪费红线与中消协通报审查》",
+    "url": "http://finance.people.com.cn/n1/2022/0112/c1004-32329722.html",
+    "locator": "chars:4657-4721"
+  },
+  {
+    "id": "GS25",
+    "part": "二、 典型失败与争议案例相关来源",
+    "section": "1. 肯德基 × 泡泡玛特（盲盒食品与反浪费红线）",
+    "providedEntry": "* **界面新闻**与**腾讯新闻**：《肯德基盲盒引发上万元超额购买与“代吃”弃餐现象通报》",
+    "url": "https://www.jiemian.com/article/7008036.html",
+    "locator": "chars:4822-4869"
+  },
+  {
+    "id": "GS26",
+    "part": "二、 典型失败与争议案例相关来源",
+    "section": "1. 肯德基 × 泡泡玛特（盲盒食品与反浪费红线）",
+    "providedEntry": "* **界面新闻**与**腾讯新闻**：《肯德基盲盒引发上万元超额购买与“代吃”弃餐现象通报》",
+    "url": "https://news.qq.com/rain/a/20220113A08TVU00",
+    "locator": "chars:4916-4962"
+  },
+  {
+    "id": "GS27",
+    "part": "二、 典型失败与争议案例相关来源",
+    "section": "1. 肯德基 × 泡泡玛特（盲盒食品与反浪费红线）",
+    "providedEntry": "* **香港01**：《KFC盲盒二级市场炒价近12倍，1:72隐藏款机制引发过度消费》",
+    "url": "https://www.hk01.com/%E5%8D%B3%E6%99%82%E4%B8%AD%E5%9C%8B/723073/kfc%E7%9B%B2%E7%9B%92%E7%82%92%E5%83%B9%E8%BF%9112%E5%80%8D%E8%A1%8D%E7%94%9F-%E8%81%B7%E6%A5%AD%E4%BB%A3%E5%90%83-%E4%B8%AD%E6%B6%88%E5%8D%94%E5%91%BC%E7%B1%B2%E6%8A%B5%E5%88%B6%E7%9B%B2%E7%9B%AE%E6%B6%88%E8%B2%BB",
+    "locator": "chars:5295-5577"
+  },
+  {
+    "id": "GS28",
+    "part": "二、 典型失败与争议案例相关来源",
+    "section": "1. 肯德基 × 泡泡玛特（盲盒食品与反浪费红线）",
+    "providedEntry": "* **NOWRE 潮流媒体**：《肯德基与泡泡玛特套餐争议复盘》",
+    "url": "https://nowre.com/lifestyle/651050/kendeji-x-paopaomatelianmingtaocanyinyoudaoguoduxiaofeirezhengyi/",
+    "locator": "chars:5720-5823"
+  },
+  {
+    "id": "GS29",
+    "part": "二、 典型失败与争议案例相关来源",
+    "section": "2. 喜茶“佛喜茶拿铁”下架 & 喜茶×杜蕾斯互动翻车",
+    "providedEntry": "* **财联社·新消费日报**：《喜茶全面下架景德镇中国陶瓷博物馆“佛喜”茶饮及物料》",
+    "url": "https://www.cls.cn/detail/1535301",
+    "locator": "chars:6006-6042"
+  },
+  {
+    "id": "GS30",
+    "part": "二、 典型失败与争议案例相关来源",
+    "section": "2. 喜茶“佛喜茶拿铁”下架 & 喜茶×杜蕾斯互动翻车",
+    "providedEntry": "* **南方都市报**：《喜茶“佛喜茶拿铁”被约谈下架，曾因杜蕾斯露骨文案遭全网抵制致歉》",
+    "url": "https://m.mp.oeeee.com/a/BAAFRD000020231205883675.html",
+    "locator": "chars:6198-6255"
+  },
+  {
+    "id": "GS31",
+    "part": "二、 典型失败与争议案例相关来源",
+    "section": "3. 劳斯莱斯 × 晚晚夫妇（超阶层调性冲突）",
+    "providedEntry": "* **Morketing 营销智库**：《劳斯莱斯错在哪里？推广视频删博与高净值车主心智反弹深度剖析》",
+    "url": "https://www.morketing.com/detail/20906",
+    "locator": "chars:6438-6479"
+  },
+  {
+    "id": "GS32",
+    "part": "二、 典型失败与争议案例相关来源",
+    "section": "3. 劳斯莱斯 × 晚晚夫妇（超阶层调性冲突）",
+    "providedEntry": "* **小宇宙商业播客**：《品牌跨界红黑榜：劳斯莱斯网红推广事件与喜茶FENDI对比》",
+    "url": "https://www.xiaoyuzhoufm.com/podcast/680dfca88366e5c5cbe8d394",
+    "locator": "chars:6594-6658"
+  },
+  {
+    "id": "GS33",
+    "part": "二、 典型失败与争议案例相关来源",
+    "section": "4. Target × Neiman Marcus 零售错位 & 阿迪达斯 × Kanye West 违约风险",
+    "providedEntry": "* **Retail Dive**：《Neiman Marcus Collection at Target Misses Its Mark with Consumers》",
+    "url": "https://www.retaildive.com/news/neiman-marcus-collection-at-target-misses-its-mark-with-consumers/85742/",
+    "locator": "chars:6983-7090"
+  },
+  {
+    "id": "GS34",
+    "part": "二、 典型失败与争议案例相关来源",
+    "section": "4. Target × Neiman Marcus 零售错位 & 阿迪达斯 × Kanye West 违约风险",
+    "providedEntry": "* **Matt Hunt 零售战略论坛**：《Target与Neiman Marcus联名折价70%出清的经验与反思》",
+    "url": "http://www.matthunt.co/failure-forums/so-target-failed-in-canada-but-how-they-respond-matters-more/1180",
+    "locator": "chars:7263-7369"
+  },
+  {
+    "id": "GS35",
+    "part": "二、 典型失败与争议案例相关来源",
+    "section": "4. Target × Neiman Marcus 零售错位 & 阿迪达斯 × Kanye West 违约风险",
+    "providedEntry": "* **Quirk's 市场研究杂志**：《Store-within-a-Store Partnerships & Collaboration Challenges》",
+    "url": "https://www.quirks.com/articles/store-within-a-store-partnerships-how-retail-brands-are-working-together-to-drive-success",
+    "locator": "chars:7621-7745"
+  },
+  {
+    "id": "GS36",
+    "part": "二、 典型失败与争议案例相关来源",
+    "section": "4. Target × Neiman Marcus 零售错位 & 阿迪达斯 × Kanye West 违约风险",
+    "providedEntry": "* **TheStreet 商业分析**：《Retail Collaborations Gone Awry: Target/Neiman Marcus清仓与Adidas Yeezy 12亿欧元库存危机》",
+    "url": "https://www.thestreet.com/retail/target-just-dumped-its-pride-merchandise-heres-where-it-all-may-go",
+    "locator": "chars:8015-8117"
+  },
+  {
+    "id": "GS37",
+    "part": "二、 典型失败与争议案例相关来源",
+    "section": "4. Target × Neiman Marcus 零售错位 & 阿迪达斯 × Kanye West 违约风险",
+    "providedEntry": "* **Emerald 国际零售与分销管理期刊**：《Retailer-brand collaborations: testing key success factors》",
+    "url": "https://www.emerald.com/ijrdm/article/48/4/380/230952/Retailer-brand-collaborations-testing-key",
+    "locator": "chars:8308-8406"
+  },
+  {
+    "id": "GS38",
+    "part": "二、 典型失败与争议案例相关来源",
+    "section": "5. 沪上阿姨 × 《光与夜之恋》（前线执行脱节与圈层反弹）",
+    "providedEntry": "* **鸟哥笔记**：《一年360天在联名：茶咖高频联名审美疲劳与沪上阿姨官宣3小时单方解约》",
+    "url": "http://www.niaogebiji.com/article-684241-1.html",
+    "locator": "chars:8614-8664"
+  },
+  {
+    "id": "GS39",
+    "part": "三、 品牌联名调研框架、ROI测算与方法论来源",
+    "section": "",
+    "providedEntry": "* **人人都是产品经理（木兰姐专栏）**：《瑞幸“丑鱼”出圈与科学联名ROI测算公式（收入项/成本项）》",
+    "url": "https://www.woshipm.com/marketing/6227402.html",
+    "locator": "chars:8901-8950"
+  },
+  {
+    "id": "GS40",
+    "part": "三、 品牌联名调研框架、ROI测算与方法论来源",
+    "section": "",
+    "providedEntry": "* **品牌星球 BrandStar**：《品牌漏斗顶端认知释放、社交互动与长期留存转化模型》",
+    "url": "https://www.brandstar.com.cn/in-depth/6357",
+    "locator": "chars:9084-9129"
+  },
+  {
+    "id": "GS41",
+    "part": "三、 品牌联名调研框架、ROI测算与方法论来源",
+    "section": "",
+    "providedEntry": "* **CBNData 第一财经商业数据中心**：《茶饮咖啡IP联名大数据盘点与情绪价值驱动力分析》",
+    "url": "https://www.cbndata.com/information/294840",
+    "locator": "chars:9277-9322"
+  }
+]

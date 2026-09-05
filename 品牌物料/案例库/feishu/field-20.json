@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "资料所属报告、来源家族和定位；同源转述不算独立核验。",
+      "id": "fldS8bYZp7",
+      "name": "来源说明",
+      "style": {
+        "type": "plain"
+      },
+      "type": "text"
+    }
+  }
+}

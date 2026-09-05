@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "原案例参与方，不代表已确认的本项目合作方。",
+      "id": "fldwZV4s6L",
+      "name": "品牌A",
+      "style": {
+        "type": "plain"
+      },
+      "type": "text"
+    }
+  }
+}

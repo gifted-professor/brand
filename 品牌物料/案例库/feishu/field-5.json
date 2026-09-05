@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "原报告描述的项目时间范围，不是本次核验日期。",
+      "id": "fldFzpNf3A",
+      "name": "时间范围",
+      "style": {
+        "type": "plain"
+      },
+      "type": "text"
+    }
+  }
+}

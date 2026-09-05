@@ -1,0 +1,4 @@
+interface:
+  display_name: "品牌合作案例研究"
+  short_description: "整理品牌合作案例、追踪原始证据，并为联名创作提供可引用资料"
+  default_prompt: "使用 $brand-case-research 整理品牌物料中的报告和案例，保留来源与差异，并为六个联名 Skill 输出相关资料包。"

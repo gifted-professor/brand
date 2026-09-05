@@ -1,0 +1,47 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "沿用报告分类，不能替代本库逐条核验；销售表现不等于双方盈利。",
+      "id": "fldBXTmCAL",
+      "multiple": false,
+      "name": "原报告结果分类",
+      "options": [
+        {
+          "hue": "Blue",
+          "lightness": "Lighter",
+          "name": "销售表现有据"
+        },
+        {
+          "hue": "Blue",
+          "lightness": "Lighter",
+          "name": "产品机制参考"
+        },
+        {
+          "hue": "Blue",
+          "lightness": "Lighter",
+          "name": "合作延续有据"
+        },
+        {
+          "hue": "Blue",
+          "lightness": "Lighter",
+          "name": "风险与混合结果"
+        },
+        {
+          "hue": "Blue",
+          "lightness": "Lighter",
+          "name": "商业受挫"
+        },
+        {
+          "hue": "Blue",
+          "lightness": "Lighter",
+          "name": "仅报告线索"
+        }
+      ],
+      "type": "select"
+    }
+  }
+}

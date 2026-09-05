@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "record": {
+      "update": {
+        "全部来源链接": "【已读正文】潮新闻（记者盛锐、徐雪纯；实习生陈李娜）｜2023-09-05T21:37:15+08:00｜潮声丨快消和奢侈品牌联名产品，为何能频频虏获年轻人的心？\nhttps://tidenews.com.cn/news.html?id=2572981\n\n【报告链接，尚未逐页核查】www.businessinsider.com\nhttps://www.businessinsider.com/adidas-and-gucci-selling-1600-umbrella-that-is-not-waterproof-2022-5\n\n【报告链接，尚未逐页核查】www.ndtv.com\nhttps://www.ndtv.com/world-news/a-1-644-gucci-adidas-umbrella-that-does-not-stop-rain-2989361",
+        "来源核查状态": [
+          "已读外部正文（限定范围）"
+        ],
+        "来源核查说明": "用户补充清单逐页核查：\nGS05｜已读正文｜潮声丨快消和奢侈品牌联名产品，为何能频频虏获年轻人的心？\n潮新闻（记者盛锐、徐雪纯；实习生陈李娜）｜2023-09-05T21:37:15+08:00\n支持范围：以酱香拿铁、喜茶与 FENDI 等讨论大众消费品与奢侈品联名，并提及 Swatch 与 Omega、Gucci 与 adidas。；消费者采访提供低价体验奢侈品牌符号的例子；受访者也明确表示预算限制下不会因此购买奢侈品。\n局限：单个消费者采访不能代表年轻群体；文中机制分析不能证明奢侈品新增客户、忠诚度或双方收益。；C13、C48 主要为举例，不能据此核验它们的全部案例细节。\n核查结论：与高低价格带联名主题相关，给定标题不是原题。\nhttps://tidenews.com.cn/news.html?id=2572981",
+        "来源说明": "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/47\n原报告结果分类「风险与混合结果」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。\n用户补充的41条引用清单：GS05；原始归类和标题与实际页面分别保留，详见“补充来源核查”表。",
+        "来源链接": "[https://tidenews.com.cn/news.html?id=2572981](https://tidenews.com.cn/news.html?id=2572981)"
+      }
+    },
+    "updated": true
+  }
+}

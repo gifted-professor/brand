@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "已读来源的标题、发布者、日期、支持范围和局限；未读取的原报告链接明确标注。",
+      "id": "fldOhpbigV",
+      "name": "来源核查说明",
+      "style": {
+        "type": "plain"
+      },
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "poster-portrait-v1",
+  "version": "1.0.0",
+  "width": 1200,
+  "height": 1600,
+  "safeMargin": 64,
+  "slots": {
+    "brandNames": {
+      "x": 64,
+      "y": 64,
+      "width": 1072,
+      "height": 70
+    },
+    "title": {
+      "x": 64,
+      "y": 156,
+      "width": 1072,
+      "height": 160
+    },
+    "hero": {
+      "x": 64,
+      "y": 350,
+      "width": 1072,
+      "height": 860,
+      "fit": "contain"
+    },
+    "subtitle": {
+      "x": 64,
+      "y": 1240,
+      "width": 1072,
+      "height": 150
+    },
+    "disclosure": {
+      "x": 64,
+      "y": 1450,
+      "width": 1072,
+      "height": 86
+    }
+  },
+  "requirements": [
+    "实现文本测量、换行和溢出检查",
+    "复用当前有效主图，不重新生成产品",
+    "下载成品必须显示概念标记"
+  ],
+  "fontPolicy": "渲染环境自行配置可用且适合用途的字体，本包不分发字体。"
+}

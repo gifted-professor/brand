@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "保留原资料的合作模式，区分联名、授权、渠道联盟、技术共研等。",
+      "id": "fldS2pSTXN",
+      "name": "合作类型",
+      "style": {
+        "type": "plain"
+      },
+      "type": "text"
+    }
+  }
+}

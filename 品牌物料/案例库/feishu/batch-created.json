@@ -1,0 +1,2576 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "data": [
+      [
+        "喜茶 × 《原神》",
+        "C06",
+        "喜茶",
+        "《原神》",
+        "品牌×游戏IP",
+        "2022",
+        "中国",
+        [
+          "销售表现有据"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "角色主题茶饮、联名包装及赠品",
+        "用角色关系与可收藏物，把线上喜爱转成线下消费。",
+        "必须区分购买饮品与购买赠品；赠品短缺可破坏核心体验。",
+        null,
+        null,
+        null,
+        null,
+        "每款角色需求分布、正常供货下的复购、项目利润",
+        [
+          "联名创意",
+          "设计规格",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/5\n原报告结果分类「销售表现有据」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://paper.people.com.cn/zgcsbwap/html/2023-05/29/content_25990154.htm](https://paper.people.com.cn/zgcsbwap/html/2023-05/29/content_25990154.htm)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C06-GPT-event｜事件｜unverified] 角色主题茶饮、联名包装及赠品\n[C06-GPT-outcome｜结果｜unverified] 报道援引喜茶小程序：联名推出一周销量超过100万杯。\n[C06-GPT-mechanism｜研究解释｜unverified] 用角色关系与可收藏物，把线上喜爱转成线下消费。\n[C06-GPT-risk｜研究解释｜unverified] 必须区分购买饮品与购买赠品；赠品短缺可破坏核心体验。"
+      ],
+      [
+        "茉莉奶白 × 《恋与深空》",
+        "C07",
+        "茉莉奶白",
+        "《恋与深空》",
+        "品牌×游戏IP",
+        "2026年6月",
+        "中国",
+        [
+          "产品机制参考"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "角色对应饮品、主题杯袋及收藏周边",
+        "细分角色偏好使同一IP内部也存在不同需求，适合角色级备货研究。",
+        "推广稿数据不能直接当作独立审计；观察时间短。",
+        null,
+        null,
+        null,
+        null,
+        "去重买家、角色级库存、赠品驱动比例、联名结束后留存",
+        [
+          "品牌整理",
+          "设计规格",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/6\n原报告结果分类「产品机制参考」按原文保留，非本次重新判定；原报告等级「C｜推广或转述口径」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://m.36kr.com/p/3867222774469633](https://m.36kr.com/p/3867222774469633)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C07-GPT-event｜事件｜unverified] 角色对应饮品、主题杯袋及收藏周边\n[C07-GPT-outcome｜结果｜unverified] 2026年6月报道记录排队与周边抢购；长期效果尚无充分公开证据。\n[C07-GPT-mechanism｜研究解释｜unverified] 细分角色偏好使同一IP内部也存在不同需求，适合角色级备货研究。\n[C07-GPT-risk｜研究解释｜unverified] 推广稿数据不能直接当作独立审计；观察时间短。"
+      ],
+      [
+        "UNIQLO × KAWS",
+        "C08",
+        "UNIQLO",
+        "KAWS",
+        "品牌×艺术家",
+        "2016起；2024、2025有后续",
+        "多市场",
+        [
+          "合作延续有据"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "UT服装、艺术图像商品与相关出版物",
+        "稳定服装载体与可更新艺术资产，形成连续系列而非一次事件。",
+        "同一粉丝重复购买不等于持续拉新；不可直接套用艺术家影响力。",
+        null,
+        null,
+        null,
+        null,
+        "各期净新增客、艺术授权成本、系列盈利",
+        [
+          "联名创意",
+          "设计规格",
+          "视觉制作"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/7\n原报告结果分类「合作延续有据」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.uniqlo.com/jp/en/contents/lifewear-magazine/archives/24fw/hello-kaws/](https://www.uniqlo.com/jp/en/contents/lifewear-magazine/archives/24fw/hello-kaws/)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C08-GPT-event｜事件｜unverified] UT服装、艺术图像商品与相关出版物\n[C08-GPT-outcome｜结果｜unverified] UNIQLO 2024回顾称已合作9个系列；2025宣布KAWS任驻留艺术家。\n[C08-GPT-mechanism｜研究解释｜unverified] 稳定服装载体与可更新艺术资产，形成连续系列而非一次事件。\n[C08-GPT-risk｜研究解释｜unverified] 同一粉丝重复购买不等于持续拉新；不可直接套用艺术家影响力。"
+      ],
+      [
+        "H&M × Karl Lagerfeld",
+        "C09",
+        "H&M",
+        "Karl Lagerfeld",
+        "品牌×设计师",
+        "2004",
+        "多市场",
+        [
+          "销售表现有据"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Karl Lagerfeld for H&M限量成衣系列",
+        "把稀缺设计师语言放进大众价格与零售渠道。",
+        "热销仍可能伴随合作方对数量、定位的分歧；供需与品牌边界须事先确定。",
+        null,
+        null,
+        null,
+        null,
+        "首批量、真实利润、双方满意度",
+        [
+          "联名创意",
+          "设计规格",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/8\n原报告结果分类「销售表现有据」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://hmgroup.com/news/karl-lagerfeld-and-hm/](https://hmgroup.com/news/karl-lagerfeld-and-hm/)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C09-GPT-event｜事件｜unverified] Karl Lagerfeld for H&M限量成衣系列\n[C09-GPT-outcome｜结果｜unverified] 当年系列快速售出；H&M在2024年回顾其为设计师联名起点。\n[C09-GPT-mechanism｜研究解释｜unverified] 把稀缺设计师语言放进大众价格与零售渠道。\n[C09-GPT-risk｜研究解释｜unverified] 热销仍可能伴随合作方对数量、定位的分歧；供需与品牌边界须事先确定。"
+      ],
+      [
+        "H&M × Balmain",
+        "C10",
+        "H&M",
+        "Balmain",
+        "品牌×品牌／设计师系列",
+        "2015",
+        "多市场",
+        [
+          "销售表现有据"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Balmain风格服装和配饰系列",
+        "保留合作品牌高辨识度款式，让受众能看懂自己买到了什么。",
+        "秒空若无数量分母无法衡量规模；高热度需要系统与客服承接。",
+        null,
+        null,
+        null,
+        null,
+        "首批量、订单完成率、退款、联名利润",
+        [
+          "设计规格",
+          "视觉制作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/9\n原报告结果分类「销售表现有据」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://fashionunited.com/news/retail/h-m-balmain-collaboration-sells-out-as-expected/201511058778](https://fashionunited.com/news/retail/h-m-balmain-collaboration-sells-out-as-expected/201511058778)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C10-GPT-event｜事件｜unverified] Balmain风格服装和配饰系列\n[C10-GPT-outcome｜结果｜unverified] 媒体记录上线迅速售罄，同时出现网站拥堵和抢购。\n[C10-GPT-mechanism｜研究解释｜unverified] 保留合作品牌高辨识度款式，让受众能看懂自己买到了什么。\n[C10-GPT-risk｜研究解释｜unverified] 秒空若无数量分母无法衡量规模；高热度需要系统与客服承接。"
+      ],
+      [
+        "Louis Vuitton × Supreme",
+        "C11",
+        "Louis Vuitton",
+        "Supreme",
+        "品牌×品牌／奢侈与街头",
+        "2017",
+        "多市场",
+        [
+          "产品机制参考"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已跑通数字审核"
+        ],
+        [
+          "待核验"
+        ],
+        "箱包、服装、鞋履和配饰胶囊系列",
+        "奢侈工艺载体与街头标识结合，完成文化身份而非只交换流量。",
+        "集团全年增长不能归因于单次联名；二级市场溢价也不是品牌收入。",
+        "审查 LV × Supreme 收入数字能否写入咖啡馆 × 书店活动文案。",
+        "依据 C11-GEM-04 的 unverified 状态和 DIFF-03，保留数字缺口；当前活动文案只采用已确认的本项目设计事实。未核实不表示已证伪。",
+        "不把候选年报链接视为已读取支持；集团全年增长、二手市场成交不替代单项目直营收入；历史数字不能充当当前两店活动的成绩或预测。",
+        "引用前须拆清营收主体、直营/批发/二手市场、地域、币种、活动期间、退货和统计方法；当前活动日期、流程、权益和资源须待设计确认。",
+        "联名独立收入、毛利、双方客群迁移",
+        [
+          "品牌整理",
+          "联名创意",
+          "文案创作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/10\nSRC-GEMINI-REPORT｜用户提供的 Gemini 调研报告｜chars:1485-1524\n原报告结果分类「产品机制参考」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。\n本地试用：examples/lv-number-assessment.md；不联网、未升级事实状态。",
+        "[https://www.lvmh.com/en/publications/2017-record-results](https://www.lvmh.com/en/publications/2017-record-results)",
+        "DIFF-03｜独立直营收入｜待核验（尚非已裁决事实冲突）\nGPT：联名独立收入、毛利、双方客群迁移\nGemini：报告称联名直营销售额超过1亿美元，二级市场最高溢价超过10倍。\n待核对差异：独立收入缺口与明确金额之间存在待核对差异；二手市场不是品牌收入。",
+        "断言状态：待核验 9 条。事件、结果与研究解释分别保留。\n[C11-GPT-event｜事件｜unverified] 箱包、服装、鞋履和配饰胶囊系列\n[C11-GPT-outcome｜结果｜unverified] LVMH将其列为2017年关键事件；媒体记录快闪发售热度。\n[C11-GPT-mechanism｜研究解释｜unverified] 奢侈工艺载体与街头标识结合，完成文化身份而非只交换流量。\n[C11-GPT-risk｜研究解释｜unverified] 集团全年增长不能归因于单次联名；二级市场溢价也不是品牌收入。\n[C11-GEM-01｜事件｜unverified] 报告称 2017 年推出胶囊系列。\n[C11-GEM-02｜事件｜unverified] 报告称产物融合 Epi 皮革、Monogram 与红色 Box Logo。\n[C11-GEM-03｜事件｜unverified] 报告称该系列完全跳过常规零售渠道，采用全球限量快闪店发售。\n[C11-GEM-04｜结果｜unverified] 报告称万人排队、二级市场最高溢价超过 10 倍、直营销售额超过 1 亿美元。\n[C11-GEM-05｜研究解释｜unverified] 报告将合作视为开启奢侈品行业街头化转型。"
+      ],
+      [
+        "Dior × Jordan Brand",
+        "C12",
+        "Dior",
+        "Jordan Brand",
+        "品牌×品牌／奢侈与运动",
+        "2020",
+        "多市场",
+        [
+          "产品机制参考"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Air Dior AJ1高低帮鞋、成衣和配饰",
+        "以熟悉鞋型承载高级材质与图案语言，创造可收藏的交集。",
+        "收藏热度不等于大众适配；稀缺商品的转化漏斗与普通商品不同。",
+        null,
+        null,
+        null,
+        null,
+        "实际售出量、购买去重、利润、对双方主营的影响",
+        [
+          "联名创意",
+          "设计规格",
+          "视觉制作"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/11\n原报告结果分类「产品机制参考」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.youtube.com/watch?v=3Lf3bbYcNd4](https://www.youtube.com/watch?v=3Lf3bbYcNd4)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C12-GPT-event｜事件｜unverified] Air Dior AJ1高低帮鞋、成衣和配饰\n[C12-GPT-outcome｜结果｜unverified] 官方及发布报道可确认实物系列；本库不采用未经核准的抽签报名数字。\n[C12-GPT-mechanism｜研究解释｜unverified] 以熟悉鞋型承载高级材质与图案语言，创造可收藏的交集。\n[C12-GPT-risk｜研究解释｜unverified] 收藏热度不等于大众适配；稀缺商品的转化漏斗与普通商品不同。"
+      ],
+      [
+        "Swatch × OMEGA",
+        "C13",
+        "Swatch",
+        "OMEGA",
+        "同集团跨品牌",
+        "2022",
+        "多市场",
+        [
+          "销售表现有据"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Bioceramic MoonSwatch腕表",
+        "将高端标志设计转为不同材质与价位的新产品，保留识别性。",
+        "同属Swatch集团，授权和利益协调条件不能照搬到独立品牌。",
+        null,
+        null,
+        null,
+        null,
+        "独立利润、高端原线蚕食率、净新增用户",
+        [
+          "联名创意",
+          "设计规格",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/12\nSRC-GEMINI-REPORT｜用户提供的 Gemini 调研报告｜chars:2988-3047\n原报告结果分类「销售表现有据」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.fhs.swiss/eng/2023_02_09_01_Swatch_Group.html](https://www.fhs.swiss/eng/2023_02_09_01_Swatch_Group.html)",
+        "DIFF-04｜销量、抢购与后续影响｜待核验（尚非已裁决事实冲突）\nGPT：2022年度业绩相关披露记录销量超过100万只。\nGemini：报告称累计出货数百万枚、全球千万级抢购，并带动正价欧米茄登月表销量回升。\n待核对差异：GPT有2022年度观测窗口，Gemini累计窗口未明；可能是时间或指标差异，不能先判矛盾。",
+        "断言状态：待核验 8 条。事件、结果与研究解释分别保留。\n[C13-GPT-event｜事件｜unverified] Bioceramic MoonSwatch腕表\n[C13-GPT-outcome｜结果｜unverified] 2022年度业绩相关披露记录销量超过100万只。\n[C13-GPT-mechanism｜研究解释｜unverified] 将高端标志设计转为不同材质与价位的新产品，保留识别性。\n[C13-GPT-risk｜研究解释｜unverified] 同属Swatch集团，授权和利益协调条件不能照搬到独立品牌。\n[C13-GEM-01｜事件｜unverified] 报告称使用 Bioceramic，约 2000 元人民币，11 款行星主题石英表。\n[C13-GEM-02｜结果｜unverified] 报告称累计出货数百万枚，未写观测截止日期。\n[C13-GEM-03｜结果｜unverified] 报告表格称全球千万级抢购，并带动正价欧米茄登月表销量回升。\n[C13-GEM-04｜研究解释｜unverified] 报告正文将正价欧米茄登月表专柜关注度提升归因于合作。"
+      ],
+      [
+        "Swatch × Blancpain",
+        "C14",
+        "Swatch",
+        "Blancpain",
+        "同集团跨品牌",
+        "2023",
+        "多市场",
+        [
+          "产品机制参考"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Bioceramic Scuba Fifty Fathoms机械腕表",
+        "以经典潜水表设计和机械结构，向较低门槛产品转译。",
+        "不能因MoonSwatch热卖就假设第二次联名同样成功。",
+        null,
+        null,
+        null,
+        null,
+        "实际销量、库存、购买者结构与系列利润",
+        [
+          "联名创意",
+          "设计规格",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/13\n原报告结果分类「产品机制参考」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.swatchgroup.com/en/services/archive/2023/swatch-bioceramic-scuba-fifty-fathoms](https://www.swatchgroup.com/en/services/archive/2023/swatch-bioceramic-scuba-fifty-fathoms)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C14-GPT-event｜事件｜unverified] Bioceramic Scuba Fifty Fathoms机械腕表\n[C14-GPT-outcome｜结果｜unverified] 官方确认推出系列产品；未找到可直接采用的单独销售与利润数据。\n[C14-GPT-mechanism｜研究解释｜unverified] 以经典潜水表设计和机械结构，向较低门槛产品转译。\n[C14-GPT-risk｜研究解释｜unverified] 不能因MoonSwatch热卖就假设第二次联名同样成功。"
+      ],
+      [
+        "LEGO × Star Wars",
+        "C15",
+        "LEGO",
+        "Star Wars",
+        "品牌×影视IP",
+        "1999起；2024满25年",
+        "多市场",
+        [
+          "合作延续有据"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "积木套装及延伸游戏、出版和收藏生态",
+        "故事世界能持续更新，积木系统可持续重组，适合长期产品体系。",
+        "续约是延续证据，不等于每一个套装都赚钱。",
+        null,
+        null,
+        null,
+        null,
+        "各系列生命周期、授权成本、复购与利润",
+        [
+          "联名创意",
+          "设计规格",
+          "视觉制作"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/14\n原报告结果分类「合作延续有据」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.lego.com/en-us/aboutus/news/2024/january/lego-star-wars-25-anniversary](https://www.lego.com/en-us/aboutus/news/2024/january/lego-star-wars-25-anniversary)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C15-GPT-event｜事件｜unverified] 积木套装及延伸游戏、出版和收藏生态\n[C15-GPT-outcome｜结果｜unverified] 双方2024年官方发布合作25周年纪念内容。\n[C15-GPT-mechanism｜研究解释｜unverified] 故事世界能持续更新，积木系统可持续重组，适合长期产品体系。\n[C15-GPT-risk｜研究解释｜unverified] 续约是延续证据，不等于每一个套装都赚钱。"
+      ],
+      [
+        "IKEA × LEGO",
+        "C16",
+        "IKEA",
+        "LEGO",
+        "品牌×品牌／功能共创",
+        "2020",
+        "多市场",
+        [
+          "产品机制参考"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "BYGGLEK带乐高凸点的收纳盒与积木套装",
+        "让收纳容器同时成为搭建底座，解决收拾与保留作品之间的冲突。",
+        "产品逻辑合理仍需要验证家庭使用频率、尺寸及价格。",
+        null,
+        null,
+        null,
+        null,
+        "长期销量、退货、实际使用、增量利润",
+        [
+          "联名创意",
+          "设计规格"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/15\n原报告结果分类「产品机制参考」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.lego.com/en-us/aboutus/news/2020/august/ikea-bygglek](https://www.lego.com/en-us/aboutus/news/2020/august/ikea-bygglek)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C16-GPT-event｜事件｜unverified] BYGGLEK带乐高凸点的收纳盒与积木套装\n[C16-GPT-outcome｜结果｜unverified] 双方官方发布可确认产品与联合设计理念；单品利润未公开。\n[C16-GPT-mechanism｜研究解释｜unverified] 让收纳容器同时成为搭建底座，解决收拾与保留作品之间的冲突。\n[C16-GPT-risk｜研究解释｜unverified] 产品逻辑合理仍需要验证家庭使用频率、尺寸及价格。"
+      ],
+      [
+        "adidas × LEGO",
+        "C17",
+        "adidas",
+        "LEGO",
+        "品牌×品牌／设计与产品系列",
+        "2020起",
+        "多市场",
+        [
+          "产品机制参考"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "LEGO元素运动鞋、服装及儿童产品",
+        "把积木的颜色、拼装感和运动产品结合，具有系列扩展空间。",
+        "多年协议不等于已证明每期盈利；应区分成人收藏与儿童实穿需求。",
+        null,
+        null,
+        null,
+        null,
+        "实际持续业绩、年龄段转化、授权利润",
+        [
+          "联名创意",
+          "设计规格",
+          "视觉制作"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/16\n原报告结果分类「产品机制参考」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.lego.com/en-us/aboutus/news/2020/october/adidas-lego-group-multi-year-partnership](https://www.lego.com/en-us/aboutus/news/2020/october/adidas-lego-group-multi-year-partnership)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C17-GPT-event｜事件｜unverified] LEGO元素运动鞋、服装及儿童产品\n[C17-GPT-outcome｜结果｜unverified] 2020年官方宣布多年合作；首期包括ZX8000联名鞋。\n[C17-GPT-mechanism｜研究解释｜unverified] 把积木的颜色、拼装感和运动产品结合，具有系列扩展空间。\n[C17-GPT-risk｜研究解释｜unverified] 多年协议不等于已证明每期盈利；应区分成人收藏与儿童实穿需求。"
+      ],
+      [
+        "IKEA × Sonos",
+        "C18",
+        "IKEA",
+        "Sonos",
+        "品牌×品牌／技术与家居",
+        "2019推出；2025宣布结束",
+        "多市场",
+        [
+          "风险与混合结果"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "SYMFONISK书架音箱、台灯音箱等",
+        "声学系统融入家具，既展示功能互补，也提示联网硬件的退出责任。",
+        "合作结束不等于已经证明亏损；既有产品的软件支持与新产品停止须区分。",
+        null,
+        null,
+        null,
+        null,
+        "结束的完整商业原因、项目盈亏、售后长期安排",
+        [
+          "联名创意",
+          "设计规格",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/17\n原报告结果分类「风险与混合结果」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.ikea.com/global/en/newsroom/collaborations/ikea-and-sonos-shine-a-new-light-on-sound-190408/](https://www.ikea.com/global/en/newsroom/collaborations/ikea-and-sonos-shine-a-new-light-on-sound-190408/)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C18-GPT-event｜事件｜unverified] SYMFONISK书架音箱、台灯音箱等\n[C18-GPT-outcome｜结果｜unverified] 有多年产品迭代；2025年双方确认停止新产品合作并逐步售完库存。\n[C18-GPT-mechanism｜研究解释｜unverified] 声学系统融入家具，既展示功能互补，也提示联网硬件的退出责任。\n[C18-GPT-risk｜研究解释｜unverified] 合作结束不等于已经证明亏损；既有产品的软件支持与新产品停止须区分。"
+      ],
+      [
+        "Apple × Nike",
+        "C19",
+        "Apple",
+        "Nike",
+        "品牌×品牌／技术与运动",
+        "2016 Apple Watch Nike+",
+        "多市场",
+        [
+          "产品机制参考"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Apple Watch Nike+、运动表带、跑步软件体验",
+        "让技术能力嵌入跑步习惯，而不是只更换品牌标记。",
+        "共同用户规模不能替代共同产品的活跃使用与留存。",
+        null,
+        null,
+        null,
+        null,
+        "联名版增量销售、跑步活跃、双方净收益",
+        [
+          "品牌整理",
+          "联名创意",
+          "设计规格"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/18\n原报告结果分类「产品机制参考」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.apple.com/newsroom/2016/09/apple-nike-launch-apple-watch-nike/](https://www.apple.com/newsroom/2016/09/apple-nike-launch-apple-watch-nike/)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C19-GPT-event｜事件｜unverified] Apple Watch Nike+、运动表带、跑步软件体验\n[C19-GPT-outcome｜结果｜unverified] 官方确认硬件、设计和Nike跑步服务整合。\n[C19-GPT-mechanism｜研究解释｜unverified] 让技术能力嵌入跑步习惯，而不是只更换品牌标记。\n[C19-GPT-risk｜研究解释｜unverified] 共同用户规模不能替代共同产品的活跃使用与留存。"
+      ],
+      [
+        "Apple × Hermès",
+        "C20",
+        "Apple",
+        "Hermès",
+        "品牌×品牌／技术与奢侈",
+        "2015起；2016后续款",
+        "多市场",
+        [
+          "合作延续有据"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Apple Watch Hermès、皮革表带和专属表盘",
+        "在同一技术平台上，以工艺与审美为高端客群提供不同购买理由。",
+        "技术迭代周期和奢侈品耐久预期可能不同；不能仅按品牌档次评分。",
+        null,
+        null,
+        null,
+        null,
+        "溢价转化、更新周期、联名版独立利润",
+        [
+          "品牌整理",
+          "设计规格",
+          "视觉制作"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/19\n原报告结果分类「合作延续有据」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.apple.com/ml/newsroom/2015/09/09Apple-and-Herm-s-Unveil-the-Apple-Watch-Herm-s-Collection/](https://www.apple.com/ml/newsroom/2015/09/09Apple-and-Herm-s-Unveil-the-Apple-Watch-Herm-s-Collection/)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C20-GPT-event｜事件｜unverified] Apple Watch Hermès、皮革表带和专属表盘\n[C20-GPT-outcome｜结果｜unverified] 2015推出、2016官方继续发布新款式和颜色。\n[C20-GPT-mechanism｜研究解释｜unverified] 在同一技术平台上，以工艺与审美为高端客群提供不同购买理由。\n[C20-GPT-risk｜研究解释｜unverified] 技术迭代周期和奢侈品耐久预期可能不同；不能仅按品牌档次评分。"
+      ],
+      [
+        "华为 × Leica",
+        "C21",
+        "华为",
+        "Leica",
+        "品牌×品牌／技术共研",
+        "2016 P9",
+        "多市场",
+        [
+          "销售表现有据"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "P9/P9 Plus双摄手机与联合影像体验",
+        "把专业摄影能力与手机高频拍摄结合，联名为核心功能服务。",
+        "出货不等于终端零售；全系列销量不能全部归因于Leica。",
+        null,
+        null,
+        null,
+        null,
+        "联名影像的独立贡献、消费者偏好实验、合作利润",
+        [
+          "品牌整理",
+          "设计规格",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/20\nSRC-GEMINI-REPORT｜用户提供的 Gemini 调研报告｜chars:2639-2669\n原报告结果分类「销售表现有据」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.huawei.com/en/news/2016/4/huawei-p9-debuts-in-london](https://www.huawei.com/en/news/2016/4/huawei-p9-debuts-in-london)",
+        "DIFF-05｜指标主体与归因｜待核验（尚非已裁决事实冲突）\nGPT：华为确认P9为双方联合工程开发产品；媒体转述该系列出货超过1000万台。\nGemini：报告称合作首年华为全球手机出货增长超过30%，并据此建立欧洲高端品牌认知。\n待核对差异：P9系列出货、华为整体增长、品牌认知不是同一指标，须先对齐时期与主体。",
+        "断言状态：待核验 8 条。事件、结果与研究解释分别保留。\n[C21-GPT-event｜事件｜unverified] P9/P9 Plus双摄手机与联合影像体验\n[C21-GPT-outcome｜结果｜unverified] 华为确认P9为双方联合工程开发产品；媒体转述该系列出货超过1000万台。\n[C21-GPT-mechanism｜研究解释｜unverified] 把专业摄影能力与手机高频拍摄结合，联名为核心功能服务。\n[C21-GPT-risk｜研究解释｜unverified] 出货不等于终端零售；全系列销量不能全部归因于Leica。\n[C21-GEM-01｜事件｜unverified] 报告称双方战略合作历时六年。\n[C21-GEM-02｜事件｜unverified] 报告称合作涵盖光学、算法、色彩与快门声。\n[C21-GEM-03｜结果｜unverified] 报告称合作首年华为全球手机出货量增长超过 30%、位居前三。\n[C21-GEM-04｜研究解释｜unverified] 报告将欧洲中高端市场和 5000 元以上价格带认知提升归因于合作。"
+      ],
+      [
+        "Samsung × Thom Browne",
+        "C22",
+        "Samsung",
+        "Thom Browne",
+        "品牌×品牌／设计套装",
+        "2020",
+        "韩国等市场",
+        [
+          "销售表现有据"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Galaxy Z Flip Thom Browne版及手表、耳机套装",
+        "不是孤立贴标，而是设备、配件与界面的统一生活方式设计。",
+        "限量售罄只能证明这批货的供需；不能推断规模利润。",
+        null,
+        null,
+        null,
+        null,
+        "首批数量、总销售额、复购和新增高端客户",
+        [
+          "设计规格",
+          "视觉制作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/21\n原报告结果分类「销售表现有据」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://news.samsung.com/global/samsung-and-iconic-fashion-brand-thom-browne-collaborate-on-limited-edition-galaxy-z-flip](https://news.samsung.com/global/samsung-and-iconic-fashion-brand-thom-browne-collaborate-on-limited-edition-galaxy-z-flip)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C22-GPT-event｜事件｜unverified] Galaxy Z Flip Thom Browne版及手表、耳机套装\n[C22-GPT-outcome｜结果｜unverified] 韩联社援引三星：韩国首发约2.5小时售罄；首批数量未披露。\n[C22-GPT-mechanism｜研究解释｜unverified] 不是孤立贴标，而是设备、配件与界面的统一生活方式设计。\n[C22-GPT-risk｜研究解释｜unverified] 限量售罄只能证明这批货的供需；不能推断规模利润。"
+      ],
+      [
+        "GoPro × Red Bull",
+        "C23",
+        "GoPro",
+        "Red Bull",
+        "品牌×品牌／内容与战略合作",
+        "2016",
+        "多市场",
+        [
+          "产品机制参考"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已跑通迁移分析"
+        ],
+        [
+          "待核验"
+        ],
+        "运动事件影像、联合制作及跨平台分发内容",
+        "一方提供拍摄能力，另一方提供事件与受众，产物是可重复利用的内容资产。",
+        "协议可触达的活动数量不等于实际观看或成交；内容使用权要明确。",
+        "咖啡馆 × 书店周末到店活动；双方贡献参考。",
+        "咖啡馆提供已确认的饮品服务与空间，书店提供已确认的选书知识与主持；共同形成体验或内容。\n验证问题：双方分别记录投入工时、活动收入及新增客流，费用分配仍待确认。",
+        "大型品牌的运动事件、股权及分发协议不适用社区活动\n内容素材不得把案例或其他品牌素材直接当本项目资产",
+        "当前 brief：不新增印刷、不新增实体赠品。\n研究现有饮品、书籍和口头/数字内容的组合，不要求新增实体产物\n待确认资源：店内空间与时段；现有社交账号/屏幕/菜单可否使用；选书内容和主持人员；双方预算、意愿、授权及店内容量",
+        "实际内容产量、增量触达、设备转化和合作成本",
+        [
+          "品牌整理",
+          "联名创意",
+          "设计规格",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/22\n原报告结果分类「产品机制参考」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。\n本地试用：examples/task-research-handoff.json，migrationNotes.caseId=C23；状态 draft。",
+        "[https://gopro.com/en/sa/news/gopro-and-red-bull-form-exclusive-global-partnership](https://gopro.com/en/sa/news/gopro-and-red-bull-form-exclusive-global-partnership)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C23-GPT-event｜事件｜unverified] 运动事件影像、联合制作及跨平台分发内容\n[C23-GPT-outcome｜结果｜unverified] 官方宣布多年内容、分发与创新合作，包含内容权利安排和股权关系。\n[C23-GPT-mechanism｜研究解释｜unverified] 一方提供拍摄能力，另一方提供事件与受众，产物是可重复利用的内容资产。\n[C23-GPT-risk｜研究解释｜unverified] 协议可触达的活动数量不等于实际观看或成交；内容使用权要明确。"
+      ],
+      [
+        "Starbucks × Spotify",
+        "C24",
+        "Starbucks",
+        "Spotify",
+        "品牌×品牌／数字与门店体验",
+        "2015宣布；2016落地",
+        "美国等",
+        [
+          "产品机制参考"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已跑通迁移分析"
+        ],
+        [
+          "待核验"
+        ],
+        "门店音乐发现、播放列表与Spotify互动",
+        "把门店听歌的短暂体验，延长到消费者离店后的数字触点。",
+        "播放量未必带来咖啡购买；跨平台数据、同意与归因要单独设计。",
+        "咖啡馆 × 书店周末到店活动；主参考。",
+        "将店内阅读体验延伸为用户自愿打开的选书/阅读内容，利用已经确认可用的数字触点。\n验证问题：分别观察报名、实际到店、阅读参与和消费，不把点击当作到店。",
+        "咖啡与选书内容互补，不涉及音乐平台或播放清单授权\n不能假设本地两店已有 App、会员互通或跨平台数据能力",
+        "当前 brief：不新增印刷、不新增实体赠品。\n不新增杯套、书签、印刷书单或赠品；现有数字渠道仍待确认\n待确认资源：店内空间与时段；现有社交账号/屏幕/菜单可否使用；选书内容和主持人员；双方预算、意愿、授权及店内容量",
+        "使用人数、到店回流、增量订阅与消费",
+        [
+          "联名创意",
+          "设计规格",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/23\n原报告结果分类「产品机制参考」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。\n本地试用：examples/task-research-handoff.json，migrationNotes.caseId=C24；状态 draft。",
+        "[https://www.thedrum.com/news/starbucks-kicks-action-its-store-music-discovery-venture-spotify](https://www.thedrum.com/news/starbucks-kicks-action-its-store-music-discovery-venture-spotify)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C24-GPT-event｜事件｜unverified] 门店音乐发现、播放列表与Spotify互动\n[C24-GPT-outcome｜结果｜unverified] 公开报道和星巴克官方音乐页可确认音乐发现与播放列表合作。\n[C24-GPT-mechanism｜研究解释｜unverified] 把门店听歌的短暂体验，延长到消费者离店后的数字触点。\n[C24-GPT-risk｜研究解释｜unverified] 播放量未必带来咖啡购买；跨平台数据、同意与归因要单独设计。"
+      ],
+      [
+        "Coca-Cola × OREO",
+        "C25",
+        "Coca-Cola",
+        "OREO",
+        "品牌×品牌／双向产品",
+        "2024",
+        "多市场",
+        [
+          "产品机制参考"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "OREO风味无糖可乐、可乐风味OREO饼干及数字互动",
+        "让双方都把对方的感官特征变成自己的产品，形成对称的新鲜感。",
+        "猎奇口味能驱动尝鲜，但应盲测产品本身能否支撑再次购买。",
+        null,
+        null,
+        null,
+        null,
+        "两款分别的复购、净新增、售罄率和贡献利润",
+        [
+          "联名创意",
+          "设计规格"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/24\n原报告结果分类「产品机制参考」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.coca-colacompany.com/media-center/coca-cola-and-the-oreo-brand-are-teaming-up](https://www.coca-colacompany.com/media-center/coca-cola-and-the-oreo-brand-are-teaming-up)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C25-GPT-event｜事件｜unverified] OREO风味无糖可乐、可乐风味OREO饼干及数字互动\n[C25-GPT-outcome｜结果｜unverified] 双方官方确认双向新品，不只是单向印包装；独立销售效果未披露。\n[C25-GPT-mechanism｜研究解释｜unverified] 让双方都把对方的感官特征变成自己的产品，形成对称的新鲜感。\n[C25-GPT-risk｜研究解释｜unverified] 猎奇口味能驱动尝鲜，但应盲测产品本身能否支撑再次购买。"
+      ],
+      [
+        "Heinz × Absolut",
+        "C26",
+        "Heinz",
+        "Absolut",
+        "品牌×品牌／配方共创",
+        "2023",
+        "英国为主",
+        [
+          "产品机制参考"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "番茄伏特加意面酱",
+        "两个品牌在一道真实菜谱里自然相遇，使用理由先于品牌噱头。",
+        "需要核查实际配方、食品标识、价格和复购；不以酒类品牌知名度替代产品测试。",
+        null,
+        null,
+        null,
+        null,
+        "活动净收入、复购与双方成本分配",
+        [
+          "联名创意",
+          "设计规格",
+          "文案创作"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/25\n原报告结果分类「产品机制参考」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://theabsolutcompany.com/media-room/press-release/absolut-vodka-partners-with-heinz-to-launch-a-new-limited-edition-pasta-sauce/](https://theabsolutcompany.com/media-room/press-release/absolut-vodka-partners-with-heinz-to-launch-a-new-limited-edition-pasta-sauce/)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C26-GPT-event｜事件｜unverified] 番茄伏特加意面酱\n[C26-GPT-outcome｜结果｜unverified] 官方发布限量联名意面酱；本库不把代理商传播成绩视为独立盈利证明。\n[C26-GPT-mechanism｜研究解释｜unverified] 两个品牌在一道真实菜谱里自然相遇，使用理由先于品牌噱头。\n[C26-GPT-risk｜研究解释｜unverified] 需要核查实际配方、食品标识、价格和复购；不以酒类品牌知名度替代产品测试。"
+      ],
+      [
+        "Taco Bell × Doritos",
+        "C27",
+        "Taco Bell",
+        "Doritos",
+        "品牌×品牌／核心产品共创",
+        "2012起",
+        "美国为主",
+        [
+          "销售表现有据"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Doritos Locos Tacos风味玉米脆壳；后续反向推出袋装薯片",
+        "把对方最有辨识度的味觉资产放进自己主力产品结构。",
+        "成功需要配方、生产和店内操作适配；不是任何零食都能直接变外壳。",
+        null,
+        null,
+        null,
+        null,
+        "项目利润、同类产品替代率、授权或分成条款",
+        [
+          "联名创意",
+          "设计规格",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/26\n原报告结果分类「销售表现有据」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.pepsico.com/en/newsroom/press-releases/2013/doritos-locos-tacos-tortilla-chips-hit-the-chip-aisle](https://www.pepsico.com/en/newsroom/press-releases/2013/doritos-locos-tacos-tortilla-chips-hit-the-chip-aisle)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C27-GPT-event｜事件｜unverified] Doritos Locos Tacos风味玉米脆壳；后续反向推出袋装薯片\n[C27-GPT-outcome｜结果｜unverified] 百事2013年4月披露：自2012年3月上市已售逾3.75亿个Nacho Cheese款。\n[C27-GPT-mechanism｜研究解释｜unverified] 把对方最有辨识度的味觉资产放进自己主力产品结构。\n[C27-GPT-risk｜研究解释｜unverified] 成功需要配方、生产和店内操作适配；不是任何零食都能直接变外壳。"
+      ],
+      [
+        "KFC × Crocs",
+        "C28",
+        "KFC",
+        "Crocs",
+        "品牌×品牌／视觉与收藏",
+        "2020",
+        "部分市场／线上",
+        [
+          "销售表现有据"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "炸鸡图案Classic Clog及鸡腿鞋饰",
+        "将食物符号转成可穿戴、可展示的幽默消费品。",
+        "不能把宣传用夸张高台鞋误认为实际零售款；首批量与利润未知。",
+        null,
+        null,
+        null,
+        null,
+        "首批数量、独立利润、核心客户态度",
+        [
+          "联名创意",
+          "视觉制作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/27\n原报告结果分类「销售表现有据」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.crocs.com/KFC.html](https://www.crocs.com/KFC.html)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C28-GPT-event｜事件｜unverified] 炸鸡图案Classic Clog及鸡腿鞋饰\n[C28-GPT-outcome｜结果｜unverified] Crocs官方页标示售罄；媒体报道上线不到半小时售罄。\n[C28-GPT-mechanism｜研究解释｜unverified] 将食物符号转成可穿戴、可展示的幽默消费品。\n[C28-GPT-risk｜研究解释｜unverified] 不能把宣传用夸张高台鞋误认为实际零售款；首批量与利润未知。"
+      ],
+      [
+        "McDonald’s × Crocs",
+        "C29",
+        "McDonald’s",
+        "Crocs",
+        "品牌×品牌／双向周边",
+        "2023鞋款；2024玩具",
+        "多市场",
+        [
+          "合作延续有据"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "角色主题鞋、袜与鞋饰；后续Happy Meal迷你鞋玩具",
+        "同一组资产能在双方不同价格和消费频次的渠道中反向应用。",
+        "玩具与鞋履的购买者、毛利和风险不同，不能合并计算转化。",
+        null,
+        null,
+        null,
+        null,
+        "两阶段各自销量、儿童与成人分群、利润",
+        [
+          "品牌整理",
+          "联名创意",
+          "设计规格"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/28\n原报告结果分类「合作延续有据」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://corporate.mcdonalds.com/corpmcd/our-stories/article/mcd-crocs-dropping-global-collab-designedfor-nextlevel-fandom.html](https://corporate.mcdonalds.com/corpmcd/our-stories/article/mcd-crocs-dropping-global-collab-designedfor-nextlevel-fandom.html)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C29-GPT-event｜事件｜unverified] 角色主题鞋、袜与鞋饰；后续Happy Meal迷你鞋玩具\n[C29-GPT-outcome｜结果｜unverified] 2023官方推出鞋服周边；2024又出现联名Happy Meal玩具。\n[C29-GPT-mechanism｜研究解释｜unverified] 同一组资产能在双方不同价格和消费频次的渠道中反向应用。\n[C29-GPT-risk｜研究解释｜unverified] 玩具与鞋履的购买者、毛利和风险不同，不能合并计算转化。"
+      ],
+      [
+        "Nike SB × Ben & Jerry’s",
+        "C30",
+        "Nike SB",
+        "Ben & Jerry’s",
+        "品牌×品牌／标志设计共创",
+        "2020",
+        "多市场",
+        [
+          "销售表现有据"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Chunky Dunky SB Dunk Low运动鞋",
+        "把冰淇淋包装的奶牛、天空、融化图形转为鞋材和鞋身结构。",
+        "转售价格并非品牌直接收入；限量市场不代表可无限扩张需求。",
+        null,
+        null,
+        null,
+        null,
+        "首次零售量、利润、新客占比",
+        [
+          "设计规格",
+          "视觉制作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/29\n原报告结果分类「销售表现有据」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.nike.com/launch/t/dna-artifacts-sb-dunk-low-x-ben-jerrys-chunky-dunky](https://www.nike.com/launch/t/dna-artifacts-sb-dunk-low-x-ben-jerrys-chunky-dunky)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C30-GPT-event｜事件｜unverified] Chunky Dunky SB Dunk Low运动鞋\n[C30-GPT-outcome｜结果｜unverified] Nike档案可确认设计；媒体记录发售迅速售罄。\n[C30-GPT-mechanism｜研究解释｜unverified] 把冰淇淋包装的奶牛、天空、融化图形转为鞋材和鞋身结构。\n[C30-GPT-risk｜研究解释｜unverified] 转售价格并非品牌直接收入；限量市场不代表可无限扩张需求。"
+      ],
+      [
+        "LOEWE × Studio Ghibli",
+        "C31",
+        "LOEWE",
+        "Studio Ghibli",
+        "品牌×动画IP",
+        "2021—2023三部系列",
+        "多市场",
+        [
+          "合作延续有据"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "《龙猫》《千与千寻》《哈尔的移动城堡》服装、皮具和配饰",
+        "把IP细节转化为刺绣、皮革等工艺对象，而非只复制人物印花。",
+        "按计划结束系列不应标记为失败；单独财务结果未公开。",
+        null,
+        null,
+        null,
+        null,
+        "各期销售、工艺增量成本、老客与新客比例",
+        [
+          "设计规格",
+          "视觉制作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/30\n原报告结果分类「合作延续有据」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.loewe.com/int/en/stories-collection/loewe-howls-moving-castle.html](https://www.loewe.com/int/en/stories-collection/loewe-howls-moving-castle.html)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C31-GPT-event｜事件｜unverified] 《龙猫》《千与千寻》《哈尔的移动城堡》服装、皮具和配饰\n[C31-GPT-outcome｜结果｜unverified] LOEWE官方将2023系列称为双方第三个、也是最后一个系列。\n[C31-GPT-mechanism｜研究解释｜unverified] 把IP细节转化为刺绣、皮革等工艺对象，而非只复制人物印花。\n[C31-GPT-risk｜研究解释｜unverified] 按计划结束系列不应标记为失败；单独财务结果未公开。"
+      ],
+      [
+        "Xbox × Barbie",
+        "C32",
+        "Xbox",
+        "Barbie",
+        "品牌×影视IP／数字体验",
+        "2023",
+        "多市场",
+        [
+          "产品机制参考"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Forza Horizon 5联名车辆、抽奖定制主机和手柄",
+        "一个IP可分别映射为游戏内容、实体赠品和传播视觉。",
+        "抽奖赠品曝光不能当作主机销售；数字内容需要玩法与用户价值。",
+        null,
+        null,
+        null,
+        null,
+        "内容使用率、游戏新增和留存、增量主机购买",
+        [
+          "联名创意",
+          "设计规格",
+          "视觉制作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/31\n原报告结果分类「产品机制参考」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://news.xbox.com/en-us/2023/06/26/xbox-barbie/](https://news.xbox.com/en-us/2023/06/26/xbox-barbie/)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C32-GPT-event｜事件｜unverified] Forza Horizon 5联名车辆、抽奖定制主机和手柄\n[C32-GPT-outcome｜结果｜unverified] Xbox官方公布游戏车辆与赠品合作；定制主机不是常规大规模零售新品。\n[C32-GPT-mechanism｜研究解释｜unverified] 一个IP可分别映射为游戏内容、实体赠品和传播视觉。\n[C32-GPT-risk｜研究解释｜unverified] 抽奖赠品曝光不能当作主机销售；数字内容需要玩法与用户价值。"
+      ],
+      [
+        "Airbnb × Barbie",
+        "C33",
+        "Airbnb",
+        "Barbie",
+        "品牌×影视IP／沉浸体验",
+        "2023",
+        "美国／全球传播",
+        [
+          "产品机制参考"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "以Ken为叙事主角的Malibu DreamHouse限量住宿体验",
+        "把抽象世界观变成真实可进入的场景，使少量体验产生内容素材。",
+        "体验容量极小，不能用传统客房收入逻辑直接评价活动。",
+        null,
+        null,
+        null,
+        null,
+        "合格触达、搜索与预约增量、制作成本",
+        [
+          "联名创意",
+          "设计规格",
+          "视觉制作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/32\n原报告结果分类「产品机制参考」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://news.airbnb.com/barbies-malibu-dreamhouse-is-back-on-airbnb-but-this-time-kens-hosting](https://news.airbnb.com/barbies-malibu-dreamhouse-is-back-on-airbnb-but-this-time-kens-hosting)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C33-GPT-event｜事件｜unverified] 以Ken为叙事主角的Malibu DreamHouse限量住宿体验\n[C33-GPT-outcome｜结果｜unverified] Airbnb官方推出可预约的电影主题体验；不属于规模化酒店产品。\n[C33-GPT-mechanism｜研究解释｜unverified] 把抽象世界观变成真实可进入的场景，使少量体验产生内容素材。\n[C33-GPT-risk｜研究解释｜unverified] 体验容量极小，不能用传统客房收入逻辑直接评价活动。"
+      ],
+      [
+        "Starbucks × Delta Air Lines",
+        "C34",
+        "Starbucks",
+        "Delta Air Lines",
+        "品牌×品牌／会员互通",
+        "2022推出；2026调整",
+        "美国",
+        [
+          "合作延续有据"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "关联账户后的消费里程与会员权益",
+        "用高频消费与低频旅行结合，创造跨场景的持续奖励。",
+        "有资格条件；积分成本、关联隐私、用户真实使用不能省略。",
+        null,
+        null,
+        null,
+        null,
+        "账户绑定后的净新增消费、里程成本、留存",
+        [
+          "品牌整理",
+          "联名创意",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/33\n原报告结果分类「合作延续有据」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.businesswire.com/news/home/20221012005304/en/Delta-Air-Lines-and-Starbucks-Launch-Loyalty-Partnership](https://www.businesswire.com/news/home/20221012005304/en/Delta-Air-Lines-and-Starbucks-Launch-Loyalty-Partnership)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C34-GPT-event｜事件｜unverified] 关联账户后的消费里程与会员权益\n[C34-GPT-outcome｜结果｜unverified] 双方2022推出合作；2026年7月官方再次更新权益，8月5日起实施新规则。\n[C34-GPT-mechanism｜研究解释｜unverified] 用高频消费与低频旅行结合，创造跨场景的持续奖励。\n[C34-GPT-risk｜研究解释｜unverified] 有资格条件；积分成本、关联隐私、用户真实使用不能省略。"
+      ],
+      [
+        "Sephora × Kohl’s",
+        "C35",
+        "Sephora",
+        "Kohl’s",
+        "渠道与店中店联盟",
+        "2021门店落地",
+        "美国",
+        [
+          "销售表现有据"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Sephora at Kohl’s店中店、美妆选品与零售体验",
+        "把专业选品与服务送入现成门店网络，合作产物是持续经营渠道。",
+        "该业务热销不代表Kohl’s所有业务表现良好；销售额不是双方利润。",
+        null,
+        null,
+        null,
+        null,
+        "店级增量贡献、改造投资回收、交叉购买",
+        [
+          "品牌整理",
+          "联名创意",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/34\n原报告结果分类「销售表现有据」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://corporate.kohls.com/news/nqqydduj4u2cv2xihf05p6s1udu4y5](https://corporate.kohls.com/news/nqqydduj4u2cv2xihf05p6s1udu4y5)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C35-GPT-event｜事件｜unverified] Sephora at Kohl’s店中店、美妆选品与零售体验\n[C35-GPT-outcome｜结果｜unverified] Kohl’s披露2023年该业务销售额超过14亿美元。\n[C35-GPT-mechanism｜研究解释｜unverified] 把专业选品与服务送入现成门店网络，合作产物是持续经营渠道。\n[C35-GPT-risk｜研究解释｜unverified] 该业务热销不代表Kohl’s所有业务表现良好；销售额不是双方利润。"
+      ],
+      [
+        "Nestlé × Starbucks",
+        "C36",
+        "Nestlé",
+        "Starbucks",
+        "长期品牌授权与渠道联盟",
+        "2018联盟；2023五周年",
+        "多市场",
+        [
+          "销售表现有据"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Starbucks胶囊、咖啡豆、研磨及速溶产品和餐饮渠道供给",
+        "品牌与咖啡知识，结合制造、胶囊平台及全球分销能力。",
+        "这是长期授权联盟，不是普通限时贴标；增量基准和授权成本须核实。",
+        null,
+        null,
+        null,
+        null,
+        "可比较基线、授权后利润、资本与渠道成本",
+        [
+          "品牌整理",
+          "联名创意",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/35\n原报告结果分类「销售表现有据」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.nestle.com/media/news/nestle-starbucks-five-years-global-coffee-alliance](https://www.nestle.com/media/news/nestle-starbucks-five-years-global-coffee-alliance)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C36-GPT-event｜事件｜unverified] Starbucks胶囊、咖啡豆、研磨及速溶产品和餐饮渠道供给\n[C36-GPT-outcome｜结果｜unverified] Nestlé称2022年Starbucks业务带来16亿美元增量销售；为企业使用的口径。\n[C36-GPT-mechanism｜研究解释｜unverified] 品牌与咖啡知识，结合制造、胶囊平台及全球分销能力。\n[C36-GPT-risk｜研究解释｜unverified] 这是长期授权联盟，不是普通限时贴标；增量基准和授权成本须核实。"
+      ],
+      [
+        "adidas × Parley for the Oceans",
+        "C37",
+        "adidas",
+        "Parley for the Oceans",
+        "品牌×环保组织／材料",
+        "2015起；2020五周年",
+        "多市场",
+        [
+          "合作延续有据"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "采用Parley Ocean Plastic相关材料的鞋服产品",
+        "把材料方案和价值主张嵌入产品，而非只有公益口号。",
+        "使用再生材料不自动等于净环境效益；需核查来源、比例及生命周期边界。",
+        null,
+        null,
+        null,
+        null,
+        "可审查环境数据、材料成本、消费者溢价意愿",
+        [
+          "设计规格",
+          "文案创作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/36\n原报告结果分类「合作延续有据」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://report.adidas-group.com/2020/en/at-a-glance/2020-stories/our-sustainability-initiatives.html](https://report.adidas-group.com/2020/en/at-a-glance/2020-stories/our-sustainability-initiatives.html)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C37-GPT-event｜事件｜unverified] 采用Parley Ocean Plastic相关材料的鞋服产品\n[C37-GPT-outcome｜结果｜unverified] adidas在2020年可持续发展披露中记录双方五年合作。\n[C37-GPT-mechanism｜研究解释｜unverified] 把材料方案和价值主张嵌入产品，而非只有公益口号。\n[C37-GPT-risk｜研究解释｜unverified] 使用再生材料不自动等于净环境效益；需核查来源、比例及生命周期边界。"
+      ],
+      [
+        "adidas × Yeezy／Ye",
+        "C38",
+        "adidas",
+        "Yeezy／Ye",
+        "品牌×设计师品牌",
+        "2013合作；2022终止；2024库存售完",
+        "多市场",
+        [
+          "风险与混合结果"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Yeezy鞋服系列",
+        "前期热销与后期声誉、库存风险可同时存在；核心人物风险可反向传导。",
+        "不应写成自始至终销售失败，也不应在2026仍称库存尚未清完。",
+        null,
+        null,
+        null,
+        null,
+        "合作全生命周期净收益、可替代方案与退出成本",
+        [
+          "品牌整理",
+          "联名创意",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/37\nSRC-GEMINI-REPORT｜用户提供的 Gemini 调研报告｜chars:6243-6264\n原报告结果分类「风险与混合结果」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.adidas-group.com/en/media/press-releases/adidas-terminates-partnership-with-ye-immediately](https://www.adidas-group.com/en/media/press-releases/adidas-terminates-partnership-with-ye-immediately)",
+        "DIFF-06｜库存事件时间线｜待核验（尚非已裁决事实冲突）\nGPT：2022年因Ye反犹言论终止；路透2025报道最后库存于2024年第四季度售完。\nGemini：报告描述近12亿欧元库存成为死库存，并将年度亏损归因于解约。\n待核对差异：GPT包含2024年末库存售完的后续节点；Gemini未写后续处置，不能作为当前库存结论。",
+        "断言状态：待核验 9 条。事件、结果与研究解释分别保留。\n[C38-GPT-event｜事件｜unverified] Yeezy鞋服系列\n[C38-GPT-outcome｜结果｜unverified] 2022年因Ye反犹言论终止；路透2025报道最后库存于2024年第四季度售完。\n[C38-GPT-mechanism｜研究解释｜unverified] 前期热销与后期声誉、库存风险可同时存在；核心人物风险可反向传导。\n[C38-GPT-risk｜研究解释｜unverified] 不应写成自始至终销售失败，也不应在2026仍称库存尚未清完。\n[C38-GEM-01｜结果｜unverified] 报告称 Yeezy 长期贡献 adidas 过半净利润。\n[C38-GEM-02｜事件｜unverified] 报告称 Kanye West 于 2022 年末发表反犹言论。\n[C38-GEM-03｜事件｜unverified] 报告称 adidas 单方面解除合作。\n[C38-GEM-04｜研究解释｜unverified] 报告称解约造成近 12 亿欧元库存难销，并直接导致罕见年度亏损。\n[C38-GEM-05｜研究解释｜unverified] 报告表格称 12 亿欧元死库存导致年度运营亏损。"
+      ],
+      [
+        "adidas × Ivy Park",
+        "C39",
+        "adidas",
+        "Ivy Park",
+        "品牌×品牌／明星主理",
+        "2019合作；2023结束报道",
+        "多市场",
+        [
+          "商业受挫"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Ivy Park运动休闲服饰、鞋履",
+        "巨大粉丝量与实际购买意愿并非同一个量；预测要落到款式、价格与购买频率。",
+        "销售和目标为媒体报道口径；具体因果不能只归结于审美或定价。",
+        null,
+        null,
+        null,
+        null,
+        "完整财务、库存、渠道与消费者拒购原因",
+        [
+          "品牌整理",
+          "联名创意",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/38\n原报告结果分类「商业受挫」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.wsj.com/articles/adidas-and-beyonce-to-part-ways-after-ivy-park-sales-struggles-1467552](https://www.wsj.com/articles/adidas-and-beyonce-to-part-ways-after-ivy-park-sales-struggles-1467552)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C39-GPT-event｜事件｜unverified] Ivy Park运动休闲服饰、鞋履\n[C39-GPT-outcome｜结果｜unverified] WSJ报道2022年销售约4000万美元，对比内部预估2.5亿美元；2023双方分手。\n[C39-GPT-mechanism｜研究解释｜unverified] 巨大粉丝量与实际购买意愿并非同一个量；预测要落到款式、价格与购买频率。\n[C39-GPT-risk｜研究解释｜unverified] 销售和目标为媒体报道口径；具体因果不能只归结于审美或定价。"
+      ],
+      [
+        "Gap × Yeezy",
+        "C40",
+        "Gap",
+        "Yeezy",
+        "品牌×设计师品牌",
+        "2020宣布；2022终止",
+        "美国等",
+        [
+          "风险与混合结果"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Yeezy Gap连帽衫、外套；后期部分系列另含Balenciaga",
+        "分销、专属门店、创意控制等治理争议，可以先于后续声誉危机发生。",
+        "Ye方违约指称并非已被法院证实的事实；不同时间节点要分开。",
+        null,
+        null,
+        null,
+        null,
+        "合同责任认定、各方实际损失、完整库存处置",
+        [
+          "品牌整理",
+          "联名创意",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/39\n原报告结果分类「风险与混合结果」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.reuters.com/business/retail-consumer/kanye-west-severs-ties-with-apparel-chain-gap-wsj-2022-09-15/](https://www.reuters.com/business/retail-consumer/kanye-west-severs-ties-with-apparel-chain-gap-wsj-2022-09-15/)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C40-GPT-event｜事件｜unverified] Yeezy Gap连帽衫、外套；后期部分系列另含Balenciaga\n[C40-GPT-outcome｜结果｜unverified] 2022年9月合作破裂；Ye方指称履约问题；10月Gap因言论争议撤下剩余产品。\n[C40-GPT-mechanism｜研究解释｜unverified] 分销、专属门店、创意控制等治理争议，可以先于后续声誉危机发生。\n[C40-GPT-risk｜研究解释｜unverified] Ye方违约指称并非已被法院证实的事实；不同时间节点要分开。"
+      ],
+      [
+        "Target × Neiman Marcus",
+        "C41",
+        "Target",
+        "Neiman Marcus",
+        "零售商×零售商／多设计师",
+        "2012",
+        "美国",
+        [
+          "商业受挫"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "24位设计师参与的约50款节日礼品，包括家居、配饰与服装",
+        "合作名气没有替代具体价格、选品和购物任务；Target顾客未必想买这类高价礼品。",
+        "价格与品类错配是基于产品和报道的解释，不应编造单一确定原因。",
+        null,
+        null,
+        null,
+        null,
+        "各SKU售罄、毛利、库存和消费者拒购访谈",
+        [
+          "品牌整理",
+          "联名创意",
+          "设计规格",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/40\nSRC-GEMINI-REPORT｜用户提供的 Gemini 调研报告｜chars:5042-5083\n原报告结果分类「商业受挫」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://corporate.target.com/press/release/2012/10/target-and-neiman-marcus-reveal-highly-anticipated-holiday-collection](https://corporate.target.com/press/release/2012/10/target-and-neiman-marcus-reveal-highly-anticipated-holiday-collection)",
+        "DIFF-07｜库存损失及消费者原因｜待核验（尚非已裁决事实冲突）\nGPT：公开报道记录销售低于预期、上市后较快折价清货。\nGemini：报告称两端全面滞销、3折清仓、数千万美元库存折损，并断言两端消费者的拒购心理。\n待核对差异：GPT只写销售低预期及较快折价，缺少SKU、损失和拒购研究；应逐断言补证据。",
+        "断言状态：待核验 9 条。事件、结果与研究解释分别保留。\n[C41-GPT-event｜事件｜unverified] 24位设计师参与的约50款节日礼品，包括家居、配饰与服装\n[C41-GPT-outcome｜结果｜unverified] 公开报道记录销售低于预期、上市后较快折价清货。\n[C41-GPT-mechanism｜研究解释｜unverified] 合作名气没有替代具体价格、选品和购物任务；Target顾客未必想买这类高价礼品。\n[C41-GPT-risk｜研究解释｜unverified] 价格与品类错配是基于产品和报道的解释，不应编造单一确定原因。\n[C41-GEM-01｜事件｜unverified] 报告称 24 位设计师参与，推出 50 款节日杂货。\n[C41-GEM-02｜结果｜unverified] 报告称两家零售端全面滞销、最终 3 折清仓。\n[C41-GEM-03｜研究解释｜unverified] 报告以 Target 客群认为价格过高解释销售表现。\n[C41-GEM-04｜研究解释｜unverified] 报告以 Neiman Marcus 客群认为商品廉价粗糙解释销售表现。\n[C41-GEM-05｜结果｜unverified] 报告称双方直接库存折损达数千万美元。"
+      ],
+      [
+        "McDonald’s × Krispy Kreme",
+        "C42",
+        "McDonald’s",
+        "Krispy Kreme",
+        "品牌×品牌／渠道供给",
+        "2022试点；2025年7月2日结束",
+        "美国",
+        [
+          "商业受挫"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "在麦当劳门店销售Krispy Kreme甜甜圈",
+        "渠道互补不保证每方都赚钱；鲜食配送成本与店均销量必须匹配。",
+        "麦当劳称达到自身及加盟商预期，不等于供应方盈利；必须双方分别建模。",
+        null,
+        null,
+        null,
+        null,
+        "店均量、配送频次、报损和各方贡献利润",
+        [
+          "品牌整理",
+          "联名创意",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/41\n原报告结果分类「商业受挫」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.businesswire.com/news/home/20250624271564/en/Krispy-Kreme-and-McDonalds-USA-Announce-Joint-Decision-to-End-Partnership](https://www.businesswire.com/news/home/20250624271564/en/Krispy-Kreme-and-McDonalds-USA-Announce-Joint-Decision-to-End-Partnership)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C42-GPT-event｜事件｜unverified] 在麦当劳门店销售Krispy Kreme甜甜圈\n[C42-GPT-outcome｜结果｜unverified] 联合声明：约2400家门店合作；Krispy Kreme未能使成本匹配单店需求，模式难以持续。\n[C42-GPT-mechanism｜研究解释｜unverified] 渠道互补不保证每方都赚钱；鲜食配送成本与店均销量必须匹配。\n[C42-GPT-risk｜研究解释｜unverified] 麦当劳称达到自身及加盟商预期，不等于供应方盈利；必须双方分别建模。"
+      ],
+      [
+        "Beyond Meat × PepsiCo",
+        "C43",
+        "Beyond Meat",
+        "PepsiCo",
+        "合资产品／品牌联盟",
+        "2021合资；2022肉干；2024停止",
+        "美国",
+        [
+          "商业受挫"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "PLANeT Partnership旗下Beyond Meat植物肉干",
+        "趋势与渠道资源不是充分条件；复杂制造和产品单位成本可能压过需求。",
+        "不应将Beyond Meat整体业绩下滑全部归因于该合作。",
+        null,
+        null,
+        null,
+        null,
+        "产品独立损益、成本构成和消费者复购",
+        [
+          "联名创意",
+          "设计规格",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/42\n原报告结果分类「商业受挫」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.reuters.com/business/retail-consumer/beyond-meat-tops-quarterly-revenue-estimates-2024-02-27/](https://www.reuters.com/business/retail-consumer/beyond-meat-tops-quarterly-revenue-estimates-2024-02-27/)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C43-GPT-event｜事件｜unverified] PLANeT Partnership旗下Beyond Meat植物肉干\n[C43-GPT-outcome｜结果｜unverified] 2024报道公司停止植物肉干产品，作为改善成本及利润率调整的一部分。\n[C43-GPT-mechanism｜研究解释｜unverified] 趋势与渠道资源不是充分条件；复杂制造和产品单位成本可能压过需求。\n[C43-GPT-risk｜研究解释｜unverified] 不应将Beyond Meat整体业绩下滑全部归因于该合作。"
+      ],
+      [
+        "McDonald’s × Beyond Meat",
+        "C44",
+        "McDonald’s",
+        "Beyond Meat",
+        "品牌×品牌／产品研发",
+        "2021—2022美国试点；2024回顾",
+        "美国试点",
+        [
+          "商业受挫"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "美国McPlant植物肉汉堡测试",
+        "宏观饮食趋势需要落到特定门店客群、具体口味和购买场景。",
+        "美国测试结论不可外推为全球McPlant都失败；不同市场应分开。",
+        null,
+        null,
+        null,
+        null,
+        "门店级需求、价格弹性、非购买者反馈",
+        [
+          "品牌整理",
+          "联名创意",
+          "设计规格",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/43\n原报告结果分类「商业受挫」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.businessinsider.com/mcdonalds-mcplant-us-trial-failed-not-enough-demand-beyond-meat-2024-6](https://www.businessinsider.com/mcdonalds-mcplant-us-trial-failed-not-enough-demand-beyond-meat-2024-6)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C44-GPT-event｜事件｜unverified] 美国McPlant植物肉汉堡测试\n[C44-GPT-outcome｜结果｜unverified] 美国测试结束；2024麦当劳美国负责人称当地消费者需求不足。\n[C44-GPT-mechanism｜研究解释｜unverified] 宏观饮食趋势需要落到特定门店客群、具体口味和购买场景。\n[C44-GPT-risk｜研究解释｜unverified] 美国测试结论不可外推为全球McPlant都失败；不同市场应分开。"
+      ],
+      [
+        "LEGO × Shell",
+        "C45",
+        "LEGO",
+        "Shell",
+        "品牌×品牌／渠道与促销",
+        "2014宣布不再续约",
+        "多市场",
+        [
+          "风险与混合结果"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Shell标识积木、加油站销售或促销套装",
+        "合作对象的公共争议可通过品牌关联传给自己；需要价值观与声誉情境测试。",
+        "这是声誉驱动的退出，不是已证明产品滞销；既有合同并非即刻全部取消。",
+        null,
+        null,
+        null,
+        null,
+        "独立财务损失、长期品牌影响、替代合作价值",
+        [
+          "品牌整理",
+          "联名创意",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/44\n原报告结果分类「风险与混合结果」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.reuters.com/article/business/lego-to-drop-shell-contract-but-criticises-greenpeace-idUSKCN0HY245/](https://www.reuters.com/article/business/lego-to-drop-shell-contract-but-criticises-greenpeace-idUSKCN0HY245/)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C45-GPT-event｜事件｜unverified] Shell标识积木、加油站销售或促销套装\n[C45-GPT-outcome｜结果｜unverified] 环境组织施压后，LEGO宣布现有合同到期后不再续约。\n[C45-GPT-mechanism｜研究解释｜unverified] 合作对象的公共争议可通过品牌关联传给自己；需要价值观与声誉情境测试。\n[C45-GPT-risk｜研究解释｜unverified] 这是声誉驱动的退出，不是已证明产品滞销；既有合同并非即刻全部取消。"
+      ],
+      [
+        "喜茶 × 景德镇中国陶瓷博物馆",
+        "C46",
+        "喜茶",
+        "景德镇中国陶瓷博物馆",
+        "品牌×博物馆",
+        "2023年11—12月",
+        "中国",
+        [
+          "风险与混合结果"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "“佛喜”饮品、宗教人物相关杯身及周边",
+        "馆藏合作与具体商业表达仍需分别审查；文化图像的语境不可忽略。",
+        "不能把媒体报道的约谈写成已认定违法或已受罚。",
+        null,
+        null,
+        null,
+        null,
+        "完整授权和主管机关书面结论、损失数额",
+        [
+          "品牌整理",
+          "视觉制作",
+          "文案创作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/45\nSRC-GEMINI-REPORT｜用户提供的 Gemini 调研报告｜chars:4426-4475\n原报告结果分类「风险与混合结果」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://m.bjnews.com.cn/detail/1701741875169857.html](https://m.bjnews.com.cn/detail/1701741875169857.html)",
+        "DIFF-08｜法律定性与损失｜待核验（尚非已裁决事实冲突）\nGPT：媒体报道当地宗教事务部门约谈；联名随后下架，馆方表示合作结束。\nGemini：报告正文称触犯宗教事务条例，表格另称违反广告法，并称全面报废损失及品牌口碑损害。\n待核对差异：GPT区分约谈与违法处罚，损失未知；Gemini法律依据内部也需核对。",
+        "断言状态：待核验 9 条。事件、结果与研究解释分别保留。\n[C46-GPT-event｜事件｜unverified] “佛喜”饮品、宗教人物相关杯身及周边\n[C46-GPT-outcome｜结果｜unverified] 媒体报道当地宗教事务部门约谈；联名随后下架，馆方表示合作结束。\n[C46-GPT-mechanism｜研究解释｜unverified] 馆藏合作与具体商业表达仍需分别审查；文化图像的语境不可忽略。\n[C46-GPT-risk｜研究解释｜unverified] 不能把媒体报道的约谈写成已认定违法或已受罚。\n[C46-GEM-01｜事件｜unverified] 报告称以沉思罗汉为灵感推出饮品、杯套和冰箱贴。\n[C46-GEM-02｜研究解释｜unverified] 报告直接判断项目触犯宗教事务条例相关红线。\n[C46-GEM-03｜结果｜unverified] 报告称上线数日后被约谈，全面下架联名物料并更名。\n[C46-GEM-04｜研究解释｜unverified] 报告称发生大量包材报废损失与品牌口碑损害。\n[C46-GEM-05｜研究解释｜unverified] 报告表格另以广告法解释其违法性。"
+      ],
+      [
+        "乐乐茶 × 译林出版社",
+        "C47",
+        "乐乐茶",
+        "译林出版社",
+        "品牌×出版机构／文化人物",
+        "2024活动；2026法院认定后的致歉",
+        "中国",
+        [
+          "风险与混合结果"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已跑通迁移分析"
+        ],
+        [
+          "待核验"
+        ],
+        "“烟腔乌龙”、鲁迅画像杯袋、立牌与小册子",
+        "出版合作不自动覆盖肖像画作者的著作权；应逐个资产核对授权链。",
+        "2024家属争议与2026图像著作权案件是不同层次，不能混成一种权利。",
+        "咖啡馆 × 书店周末到店活动；注意事项线索。",
+        "把书封、插画、人物画像、引文、朗读及数字发布逐项列为待确认素材/用途。\n验证问题：哪些内容由书店原创，哪些需单独核实可用范围？",
+        "此库中的撤文、致歉及法院认定均未核验，不能在提案中作为已确认法律事实\n书店合作意愿不能自动替代素材权利确认",
+        "当前 brief：不新增印刷、不新增实体赠品。\n历史杯袋、立牌、小册子不迁移；不新增印刷并不代表数字素材已获授权\n待确认资源：店内空间与时段；现有社交账号/屏幕/菜单可否使用；选书内容和主持人员；双方预算、意愿、授权及店内容量",
+        "所有素材的许可范围及费用、判决完整文本、项目损失",
+        [
+          "设计规格",
+          "视觉制作",
+          "文案创作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/46\n原报告结果分类「风险与混合结果」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。\n本地试用：examples/task-research-handoff.json，migrationNotes.caseId=C47；状态 draft。",
+        "[https://m.gmw.cn/2026-03/13/content_1304375087.htm](https://m.gmw.cn/2026-03/13/content_1304375087.htm)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C47-GPT-event｜事件｜unverified] “烟腔乌龙”、鲁迅画像杯袋、立牌与小册子\n[C47-GPT-outcome｜结果｜unverified] 2024撤文宣并致歉；2026声明确认法院认定相关画像使用侵害著作权权益。\n[C47-GPT-mechanism｜研究解释｜unverified] 出版合作不自动覆盖肖像画作者的著作权；应逐个资产核对授权链。\n[C47-GPT-risk｜研究解释｜unverified] 2024家属争议与2026图像著作权案件是不同层次，不能混成一种权利。"
+      ],
+      [
+        "Gucci × adidas",
+        "C48",
+        "Gucci",
+        "adidas",
+        "品牌×品牌／奢侈时尚",
+        "2022",
+        "中国讨论／多市场产品",
+        [
+          "风险与混合结果"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "联名装饰性伞具及服饰系列",
+        "商品名称引发的功能期待可能与设计定位冲突，要测试消费者如何理解。",
+        "不能把已说明的装饰定位直接称为质量缺陷，也不能把嘲讽当作销量失败。",
+        null,
+        null,
+        null,
+        null,
+        "实际退货、投诉结构、销量与品牌态度变化",
+        [
+          "设计规格",
+          "文案创作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/47\n原报告结果分类「风险与混合结果」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.businessinsider.com/adidas-and-gucci-selling-1600-umbrella-that-is-not-waterproof-2022-5](https://www.businessinsider.com/adidas-and-gucci-selling-1600-umbrella-that-is-not-waterproof-2022-5)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C48-GPT-event｜事件｜unverified] 联名装饰性伞具及服饰系列\n[C48-GPT-outcome｜结果｜unverified] 伞具明示不防水引发讨论；未找到证明整个联名商业失败的数据。\n[C48-GPT-mechanism｜研究解释｜unverified] 商品名称引发的功能期待可能与设计定位冲突，要测试消费者如何理解。\n[C48-GPT-risk｜研究解释｜unverified] 不能把已说明的装饰定位直接称为质量缺陷，也不能把嘲讽当作销量失败。"
+      ],
+      [
+        "McDonald’s × BTS",
+        "C49",
+        "McDonald’s",
+        "BTS",
+        "品牌×音乐IP",
+        "2021",
+        "多市场；印尼履约事件",
+        [
+          "风险与混合结果"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "BTS Meal套餐、两款酱料与主题包装",
+        "情感动员可能集中到短时间、少数门店；需限流、预约与取餐分流。",
+        "公司总销售增长还有解封等因素，不能全归因于BTS套餐。",
+        null,
+        null,
+        null,
+        null,
+        "联名净增量、履约成本、拥堵造成的损失",
+        [
+          "品牌整理",
+          "设计规格",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/48\n原报告结果分类「风险与混合结果」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.reuters.com/business/mcdonalds-shuts-some-indonesia-outlets-over-bts-meal-frenzy-2021-06-11/](https://www.reuters.com/business/mcdonalds-shuts-some-indonesia-outlets-over-bts-meal-frenzy-2021-06-11/)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C49-GPT-event｜事件｜unverified] BTS Meal套餐、两款酱料与主题包装\n[C49-GPT-outcome｜结果｜unverified] 印尼部分门店因拥挤暂时关闭；合作同时带来明显需求，并非整体销售失败。\n[C49-GPT-mechanism｜研究解释｜unverified] 情感动员可能集中到短时间、少数门店；需限流、预约与取餐分流。\n[C49-GPT-risk｜研究解释｜unverified] 公司总销售增长还有解封等因素，不能全归因于BTS套餐。"
+      ],
+      [
+        "奈雪的茶 × 薄盒「范特西音乐宇宙」",
+        "C50",
+        "奈雪的茶",
+        "薄盒「范特西音乐宇宙」",
+        "品牌×数字音乐IP项目",
+        "2023",
+        "中国",
+        [
+          "风险与混合结果"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "主题茶饮、杯袋及范特西相关数字互动",
+        "合法授权对象、宣传名称和消费者理解需要相互一致。",
+        "不能把该合作直接写成周杰伦本人代言，也不能凭争议判定未经授权。",
+        null,
+        null,
+        null,
+        null,
+        "完整授权范围、实际理解偏差、后续留存与利润",
+        [
+          "品牌整理",
+          "文案创作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/49\n原报告结果分类「风险与混合结果」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.stcn.com/article/detail/979671.html](https://www.stcn.com/article/detail/979671.html)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C50-GPT-event｜事件｜unverified] 主题茶饮、杯袋及范特西相关数字互动\n[C50-GPT-outcome｜结果｜unverified] 公开报道明确合作对象为薄盒旗下项目；传播中出现是否为周杰伦本人合作的理解争议。\n[C50-GPT-mechanism｜研究解释｜unverified] 合法授权对象、宣传名称和消费者理解需要相互一致。\n[C50-GPT-risk｜研究解释｜unverified] 不能把该合作直接写成周杰伦本人代言，也不能凭争议判定未经授权。"
+      ],
+      [
+        "McDonald’s × Mr Doodle",
+        "C51",
+        "McDonald’s",
+        "Mr Doodle",
+        "品牌×艺术家",
+        "2024",
+        "中国",
+        [
+          "产品机制参考"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "儿童节涂鸦主题包装、主题餐厅和快闪体验",
+        "用统一图形系统覆盖包装、空间与线下体验，形成完整活动识别。",
+        "分清同一营销档期内不同项目的销售贡献，避免张冠李戴。",
+        null,
+        null,
+        null,
+        null,
+        "艺术合作独立预算、触达、转化与顾客反馈",
+        [
+          "设计规格",
+          "视觉制作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/50\n原报告结果分类「产品机制参考」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.mcdonalds.com.cn/news/20240522-Childrens-Day](https://www.mcdonalds.com.cn/news/20240522-Childrens-Day)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C51-GPT-event｜事件｜unverified] 儿童节涂鸦主题包装、主题餐厅和快闪体验\n[C51-GPT-outcome｜结果｜unverified] 麦当劳中国官方发布艺术家合作；同档期其他玩具活动不应全部算入本联名。\n[C51-GPT-mechanism｜研究解释｜unverified] 用统一图形系统覆盖包装、空间与线下体验，形成完整活动识别。\n[C51-GPT-risk｜研究解释｜unverified] 分清同一营销档期内不同项目的销售贡献，避免张冠李戴。"
+      ],
+      [
+        "UNIQLO × 卢浮宫博物馆",
+        "C52",
+        "UNIQLO",
+        "卢浮宫博物馆",
+        "品牌×博物馆",
+        "2021起",
+        "多市场",
+        [
+          "产品机制参考"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Louvre Museum Collection UT及文化活动合作",
+        "把馆藏内容变成日常可穿戴载体，也提供文化公共活动触点。",
+        "艺术图像受欢迎不等于衣服复购；作品授权和形象审核需明确。",
+        null,
+        null,
+        null,
+        null,
+        "各系列净销量、文化触达质量、授权成本",
+        [
+          "联名创意",
+          "设计规格",
+          "视觉制作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/51\n原报告结果分类「产品机制参考」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.fastretailing.com/eng/sustainability/community/sports_and_culture.html](https://www.fastretailing.com/eng/sustainability/community/sports_and_culture.html)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C52-GPT-event｜事件｜unverified] Louvre Museum Collection UT及文化活动合作\n[C52-GPT-outcome｜结果｜unverified] 迅销官方确认2021年春起推出相关UT系列并支持馆内文化活动。\n[C52-GPT-mechanism｜研究解释｜unverified] 把馆藏内容变成日常可穿戴载体，也提供文化公共活动触点。\n[C52-GPT-risk｜研究解释｜unverified] 艺术图像受欢迎不等于衣服复购；作品授权和形象审核需明确。"
+      ],
+      [
+        "Nike × Tiffany & Co.",
+        "C53",
+        "Nike",
+        "Tiffany & Co.",
+        "品牌×品牌／奢侈与运动",
+        "2023",
+        "多市场",
+        [
+          "产品机制参考"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Air Force 1 1837、银饰细节及相关纯银配件",
+        "把Tiffany蓝与银器工艺融入熟悉鞋型，研究的是资产转译。",
+        "审美争论不能直接判定商业失败；应分核心鞋迷与珠宝客群。",
+        null,
+        null,
+        null,
+        null,
+        "原价售出量、新客迁移、偏好与利润",
+        [
+          "品牌整理",
+          "设计规格",
+          "视觉制作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/52\n原报告结果分类「产品机制参考」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.tiffany.com/world-of-tiffany/collaborations/tiffany-nike-air-force.html](https://www.tiffany.com/world-of-tiffany/collaborations/tiffany-nike-air-force.html)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C53-GPT-event｜事件｜unverified] Air Force 1 1837、银饰细节及相关纯银配件\n[C53-GPT-outcome｜结果｜unverified] Tiffany与Nike官方可确认产品；独立销量与利润未公开。\n[C53-GPT-mechanism｜研究解释｜unverified] 把Tiffany蓝与银器工艺融入熟悉鞋型，研究的是资产转译。\n[C53-GPT-risk｜研究解释｜unverified] 审美争论不能直接判定商业失败；应分核心鞋迷与珠宝客群。"
+      ],
+      [
+        "PUMA × FENTY",
+        "C54",
+        "PUMA",
+        "FENTY",
+        "品牌×明星主理品牌",
+        "2015起；2023重启阶段",
+        "多市场",
+        [
+          "产品机制参考"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Creeper等鞋履；2023重启Avanti产品",
+        "主理人参与产品设计，可以形成独立产品语言，而不只是代言曝光。",
+        "第一次热度不能保证重启成功；须重新验证客群与市场环境。",
+        null,
+        null,
+        null,
+        null,
+        "重启实际销量、全周期财务、2026关系状态的官方确认",
+        [
+          "品牌整理",
+          "联名创意",
+          "设计规格"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/53\n原报告结果分类「产品机制参考」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://about.puma.com/en/newsroom/news/fenty-x-puma-officially-back-rihanna-launches-avanti](https://about.puma.com/en/newsroom/news/fenty-x-puma-officially-back-rihanna-launches-avanti)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C54-GPT-event｜事件｜unverified] Creeper等鞋履；2023重启Avanti产品\n[C54-GPT-outcome｜结果｜unverified] PUMA官方2023发布重新合作及Avanti；不据此断言2026仍持续或长期盈利。\n[C54-GPT-mechanism｜研究解释｜unverified] 主理人参与产品设计，可以形成独立产品语言，而不只是代言曝光。\n[C54-GPT-risk｜研究解释｜unverified] 第一次热度不能保证重启成功；须重新验证客群与市场环境。"
+      ],
+      [
+        "Supreme × OREO",
+        "C55",
+        "Supreme",
+        "OREO",
+        "品牌×品牌／包装与食品",
+        "2020",
+        "部分市场",
+        [
+          "产品机制参考"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "红色、印Supreme标识的OREO三枚装",
+        "以低客单食品承载街头品牌收藏符号，扩大可参与人群。",
+        "可拍照不等于可复购；二手挂牌价不等于真实成交价。",
+        null,
+        null,
+        null,
+        null,
+        "初次零售数量、实际成交、增量消费者、项目利润",
+        [
+          "联名创意",
+          "视觉制作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/54\n原报告结果分类「产品机制参考」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://supreme.com/previews/springsummer2020/accessories/supreme-oreo-cookies-pack-of-3](https://supreme.com/previews/springsummer2020/accessories/supreme-oreo-cookies-pack-of-3)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C55-GPT-event｜事件｜unverified] 红色、印Supreme标识的OREO三枚装\n[C55-GPT-outcome｜结果｜unverified] Supreme官方春夏2020档案可确认产品；不采用二手高价挂牌作为销量证据。\n[C55-GPT-mechanism｜研究解释｜unverified] 以低客单食品承载街头品牌收藏符号，扩大可参与人群。\n[C55-GPT-risk｜研究解释｜unverified] 可拍照不等于可复购；二手挂牌价不等于真实成交价。"
+      ],
+      [
+        "H&M × Mugler",
+        "C56",
+        "H&M",
+        "Mugler",
+        "品牌×品牌／设计师系列",
+        "2023",
+        "多市场",
+        [
+          "产品机制参考"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Mugler H&M成衣与配饰胶囊系列",
+        "高识别设计语言可跨价格带转译，但需要验证实穿、尺码和品质。",
+        "前代H&M联名成功不能作为本期的销售证据。",
+        null,
+        null,
+        null,
+        null,
+        "本期售出率、退货率、设计与制造成本",
+        [
+          "设计规格",
+          "视觉制作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/55\n原报告结果分类「产品机制参考」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://hmgroup.com/news/hm-celebrates-20-years-of-designer-collaborations-with-limited-pre-loved-pieces/](https://hmgroup.com/news/hm-celebrates-20-years-of-designer-collaborations-with-limited-pre-loved-pieces/)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C56-GPT-event｜事件｜unverified] Mugler H&M成衣与配饰胶囊系列\n[C56-GPT-outcome｜结果｜unverified] H&M官方2024回顾确认2023年Mugler合作；本库不推断独立盈利。\n[C56-GPT-mechanism｜研究解释｜unverified] 高识别设计语言可跨价格带转译，但需要验证实穿、尺码和品质。\n[C56-GPT-risk｜研究解释｜unverified] 前代H&M联名成功不能作为本期的销售证据。"
+      ],
+      [
+        "Target × Missoni",
+        "C57",
+        "Target",
+        "Missoni",
+        "品牌×品牌／大众设计系列",
+        "2011",
+        "美国",
+        [
+          "风险与混合结果"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "Missoni图案服装、家居、配件等约400款",
+        "强需求与差履约可同时发生；广告、库存与订单系统要一起准备。",
+        "不是销售失败；也不能用售罄掩盖真实消费者未收到商品。",
+        null,
+        null,
+        null,
+        null,
+        "支付成功到交付率、补偿成本、客户流失",
+        [
+          "设计规格",
+          "文案创作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/56\n原报告结果分类「风险与混合结果」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.mprnews.org/story/2011/09/22/target-missoni-problems](https://www.mprnews.org/story/2011/09/22/target-missoni-problems)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C57-GPT-event｜事件｜unverified] Missoni图案服装、家居、配件等约400款\n[C57-GPT-outcome｜结果｜unverified] AP报道首发网站崩溃，之后部分订单延误或被取消；商品需求强。\n[C57-GPT-mechanism｜研究解释｜unverified] 强需求与差履约可同时发生；广告、库存与订单系统要一起准备。\n[C57-GPT-risk｜研究解释｜unverified] 不是销售失败；也不能用售罄掩盖真实消费者未收到商品。"
+      ],
+      [
+        "KFC × 《原神》",
+        "C58",
+        "KFC",
+        "《原神》",
+        "品牌×游戏IP",
+        "2021",
+        "中国；上海与杭州事件",
+        [
+          "风险与混合结果"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "主题套餐、角色徽章与游戏相关权益",
+        "收藏赠品会使需求集中到门店与时点，赠品供应就是核心履约的一部分。",
+        "当时防疫条件特殊，不能直接拿聚集事件推断现在应执行的法规。",
+        null,
+        null,
+        null,
+        null,
+        "各店库存、活动申报与取消损失、预约可替代性",
+        [
+          "设计规格",
+          "文案创作",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/57\n原报告结果分类「风险与混合结果」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://www.playstationlifestyle.net/2021/03/15/genshin-impact-kfc-collaboration-cancelled/](https://www.playstationlifestyle.net/2021/03/15/genshin-impact-kfc-collaboration-cancelled/)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C58-GPT-event｜事件｜unverified] 主题套餐、角色徽章与游戏相关权益\n[C58-GPT-outcome｜结果｜unverified] 上海、杭州部分线下活动因人群聚集等原因取消；并非全国合作全部失败。\n[C58-GPT-mechanism｜研究解释｜unverified] 收藏赠品会使需求集中到门店与时点，赠品供应就是核心履约的一部分。\n[C58-GPT-risk｜研究解释｜unverified] 当时防疫条件特殊，不能直接拿聚集事件推断现在应执行的法规。"
+      ],
+      [
+        "HTC／AT&T × Facebook",
+        "C59",
+        "HTC／AT&T",
+        "Facebook",
+        "技术与渠道联合产品",
+        "2013",
+        "美国；欧洲计划",
+        [
+          "风险与混合结果"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "预装Facebook Home的HTC First手机",
+        "喜欢一个应用不等于愿意让它成为整部手机的主界面；合作不能代替需求验证。",
+        "合约机价格不等于裸机价格；不能仅凭降价确定亏损额。",
+        null,
+        null,
+        null,
+        null,
+        "独立损益、激活与留存、拒购和退货原因",
+        [
+          "品牌整理",
+          "联名创意",
+          "设计规格",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/58\n原报告结果分类「风险与混合结果」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        "[https://allthingsd.com/20130508/htc-first-that-facebook-phone-drops-from-99-bucks-to-99-cents-at-att/](https://allthingsd.com/20130508/htc-first-that-facebook-phone-drops-from-99-bucks-to-99-cents-at-att/)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C59-GPT-event｜事件｜unverified] 预装Facebook Home的HTC First手机\n[C59-GPT-outcome｜结果｜unverified] 美国合约价上市不足一月由约99美元降至0.99美元；英国上市随后未按计划推进。\n[C59-GPT-mechanism｜研究解释｜unverified] 喜欢一个应用不等于愿意让它成为整部手机的主界面；合作不能代替需求验证。\n[C59-GPT-risk｜研究解释｜unverified] 合约机价格不等于裸机价格；不能仅凭降价确定亏损额。"
+      ],
+      [
+        "Apple × U2",
+        "C60",
+        "Apple",
+        "U2",
+        "品牌×音乐IP／数字分发",
+        "2014",
+        "多市场",
+        [
+          "风险与混合结果"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已跑通迁移分析"
+        ],
+        [
+          "待核验"
+        ],
+        "iTunes赠送《Songs of Innocence》专辑",
+        "免费权益也需尊重选择；平台可触达用户，不代表用户都需要合作内容。",
+        "应区分自动加入曲库与所有设备一律自动下载；不能推断专辑质量失败。",
+        "咖啡馆 × 书店周末到店活动；体验边界参考。",
+        "阅读活动与后续内容均由顾客自主选择，普通到店顾客保留安静消费的选择。\n验证问题：怎样将活动参与、加入后续联系与一般消费分开？",
+        "不能把平台自动入库事件等同线下活动；历史争议在库中未核验",
+        "当前 brief：不新增印刷、不新增实体赠品。\n不依赖赠品、自动加群或强制订阅\n待确认资源：店内空间与时段；现有社交账号/屏幕/菜单可否使用；选书内容和主持人员；双方预算、意愿、授权及店内容量",
+        "接受率、移除率、品牌态度和长期订阅影响",
+        [
+          "品牌整理",
+          "联名创意",
+          "设计规格",
+          "质量检查"
+        ],
+        "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/59\n原报告结果分类「风险与混合结果」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。\n本地试用：examples/task-research-handoff.json，migrationNotes.caseId=C60；状态 draft。",
+        "[https://pitchfork.com/news/56713-apple-launches-site-to-help-you-remove-the-u2-album-from-your-itunes](https://pitchfork.com/news/56713-apple-launches-site-to-help-you-remove-the-u2-album-from-your-itunes)",
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C60-GPT-event｜事件｜unverified] iTunes赠送《Songs of Innocence》专辑\n[C60-GPT-outcome｜结果｜unverified] 专辑自动加入用户曲库引发反感；Apple随后提供移除工具。\n[C60-GPT-mechanism｜研究解释｜unverified] 免费权益也需尊重选择；平台可触达用户，不代表用户都需要合作内容。\n[C60-GPT-risk｜研究解释｜unverified] 应区分自动加入曲库与所有设备一律自动下载；不能推断专辑质量失败。"
+      ],
+      [
+        "瑞幸咖啡 ×《黑神话：悟空》",
+        "C61",
+        "瑞幸",
+        "《黑神话：悟空》",
+        "品牌×游戏IP／饮品与周边",
+        "2024",
+        "中国",
+        [
+          "仅报告线索"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "黑神话腾云美式；定制纸袋；黑金主题杯套；3D限定光影变光海报；主题门店",
+        "围绕游戏首发节点，将玩家情绪与收藏周边连接到咖啡渠道。",
+        "股价同期变化不能直接归因于联名；不能把男性概括为消费惯性较低的人群；周边售罄不能证明主商品复购",
+        null,
+        null,
+        null,
+        null,
+        "官方合作发布与产品清单；发售日期和库存基数；证券主体、市场、日期和价格记录；分性别新客与复购数据；其他同期事件",
+        [
+          "品牌整理",
+          "联名创意",
+          "质量检查"
+        ],
+        "SRC-GEMINI-REPORT｜用户提供的 Gemini 调研报告｜chars:1836-1865\n原报告结果分类「仅报告线索」按原文保留，非本次重新判定；原报告等级「AI 报告未附来源」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        null,
+        null,
+        "断言状态：待核验 5 条。事件、结果与研究解释分别保留。\n[C61-GEM-01｜事件｜unverified] 报告称合作发生于 2024 年。\n[C61-GEM-02｜事件｜unverified] 报告称产物包括特调咖啡、杯袋和 3D 光影海报。\n[C61-GEM-03｜结果｜unverified] 报告称开售当日周边售空，多地门店系统承压。\n[C61-GEM-04｜结果｜unverified] 报告表格称周边秒级售罄、瑞幸粉单市场单日涨幅超过 7%。\n[C61-GEM-05｜研究解释｜unverified] 报告将股价及男性客群激活归因于联名。"
+      ],
+      [
+        "名创优品 × Chiikawa",
+        "C62",
+        "名创优品",
+        "Chiikawa",
+        "零售商×IP／商品与快闪",
+        "未明确",
+        "中国；上海静安大悦城等",
+        [
+          "仅报告线索"
+        ],
+        [
+          "机制参考",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "超100款毛绒公仔与生活杂货；快闪店；直播销售",
+        "用平价零售供应链承接情感型 IP 需求，结合快闪与直播。",
+        "销售额、GMV和利润不可替代；三天累计的门店范围与客单价样本不清；品牌心智升级仍需测量",
+        null,
+        null,
+        null,
+        null,
+        "活动年份和日期；门店及直播销售原始披露；退货和净收入口径；授权与供应链成本；品牌认知变化证据",
+        [
+          "品牌整理",
+          "联名创意",
+          "质量检查"
+        ],
+        "SRC-GEMINI-REPORT｜用户提供的 Gemini 调研报告｜chars:2198-2239\n原报告结果分类「仅报告线索」按原文保留，非本次重新判定；原报告等级「AI 报告未附来源」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        null,
+        null,
+        "断言状态：待核验 4 条。事件、结果与研究解释分别保留。\n[C62-GEM-01｜事件｜unverified] 报告称在上海等地设快闪店，销售超过 100 款公仔和生活杂货。\n[C62-GEM-02｜结果｜unverified] 报告称单店 10 小时销售额超过 268 万元、三天累计超过 800 万元、客单价千元级。\n[C62-GEM-03｜结果｜unverified] 报告称同期线上直播间 GMV 达数百万元。\n[C62-GEM-04｜研究解释｜unverified] 报告推断项目获得巨大直接利润并推动品牌心智升级。"
+      ],
+      [
+        "肯德基 × 泡泡玛特／DIMOO",
+        "C63",
+        "KFC",
+        "泡泡玛特",
+        "餐饮品牌×潮玩IP／套餐与盲盒",
+        "未明确",
+        "中国",
+        [
+          "仅报告线索"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "家庭桶套餐；DIMOO盲盒；隐藏款机制",
+        "易腐食品与随机稀缺收藏机制耦合，可能使购买数量脱离食用需求。",
+        "通报批评、违法认定、监管命令与项目停止需分别核验；个别消费行为不能推成所有购买者行为；二手高价需区分挂牌与成交",
+        null,
+        null,
+        null,
+        null,
+        "活动日期及官方玩法；隐藏概率与套餐购买规则；中消协原文；叫停的主体、范围与文件；浪费与交易样本",
+        [
+          "联名创意",
+          "设计规格",
+          "质量检查"
+        ],
+        "SRC-GEMINI-REPORT｜用户提供的 Gemini 调研报告｜chars:4169-4207\n原报告结果分类「仅报告线索」按原文保留，非本次重新判定；原报告等级「AI 报告未附来源」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        null,
+        null,
+        "断言状态：待核验 5 条。事件、结果与研究解释分别保留。\n[C63-GEM-01｜事件｜unverified] 报告称套餐结合 DIMOO 盲盒，隐藏款概率为 1:72。\n[C63-GEM-02｜结果｜unverified] 报告称有人单次花费万元购上百份快餐，盲盒二手价格达到原价十余倍。\n[C63-GEM-03｜结果｜unverified] 报告称出现职业代吃与大量食物遗弃。\n[C63-GEM-04｜研究解释｜unverified] 报告称中消协通报批评，并以反食品浪费法倡导的共识解释风险。\n[C63-GEM-05｜结果｜unverified] 报告表格称盲盒食品模式被叫停。"
+      ],
+      [
+        "劳斯莱斯 × 晚晚及林瀚夫妇",
+        "C64",
+        "劳斯莱斯",
+        "晚晚；林瀚",
+        "品牌×人物／推广内容",
+        "未明确",
+        "大中华区",
+        [
+          "仅报告线索"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "品牌体验视频",
+        "人物推广中的既有用户身份认同边界，可能与新触达人群发生冲突。",
+        "少数公开意见不代表全部车主；作者对内部决策及品牌资产损失的判断未有证据；推广内容合作应与零售商品联名分类型",
+        null,
+        null,
+        null,
+        null,
+        "发布日期和原视频；官方撤回说明；评论样本与覆盖范围；内部决策依据；品牌态度及交易变化",
+        [
+          "品牌整理",
+          "文案创作",
+          "质量检查"
+        ],
+        "SRC-GEMINI-REPORT｜用户提供的 Gemini 调研报告｜chars:4744-4782\n原报告结果分类「仅报告线索」按原文保留，非本次重新判定；原报告等级「AI 报告未附来源」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        null,
+        null,
+        "断言状态：待核验 5 条。事件、结果与研究解释分别保留。\n[C64-GEM-01｜事件｜unverified] 报告称官方发布二人参与的品牌体验视频。\n[C64-GEM-02｜结果｜unverified] 报告转述一位企业家车主公开表达不再购买的意见。\n[C64-GEM-03｜结果｜unverified] 报告称品牌关闭评论并撤下视频。\n[C64-GEM-04｜研究解释｜unverified] 报告将事件原因归结为缺乏高净值客群压力测试和追求下沉流量。\n[C64-GEM-05｜研究解释｜unverified] 报告判断品牌格调发生实质性减损。"
+      ],
+      [
+        "喜茶 × 杜蕾斯",
+        "C65",
+        "喜茶",
+        "杜蕾斯",
+        "品牌×品牌／社交互动营销",
+        "2019",
+        "中国；微博",
+        [
+          "仅报告线索"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "互动海报；微博文案与评论",
+        "具体文字与品类联想可能引起食品感官和品牌预期冲突。",
+        "不把作者命名的规律当作既定心理学定律；不把具体文案事件推广为两类品牌绝不适合合作；社交互动不等同于已生产的联名商品",
+        null,
+        null,
+        null,
+        null,
+        "原始海报与互动记录；道歉原文及日期；受众反应样本；心理学理论来源；品牌或交易影响",
+        [
+          "联名创意",
+          "文案创作",
+          "质量检查"
+        ],
+        "SRC-GEMINI-REPORT｜用户提供的 Gemini 调研报告｜chars:5354-5382\n原报告结果分类「仅报告线索」按原文保留，非本次重新判定；原报告等级「AI 报告未附来源」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        null,
+        null,
+        "断言状态：待核验 5 条。事件、结果与研究解释分别保留。\n[C65-GEM-01｜事件｜unverified] 报告称双方于 2019 年进行社交互动营销。\n[C65-GEM-02｜事件｜unverified] 报告转述海报及喜茶跟评文案。\n[C65-GEM-03｜结果｜unverified] 报告称喜茶次日早晨道歉整改。\n[C65-GEM-04｜研究解释｜unverified] 报告提出所谓语义场契合规律作为解释框架。\n[C65-GEM-05｜研究解释｜unverified] 报告以必然的体液联想和感官错位解释反感。"
+      ],
+      [
+        "沪上阿姨 ×《光与夜之恋》",
+        "C66",
+        "沪上阿姨",
+        "《光与夜之恋》",
+        "茶饮品牌×游戏IP／未完成合作",
+        "未明确",
+        "中国",
+        [
+          "仅报告线索"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "拟议联名活动；预热物料；正式售品未明确",
+        "门店物料管理与面向 IP 社群的沟通执行可能影响合作存续。",
+        "角色辱骂、物料流出、终止时间及因果需分别核验；不能由部分员工行为推断全部门店；不能将整个圈层信任丧失当作可测事实；未发布或取消的产物不能写作正式售品",
+        null,
+        null,
+        null,
+        null,
+        "双方官宣及终止声明时间戳；涉事员工身份与事件核查；拟议产品及物料清单；培训和管理记录；受众态度样本",
+        [
+          "品牌整理",
+          "设计规格",
+          "质量检查"
+        ],
+        "SRC-GEMINI-REPORT｜用户提供的 Gemini 调研报告｜chars:5705-5741\n原报告结果分类「仅报告线索」按原文保留，非本次重新判定；原报告等级「AI 报告未附来源」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        null,
+        null,
+        "断言状态：待核验 5 条。事件、结果与研究解释分别保留。\n[C66-GEM-01｜结果｜unverified] 报告称游戏方于合作官宣 3 小时后宣布终止合作。\n[C66-GEM-02｜事件｜unverified] 报告称筹备期有加盟店员工违规转卖和提前流出物料。\n[C66-GEM-03｜事件｜unverified] 报告称有员工在社群侮辱角色及玩家。\n[C66-GEM-04｜研究解释｜unverified] 报告将事件归因于缺乏基层 SOP 培训和文化教育。\n[C66-GEM-05｜研究解释｜unverified] 报告判断品牌失去整个目标圈层的信任。"
+      ],
+      [
+        "Samsung × Supreme Italia",
+        "C67",
+        "Samsung",
+        "Supreme Italia",
+        "消费电子品牌×品牌主体／拟议合作",
+        "2018",
+        "中国",
+        [
+          "仅报告线索"
+        ],
+        [
+          "机制参考",
+          "风险反例",
+          "结果口径核对"
+        ],
+        [
+          "已整理可检索"
+        ],
+        [
+          "待核验"
+        ],
+        "新品发布会合作宣布；舞台品牌展示；零售产物未明确",
+        "合作主体与公众认知品牌不一致，凸显主体、商标及许可范围核验需求。",
+        "主体身份与商标合法性需按时间、地域、类别核验；不能直接继承恶意抢注、侵权等法律定性；宣布合作与最终零售交付须区分；取消与致歉是两项待核实事件",
+        null,
+        null,
+        null,
+        null,
+        "发布会及官方宣布；合作主体名称与注册记录；商标权利及相关裁判；官方取消和致歉原文；中介与尽调相关证据",
+        [
+          "品牌整理",
+          "文案创作",
+          "质量检查"
+        ],
+        "SRC-GEMINI-REPORT｜用户提供的 Gemini 调研报告｜chars:5967-6013\n原报告结果分类「仅报告线索」按原文保留，非本次重新判定；原报告等级「AI 报告未附来源」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。",
+        null,
+        null,
+        "断言状态：待核验 5 条。事件、结果与研究解释分别保留。\n[C67-GEM-01｜事件｜unverified] 报告称三星于 2018 年中国新品发布会宣布与 Supreme 合作。\n[C67-GEM-02｜研究解释｜unverified] 报告称实际合作主体为 Supreme Italia，并将其定性为恶意抢注的山寨公司。\n[C67-GEM-03｜结果｜unverified] 报告称三星随后取消合作。\n[C67-GEM-04｜研究解释｜unverified] 报告表格将事件归因于尽调缺位及轻信跨国中介。\n[C67-GEM-05｜结果｜unverified] 报告表格另称三星撤回合作并致歉。"
+      ]
+    ],
+    "field_id_list": [
+      "fldw0Qlxyd",
+      "fldwULLRef",
+      "fldwZV4s6L",
+      "fld0acWyLb",
+      "fldS2pSTXN",
+      "fldFzpNf3A",
+      "fldEPF6ewP",
+      "fldBXTmCAL",
+      "fldwHLxGsI",
+      "fldACWlbwh",
+      "fldl3PQmtP",
+      "fldRIpeHF9",
+      "fldphnG0uR",
+      "fldKzuv6yM",
+      "fldncptUpK",
+      "flde7Dz663",
+      "fldRyUcFhs",
+      "fldp32r3rJ",
+      "fldDrMVimc",
+      "fldMeiDNoL",
+      "fldS8bYZp7",
+      "fldENzfjYm",
+      "fldmBjpFHp",
+      "fldYzEbths"
+    ],
+    "fields": [
+      "案例名称",
+      "案例编号",
+      "品牌A",
+      "品牌B或合作方",
+      "合作类型",
+      "时间范围",
+      "主要市场",
+      "原报告结果分类",
+      "参考用途",
+      "研究处理状态",
+      "证据状态",
+      "案例产物",
+      "提取机制",
+      "风险与反面教训",
+      "示例任务",
+      "迁移做法",
+      "不宜照搬",
+      "适用约束",
+      "待补证",
+      "可供Skill",
+      "来源说明",
+      "来源链接",
+      "报告差异",
+      "证据摘要"
+    ],
+    "record_id_list": [
+      "recvuke3jY0dME",
+      "recvuke3jYGjFP",
+      "recvuke3jY3IbV",
+      "recvuke3jYBQ1v",
+      "recvuke3jYEWEL",
+      "recvuke3jY5GH3",
+      "recvuke3jY0J4J",
+      "recvuke3jYP9aj",
+      "recvuke3jYyACq",
+      "recvuke3jYOvfW",
+      "recvuke3jYdfp6",
+      "recvuke3jY7yTV",
+      "recvuke3jYMbeJ",
+      "recvuke3jYyisc",
+      "recvuke3jYFsJw",
+      "recvuke3jYuRT7",
+      "recvuke3jYD6xv",
+      "recvuke3jYgRec",
+      "recvuke3jYVeSr",
+      "recvuke3jYgYo8",
+      "recvuke3jYlsqN",
+      "recvuke3jYs9C2",
+      "recvuke3jYBmdj",
+      "recvuke3jYdeLN",
+      "recvuke3jYk8uq",
+      "recvuke3jYJMj3",
+      "recvuke3jYhdP2",
+      "recvuke3jYftjL",
+      "recvuke3jYugQ7",
+      "recvuke3jYF0Ov",
+      "recvuke3jYXmP9",
+      "recvuke3jYODWg",
+      "recvuke3jY1dDJ",
+      "recvuke3jY6ZDi",
+      "recvuke3jYkJzu",
+      "recvuke3jYg8cn",
+      "recvuke3jYVa5D",
+      "recvuke3jYYvJE",
+      "recvuke3jY9uSl",
+      "recvuke3jYeEcP",
+      "recvuke3jYac7M",
+      "recvuke3jYk1gj",
+      "recvuke3jYGplv",
+      "recvuke3jYgY05",
+      "recvuke3jYRIrL",
+      "recvuke3jYRmj6",
+      "recvuke3jY0irw",
+      "recvuke3jYNV1I",
+      "recvuke3jYRB4A",
+      "recvuke3jYf5Az",
+      "recvuke3jYpG2R",
+      "recvuke3jYOJ97",
+      "recvuke3jYUesY",
+      "recvuke3jYohBk",
+      "recvuke3jYADMd",
+      "recvuke3jY2jk0",
+      "recvuke3jYfHRY",
+      "recvuke3jYF3Bu",
+      "recvuke3jYA1pz",
+      "recvuke3jYlNC5",
+      "recvuke3jYLmEw",
+      "recvuke3jYNt3T"
+    ],
+    "timezone": "Asia/Hong_Kong"
+  }
+}

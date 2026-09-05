@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "1.0",
+  "brands": [
+    {
+      "brandId": "demo-coffee",
+      "name": "早八咖啡（虚构）",
+      "claims": [
+        {
+          "id": "coffee-claim-01",
+          "text": "演示设定：面向通勤人群的社区咖啡店。",
+          "provenance": "assumption"
+        },
+        {
+          "id": "coffee-claim-02",
+          "text": "演示设定：表达清爽、直接，重视日常购买场景。",
+          "provenance": "assumption"
+        }
+      ],
+      "resources": [
+        {
+          "id": "coffee-resource-01",
+          "label": "现有无图案纸杯",
+          "status": "declared",
+          "description": "仅为演示假设，已有杯型不能改变。"
+        },
+        {
+          "id": "coffee-resource-02",
+          "label": "店内数字屏幕",
+          "status": "declared",
+          "description": "仅为演示假设，可展示活动数字海报。"
+        }
+      ]
+    },
+    {
+      "brandId": "demo-bookstore",
+      "name": "留白书店（虚构）",
+      "claims": [
+        {
+          "id": "book-claim-01",
+          "text": "演示设定：提供主题选书与周末阅读体验的独立书店。",
+          "provenance": "assumption"
+        }
+      ],
+      "resources": [
+        {
+          "id": "book-resource-01",
+          "label": "主题选书清单",
+          "status": "declared",
+          "description": "仅为演示假设，可提供数字文字内容。"
+        },
+        {
+          "id": "book-resource-02",
+          "label": "店内阅读区",
+          "status": "declared",
+          "description": "仅为演示假设，可组织小规模阅读活动。"
+        }
+      ]
+    }
+  ],
+  "goal": "演示目标：增加周末到店，让咖啡与主题阅读形成具体关联。",
+  "constraints": [
+    {
+      "id": "rule-no-gift-box",
+      "level": "hard",
+      "kind": "no_gift_box",
+      "text": "不制作礼盒。"
+    },
+    {
+      "id": "rule-keep-cup",
+      "level": "hard",
+      "kind": "custom",
+      "text": "使用现有纸杯杯型，不改变杯型。"
+    }
+  ],
+  "stylePackId": "warm-editorial",
+  "deliverables": [
+    "hero",
+    "poster",
+    "copy"
+  ]
+}

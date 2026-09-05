@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "按断言列出状态与核验范围，原报告标签不自动升级为事实。",
+      "id": "fldYzEbths",
+      "name": "证据摘要",
+      "style": {
+        "type": "plain"
+      },
+      "type": "text"
+    }
+  }
+}

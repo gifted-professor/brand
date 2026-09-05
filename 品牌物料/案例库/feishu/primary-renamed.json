@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "field": {
+      "default_value": null,
+      "description": "历史合作项目名称。研究案例不代表本团队已经完成商业合作或视觉成品。",
+      "id": "fldw0Qlxyd",
+      "name": "案例名称",
+      "style": {
+        "type": "plain"
+      },
+      "type": "text"
+    },
+    "updated": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "record": {
+      "update": {
+        "全部来源链接": "【原报告链接，未逐条核查】www.ikea.com\nhttps://www.ikea.com/global/en/newsroom/collaborations/ikea-and-sonos-shine-a-new-light-on-sound-190408/\n\n【原报告链接，未逐条核查】www.theverge.com\nhttps://www.theverge.com/news/661491/sonos-ikea-symfonisk-discontinued",
+        "来源核查状态": [
+          "仅原报告链接（未逐条核查）"
+        ],
+        "来源核查说明": "已完整恢复原报告所附外部链接。本轮尚未逐条读取这些页面，不能据此认定链接有效或全部案例事实已核验；原报告出处保留在“来源说明”。"
+      }
+    },
+    "updated": true
+  }
+}

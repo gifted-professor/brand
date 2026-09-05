@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "record": {
+      "update": {
+        "全部来源链接": "【已读正文】界面新闻JMedia，转载ACGx｜2022-01-13T11:06:00+08:00｜联动泡泡玛特DIMOO，肯德基“饿死”盲盒粉丝\nhttps://www.jiemian.com/article/7008036.html\n\n【报告链接，尚未逐页核查】www.playstationlifestyle.net\nhttps://www.playstationlifestyle.net/2021/03/15/genshin-impact-kfc-collaboration-cancelled/\n\n【报告链接，尚未逐页核查】www.globaltimes.cn\nhttps://www.globaltimes.cn/page/202103/1218334.shtml",
+        "来源核查状态": [
+          "已读外部正文（限定范围）"
+        ],
+        "来源核查说明": "用户补充清单逐页核查：\nGS25｜已读正文｜联动泡泡玛特DIMOO，肯德基“饿死”盲盒粉丝\n界面新闻JMedia，转载ACGx｜2022-01-13T11:06:00+08:00\n支持范围：正文转述中消协意见及套餐、盲盒机制，并描述KFC×DIMOO限定形象与套餐/会员卡活动。；文章以KFC×原神的线下体验作比较，给出对联名组织方式的作者分析。\n局限：文末明确转载，作者为ACGx，不是界面记者独立通报；协会意见数字与GS23等同源。；“赌博属性”“饥饿营销”及活动优劣是作者评价，不是法律裁定；不支持监管处罚、总体弃餐量或合作利润损失。\n核查结论：文章相关但属于评论，原标题并非提供的通报名称，也不是GS26的同一篇文章。\nhttps://www.jiemian.com/article/7008036.html",
+        "来源说明": "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/57\n原报告结果分类「风险与混合结果」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。\n用户补充的41条引用清单：GS25；原始归类和标题与实际页面分别保留，详见“补充来源核查”表。",
+        "来源链接": "[https://www.jiemian.com/article/7008036.html](https://www.jiemian.com/article/7008036.html)"
+      }
+    },
+    "updated": true
+  }
+}

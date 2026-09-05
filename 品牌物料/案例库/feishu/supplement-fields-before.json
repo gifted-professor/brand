@@ -1,0 +1,394 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "fields": [
+      {
+        "default_value": null,
+        "description": "GPT 与 Gemini 尚未解决的证据、时间或口径差异，不是已判定报告错误。",
+        "id": "fldmBjpFHp",
+        "name": "报告差异",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "原报告描述的项目时间范围，不是本次核验日期。",
+        "id": "fldFzpNf3A",
+        "name": "时间范围",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "已读来源的标题、发布者、日期、支持范围和局限；未读取的原报告链接明确标注。",
+        "id": "fldOhpbigV",
+        "name": "来源核查说明",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "原案例其他参与方，可能涉及品牌、IP、设计师或组织。",
+        "id": "fld0acWyLb",
+        "name": "品牌B或合作方",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "保留原资料的合作模式，区分联名、授权、渠道联盟、技术共研等。",
+        "id": "fldS2pSTXN",
+        "name": "合作类型",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "按断言列出状态与核验范围，原报告标签不自动升级为事实。",
+        "id": "fldYzEbths",
+        "name": "证据摘要",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "本次研究给案例的用途标签，不是商业成败裁决。",
+        "id": "fldwHLxGsI",
+        "multiple": true,
+        "name": "参考用途",
+        "options": [
+          {
+            "hue": "Blue",
+            "lightness": "Lighter",
+            "name": "机制参考"
+          },
+          {
+            "hue": "Orange",
+            "lightness": "Lighter",
+            "name": "结果口径核对"
+          },
+          {
+            "hue": "Red",
+            "lightness": "Lighter",
+            "name": "风险反例"
+          }
+        ],
+        "type": "select"
+      },
+      {
+        "default_value": null,
+        "description": "本次试用提取的可迁移假设，需结合当前 brief 和资源确认。",
+        "id": "flde7Dz663",
+        "name": "迁移做法",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "本地案例库稳定编号，导入查重依据。",
+        "id": "fldwULLRef",
+        "name": "案例编号",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "原报告描述的市场范围。",
+        "id": "fldEPF6ewP",
+        "name": "主要市场",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "未公开或尚未核对的数据、成本、利润、权利和因果证据。",
+        "id": "fldDrMVimc",
+        "name": "待补证",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "本轮实际核验状态。只有 C01 的指定历史销售披露有官网支持，其余仍待核验。",
+        "id": "fldl3PQmtP",
+        "multiple": false,
+        "name": "证据状态",
+        "options": [
+          {
+            "hue": "Green",
+            "lightness": "Lighter",
+            "name": "部分断言有来源支持"
+          },
+          {
+            "hue": "Orange",
+            "lightness": "Lighter",
+            "name": "待核验"
+          }
+        ],
+        "type": "select"
+      },
+      {
+        "default_value": null,
+        "description": "保留报告的全部外部链接，并补充本轮读取的案例来源；每条注明读取或待查属性。",
+        "id": "fldynJy6Li",
+        "name": "全部来源链接",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "资料所属报告、来源家族和定位；同源转述不算独立核验。",
+        "id": "fldS8bYZp7",
+        "name": "来源说明",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "历史合作项目名称。研究案例不代表本团队已经完成商业合作或视觉成品。",
+        "id": "fldw0Qlxyd",
+        "name": "案例名称",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "原案例参与方，不代表已确认的本项目合作方。",
+        "id": "fldwZV4s6L",
+        "name": "品牌A",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "已实际试用的研究场景；不等于已确认的真实品牌项目。",
+        "id": "fldncptUpK",
+        "name": "示例任务",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "沿用报告分类，不能替代本库逐条核验；销售表现不等于双方盈利。",
+        "id": "fldBXTmCAL",
+        "multiple": false,
+        "name": "原报告结果分类",
+        "options": [
+          {
+            "hue": "Blue",
+            "lightness": "Lighter",
+            "name": "销售表现有据"
+          },
+          {
+            "hue": "Blue",
+            "lightness": "Lighter",
+            "name": "产品机制参考"
+          },
+          {
+            "hue": "Blue",
+            "lightness": "Lighter",
+            "name": "合作延续有据"
+          },
+          {
+            "hue": "Blue",
+            "lightness": "Lighter",
+            "name": "风险与混合结果"
+          },
+          {
+            "hue": "Blue",
+            "lightness": "Lighter",
+            "name": "商业受挫"
+          },
+          {
+            "hue": "Blue",
+            "lightness": "Lighter",
+            "name": "仅报告线索"
+          }
+        ],
+        "type": "select"
+      },
+      {
+        "default_value": null,
+        "description": "已跑通指本地检索、资料包生成、迁移分析或数字审核；不表示真实生图或商业落地。",
+        "id": "fldACWlbwh",
+        "multiple": false,
+        "name": "研究处理状态",
+        "options": [
+          {
+            "hue": "Blue",
+            "lightness": "Lighter",
+            "name": "已跑通证据包生成"
+          },
+          {
+            "hue": "Gray",
+            "lightness": "Lighter",
+            "name": "已整理可检索"
+          },
+          {
+            "hue": "Purple",
+            "lightness": "Lighter",
+            "name": "已跑通数字审核"
+          },
+          {
+            "hue": "Green",
+            "lightness": "Lighter",
+            "name": "已跑通迁移分析"
+          }
+        ],
+        "type": "select"
+      },
+      {
+        "default_value": null,
+        "description": "研究分析：双方资源如何形成消费者价值，不能直接当作因果证明。",
+        "id": "fldphnG0uR",
+        "name": "提取机制",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "区分已读取外部正文、仅原报告链接、尚缺外部链接；页面已读取不等于案例内全部数字或因果已核验。",
+        "id": "fldloancLV",
+        "multiple": false,
+        "name": "来源核查状态",
+        "options": [
+          {
+            "hue": "Blue",
+            "lightness": "Lighter",
+            "name": "已读外部正文（限定范围）"
+          },
+          {
+            "hue": "Blue",
+            "lightness": "Lighter",
+            "name": "仅原报告链接（未逐条核查）"
+          }
+        ],
+        "type": "select"
+      },
+      {
+        "default_value": null,
+        "description": "优先显示已经读取正文的案例来源；全部链接见“全部来源链接”，具体读取情况见“来源核查状态”和“来源核查说明”。",
+        "id": "fldENzfjYm",
+        "name": "来源链接",
+        "style": {
+          "type": "url"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "历史产物线索，真实性以证据摘要为准，不能自动成为当前可用素材。",
+        "id": "fldRIpeHF9",
+        "name": "案例产物",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "资料可供哪些能力参考，不代表这些能力都已在此案例上实际执行。",
+        "id": "fldMeiDNoL",
+        "multiple": true,
+        "name": "可供Skill",
+        "options": [
+          {
+            "hue": "Blue",
+            "lightness": "Lighter",
+            "name": "品牌整理"
+          },
+          {
+            "hue": "Blue",
+            "lightness": "Lighter",
+            "name": "联名创意"
+          },
+          {
+            "hue": "Blue",
+            "lightness": "Lighter",
+            "name": "质量检查"
+          },
+          {
+            "hue": "Blue",
+            "lightness": "Lighter",
+            "name": "设计规格"
+          },
+          {
+            "hue": "Blue",
+            "lightness": "Lighter",
+            "name": "视觉制作"
+          },
+          {
+            "hue": "Blue",
+            "lightness": "Lighter",
+            "name": "文案创作"
+          }
+        ],
+        "type": "select"
+      },
+      {
+        "default_value": null,
+        "description": "历史案例与示例任务的差异，含不能直接沿用的物料、数字或能力。",
+        "id": "fldRyUcFhs",
+        "name": "不宜照搬",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "示例中的硬条件及待确认条件，不给其他项目自动增加限制。",
+        "id": "fldp32r3rJ",
+        "name": "适用约束",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "description": "报告风险解释与反例线索；历史风险不自动构成当前项目结论。",
+        "id": "fldKzuv6yM",
+        "name": "风险与反面教训",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      }
+    ],
+    "total": 27
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "历史案例与示例任务的差异，含不能直接沿用的物料、数字或能力。",
+      "id": "fldRyUcFhs",
+      "name": "不宜照搬",
+      "style": {
+        "type": "plain"
+      },
+      "type": "text"
+    }
+  }
+}

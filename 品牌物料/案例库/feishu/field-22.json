@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "GPT 与 Gemini 尚未解决的证据、时间或口径差异，不是已判定报告错误。",
+      "id": "fldmBjpFHp",
+      "name": "报告差异",
+      "style": {
+        "type": "plain"
+      },
+      "type": "text"
+    }
+  }
+}

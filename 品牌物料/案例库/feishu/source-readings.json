@@ -1,0 +1,419 @@
+[
+  {
+    "caseId": "C61",
+    "sources": [
+      {
+        "title": "瑞幸和游戏《黑神话：悟空》联名，高层说“比10个父亲节靠谱”",
+        "url": "https://www.jiemian.com/article/11577663.html",
+        "publisher": "界面新闻（赵晓娟）",
+        "publishedAt": "2024-08-19",
+        "kind": "media_original_reporting",
+        "readAt": "2026-09-05T06:47:55.525005+00:00",
+        "supports": [
+          "正文已读取：2024年8月19日联名美式上线，套餐配限量海报光栅卡和联名杯套；报道含记者在北京门店小程序的点单观察。",
+          "报道记录品牌补货通知；记者当晚向瑞幸询问时，品牌尚未提供该联名首日销量。"
+        ],
+        "limitations": [
+          "媒体报道与品牌回应不等于独立销售审计；未取得全国库存基数、最终销量、项目利润或长期复购。",
+          "不能据此支持股价变化由联名导致、男性新客规模或性别群体消费惯性等因果概括；也未核验全部原报告断言。"
+        ],
+        "sourceId": "SRC-CASE-C61-20260905-01"
+      }
+    ]
+  },
+  {
+    "caseId": "C62",
+    "sources": [
+      {
+        "title": "2024年Q1财报电话会议讲稿（MINISO March Quarter 2024）",
+        "url": "https://filecache.investorroom.com/mr5ir_miniso/317/MINISO%202024%20Mar%20Quarter%20Transcript.pdf",
+        "publisher": "名创优品投资者关系",
+        "publishedAt": "2024-05-14",
+        "kind": "web_primary_corporate_disclosure",
+        "readAt": "2026-09-05T06:47:55.525005+00:00",
+        "supports": [
+          "已读取PDF第6页：管理层确认2024年3月底首发Chiikawa合作，并将其列为当期IP合作项目。",
+          "官方季度资料目录将该会议讲稿列在2024-05-14的March Quarter of 2024条目下；支持日期与企业披露出处。"
+        ],
+        "limitations": [
+          "管理层对热度、能力提升和标杆效果的评价为企业自述，不等于独立证实的品牌心智提升或因果。",
+          "该段未给出联名独立收入、利润、退货、三日累计门店范围或客单价；集团财务数字不能替代本项目经济账。"
+        ],
+        "sourceId": "SRC-CASE-C62-20260905-01"
+      },
+      {
+        "title": "中国品牌授权市场吸引日本动漫IP目光",
+        "url": "https://www.news.cn/20240401/b936011ca110442b891c2373b1e16216/c.html",
+        "publisher": "新华网（记者潘清）",
+        "publishedAt": "2024-04-01",
+        "kind": "media_original_reporting",
+        "readAt": "2026-09-05T06:47:55.525005+00:00",
+        "supports": [
+          "已读取正文：合作在上海静安大悦城开展主题快闪，推出逾100款联名产品；报道记载3月29日首日10小时销售额为人民币268万元。",
+          "报道给出上海首站持续至4月21日的安排，并记录后续其他城市快闪计划。"
+        ],
+        "limitations": [
+          "268万元仅为该报道的首日特定窗口销售口径，不能替换原报告三日累计、全国或直播数据。",
+          "正文未提供审计、净收入、退货、授权费、利润或品牌认知测量；计划中的后续活动不代表已经执行。"
+        ],
+        "sourceId": "SRC-CASE-C62-20260905-02"
+      }
+    ]
+  },
+  {
+    "caseId": "C63",
+    "sources": [
+      {
+        "title": "联名盲盒“引火”肯德基",
+        "url": "https://epaper.ifnews.com/img/papers/gjjrb/paper/gjjrb/images/2022-01/17/11/gjjrb2022011711.pdf",
+        "publisher": "国际金融报（记者马云飞、蔡淑敏）",
+        "publishedAt": "2022-01-17",
+        "kind": "media_original_reporting",
+        "readAt": "2026-09-05T06:47:55.525005+00:00",
+        "supports": [
+          "已读取报纸第11版：报道转述肯德基官微信息，1月4日10:30起指定99元家庭桶搭配随机KFC×DIMOO手办；系列含6常规款和1隐藏款。",
+          "报道记录全国计划限量263880份及隐藏款1:72的规则，并有记者访问上海门店的记录。"
+        ],
+        "limitations": [
+          "数量和规则为媒体转述官方信息；本次没有取得原活动规则页面，不把限量供应计划当实际销量。",
+          "单店售罄与个别代吃样本不能外推全部门店或消费者；二手报价不等于成交。未提供行政叫停、处罚、损失或利润证据。"
+        ],
+        "sourceId": "SRC-CASE-C63-20260905-01"
+      },
+      {
+        "title": "“盲盒”诱导食品过度消费当抵制",
+        "url": "https://cpc.people.com.cn/n1/2022/0113/c64387-32330256.html",
+        "publisher": "人民网－人民日报（齐志明，2022年1月13日第10版）",
+        "publishedAt": "2022-01-13",
+        "kind": "media_reporting_institutional_statement",
+        "readAt": "2026-09-05T06:47:55.525005+00:00",
+        "supports": [
+          "已读取正文：人民日报报道中消协于2022年1月12日就肯德基与泡泡玛特联名盲盒套餐发表反对诱导食品过量消费的观点。",
+          "可支持“中消协曾公开批评并倡导抵制该促销方式”的机构表态事实。"
+        ],
+        "limitations": [
+          "这是人民日报对中消协观点的报道，并非本次直接读取的中消协原文。",
+          "观点和抵制倡议不等于法院违法认定、行政处罚、监管命令或项目被叫停；未证明浪费总量或所有购买者行为。"
+        ],
+        "sourceId": "SRC-CASE-C63-20260905-02"
+      }
+    ]
+  },
+  {
+    "caseId": "C64",
+    "sources": [
+      {
+        "title": "劳斯莱斯宣传片请“网红”夫妻出镜，王思聪留言：很low，以后不买了！公司回应了……",
+        "url": "https://www.nbd.com.cn/articles/2021-10-15/1947574.html",
+        "publisher": "每日经济新闻（每经网）",
+        "publishedAt": "2021-10-15T14:33:54+08:00",
+        "kind": "web_secondary",
+        "readAt": "2026-09-05T06:47:17+00:00",
+        "supports": [
+          "正文“劳斯莱斯宣传视频请网红出镜”部分记载晚晚（雷宛萤）与林瀚参与劳斯莱斯宣传/试驾视频；支持此推广案例存在。",
+          "正文“对于这番风波”部分转述劳斯莱斯中国 2021 年 10 月 14 日官微回复：品牌决定将相关试驾视频下线。",
+          "报道记录视频引发争议及部分评论；只能表述为报道中的舆情事件。"
+        ],
+        "limitations": [
+          "实际读取的是新闻正文及其转述文字，未成功读取品牌官方微博原帖；来源不能标为品牌原始披露。",
+          "不证明夫妇是签约代言人，不支持推断车主整体态度、退订、销量下降、品牌资产损失或事件因果。",
+          "品牌回复文字支持“回应并决定下线”，不应扩写成承认违法或正式道歉。初次视频发布日期不同报道存在口径差异，本次不核准首次发布时间。文内美术馆及人物其他争议信息不纳入本次支持范围。"
+        ],
+        "sourceId": "SRC-CASE-C64-20260905-01"
+      }
+    ]
+  },
+  {
+    "caseId": "C65",
+    "sources": [
+      {
+        "title": "杜蕾斯和喜茶的419营销翻车了",
+        "url": "https://www.jiemian.com/article/3059884.html",
+        "publisher": "界面新闻（记者刘雨静）",
+        "publishedAt": "2019-04-20T15:30:00+08:00",
+        "kind": "web_secondary",
+        "readAt": "2026-09-05T06:47:17+00:00",
+        "supports": [
+          "正文以“4月19日”开头的段落记载杜蕾斯与喜茶在微博进行互动营销，并描述原始文案与海报；支持 2019 年 4 月 19 日的社交联动存在。",
+          "正文“在收获社交媒体大量差评之后”段落记载杜蕾斯更换联动文案/海报，喜茶于 4 月 20 日发布道歉信。"
+        ],
+        "limitations": [
+          "实际读取了界面新闻全文，发布日期亦读取自原页 HTML 的时间字段；未直接读取两品牌原始微博，属于媒体报道。",
+          "报道中的“低俗”“翻车”等为作者评价，不作为监管或法律认定。本文不能支持销售损失、舆情规模、长期品牌损害、处罚金额或因果证明。",
+          "本来源核验的是 2019 年微博联动，不据此认定存在当次实体联名新品，也不把具体文案争议升级为全部品类合作的禁止规则。"
+        ],
+        "sourceId": "SRC-CASE-C65-20260905-01"
+      }
+    ]
+  },
+  {
+    "caseId": "C66",
+    "sources": [
+      {
+        "title": "沪上阿姨与手游《光与夜之恋》合作翻车，是“百日千店”惹的祸？",
+        "url": "https://static.cdsb.com/micropub/Articles/202212/4f8e8ec8011a9dd383a91b63ef2315fb.html",
+        "publisher": "红星新闻／红星资本局",
+        "publishedAt": "2022-12-19T16:28:00+08:00",
+        "kind": "web_secondary",
+        "readAt": "2026-09-05T06:47:17+00:00",
+        "supports": [
+          "正文首段记载：2022 年 12 月 14 日下午 3 点，《光与夜之恋》官方微博宣布停止与沪上阿姨的联动合作，距官宣约三小时。",
+          "正文第二段记载原计划 12 月 17 日开售，物料包括角色纸杯、明信片、头像框、纸袋；须标为原计划产物，不能表述为已经完成的正式发售。",
+          "正文随后转述游戏方关于提前泄露物料、私售赠品及员工言论的说明，并记载沪上阿姨 12 月 14 日晚发致歉声明及称涉事门店已辞退员工。"
+        ],
+        "limitations": [
+          "实际读取报道全文，原始官方微博未直接读取；游戏方指控和沪上阿姨处置声明需要保留各自主体归属。",
+          "不能将截图中的言语威胁推断为已发生食品污染；不能认定违约或违法，也不能据此核准经济损失。",
+          "题目及正文把扩张速度与管理问题联系起来属于报道分析，不是因果验证；不能把少数采访者代表为全部玩家。"
+        ],
+        "sourceId": "SRC-CASE-C66-20260905-01"
+      }
+    ]
+  },
+  {
+    "caseId": "C67",
+    "sources": [
+      {
+        "title": "三星正式宣布停止与Supreme Italia合作",
+        "url": "https://www.ithome.com/0/408/354.htm",
+        "publisher": "IT之家（作者阿迷）",
+        "publishedAt": "2019-02-03T13:17:30+08:00",
+        "kind": "web_secondary",
+        "readAt": "2026-09-05T06:47:17+00:00",
+        "supports": [
+          "正文首段记载：三星于 2018 年 12 月 10 日 Galaxy A8s 中国发布会宣布与 Supreme Italia 的合作；2019 年 2 月 3 日三星 GALAXY 盖乐世官方微博称已停止该合作。",
+          "正文转述三星营销人员澄清合作对象为 Supreme Italia 而非美国 Supreme；可作为合作主体辨别的报道线索。",
+          "文章提及 2018 年 12 月的重新评估后续节点；本次主要核验公告合作及终止的事件链。"
+        ],
+        "limitations": [
+          "实际读取新闻全文，未直接读取三星原始微博或商标/许可文件；属于媒体转述。",
+          "文中对真假品牌、各地区商标及销售授权的描述不在本次核准范围；不继承“山寨”“合法假货”等法律定性，不推断侵权成立。",
+          "不能从计划合作推出实际联名产品已经发售，也不能由取消合作证明销售损失或其原因；报道对品牌价格与市场覆盖的泛化不作为可靠事实使用。"
+        ],
+        "sourceId": "SRC-CASE-C67-20260905-01"
+      }
+    ]
+  },
+  {
+    "caseId": "C11",
+    "sources": [
+      {
+        "title": "2017 Record results",
+        "url": "https://www.lvmh.com/en/publications/2017-record-results",
+        "publisher": "LVMH",
+        "publishedAt": "2018-01-25",
+        "kind": "official_disclosure",
+        "readAt": "2026-09-05T06:47:39Z",
+        "supports": [
+          "2017 年 Louis Vuitton 与 Supreme 推出合作新品；年度业绩稿 Fashion and Leather Goods 段落将该合作列为当年关键事件。"
+        ],
+        "limitations": [
+          "未披露该联名独立收入、利润或毛利，不能支持“直营销售额超过 1 亿美元”。集团或业务集团全年收入不能代替单次合作收入。",
+          "该页不逐项列全产物，也不能证明万人排队或十倍二手溢价。"
+        ],
+        "sourceId": "SRC-CASE-C11-20260905-01"
+      },
+      {
+        "title": "Louis Vuitton x Supreme Is Not Cancelled (Update)",
+        "url": "https://www.gq.com/story/louis-vuitton-x-supreme-is-not-cancelled",
+        "publisher": "GQ",
+        "publishedAt": "2017-07-14",
+        "kind": "media_report",
+        "readAt": "2026-09-05T06:47:39Z",
+        "supports": [
+          "正文确认 2017 年 6 月 30 日全球快闪发售，并提到皮具、鞋与服饰。",
+          "7 月 14 日更新记载快闪后 VIP 客户购货；不支持“完全跳过常规零售渠道”的绝对表述。"
+        ],
+        "limitations": [
+          "媒体报道，不是完整渠道或销量审计；未证实 1 亿美元直营收入、万人排队或最高十倍溢价。",
+          "文中是否已售完库存的说法为推测，不作为已核验事实。"
+        ],
+        "sourceId": "SRC-CASE-C11-20260905-02"
+      }
+    ]
+  },
+  {
+    "caseId": "C23",
+    "sources": [
+      {
+        "title": "GoPro and Red Bull Form Exclusive Global Partnership",
+        "url": "https://gopro.com/en/sa/news/gopro-and-red-bull-form-exclusive-global-partnership",
+        "publisher": "GoPro",
+        "publishedAt": "2016-05-23",
+        "kind": "official_press_release",
+        "readAt": "2026-09-05T06:47:39Z",
+        "supports": [
+          "正文宣布多年全球合作，范围含内容制作、分发、联合推广及产品创新；Red Bull 获 GoPro 股权。",
+          "GoPro 提供第一视角影像技术；双方共享联合制作内容权利，并通过各自数字渠道分发。"
+        ],
+        "limitations": [
+          "页面显示日期为 2016-05-23，正文新闻稿日期为 2016-05-24；应保留两种日期含义。",
+          "1800 多场活动及 100 多国是协议可触达范围，不是实际观看、设备销量或已完成拍摄数量。"
+        ],
+        "sourceId": "SRC-CASE-C23-20260905-01"
+      },
+      {
+        "title": "GoPro and Red Bull Form Exclusive Global Partnership",
+        "url": "https://www.prnewswire.com/news-releases/gopro-and-red-bull-form-exclusive-global-partnership-300273533.html",
+        "publisher": "GoPro, Inc.（PR Newswire 发布）",
+        "publishedAt": "2016-05-24",
+        "kind": "syndicated_official_press_release",
+        "readAt": "2026-09-05T06:47:39Z",
+        "supports": [
+          "GoPro 提供的新闻稿发布日期为 2016-05-24；正文确认多年合作、股权关系、内容权与双边分发安排。"
+        ],
+        "limitations": [
+          "与 GoPro 官网属于同一新闻稿来源家族，不能计作第二份独立验证。",
+          "只确认协议披露，不证明实际合作产量、增量触达、收入或成本。"
+        ],
+        "sourceId": "SRC-CASE-C23-20260905-02"
+      }
+    ]
+  },
+  {
+    "caseId": "C24",
+    "sources": [
+      {
+        "title": "Spotify Is Turning Starbucks Baristas Into Coffee Shop DJs",
+        "url": "https://www.wired.com/2015/05/starbucks-spotify/",
+        "publisher": "WIRED",
+        "publishedAt": "2015-05-18",
+        "kind": "media_report",
+        "readAt": "2026-09-05T06:47:39Z",
+        "supports": [
+          "确认双方于 2015 年宣布合作，计划提供员工 Spotify Premium、参与门店选曲，并让消费者离店后继续听 Starbucks 歌单。"
+        ],
+        "limitations": [
+          "这是宣布阶段报道，计划不等于全部按期落地；不证明新增订阅、回店率或增量消费。"
+        ],
+        "sourceId": "SRC-CASE-C24-20260905-01"
+      },
+      {
+        "title": "Starbucks and Spotify Team Up; Anthony Bourdain on Food and Sex",
+        "url": "https://www.eater.com/2016/1/19/10790344/starbucks-spotify-anthony-bourdain-food-sex",
+        "publisher": "Eater",
+        "publishedAt": "2016-01-19",
+        "kind": "media_report",
+        "readAt": "2026-09-05T06:47:39Z",
+        "supports": [
+          "正文第一条新闻确认 Starbucks 应用可识别店内歌曲并保存至 Spotify 账号，报道当天在美国推出。"
+        ],
+        "limitations": [
+          "报道援引品牌新闻稿及 The Verge；本次品牌旧新闻稿未能打开。此页能支持功能落地，不是使用人数或转化效果数据。"
+        ],
+        "sourceId": "SRC-CASE-C24-20260905-02"
+      },
+      {
+        "title": "Music: Starbucks Coffee Company",
+        "url": "https://www.starbucks.com/rewards/music/",
+        "publisher": "Starbucks",
+        "publishedAt": null,
+        "kind": "official_product_page",
+        "readAt": "2026-09-05T06:47:39Z",
+        "supports": [
+          "当前官方音乐页将精选歌单引向 Starbucks 的 Spotify 主页，确认歌单渠道联系。"
+        ],
+        "limitations": [
+          "页面未显示发布日期，且是当前页面；不能独立证明 2015—2016 年每项历史功能或其持续情况。",
+          "原候选 The Drum 链接本次打开返回 Internal Error，未将其计入已读取正文来源。"
+        ],
+        "sourceId": "SRC-CASE-C24-20260905-03"
+      }
+    ]
+  },
+  {
+    "caseId": "C47",
+    "sources": [
+      {
+        "title": "乐乐茶：侵害了鲁迅先生肖像权，郑重道歉",
+        "url": "https://www.jfdaily.com/wx/detail.do?id=744161",
+        "publisher": "上观新闻／解放日报",
+        "publishedAt": "2024-04-29",
+        "kind": "media_report",
+        "readAt": "2026-09-05T06:47:39Z",
+        "supports": [
+          "报道确认 2024 年世界读书日乐乐茶与译林出版社推出“烟腔乌龙”，现场有鲁迅图像海报、杯身及周边。",
+          "报道记载乐乐茶向鲁迅及其亲属、鲁迅文化基金会致歉。"
+        ],
+        "limitations": [
+          "标题所称肖像权及 2024 年致歉不等于 2026 年图像著作权判决；正文中的致歉全文主要以图片展示。",
+          "不支持法院完整判决、全部授权链或项目经济损失。"
+        ],
+        "sourceId": "SRC-CASE-C47-20260905-01"
+      },
+      {
+        "title": "乐乐茶向鲁迅画像作者致歉！此前与译林推联名奶茶致敬鲁迅引争议，鲁迅家属怒发律师函",
+        "url": "https://m.gmw.cn/2026-03/13/content_1304375087.htm",
+        "publisher": "光明网（来源：锦观新闻）",
+        "publishedAt": "2026-03-13",
+        "kind": "media_republication",
+        "readAt": "2026-09-05T06:47:39Z",
+        "supports": [
+          "转载乐乐茶 2026 年致歉声明：其称法院认定相关图像使用侵害杨之光家属及鸥洋的著作权相关权益。",
+          "回顾合作饮品及带鲁迅图像的小册子、立牌、纸袋；记载停止相关宣传、销售及回收措施。"
+        ],
+        "limitations": [
+          "属于媒体转述当事方声明，本次未取得判决全文、案号、裁判日期或赔偿金额。",
+          "应与 2024 年家属反对及肖像权争议分别记入时间线；转载来源不作为独立判决验证。"
+        ],
+        "sourceId": "SRC-CASE-C47-20260905-02"
+      }
+    ]
+  },
+  {
+    "caseId": "C60",
+    "sources": [
+      {
+        "title": "Apple & U2 Release “Songs of Innocence” Exclusively for iTunes Store Customers",
+        "url": "https://www.apple.com/newsroom/2014/09/09Apple-U2-Release-Songs-of-Innocence-Exclusively-for-iTunes-Store-Customers/",
+        "publisher": "Apple",
+        "publishedAt": "2014-09-09",
+        "kind": "official_press_release",
+        "readAt": "2026-09-05T06:47:39Z",
+        "supports": [
+          "确认 Apple、Universal Music Group 与 U2 于 2014-09-09 发布《Songs of Innocence》，向符合条件的 iTunes Store 账号赠送专辑。"
+        ],
+        "limitations": [
+          "官方所称赠送／分发规模不是实际收听、主动领取、满意度或购买量；本页不证明用户反感或移除率。"
+        ],
+        "sourceId": "SRC-CASE-C60-20260905-01"
+      },
+      {
+        "title": "Apple Launches Site to Help You Remove the U2 Album From Your iTunes",
+        "url": "https://pitchfork.com/news/56713-apple-launches-site-to-help-you-remove-the-u2-album-from-your-itunes/",
+        "publisher": "Pitchfork",
+        "publishedAt": "2014-09-15",
+        "kind": "media_report",
+        "readAt": "2026-09-05T06:47:39Z",
+        "supports": [
+          "报道部分用户反感专辑进入云端曲库，Apple 随后提供专用移除页面。",
+          "明确开启自动下载的用户才会自动下载到设备，不是所有设备一律下载。"
+        ],
+        "limitations": [
+          "未量化反感比例、实际移除率或长期品牌影响；不能据此认定专辑质量或整个合作商业失败。"
+        ],
+        "sourceId": "SRC-CASE-C60-20260905-02"
+      }
+    ]
+  },
+  {
+    "caseId": "C01",
+    "sources": [
+      {
+        "title": "Luckin Coffee x Kweichow Moutai Theme Store Opens",
+        "url": "https://investor.lkcoffee.com/news-releases/news-release-details/luckin-coffee-x-kweichow-moutai-theme-store-opens-committed",
+        "publisher": "瑞幸咖啡投资者关系",
+        "publishedAt": "2024-04-08",
+        "kind": "web_primary",
+        "readAt": "2026-09-05T06:14:58.919462+00:00",
+        "supports": [
+          "前轮已读瑞幸官网正文，支持指定首日及截至2023年末的销量和销售额披露。"
+        ],
+        "limitations": [
+          "仅支持 C01-GPT-outcome 的历史销售披露；不是独立审计，不证明双方利润、增量归因或当前在售。"
+        ],
+        "sourceId": "SRC-LUCKIN-20240408"
+      }
+    ]
+  }
+]

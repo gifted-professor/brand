@@ -1,0 +1,479 @@
+{
+  "schemaVersion": "1.0",
+  "libraryRef": {
+    "revision": 1,
+    "sha256": "c621df4f5d55bc8bde37ff606675a3c4fe2c4e403e3ece922d4b49e28da7259c",
+    "path": "/Users/gpfs/Desktop/coding/brand/品牌物料/案例库/library.json"
+  },
+  "query": "",
+  "filters": {
+    "brands": [],
+    "caseIds": [
+      "C24",
+      "C23",
+      "C47",
+      "C60"
+    ],
+    "limit": 8
+  },
+  "matchedCount": 4,
+  "cases": [
+    {
+      "id": "C23",
+      "title": "GoPro × Red Bull",
+      "participants": [
+        {
+          "name": "GoPro",
+          "contribution": null,
+          "benefit": null,
+          "economics": null
+        },
+        {
+          "name": "Red Bull",
+          "contribution": null,
+          "benefit": null,
+          "economics": null
+        }
+      ],
+      "timeframe": "2016",
+      "market": "多市场",
+      "collaborationType": "品牌×品牌／内容与战略合作",
+      "deliverables": [
+        "运动事件影像、联合制作及跨平台分发内容"
+      ],
+      "sourceRefs": [
+        {
+          "sourceId": "SRC-GPT-JSON",
+          "locator": "/22"
+        }
+      ],
+      "candidateUrls": [
+        "https://gopro.com/en/sa/news/gopro-and-red-bull-form-exclusive-global-partnership",
+        "https://www.prnewswire.com/news-releases/gopro-and-red-bull-form-exclusive-global-partnership-300273533.html"
+      ],
+      "claims": [
+        {
+          "id": "C23-GPT-event",
+          "text": "运动事件影像、联合制作及跨平台分发内容",
+          "type": "event",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/22/最终产物"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C23-GPT-outcome",
+          "text": "官方宣布多年内容、分发与创新合作，包含内容权利安排和股权关系。",
+          "type": "outcome",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/22/公开结果（事实）"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C23-GPT-mechanism",
+          "text": "一方提供拍摄能力，另一方提供事件与受众，产物是可重复利用的内容资产。",
+          "type": "interpretation",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/22/可借鉴机制或失败解释（分析）"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C23-GPT-risk",
+          "text": "协议可触达的活动数量不等于实际观看或成交；内容使用权要明确。",
+          "type": "interpretation",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/22/风险与不可直接照搬之处（分析）"
+            }
+          ],
+          "verification": []
+        }
+      ],
+      "insights": {
+        "mechanism": "一方提供拍摄能力，另一方提供事件与受众，产物是可重复利用的内容资产。",
+        "risks": "协议可触达的活动数量不等于实际观看或成交；内容使用权要明确。",
+        "missingEvidence": "实际内容产量、增量触达、设备转化和合作成本"
+      },
+      "tags": [
+        "资源互补",
+        "内容权利",
+        "渠道"
+      ],
+      "sourceLabels": {
+        "gptId": "C23",
+        "outcomeCategory": "产品机制参考",
+        "evidenceGrade": "A｜品牌/企业原始披露",
+        "reportedVerifiedAt": "2026-09-05",
+        "outcomeWindow": "2016协议范围"
+      },
+      "metrics": [],
+      "timeline": [],
+      "contentSha256": "30733a1777e1dd7a2450f0b3b1773c0260a35cbdfb434892d09654437b342605"
+    },
+    {
+      "id": "C24",
+      "title": "Starbucks × Spotify",
+      "participants": [
+        {
+          "name": "Starbucks",
+          "contribution": null,
+          "benefit": null,
+          "economics": null
+        },
+        {
+          "name": "Spotify",
+          "contribution": null,
+          "benefit": null,
+          "economics": null
+        }
+      ],
+      "timeframe": "2015宣布；2016落地",
+      "market": "美国等",
+      "collaborationType": "品牌×品牌／数字与门店体验",
+      "deliverables": [
+        "门店音乐发现、播放列表与Spotify互动"
+      ],
+      "sourceRefs": [
+        {
+          "sourceId": "SRC-GPT-JSON",
+          "locator": "/23"
+        }
+      ],
+      "candidateUrls": [
+        "https://www.thedrum.com/news/starbucks-kicks-action-its-store-music-discovery-venture-spotify",
+        "https://www.starbucks.com/rewards/music/"
+      ],
+      "claims": [
+        {
+          "id": "C24-GPT-event",
+          "text": "门店音乐发现、播放列表与Spotify互动",
+          "type": "event",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/23/最终产物"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C24-GPT-outcome",
+          "text": "公开报道和星巴克官方音乐页可确认音乐发现与播放列表合作。",
+          "type": "outcome",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/23/公开结果（事实）"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C24-GPT-mechanism",
+          "text": "把门店听歌的短暂体验，延长到消费者离店后的数字触点。",
+          "type": "interpretation",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/23/可借鉴机制或失败解释（分析）"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C24-GPT-risk",
+          "text": "播放量未必带来咖啡购买；跨平台数据、同意与归因要单独设计。",
+          "type": "interpretation",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/23/风险与不可直接照搬之处（分析）"
+            }
+          ],
+          "verification": []
+        }
+      ],
+      "insights": {
+        "mechanism": "把门店听歌的短暂体验，延长到消费者离店后的数字触点。",
+        "risks": "播放量未必带来咖啡购买；跨平台数据、同意与归因要单独设计。",
+        "missingEvidence": "使用人数、到店回流、增量订阅与消费"
+      },
+      "tags": [
+        "体验延长",
+        "数字触点",
+        "数据"
+      ],
+      "sourceLabels": {
+        "gptId": "C24",
+        "outcomeCategory": "产品机制参考",
+        "evidenceGrade": "B｜可靠媒体/行业机构报道",
+        "reportedVerifiedAt": "2026-09-05",
+        "outcomeWindow": "2015—2016机制及官方页面"
+      },
+      "metrics": [],
+      "timeline": [],
+      "contentSha256": "3760278f21e19faf9ebec3fd4ba58e1ed0fb5f6d3f9944bd07ebb1608628f617"
+    },
+    {
+      "id": "C47",
+      "title": "乐乐茶 × 译林出版社",
+      "participants": [
+        {
+          "name": "乐乐茶",
+          "contribution": null,
+          "benefit": null,
+          "economics": null
+        },
+        {
+          "name": "译林出版社",
+          "contribution": null,
+          "benefit": null,
+          "economics": null
+        }
+      ],
+      "timeframe": "2024活动；2026法院认定后的致歉",
+      "market": "中国",
+      "collaborationType": "品牌×出版机构／文化人物",
+      "deliverables": [
+        "“烟腔乌龙”、鲁迅画像杯袋、立牌与小册子"
+      ],
+      "sourceRefs": [
+        {
+          "sourceId": "SRC-GPT-JSON",
+          "locator": "/46"
+        }
+      ],
+      "candidateUrls": [
+        "https://m.gmw.cn/2026-03/13/content_1304375087.htm",
+        "https://www.jfdaily.com/wx/detail.do?id=744161"
+      ],
+      "claims": [
+        {
+          "id": "C47-GPT-event",
+          "text": "“烟腔乌龙”、鲁迅画像杯袋、立牌与小册子",
+          "type": "event",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/46/最终产物"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C47-GPT-outcome",
+          "text": "2024撤文宣并致歉；2026声明确认法院认定相关画像使用侵害著作权权益。",
+          "type": "outcome",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/46/公开结果（事实）"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C47-GPT-mechanism",
+          "text": "出版合作不自动覆盖肖像画作者的著作权；应逐个资产核对授权链。",
+          "type": "interpretation",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/46/可借鉴机制或失败解释（分析）"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C47-GPT-risk",
+          "text": "2024家属争议与2026图像著作权案件是不同层次，不能混成一种权利。",
+          "type": "interpretation",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/46/风险与不可直接照搬之处（分析）"
+            }
+          ],
+          "verification": []
+        }
+      ],
+      "insights": {
+        "mechanism": "出版合作不自动覆盖肖像画作者的著作权；应逐个资产核对授权链。",
+        "risks": "2024家属争议与2026图像著作权案件是不同层次，不能混成一种权利。",
+        "missingEvidence": "所有素材的许可范围及费用、判决完整文本、项目损失"
+      },
+      "tags": [
+        "权利拆分",
+        "素材来源",
+        "文化尊重"
+      ],
+      "sourceLabels": {
+        "gptId": "C47",
+        "outcomeCategory": "风险与混合结果",
+        "evidenceGrade": "B｜可靠媒体/行业机构报道",
+        "reportedVerifiedAt": "2026-09-05",
+        "outcomeWindow": "2024及2026年3月13日"
+      },
+      "metrics": [],
+      "timeline": [],
+      "contentSha256": "51b35ad57cdc5b428c839fe3c119377194212e2df52b61e6a871e2ffc172b9d6"
+    },
+    {
+      "id": "C60",
+      "title": "Apple × U2",
+      "participants": [
+        {
+          "name": "Apple",
+          "contribution": null,
+          "benefit": null,
+          "economics": null
+        },
+        {
+          "name": "U2",
+          "contribution": null,
+          "benefit": null,
+          "economics": null
+        }
+      ],
+      "timeframe": "2014",
+      "market": "多市场",
+      "collaborationType": "品牌×音乐IP／数字分发",
+      "deliverables": [
+        "iTunes赠送《Songs of Innocence》专辑"
+      ],
+      "sourceRefs": [
+        {
+          "sourceId": "SRC-GPT-JSON",
+          "locator": "/59"
+        }
+      ],
+      "candidateUrls": [
+        "https://pitchfork.com/news/56713-apple-launches-site-to-help-you-remove-the-u2-album-from-your-itunes",
+        "https://time.com/3508636/bono-apologizes-sorry-itunes-apple-u2-songs-of-innocence/"
+      ],
+      "claims": [
+        {
+          "id": "C60-GPT-event",
+          "text": "iTunes赠送《Songs of Innocence》专辑",
+          "type": "event",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/59/最终产物"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C60-GPT-outcome",
+          "text": "专辑自动加入用户曲库引发反感；Apple随后提供移除工具。",
+          "type": "outcome",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/59/公开结果（事实）"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C60-GPT-mechanism",
+          "text": "免费权益也需尊重选择；平台可触达用户，不代表用户都需要合作内容。",
+          "type": "interpretation",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/59/可借鉴机制或失败解释（分析）"
+            }
+          ],
+          "verification": []
+        },
+        {
+          "id": "C60-GPT-risk",
+          "text": "应区分自动加入曲库与所有设备一律自动下载；不能推断专辑质量失败。",
+          "type": "interpretation",
+          "status": "unverified",
+          "sourceRefs": [
+            {
+              "sourceId": "SRC-GPT-JSON",
+              "locator": "/59/风险与不可直接照搬之处（分析）"
+            }
+          ],
+          "verification": []
+        }
+      ],
+      "insights": {
+        "mechanism": "免费权益也需尊重选择；平台可触达用户，不代表用户都需要合作内容。",
+        "risks": "应区分自动加入曲库与所有设备一律自动下载；不能推断专辑质量失败。",
+        "missingEvidence": "接受率、移除率、品牌态度和长期订阅影响"
+      },
+      "tags": [
+        "用户同意",
+        "体验边界",
+        "客群"
+      ],
+      "sourceLabels": {
+        "gptId": "C60",
+        "outcomeCategory": "风险与混合结果",
+        "evidenceGrade": "B｜可靠媒体/行业机构报道",
+        "reportedVerifiedAt": "2026-09-05",
+        "outcomeWindow": "2014年9—10月"
+      },
+      "metrics": [],
+      "timeline": [],
+      "contentSha256": "e6adfc9b87f8a0412b686248039221cc7eace9c2bffde719f13fbbc055c4ab20"
+    }
+  ],
+  "sources": [
+    {
+      "id": "SRC-GPT-JSON",
+      "kind": "structured_dataset",
+      "path": "../brand_collaboration_data_csv_json/brand_collaboration_60_cases.json",
+      "url": null,
+      "sha256": "8c2c3a092982523b4014a1ac85cdcb5e530be93eabf06b84ef95e330559b51b4",
+      "lineageGroup": "gpt-research",
+      "status": "read",
+      "title": "GPT 60 个案例 JSON",
+      "importedAt": "2026-09-05T06:14:58.919462+00:00"
+    }
+  ],
+  "conflicts": [],
+  "rankingMeaning": "Text relevance only; not a collaboration score, commercial forecast, or probability.",
+  "consumer": "collab-ideation",
+  "kind": "researchContext",
+  "status": "local_draft",
+  "usageGuidance": [
+    "本包是本地 researchContext 草案；没有 artifactId，不授予项目、品牌或素材使用权限。",
+    "保留所有 claim 的证据状态、核验记录与来源；原始报告标签和多个同源转述不能替代独立核验。",
+    "null 表示未知，不是 0；只把已支持的相应事实用于事实性陈述，仍需检查适用时间与条件。",
+    "提取双方贡献、合作机制和成立边界，组合形成当前项目的不同方向；不要复刻案例外观。",
+    "案例的结果不是当前方案的成功概率；unverified 与 disputed 内容只能作为待核查线索或明确标注的假设。"
+  ]
+}

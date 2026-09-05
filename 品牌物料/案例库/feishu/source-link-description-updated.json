@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "field": {
+      "default_value": null,
+      "description": "优先显示已经读取正文的案例来源；全部链接见“全部来源链接”，具体读取情况见“来源核查状态”和“来源核查说明”。",
+      "id": "fldENzfjYm",
+      "name": "来源链接",
+      "style": {
+        "type": "url"
+      },
+      "type": "text"
+    },
+    "updated": true
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "record": {
+      "update": {
+        "全部来源链接": "【已读正文】Apple｜2014-09-09｜Apple & U2 Release “Songs of Innocence” Exclusively for iTunes Store Customers\nhttps://www.apple.com/newsroom/2014/09/09Apple-U2-Release-Songs-of-Innocence-Exclusively-for-iTunes-Store-Customers/\n\n【已读正文】Pitchfork｜2014-09-15｜Apple Launches Site to Help You Remove the U2 Album From Your iTunes\nhttps://pitchfork.com/news/56713-apple-launches-site-to-help-you-remove-the-u2-album-from-your-itunes/\n\n【原报告链接，未逐条核查】time.com\nhttps://time.com/3508636/bono-apologizes-sorry-itunes-apple-u2-songs-of-innocence/",
+        "来源核查状态": [
+          "已读外部正文（限定范围）"
+        ],
+        "来源核查说明": "Apple & U2 Release “Songs of Innocence” Exclusively for iTunes Store Customers｜Apple｜2014-09-09\n来源性质：品牌/企业原始披露\n读取日期：2026-09-05\n支持范围：确认 Apple、Universal Music Group 与 U2 于 2014-09-09 发布《Songs of Innocence》，向符合条件的 iTunes Store 账号赠送专辑。\n仍未证明：官方所称赠送／分发规模不是实际收听、主动领取、满意度或购买量；本页不证明用户反感或移除率。\nhttps://www.apple.com/newsroom/2014/09/09Apple-U2-Release-Songs-of-Innocence-Exclusively-for-iTunes-Store-Customers/\n\nApple Launches Site to Help You Remove the U2 Album From Your iTunes｜Pitchfork｜2014-09-15\n来源性质：媒体报道，机构或品牌表态可能为转述\n读取日期：2026-09-05\n支持范围：报道部分用户反感专辑进入云端曲库，Apple 随后提供专用移除页面。；明确开启自动下载的用户才会自动下载到设备，不是所有设备一律下载。\n仍未证明：未量化反感比例、实际移除率或长期品牌影响；不能据此认定专辑质量或整个合作商业失败。\nhttps://pitchfork.com/news/56713-apple-launches-site-to-help-you-remove-the-u2-album-from-your-itunes/",
+        "来源说明": "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/59\n原报告结果分类「风险与混合结果」按原文保留，非本次重新判定；原报告等级「B｜可靠媒体/行业机构报道」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。\n本地试用：examples/task-research-handoff.json，migrationNotes.caseId=C60；状态 draft。\n本轮已补充可读取的外部案例来源，标题、出处与支持范围见“来源核查说明”；原报告等级只代表原始导入情况。",
+        "来源链接": "[https://www.apple.com/newsroom/2014/09/09Apple-U2-Release-Songs-of-Innocence-Exclusively-for-iTunes-Store-Customers/](https://www.apple.com/newsroom/2014/09/09Apple-U2-Release-Songs-of-Innocence-Exclusively-for-iTunes-Store-Customers/)"
+      }
+    },
+    "updated": true
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "保留报告的全部外部链接，并补充本轮读取的案例来源；每条注明读取或待查属性。",
+      "id": "fldynJy6Li",
+      "name": "全部来源链接",
+      "style": {
+        "type": "plain"
+      },
+      "type": "text"
+    }
+  }
+}

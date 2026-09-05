@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "views": [
+      {
+        "_meta": {
+          "filter": null,
+          "group": [],
+          "sort": [],
+          "visible_fields": "24 fields"
+        },
+        "id": "vewrUx2yW2",
+        "name": "提取机制",
+        "type": "grid"
+      }
+    ]
+  }
+}

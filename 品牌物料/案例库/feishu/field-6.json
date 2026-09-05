@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "原报告描述的市场范围。",
+      "id": "fldEPF6ewP",
+      "name": "主要市场",
+      "style": {
+        "type": "plain"
+      },
+      "type": "text"
+    }
+  }
+}

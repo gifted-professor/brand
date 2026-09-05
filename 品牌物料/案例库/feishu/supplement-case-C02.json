@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "record": {
+      "update": {
+        "全部来源链接": "【已读正文】SocialBeta（文：elenajiang、Valerie）｜2024-04-08｜瑞幸 × 泡泡玛特进入联名的 Next level 了！\nhttps://socialbeta.com/article/109488\n\n【报告链接，尚未逐页核查】investor.luckincoffee.com\nhttps://investor.luckincoffee.com/news-releases/news-release-details/luckin-coffee-inc-announces-unaudited-first-quarter-2022\n\n【报告链接，尚未逐页核查】www.news.cn\nhttps://www.news.cn/food/20220506/f51e64bacb64413aa3d20e3db0a2e306/c.html",
+        "来源核查状态": [
+          "已读外部正文（限定范围）"
+        ],
+        "来源核查说明": "用户补充清单逐页核查：\nGS13｜已读正文｜瑞幸 × 泡泡玛特进入联名的 Next level 了！\nSocialBeta（文：elenajiang、Valerie）｜2024-04-08\n支持范围：主体是瑞幸与泡泡玛特 THE MONSTERS／LABUBU 生椰三周年联名，讨论包材、杯具、钥匙扣及主题店等物料。；正文回顾 2022 年瑞幸与椰树的椰云拿铁，可作 C02 的简要媒体回顾。\n局限：主体新案例不在现有库中，不能挂成 C61 悟空；C02 只对应回顾段落，不覆盖主体产品和周边。；文中生椰系列三年累计 7 亿杯是整个产品线口径，不是 LABUBU 联名或 C02 单项业绩。\n核查结论：适合物料与传播机制参考，但给定标题不是原题，必须修正主案例归属。\nhttps://socialbeta.com/article/109488",
+        "来源说明": "SRC-GPT-JSON｜GPT 60 个案例 JSON｜/1\n原报告结果分类「销售表现有据」按原文保留，非本次重新判定；原报告等级「A｜品牌/企业原始披露」不自动继承为本库核验状态。\n候选来源链接仅为待查线索；两个 AI 报告或同源转述不构成独立佐证。可供 Skill 为资料用途建议，不代表这些 Skill 已运行。\n用户补充的41条引用清单：GS13；原始归类和标题与实际页面分别保留，详见“补充来源核查”表。",
+        "来源链接": "[https://socialbeta.com/article/109488](https://socialbeta.com/article/109488)"
+      }
+    },
+    "updated": true
+  }
+}

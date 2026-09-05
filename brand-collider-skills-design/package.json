@@ -1,0 +1,36 @@
+{
+  "name": "brand-collider-image-provider",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n api,web \"node --watch src/server/index.ts\" \"vite\"",
+    "dev:api": "node --watch src/server/index.ts",
+    "build": "npm run typecheck && vite build",
+    "start": "node src/server/index.ts",
+    "image:check": "node scripts/image-cli.ts check",
+    "image:generate": "node scripts/image-cli.ts generate",
+    "test": "node --test tests/*.test.mjs",
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.web.json"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "agent-browser": "^0.36.0",
+    "concurrently": "^10.0.5",
+    "typescript": "7.0.2",
+    "vite": "^8.2.2"
+  },
+  "dependencies": {
+    "lucide-react": "^1.41.0",
+    "mammoth": "^1.12.2",
+    "pdf-parse": "^2.4.5",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  }
+}

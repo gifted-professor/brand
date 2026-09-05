@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "本地案例库稳定编号，导入查重依据。",
+      "id": "fldwULLRef",
+      "name": "案例编号",
+      "style": {
+        "type": "plain"
+      },
+      "type": "text"
+    }
+  }
+}

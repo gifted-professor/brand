@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "已实际试用的研究场景；不等于已确认的真实品牌项目。",
+      "id": "fldncptUpK",
+      "name": "示例任务",
+      "style": {
+        "type": "plain"
+      },
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "未公开或尚未核对的数据、成本、利润、权利和因果证据。",
+      "id": "fldDrMVimc",
+      "name": "待补证",
+      "style": {
+        "type": "plain"
+      },
+      "type": "text"
+    }
+  }
+}

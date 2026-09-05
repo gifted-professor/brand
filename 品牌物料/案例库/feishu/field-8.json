@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "本次研究给案例的用途标签，不是商业成败裁决。",
+      "id": "fldwHLxGsI",
+      "multiple": true,
+      "name": "参考用途",
+      "options": [
+        {
+          "hue": "Blue",
+          "lightness": "Lighter",
+          "name": "机制参考"
+        },
+        {
+          "hue": "Orange",
+          "lightness": "Lighter",
+          "name": "结果口径核对"
+        },
+        {
+          "hue": "Red",
+          "lightness": "Lighter",
+          "name": "风险反例"
+        }
+      ],
+      "type": "select"
+    }
+  }
+}

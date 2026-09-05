@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0",
+  "conceptCount": 3,
+  "ideation": {
+    "candidateCount": 12,
+    "finalistLimit": 3,
+    "requireMatureFinalists": true,
+    "padWeakFinalists": false
+  },
+  "defaultDeliverables": [
+    "hero",
+    "poster",
+    "copy"
+  ],
+  "defaultStylePackId": "warm-editorial",
+  "defaultPosterTemplateId": "poster-portrait-v1",
+  "limits": {
+    "maxAgentTurnsPerJob": 24,
+    "maxToolCallsPerJob": 40,
+    "maxAutoRepairRounds": 1,
+    "maxBillableImageRequestsPerJob": 2
+  },
+  "approvedSkills": [
+    {
+      "name": "brand-profile",
+      "version": "1.0.1"
+    },
+    {
+      "name": "collab-ideation",
+      "version": "1.1.0"
+    },
+    {
+      "name": "design-spec",
+      "version": "1.1.0"
+    },
+    {
+      "name": "campaign-copy",
+      "version": "1.1.0"
+    },
+    {
+      "name": "visual-production",
+      "version": "1.1.0"
+    },
+    {
+      "name": "quality-review",
+      "version": "1.2.0"
+    }
+  ],
+  "campaignProduction": {
+    "mode": "campaign_kit_when_requested",
+    "defaultStage": "effect_exploration",
+    "productionSpecifications": "only_when_prototyping_or_production_requested",
+    "methodReference": ".claude/skills/visual-production/references/CAMPAIGN_KIT.md",
+    "implementationStatus": "method_and_local_sample_only",
+    "legacyDefaultDeliverablesScope": "single-hero preview",
+    "countMaterialFamiliesSeparatelyFromVariants": true,
+    "planDependenciesBeforeGenerating": true,
+    "deliverWithPerItemStatus": true,
+    "videoMode": "preparation_unless_actual_video_requested",
+    "budgetPolicy": "Use current host/user authorization; legacy numeric limits are not silently raised for a full kit."
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "fields": [
+      {
+        "default_value": null,
+        "id": "fldevsmZo1",
+        "name": "来源条目",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "id": "fld2l8gR1y",
+        "name": "来源编号",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "id": "fldYfGfZpm",
+        "name": "原始链接",
+        "style": {
+          "type": "url"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "id": "fld9QSWMZY",
+        "multiple": false,
+        "name": "读取状态",
+        "options": [
+          {
+            "hue": "Green",
+            "lightness": "Lighter",
+            "name": "已读正文"
+          },
+          {
+            "hue": "Purple",
+            "lightness": "Lighter",
+            "name": "未取得正文"
+          },
+          {
+            "hue": "Turquoise",
+            "lightness": "Lighter",
+            "name": "仅部分内容"
+          }
+        ],
+        "type": "select"
+      },
+      {
+        "default_value": null,
+        "id": "fldNvAmNea",
+        "name": "发布机构",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "id": "fldIZRhimZ",
+        "name": "实际标题",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "id": "fldx9XV49H",
+        "name": "对应案例",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "id": "fldwZvvjog",
+        "name": "同源关系",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "id": "fldeC4cDSh",
+        "name": "核查页面",
+        "style": {
+          "type": "url"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "id": "fldjGciRjd",
+        "name": "可支持内容",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "id": "fldrV8Syww",
+        "name": "核查日期",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "id": "fldc6OIW6A",
+        "name": "发布日期",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "id": "fldWnO2d7W",
+        "multiple": false,
+        "name": "用途判定",
+        "options": [
+          {
+            "hue": "Yellow",
+            "lightness": "Lighter",
+            "name": "案例与方法"
+          },
+          {
+            "hue": "Orange",
+            "lightness": "Lighter",
+            "name": "待确认"
+          },
+          {
+            "hue": "Blue",
+            "lightness": "Lighter",
+            "name": "案例来源"
+          },
+          {
+            "hue": "Orange",
+            "lightness": "Lighter",
+            "name": "研究方法"
+          }
+        ],
+        "type": "select"
+      },
+      {
+        "default_value": null,
+        "id": "fldqYtIUrq",
+        "name": "不能支持或缺口",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "id": "fldDwDMjEG",
+        "name": "原清单标题",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "id": "fldE0D6qpO",
+        "name": "核查结论",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      },
+      {
+        "default_value": null,
+        "id": "fldDTqKs7Y",
+        "multiple": false,
+        "name": "标题核对",
+        "options": [
+          {
+            "hue": "Green",
+            "lightness": "Lighter",
+            "name": "标题有改写"
+          },
+          {
+            "hue": "Yellow",
+            "lightness": "Lighter",
+            "name": "未能核对"
+          },
+          {
+            "hue": "Carmine",
+            "lightness": "Lighter",
+            "name": "基本一致"
+          }
+        ],
+        "type": "select"
+      },
+      {
+        "default_value": null,
+        "id": "fldZl4LgQq",
+        "name": "原清单归类",
+        "style": {
+          "type": "plain"
+        },
+        "type": "text"
+      }
+    ],
+    "total": 18
+  }
+}

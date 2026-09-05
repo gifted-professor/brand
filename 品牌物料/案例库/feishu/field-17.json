@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "示例中的硬条件及待确认条件，不给其他项目自动增加限制。",
+      "id": "fldp32r3rJ",
+      "name": "适用约束",
+      "style": {
+        "type": "plain"
+      },
+      "type": "text"
+    }
+  }
+}

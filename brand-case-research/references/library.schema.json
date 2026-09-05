@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:brand-case-research:library:1.0",
+  "title": "Brand collaboration research library",
+  "description": "Structural schema. Run scripts/case_library.py validate for cross-references, evidence-state rules, and source-file SHA-256 checks. Passing validation is not factual verification.",
+  "type": "object",
+  "required": ["schemaVersion", "revision", "updatedAt", "sources", "cases", "methods", "conflicts"],
+  "properties": {
+    "schemaVersion": {"const": "1.0"},
+    "revision": {"type": "integer", "minimum": 1},
+    "updatedAt": {"$ref": "#/$defs/timestamp"},
+    "sources": {"type": "array", "items": {"$ref": "#/$defs/source"}},
+    "cases": {"type": "array", "items": {"$ref": "#/$defs/case"}},
+    "methods": {"type": "array", "items": {"$ref": "#/$defs/identifiedObject"}},
+    "conflicts": {"type": "array", "items": {"$ref": "#/$defs/identifiedObject"}}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "nullableText": {"anyOf": [{"$ref": "#/$defs/text"}, {"type": "null"}]},
+    "timestamp": {"type": "string", "format": "date-time", "pattern": "T.*(?:Z|[+-][0-9]{2}:[0-9]{2})$"},
+    "url": {"type": "string", "format": "uri", "pattern": "^https?://[^/\\s]+"},
+    "reference": {
+      "type": "object",
+      "required": ["sourceId", "locator"],
+      "properties": {
+        "sourceId": {"$ref": "#/$defs/text"},
+        "locator": {"$ref": "#/$defs/text"}
+      }
+    },
+    "references": {"type": "array", "items": {"$ref": "#/$defs/reference"}},
+    "identifiedObject": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"},
+        "sourceRefs": {"$ref": "#/$defs/references"},
+        "caseRefs": {"type": "array", "items": {"$ref": "#/$defs/text"}},
+        "claimIds": {"type": "array", "items": {"$ref": "#/$defs/text"}},
+        "caseId": {"$ref": "#/$defs/text"}
+      },
+      "additionalProperties": true
+    },
+    "source": {
+      "type": "object",
+      "required": ["id", "kind", "path", "url", "sha256", "lineageGroup", "status"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"},
+        "kind": {"enum": ["ai_report", "structured_dataset", "workbook", "web_primary", "web_secondary"]},
+        "path": {"$ref": "#/$defs/nullableText"},
+        "duplicatePaths": {"type": "array", "items": {"$ref": "#/$defs/text"}},
+        "url": {"anyOf": [{"$ref": "#/$defs/url"}, {"type": "null"}]},
+        "sha256": {"anyOf": [{"type": "string", "pattern": "^[0-9a-f]{64}$"}, {"type": "null"}]},
+        "lineageGroup": {"$ref": "#/$defs/text"},
+        "status": {"enum": ["registered", "read"]}
+      },
+      "allOf": [{
+        "if": {"properties": {"kind": {"enum": ["web_primary", "web_secondary"]}, "status": {"const": "read"}}, "required": ["kind", "status"]},
+        "then": {"properties": {"url": {"$ref": "#/$defs/url"}}}
+      }]
+    },
+    "participant": {
+      "type": "object",
+      "required": ["name", "contribution", "benefit", "economics"],
+      "properties": {
+        "name": {"$ref": "#/$defs/text"},
+        "contribution": {"$ref": "#/$defs/nullableText"},
+        "benefit": {"$ref": "#/$defs/nullableText"},
+        "economics": {"type": ["object", "null"], "description": "Unknown is null, never an imputed zero. Preserve units, period, calculation assumptions, and provenance when available."}
+      }
+    },
+    "verification": {
+      "type": "object",
+      "required": ["sourceId", "locator", "checkedAt", "conclusion", "notes"],
+      "properties": {
+        "sourceId": {"$ref": "#/$defs/text"},
+        "locator": {"$ref": "#/$defs/text"},
+        "checkedAt": {"$ref": "#/$defs/timestamp"},
+        "conclusion": {"enum": ["supports", "contradicts", "inconclusive"]},
+        "notes": {"$ref": "#/$defs/text"}
+      }
+    },
+    "claim": {
+      "type": "object",
+      "required": ["id", "text", "type", "status", "sourceRefs", "verification"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"},
+        "text": {"$ref": "#/$defs/text"},
+        "type": {"enum": ["event", "outcome", "interpretation", "recommendation"]},
+        "status": {"enum": ["unverified", "supported", "disputed"]},
+        "sourceRefs": {"$ref": "#/$defs/references"},
+        "verification": {"type": "array", "items": {"$ref": "#/$defs/verification"}}
+      },
+      "allOf": [{
+        "if": {"properties": {"status": {"const": "supported"}}, "required": ["status"]},
+        "then": {"properties": {"verification": {"contains": {"properties": {"conclusion": {"const": "supports"}}, "required": ["conclusion"]}}}}
+      }]
+    },
+    "evidenceLinkedRecord": {
+      "type": "object",
+      "properties": {
+        "sourceRefs": {"$ref": "#/$defs/references"},
+        "claimId": {"$ref": "#/$defs/text"},
+        "claimIds": {"type": "array", "items": {"$ref": "#/$defs/text"}}
+      },
+      "additionalProperties": true
+    },
+    "case": {
+      "type": "object",
+      "required": ["id", "title", "participants", "timeframe", "market", "collaborationType", "deliverables", "sourceRefs", "candidateUrls", "claims", "insights", "tags", "sourceLabels", "metrics", "timeline"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"},
+        "title": {"$ref": "#/$defs/text"},
+        "aliases": {"type": "array", "items": {"$ref": "#/$defs/text"}},
+        "participants": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/participant"}},
+        "timeframe": {"$ref": "#/$defs/nullableText"},
+        "market": {"$ref": "#/$defs/nullableText"},
+        "collaborationType": {"$ref": "#/$defs/nullableText"},
+        "deliverables": {"type": "array", "items": {"$ref": "#/$defs/text"}},
+        "sourceRefs": {"$ref": "#/$defs/references"},
+        "candidateUrls": {"type": "array", "items": {"$ref": "#/$defs/url"}},
+        "claims": {"type": "array", "items": {"$ref": "#/$defs/claim"}},
+        "insights": {
+          "type": "object",
+          "required": ["mechanism", "risks", "missingEvidence"],
+          "properties": {"mechanism": {"type": "string"}, "risks": {"type": "string"}, "missingEvidence": {"type": "string"}}
+        },
+        "tags": {"type": "array", "items": {"$ref": "#/$defs/text"}},
+        "sourceLabels": {"type": "object", "description": "Original labels retained for provenance, not evidence grades."},
+        "metrics": {"type": "array", "items": {"$ref": "#/$defs/evidenceLinkedRecord"}},
+        "timeline": {"type": "array", "items": {"$ref": "#/$defs/evidenceLinkedRecord"}}
+      }
+    }
+  }
+}

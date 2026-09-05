@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "历史产物线索，真实性以证据摘要为准，不能自动成为当前可用素材。",
+      "id": "fldRIpeHF9",
+      "name": "案例产物",
+      "style": {
+        "type": "plain"
+      },
+      "type": "text"
+    }
+  }
+}

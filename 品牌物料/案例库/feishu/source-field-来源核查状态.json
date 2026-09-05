@@ -1,0 +1,27 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "区分已读取外部正文、仅原报告链接、尚缺外部链接；页面已读取不等于案例内全部数字或因果已核验。",
+      "id": "fldloancLV",
+      "multiple": false,
+      "name": "来源核查状态",
+      "options": [
+        {
+          "hue": "Blue",
+          "lightness": "Lighter",
+          "name": "已读外部正文（限定范围）"
+        },
+        {
+          "hue": "Blue",
+          "lightness": "Lighter",
+          "name": "仅原报告链接（未逐条核查）"
+        }
+      ],
+      "type": "select"
+    }
+  }
+}

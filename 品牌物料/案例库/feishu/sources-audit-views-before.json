@@ -1,0 +1,85 @@
+{
+  "total": 5,
+  "views": [
+    {
+      "_meta": {
+        "filter": "1 condition",
+        "group": [],
+        "sort": [
+          [
+            "fldwULLRef",
+            "asc"
+          ]
+        ],
+        "visible_fields": "12 fields"
+      },
+      "id": "vewnDL38Qy",
+      "name": "已跑通资料示例",
+      "type": "grid"
+    },
+    {
+      "_meta": {
+        "filter": "1 condition",
+        "group": [],
+        "sort": [
+          [
+            "fldwULLRef",
+            "asc"
+          ]
+        ],
+        "visible_fields": "12 fields"
+      },
+      "id": "vew08Bep1Z",
+      "name": "全部案例库",
+      "type": "grid"
+    },
+    {
+      "_meta": {
+        "filter": "1 condition",
+        "group": [],
+        "sort": [
+          [
+            "fldwULLRef",
+            "asc"
+          ]
+        ],
+        "visible_fields": "10 fields"
+      },
+      "id": "vewHGt2hYk",
+      "name": "反面与风险案例",
+      "type": "grid"
+    },
+    {
+      "_meta": {
+        "filter": "1 condition",
+        "group": [],
+        "sort": [
+          [
+            "fldwULLRef",
+            "asc"
+          ]
+        ],
+        "visible_fields": "9 fields"
+      },
+      "id": "vewrUx2yW2",
+      "name": "提取机制",
+      "type": "grid"
+    },
+    {
+      "_meta": {
+        "filter": "1 condition",
+        "group": [],
+        "sort": [
+          [
+            "fldwULLRef",
+            "asc"
+          ]
+        ],
+        "visible_fields": "8 fields"
+      },
+      "id": "vewCGgVPWg",
+      "name": "报告差异与核验",
+      "type": "grid"
+    }
+  ]
+}

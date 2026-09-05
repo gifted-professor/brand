@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "created": true,
+    "field": {
+      "default_value": null,
+      "description": "研究分析：双方资源如何形成消费者价值，不能直接当作因果证明。",
+      "id": "fldphnG0uR",
+      "name": "提取机制",
+      "style": {
+        "type": "plain"
+      },
+      "type": "text"
+    }
+  }
+}
