@@ -710,15 +710,15 @@ test('cancelled inheritance remains retryable and omits rejected references with
 test('explicit material aspect ratios reach the frozen queue while omitted ratios keep 4:3 and invalid values never bind', async t => {
   const f = await fixture(t, [item('hero'), item('default')]);
   await f.pipeline.discover({ brands });
-  const visuals = f.visuals.map(value => value.materialId === 'hero' ? { ...value, aspectRatio: '3:4' } : value);
+  const visuals = f.visuals.map(value => value.materialId === 'hero' ? { ...value, aspectRatio: '4:5' } : value);
   await f.pipeline.prepare({ plan: f.plan, visuals });
   const manifest = JSON.parse(await readFile(join(f.directory, 'material-jobs.json'), 'utf8'));
-  assert.deepEqual(manifest.tasks.map(task => [task.id, task.ratio]), [['hero', '3:4'], ['default', '4:3']]);
+  assert.deepEqual(manifest.tasks.map(task => [task.id, task.ratio]), [['hero', '4:5'], ['default', '4:3']]);
   await f.pipeline.execute();
-  assert.equal(f.generated.find(request => request.prompt === 'hero').ratio, '3:4');
+  assert.equal(f.generated.find(request => request.prompt === 'hero').ratio, '4:5');
   assert.equal(f.generated.find(request => request.prompt === 'default').ratio, '4:3');
   const invalid = await fixture(t, [item('invalid')]); await invalid.pipeline.discover({ brands });
-  await assert.rejects(invalid.pipeline.prepare({ plan: invalid.plan, visuals: [{ materialId: 'invalid', prompt: 'invalid', aspectRatio: '4:5' }] }), /media_invalid_aspect_ratio/);
+  await assert.rejects(invalid.pipeline.prepare({ plan: invalid.plan, visuals: [{ materialId: 'invalid', prompt: 'invalid', aspectRatio: '5:7' }] }), /media_invalid_aspect_ratio/);
   assert.equal(invalid.calls.some(call => call.purpose === 'reference-binding'), false); assert.equal(invalid.generated.length, 0);
 });
 

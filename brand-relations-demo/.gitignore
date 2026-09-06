@@ -1,0 +1,14 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.DS_Store
+.env
+.env.local
+.env.*.local
+
+# Local source materials, generated sessions and exports
+/outputs/
+/tmp/
+/*.zip
+/integrations/collider/brand-case-research/
+/integrations/collider/品牌物料/

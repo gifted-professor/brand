@@ -1,0 +1,262 @@
+/* Shared visual language for the brand collaboration journey.
+   Keep character art, spatial geometry, and animation transforms in their owners. */
+.flow-shell {
+  --ink: #171a22;
+  --muted: #697080;
+  --line: #e5e8ee;
+  --green: #2457f5;
+  --flow-accent: #2457f5;
+  --surface-subtle: #f7f9fc;
+  --surface-accent: #f3f6ff;
+  --control-border: #cdd3df;
+  --control-radius: 12px;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.flow-shell button {
+  border-radius: var(--control-radius);
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+.flow-shell .flow-primary,
+.flow-shell .flow-secondary,
+.flow-shell .primary-button {
+  min-height: 48px;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 600;
+  gap: 12px;
+}
+.flow-shell .flow-primary:hover,
+.flow-shell .primary-button:hover {
+  color: #fff;
+  background: #1c48d6;
+  border-color: #1c48d6;
+  transform: none;
+}
+.flow-shell .flow-secondary { border-color: var(--control-border); background: #fff; }
+.flow-shell .flow-secondary:hover { background: var(--surface-subtle); border-color: #9da9c0; color: var(--ink); }
+.flow-shell button:disabled,
+.flow-shell .flow-primary:disabled,
+.flow-shell .primary-button:disabled {
+  background: #f0f2f6;
+  border: 1px solid var(--line);
+  color: #7a8292;
+  opacity: 1;
+  transform: none;
+}
+.flow-shell button[aria-busy=true]:disabled { color: var(--flow-accent); background: var(--surface-accent); border-color: #c8d3ff; }
+.flow-shell .flow-primary[aria-busy=true]:disabled { color: #fff; background: var(--flow-accent); border-color: var(--flow-accent); }
+.flow-shell :focus-visible { outline: 2px solid var(--flow-accent); outline-offset: 3px; }
+.flow-shell .flow-header { border-color: var(--line); flex-shrink: 0; }
+.flow-shell .flow-logo { width: 44px; min-height: 44px; justify-content: center; }
+.flow-shell .flow-logo img { width: 40px; height: 40px; }
+.flow-shell .my-character { color: var(--muted); font-size: 12px; }
+.flow-shell .my-character strong { color: var(--ink); font-size: 12px; font-weight: 500; }
+.flow-shell .mode-switch { border-color: var(--line); background: var(--surface-subtle); border-radius: 12px; }
+.flow-shell .mode-switch button { border-radius: 8px; }
+.flow-shell .page-close,
+.flow-shell .flow-close { border: 0; background: transparent; border-radius: 0; }
+
+/* Entry and intake retain open surfaces, with blue reserved for the next action. */
+.flow-shell.page-entry .character-entry { padding-top: clamp(36px, 7vh, 76px); min-height: calc(100dvh - 68px); grid-template-rows: 1fr auto; }
+.flow-shell.page-entry .entry-copy,
+.flow-shell.page-entry .entry-stage { align-self: center; }
+.flow-shell.page-entry .entry-copy { padding-top: 0; }
+.flow-shell.page-entry .entry-copy h1 { font-size: clamp(32px, 3.5vw, 50px); line-height: 1.45; font-weight: 600; }
+.flow-shell .brand-info-entry { background: var(--surface-accent); border-color: #c3ceff; border-radius: 12px; min-height: 100px; padding: 22px 24px; color: var(--flow-accent); }
+.flow-shell .brand-info-entry:hover { background: #edf2ff; border-color: var(--flow-accent); }
+.flow-shell .brand-info-entry small { font-size: 13px; color: var(--muted); }
+.flow-shell .entry-footer { border-color: var(--line); font-size: 12px; color: var(--muted); }
+.flow-shell .entry-footer a { color: var(--muted); }
+.flow-shell .entry-footer a:hover { color: var(--flow-accent); }
+.flow-shell .compact-intake { padding-top: 78px; }
+.flow-shell .compact-intake .intake-layout { grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr); gap: clamp(32px, 5vw, 72px); }
+.flow-shell .compact-intake .material-dropzone { background: var(--surface-accent); border-color: #aabcf7; border-radius: 12px; min-height: 330px; gap: 14px; }
+.flow-shell .material-dropzone > svg { color: var(--flow-accent); }
+.flow-shell .material-dropzone h1 { font-size: clamp(24px, 2.3vw, 32px); letter-spacing: -.6px; line-height: 1.4; }
+.flow-shell .material-dropzone p { color: var(--muted); font-size: 14px; }
+.flow-shell .material-dropzone small { color: var(--muted); font-size: 12px; line-height: 1.9; }
+.flow-shell .material-dropzone.is-dragging-over { background: #eaf0ff; border-color: var(--flow-accent); }
+.flow-shell .material-file-menu,
+.flow-shell .upload-footer,
+.flow-shell .material-understanding,
+.flow-shell .material-list li,
+.flow-shell .compact-understanding[open] > summary,
+.flow-shell .next-material,
+.flow-shell .intake-equipment,
+.flow-shell .material-portrait > p { border-color: var(--line); }
+.flow-shell .material-file-menu > summary,
+.flow-shell .material-understanding summary { min-height: 56px; font-size: 14px; line-height: 1.7; }
+.flow-shell .material-file-menu > summary > span,
+.flow-shell .material-understanding summary > span { color: var(--muted); font-size: 12px; }
+.flow-shell .material-status,
+.flow-shell .material-actions small,
+.flow-shell .material-list small { color: var(--muted); font-size: 12px; }
+.flow-shell .material-list strong { font-size: 13px; }
+.flow-shell .material-portrait > h2 { font-size: 26px; letter-spacing: -.5px; }
+.flow-shell .material-portrait > p { color: var(--muted); font-size: 13px; font-weight: 400; }
+.flow-shell .next-material { padding-top: 24px; margin-block: 24px; }
+.flow-shell .next-material h3 { font-size: 14px; line-height: 1.7; }
+.flow-shell .next-material strong { font-size: 13px; }
+.flow-shell .next-material p { color: var(--muted); font-size: 12px; line-height: 1.8; }
+.flow-shell .next-material svg { color: var(--muted); }
+.flow-shell .editable-material-fields label { font-size: 13px; color: var(--muted); }
+.flow-shell .brand-name-confirm input,
+.flow-shell .intake-fields textarea { border-color: var(--control-border); background: #fff; font-size: 14px; }
+
+/* Shared meters: identical labels, geometry and browser rendering in every view. */
+.flow-shell .evaluation-dimensions { display: grid; gap: 14px; border-block: 1px solid var(--line); margin: 24px 0; padding: 20px 0; }
+.flow-shell .evaluation-dimension { display: grid; grid-template-columns: 76px minmax(0, 1fr) 28px; gap: 12px; align-items: center; font-size: 12px; }
+.flow-shell .evaluation-dimension > span:last-child { color: var(--muted); font-size: 12px; text-align: right; font-variant-numeric: tabular-nums; }
+.flow-shell .evaluation-dimension meter { appearance: none; width: 100%; height: 5px; border: 0; border-radius: 3px; background: #edf0f6; }
+.flow-shell .evaluation-dimension meter::-webkit-meter-bar { height: 5px; border: 0; border-radius: 3px; background: #edf0f6; }
+.flow-shell .evaluation-dimension meter::-webkit-meter-optimum-value { border-radius: 3px; background: var(--flow-accent); }
+.flow-shell .evaluation-dimension meter::-moz-meter-bar { border-radius: 3px; background: var(--flow-accent); }
+
+/* Gravity is a canvas plus a scrolling brief with a persistent decision rail. */
+.flow-shell .gravity-toolbar { border-color: var(--line); font-size: 12px; padding-block: 10px; }
+.flow-shell .gravity-toolbar button { font-size: 12px; color: var(--muted); }
+.flow-shell .gravity-toolbar button:hover { color: var(--flow-accent); border-color: var(--line); background: var(--surface-subtle); }
+.flow-shell .workspace { grid-template-columns: minmax(0, 1fr) 360px; }
+.flow-shell .canvas { background-image: radial-gradient(#dbe0e9 .6px, transparent .7px); }
+.flow-shell .canvas-intro h1 { font-size: 21px; }
+.flow-shell .canvas-intro p { font-size: 12px; }
+.flow-shell .orbit { border-color: #c7cfdd; opacity: .35; }
+.flow-shell .zoom-controls { border-color: var(--line); box-shadow: 0 3px 14px #172c5110; }
+.flow-shell .zoom-controls output { border-color: var(--line); }
+.flow-shell .inspector { padding: 0; border-color: var(--line); overflow: hidden; min-height: 0; }
+.flow-shell .inspector-content { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 22px 26px 8px; scrollbar-width: thin; }
+.flow-shell .inspector-label { color: var(--muted); font-size: 12px; margin-bottom: 12px; letter-spacing: 0; font-family: inherit; }
+.flow-shell .relation-pair { font-size: 15px; gap: 9px; flex-wrap: wrap; overflow-wrap: anywhere; }
+.flow-shell .relation-pair > span { color: var(--muted); }
+.flow-shell .fit-score { margin-top: 20px; }
+.flow-shell .fit-score strong { font-size: 64px; letter-spacing: -3px; font-weight: 500; }
+.flow-shell .fit-score > span { font-size: 13px; }
+.flow-shell .score-caption { font-size: 12px; line-height: 1.7; }
+.flow-shell .relation-type { margin-top: 16px; font-size: 14px; }
+.flow-shell .compact-summary { margin-top: 24px; }
+.flow-shell .inspector h2 { font-size: 13px; margin-bottom: 8px; }
+.flow-shell .inspector .evaluation-dimensions { gap: 10px; margin-block: 14px; padding-block: 16px; }
+.flow-shell .inspector .compact-summary { margin-top: 16px; }
+.flow-shell .inspector .fit-score { margin-top: 12px; }
+.flow-shell .inspector .score-caption { margin-top: 4px; }
+.flow-shell .inspector .relation-type { margin-top: 12px; }
+.flow-shell .explanation > p { font-size: 13px; line-height: 1.85; color: var(--muted); -webkit-line-clamp: unset; }
+.flow-shell .inspector-actions { flex: none; padding: 16px 26px; border-top: 1px solid var(--line); background: #fff; }
+.flow-shell .inspector-match { margin: 0; }
+.flow-shell .inspector-actions .world-meta { margin: 10px 0 0; padding: 0; font-size: 10px; text-align: center; color: var(--muted); font-family: inherit; }
+.flow-shell .discovery-footer { border-color: var(--line); font-size: 12px; gap: 8px 20px; }
+.flow-shell .discovery-footer > span { color: var(--ink); }
+.flow-shell .discovery-footer p { color: var(--muted); }
+
+/* Cards, detail and invitation share the same typography and quiet rules. */
+.flow-shell .draw-page { padding-top: 52px; }
+.flow-shell .draw-heading h1 { font-size: clamp(28px, 3vw, 42px); letter-spacing: -.035em; line-height: 1.4; }
+.flow-shell .draw-face,
+.flow-shell .draw-dialog-content { border-color: var(--line); border-radius: 14px; box-shadow: 0 8px 32px #1f335408; }
+.flow-shell .draw-card-number { font-family: inherit; font-size: 11px; color: var(--muted); letter-spacing: .3px; }
+.flow-shell .draw-dialog-content { padding-inline: 32px; }
+.flow-shell .draw-dialog dl > div { border-color: var(--line); padding-block: 17px; }
+.flow-shell .draw-dialog dt { font-size: 12px; }
+.flow-shell .draw-dialog dd { font-size: 14px; line-height: 1.8; }
+.flow-shell .draw-dialog-score { font-size: 14px; }
+.flow-shell .draw-note { font-size: 12px; }
+.flow-shell .partner-detail-page { max-width: 1120px; }
+.flow-shell .partner-detail-head { grid-template-columns: 130px minmax(0, 1fr) auto; padding: 30px 0; margin-top: 24px; border-color: var(--line); }
+.flow-shell .partner-detail-head h1 { font-size: clamp(30px, 4vw, 48px); line-height: 1.25; letter-spacing: -.035em; overflow-wrap: anywhere; }
+.flow-shell .partner-detail-head .mono { font-family: inherit; font-size: 12px; line-height: 1.6; letter-spacing: 0; }
+.flow-shell .partner-detail-score strong { font-size: 64px; letter-spacing: -3px; }
+.flow-shell .partner-detail-score span { font-size: 12px; }
+.flow-shell .partner-detail-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 64px; padding-block: 36px; }
+.flow-shell .partner-detail-layout h2 { font-size: 16px; margin-bottom: 12px; }
+.flow-shell .partner-evaluation > p,
+.flow-shell .partner-summary { color: var(--muted); font-size: 14px; line-height: 1.9; }
+.flow-shell .partner-profile dl div { border-color: var(--line); grid-template-columns: 88px minmax(0, 1fr); padding-block: 16px; }
+.flow-shell .partner-profile dt { font-size: 12px; }
+.flow-shell .partner-profile dd { font-size: 14px; line-height: 1.8; }
+.flow-shell .partner-public-contact { margin-top: 26px; padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-subtle); }
+.flow-shell .partner-public-contact h2 { margin-bottom: 10px; }
+.flow-shell .partner-contact-links { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; line-height: 1.8; }
+.flow-shell .partner-contact-links a { color: var(--flow-accent); text-decoration: underline; text-underline-offset: 3px; }
+.flow-shell .partner-public-contact p { margin-top: 10px; color: var(--muted); font-size: 11px; line-height: 1.7; }
+.flow-shell .partner-caveat { color: var(--muted) !important; background: var(--surface-subtle); border-left: 2px solid #ccd5e8; padding: 14px 16px; border-radius: 0 8px 8px 0; }
+.flow-shell .partner-contact { background: #fff; border: 0; border-top: 1px solid var(--line); padding: 20px 0; gap: 24px; }
+.flow-shell .partner-contact strong { font-size: 15px; overflow-wrap: anywhere; }
+.flow-shell .partner-contact span { font-size: 12px; }
+.flow-shell .invitation-page { max-width: 1180px; }
+.flow-shell .invitation-heading { margin-block: 28px 36px; }
+.flow-shell .invitation-heading h1 { font-size: clamp(28px, 3.5vw, 46px); letter-spacing: -.035em; }
+.flow-shell .invitation-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; }
+.flow-shell .proposal-visual { background: var(--surface-subtle); border-color: var(--line); border-radius: 14px; }
+.flow-shell .proposal-content label { color: var(--ink) !important; }
+.flow-shell .proposal-content input,
+.flow-shell .proposal-content textarea { border-color: var(--control-border); border-radius: var(--control-radius); font-size: 14px; padding: 12px 14px; background: #fff; }
+.flow-shell .proposal-content input:focus-visible,
+.flow-shell .proposal-content textarea:focus-visible { outline-color: var(--flow-accent); }
+.flow-shell .proposal-content input::placeholder,
+.flow-shell .proposal-content textarea::placeholder { color: #858c99; }
+.flow-shell .proposal-field { margin: 0; }
+.flow-shell .proposal-field-heading { font-size: 14px; margin-bottom: 8px; }
+.flow-shell .ai-field-button { color: var(--flow-accent); border-color: transparent; background: var(--surface-accent); }
+.flow-shell .ai-field-button:hover { border-color: #c3ceff; background: #eaf0ff; }
+.flow-shell .ai-suggestion { background: var(--surface-accent); border-color: #d4ddff; border-radius: 10px; }
+.flow-shell .collider-proposal { border: 0; border-block: 1px solid var(--line); padding: 20px 0; margin-bottom: 26px; }
+.flow-shell .collider-heading span { font-size: 11px; }
+.flow-shell .proposal-note,
+.flow-shell .preview-not-generated,
+.flow-shell .proposal-visual-footer,
+.flow-shell .invitation-version,
+.flow-shell .invitation-state { color: var(--muted) !important; font-size: 12px; }
+.flow-shell .proposal-visual > p { color: var(--muted); font-size: 14px; }
+.flow-shell .proposal-diagnostics { border-color: var(--line); }
+.flow-shell .proposal-diagnostics summary { color: var(--muted) !important; min-height: 32px; font-size: 13px; line-height: 1.8; }
+.flow-shell .invitation-wait,
+.flow-shell .invitation-accepted { border-color: var(--line); background: var(--surface-subtle); border-radius: 12px; padding: 24px; }
+.flow-shell .recipient-feedback,
+.flow-shell .co-creation-boundary { border-color: var(--control-border); }
+
+@media (max-width: 1000px) and (min-width: 641px) {
+  .flow-shell .workspace { grid-template-columns: minmax(0, 1fr) 310px; }
+  .flow-shell .inspector-content { padding-inline: 20px; }
+  .flow-shell .inspector-actions { padding-inline: 20px; }
+  .flow-shell .partner-detail-layout { gap: 32px; }
+  .flow-shell .invitation-layout { gap: 28px; }
+}
+@media (max-width: 800px) {
+  .flow-shell .compact-intake .intake-layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .flow-shell .flow-logo img { width: 27px; height: 27px; }
+  .flow-shell.page-entry .character-entry { padding-top: 32px; min-height: 0; }
+  .flow-shell.page-entry .entry-copy h1 { font-size: clamp(25px, 6.8vw, 34px); line-height: 1.5; }
+  .flow-shell .brand-info-entry { min-height: 90px; padding: 18px; gap: 12px; }
+  .flow-shell .brand-info-entry strong { font-size: 15px; }
+  .flow-shell .entry-footer { font-size: 11px; }
+  .flow-shell .compact-intake { padding-top: 78px; }
+  .flow-shell .material-dropzone small { font-size: 11px; }
+  .flow-shell .material-file-menu > summary,
+  .flow-shell .material-understanding summary { font-size: 13px; }
+  .flow-shell .material-file-menu > summary > span,
+  .flow-shell .material-understanding summary > span { font-size: 11px; }
+  .flow-shell .gravity-toolbar { padding: 10px 20px; }
+  .flow-shell .gravity-toolbar button { font-size: 11px; }
+  .flow-shell .inspector { overflow: visible; border-color: var(--line); }
+  .flow-shell .inspector-content { overflow: visible; padding: 28px 24px 0; }
+  .flow-shell .inspector-actions { padding: 20px 24px; }
+  .flow-shell .evaluation-dimension { font-size: 13px; grid-template-columns: 84px minmax(0, 1fr) 28px; }
+  .flow-shell .draw-page { padding: 36px 20px 28px; }
+  .flow-shell .draw-card-number { font-size: 10px; }
+  .flow-shell .draw-dialog-content { padding-inline: 22px; }
+  .flow-shell .draw-dialog dl > div { grid-template-columns: 68px minmax(0, 1fr); gap: 12px; }
+  .flow-shell .partner-detail-head { grid-template-columns: 88px minmax(0, 1fr); gap: 20px; padding: 12px 0 24px; margin-top: 0; }
+  .flow-shell .partner-detail-score { grid-column: 1/-1; padding-top: 8px; }
+  .flow-shell .partner-detail-layout { grid-template-columns: 1fr; gap: 36px; padding-block: 28px; }
+  .flow-shell .partner-profile dl div { grid-template-columns: 78px minmax(0, 1fr); gap: 14px; }
+  .flow-shell .partner-contact { position: static; grid-template-columns: 1fr; gap: 16px; }
+  .flow-shell .invitation-layout { grid-template-columns: 1fr; gap: 28px; }
+  .flow-shell .invitation-heading { margin-block: 24px 28px; }
+  .flow-shell .proposal-visual { position: relative; top: 0; }
+  .flow-shell .proposal-visual-footer,
+  .flow-shell .preview-not-generated { font-size: 11px; }
+}

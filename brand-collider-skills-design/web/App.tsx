@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
-import type { ReactNode, FormEvent } from 'react';
-import { ArrowDown, ArrowDownToLine, ArrowRight, ArrowUp, Check, ChevronDown, ChevronRight, FileText, History, Image as ImageIcon, LoaderCircle, MessageSquare, Pause, Play, Plus, Search, Settings2, ShieldCheck, Sparkles, Upload, Workflow, X } from 'lucide-react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import type { CSSProperties, FormEvent, KeyboardEvent, PointerEvent as ReactPointerEvent, ReactNode } from 'react';
+import { ArrowDown, ArrowDownToLine, ArrowRight, ArrowUp, Check, ChevronDown, ChevronRight, FileText, Image as ImageIcon, LoaderCircle, MessageSquare, Pause, Play, Plus, Search, Settings2, ShieldCheck, Sparkles, Upload, Workflow, X } from 'lucide-react';
 import { SKILLS } from '../src/collider-types';
 import type { Brand, Message, RuntimeInfo, Session, SkillId } from '../src/collider-types';
 import type { ProductionNode, ProductionProject, ProductionProjectSummary } from '../src/production-types';
@@ -18,6 +18,14 @@ const STATUS: Record<Session['status'], string> = { idle: '准备就绪', runnin
 const ROLE_LABELS = { orchestrator: '联名总策划', research: '研究 Agent', creative: '创作 Agent', review: '审查 Agent' };
 const ROLE_ICONS = { orchestrator: Workflow, research: Search, creative: Sparkles, review: ShieldCheck };
 const RECONNECTING = '本地服务连接中断，正在核对已保存的协作进度。本次操作不会自动重复提交。';
+const DIALOGUE_WIDTH_KEY = 'brand-relations.canvas.dialogue-width.v1';
+const DEFAULT_DIALOGUE_WIDTH = 390;
+function storedDialogueWidth() {
+  try {
+    const value = Number(localStorage.getItem(DIALOGUE_WIDTH_KEY));
+    return Number.isFinite(value) && value >= 280 && value <= 720 ? value : DEFAULT_DIALOGUE_WIDTH;
+  } catch { return DEFAULT_DIALOGUE_WIDTH; }
+}
 function messageRole(message: Message) {
   return message.agentRole || (message.role === 'system' ? 'orchestrator' : message.skill === 'brand-profile' ? 'research' : message.skill === 'quality-review' ? 'review' : 'creative');
 }
@@ -105,7 +113,7 @@ function DialogueMessage({ message, brands, showSkills, onArtifact }: { message:
   return <article className={`u-message ${user ? 'is-user' : `is-${role}`}`}><div className="u-message-head"><span className="u-agent-avatar">{user ? '你' : <Icon size={14} />}</span><strong>{title}</strong><small>{brand ? message.agentRole ? brand.name : '历史记录' : user ? '创意主理人' : message.execution ? '主控 CLI' : '主控'}</small><time>{new Date(message.createdAt).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })}</time></div><div className="u-message-content">{message.execution && message.status === 'error' ? message.detail || '此轮主控 CLI 未完成，未提交交接。' : message.content}</div>{showSkills && message.kind === 'notice' && message.execution && <details className="u-skill-event"><summary>本地 CLI 工作记录 · {message.status === 'running' ? '运行中' : message.status === 'error' ? '已停止 / 未完成' : '已完成'}<ChevronDown size={12} /></summary><CliExecution message={message} /></details>}</article>;
 }
 
-export default function App() {
+export default function App({ channelPreviewMode = false }: { channelPreviewMode?: boolean } = {}) {
   const initialRoute = useRef(new URLSearchParams(location.search));
   const [restoring, setRestoring] = useState(true);
   const [brands, setBrands] = useState<[Brand, Brand]>(emptyBrands);
@@ -135,6 +143,11 @@ export default function App() {
   const [showJump, setShowJump] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const workspaceRef = useRef<HTMLDivElement>(null);
+  const resizeHandleRef = useRef<HTMLDivElement>(null);
+  const [initialDialogueWidth] = useState(storedDialogueWidth);
+  const dialogueWidthRef = useRef(initialDialogueWidth);
+  const resizeRef = useRef<{ pointerId: number; startX: number; startWidth: number } | null>(null);
   const followRef = useRef(true);
   const navigationRef = useRef(0);
   const requestRef = useRef(0);
@@ -152,6 +165,24 @@ export default function App() {
   const automaticProductionError = isNew && mode === 'live' && runtime?.autoProductionConfigured === false
     ? runtime.automaticProductionError || '自动素材采集与图像制作暂未就绪，请先检查本地服务配置。' : '';
   const activeRole = session?.activeSkill === 'brand-profile' ? 'research' : session?.activeSkill === 'quality-review' ? 'review' : session?.activeSkill || imageInFlight ? 'creative' : 'orchestrator';
+
+  const applyDialogueWidth = useCallback((requestedWidth: number) => {
+    const workspace = workspaceRef.current;
+    if (!workspace) return requestedWidth;
+    const maxWidth = Math.max(280, Math.min(720, workspace.clientWidth - 356));
+    const nextWidth = Math.round(Math.min(maxWidth, Math.max(280, requestedWidth)));
+    dialogueWidthRef.current = nextWidth;
+    workspace.style.setProperty('--u-dialogue-width', `${nextWidth}px`);
+    resizeHandleRef.current?.setAttribute('aria-valuenow', String(nextWidth));
+    return nextWidth;
+  }, []);
+
+  useEffect(() => {
+    applyDialogueWidth(initialDialogueWidth);
+    const fitToViewport = () => applyDialogueWidth(dialogueWidthRef.current);
+    window.addEventListener('resize', fitToViewport, { passive: true });
+    return () => window.removeEventListener('resize', fitToViewport);
+  }, [applyDialogueWidth, initialDialogueWidth]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -273,7 +304,7 @@ export default function App() {
         content: [`状态：${contextNode.statusLabel || contextNode.status}`, contextNode.summary, contextNode.content || ''].join('\n\n').slice(0, 12000),
         sources: contextNode.sources.slice(0, 20).map(source => `${source.label}${source.path ? ` · ${source.path}` : ''}`.slice(0, 300)),
       } : undefined;
-      const updated = await api<Session>(`/sessions/${current.id}/intervene`, { text: value, artifactContext });
+      const updated = await api<Session>(`/sessions/${current.id}/intervene`, { text: value, artifactContext, ...(channelPreviewMode ? { restartFrom: 1 } : {}) });
       if (navigation !== navigationRef.current) return;
       applySession(updated); setInput(v => v === value ? '' : v); setContextNode(null); setFollowRequest(value => value + 1); followRef.current = true;
       if (updated.status === 'paused' && current.status !== 'paused' && !imageInFlight) {
@@ -314,14 +345,40 @@ export default function App() {
     }
     finally { if (navigation === navigationRef.current) setBusy(false); }
   }
+  function beginDialogueResize(event: ReactPointerEvent<HTMLDivElement>) {
+    if (window.matchMedia('(max-width: 700px)').matches) return;
+    resizeRef.current = { pointerId: event.pointerId, startX: event.clientX, startWidth: document.getElementById('canvas-dialogue')?.getBoundingClientRect().width || dialogueWidthRef.current };
+    event.currentTarget.setPointerCapture(event.pointerId);
+    event.currentTarget.dataset.dragging = 'true';
+  }
+  function updateDialogueResize(event: ReactPointerEvent<HTMLDivElement>) {
+    const resize = resizeRef.current;
+    if (!resize || resize.pointerId !== event.pointerId) return;
+    applyDialogueWidth(resize.startWidth + resize.startX - event.clientX);
+  }
+  function finishDialogueResize(event: ReactPointerEvent<HTMLDivElement>) {
+    if (resizeRef.current?.pointerId !== event.pointerId) return;
+    resizeRef.current = null;
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
+    delete event.currentTarget.dataset.dragging;
+    try { localStorage.setItem(DIALOGUE_WIDTH_KEY, String(dialogueWidthRef.current)); } catch { /* optional preference */ }
+  }
+  function resizeDialogueWithKeyboard(event: KeyboardEvent<HTMLDivElement>) {
+    const delta = event.key === 'ArrowLeft' ? 24 : event.key === 'ArrowRight' ? -24 : 0;
+    if (!delta && event.key !== 'Home') return;
+    event.preventDefault();
+    const nextWidth = applyDialogueWidth(event.key === 'Home' ? DEFAULT_DIALOGUE_WIDTH : dialogueWidthRef.current + delta);
+    try { localStorage.setItem(DIALOGUE_WIDTH_KEY, String(nextWidth)); } catch { /* optional preference */ }
+  }
   function discuss(node?: ProductionNode) { setContextNode(node || null); inputRef.current?.focus(); }
   function focusArtifact(id: string) { setFocusNodeId(null); requestAnimationFrame(() => setFocusNodeId(id)); }
   const initialBrief = <div className="u-setup"><div className="u-welcome-symbol"><img src="/brand-relations/assets/mark-blue-black.svg" width="48" height="48" alt="" /></div><h2>从两个品牌开始。</h2><p>从真实品牌素材开始，自动完成研究、设计、逐件出图与审查，成果会逐步呈现在画布上。</p><div className="u-brand-inputs">{brands.map((brand, i) => <button key={brand.id} onClick={() => setEditingBrand(brand.id)}><span>{brand.name.slice(0, 1) || (i ? 'B' : 'A')}</span><div><strong>{brand.name || `添加品牌 ${i ? 'B' : 'A'}`}</strong><small>{brand.name ? `${brand.files.length} 份资料 · 点击编辑` : '品牌介绍 / 上传资料'}</small></div><Plus size={15} /></button>)}</div><label className="u-goal-label">这次想一起做什么？<textarea rows={3} value={goal} maxLength={5000} onChange={event => setGoal(event.target.value)} placeholder="例如：围绕年轻人的日常，做一款让双方都有辨识度的联名饮品。" /></label><div className="u-setup-actions"><select aria-label="协作模式" value={mode} onChange={event => setMode(event.target.value as 'live' | 'demo')}><option value="live">{runtime?.transport?.endsWith('-cli') ? '本地 CLI 协作' : 'AI 实时协作'}</option><option value="demo">交互演示</option></select><button onClick={() => { setBrands(structuredClone(EXAMPLE_BRANDS)); setGoal('让咖啡与主题阅读形成具体关联，增加周末到店。'); setMode('demo'); }}>填入演示品牌</button></div><button className="u-primary u-start" disabled={busy || !runtime || startUnavailable} onClick={() => void start()}>{busy ? <LoaderCircle size={15} className="spin" /> : <Sparkles size={15} />}开始联名协作<ArrowRight size={15} /></button><small className="u-setup-note">{mode === 'demo' ? '演示九步协作流程 · 使用固定示例内容' : '九步自动协作 · 核心与推荐物料最多 4 并发生图'}</small>{mode === 'live' && <small className="u-setup-note">自动采集真实素材并附图验收。可在目标中限定制作范围，可选物料保留为候选。</small>}{automaticProductionError && <p className="form-error" role="alert">{automaticProductionError}</p>}</div>;
 
   return <div className={`unified-app${isNew ? ' is-new' : ''}`}>
-    <header className="u-topbar"><div className="u-logo"><img className="u-brand-lockup" src="/brand-relations/assets/lockup-black.svg" alt="Brand Relations · 品牌联名工具" /><img className="u-brand-symbol" src="/brand-relations/assets/mark-black.svg" alt="Brand Relations · 品牌联名工具" /></div><div className="u-project-switch"><button onClick={() => void openHistory()}><span>{projectTitle}</span><ChevronDown size={14} /></button><small>{projectId ? '已有项目' : session?.mode === 'demo' ? '交互演示' : '联名创作空间'}</small></div><div className="u-header-actions"><span className={`u-connection ${runtime?.configured ? 'ready' : ''}`}><i />{runtime?.transport === 'grok-cli' ? 'Grok CLI · ' : runtime?.transport === 'codex-cli' ? 'Codex CLI · ' : ''}{runtime?.model || '连接中'}</span><button title="项目简报与资料" aria-label="项目简报与资料" onClick={() => setModal('brief')}><FileText size={16} /></button><button title="工作方法" aria-label="工作方法" onClick={() => setModal('skills')}><Settings2 size={16} /></button><button className="u-new" aria-label="新建项目" onClick={newProject} disabled={busy}><Plus size={15} /><span>新建</span></button>{session && <a className="u-export" aria-label="导出当前方案" href={`/api/sessions/${session.id}/export`}><ArrowDownToLine size={14} /><span>导出</span></a>}</div></header>
-    <div className="u-workspace"><section className="u-canvas-area" aria-label="项目成果画布"><ProductionWorkspace session={session} projectId={projectId} onProjectLoaded={setSourceProject} onDiscuss={discuss} focusNodeId={focusNodeId} followRequest={followRequest} /></section>
-      <aside className="u-dialogue" aria-label="多 Agent 协作对话"><div className="u-dialogue-header"><MessageSquare size={17} /><h1>协作对话</h1><span>{running || imageInFlight ? <><i className="u-live-dot" />协作中</> : session ? STATUS[session.status] : projectId ? '成果已同步' : '准备开始'}</span></div><div className="u-agent-team">{Object.entries(ROLE_LABELS).map(([role, label]) => { const Icon = ROLE_ICONS[role as keyof typeof ROLE_ICONS]; return <span key={role} className={activeRole === role && (running || imageInFlight || isNew) ? 'active' : ''} title={role === 'orchestrator' ? '整理简报、分派阶段、汇总结果' : label}><Icon size={12} />{label.replace(' Agent', '')}</span>; })}<button aria-label="显示工作记录" aria-pressed={showSkills} className={showSkills ? 'on' : ''} onClick={() => setShowSkills(!showSkills)}><Workflow size={13} /></button></div>
+    {channelPreviewMode ? (<header className="u-topbar"><button className="u-logo" type="button" aria-label="返回第一页" onClick={() => window.location.assign('/')}><img className="u-brand-symbol" src="/brand-relations/assets/mark-black.svg" alt="" /></button><div className="u-project-switch"><span className="u-project-title">{projectTitle}</span><small>{projectId ? '已有项目' : session?.mode === 'demo' ? '交互演示' : '联名创作空间'}</small></div><div className="u-header-actions"><span className={`u-connection ${runtime?.configured ? 'ready' : ''}`}><i />{runtime?.transport === 'grok-cli' ? 'Grok CLI · ' : runtime?.transport === 'codex-cli' ? 'Codex CLI · ' : ''}{runtime?.model || '连接中'}</span><button title="项目简报与资料" aria-label="项目简报与资料" onClick={() => setModal('brief')}><FileText size={16} /></button><button title="工作方法" aria-label="工作方法" onClick={() => setModal('skills')}><Settings2 size={16} /></button>{session && <a className="u-export" aria-label="导出当前方案" href={`/api/sessions/${session.id}/export`}><ArrowDownToLine size={14} /><span>导出</span></a>}</div></header>) : (<header className="u-topbar"><div className="u-logo"><img className="u-brand-lockup" src="/brand-relations/assets/lockup-black.svg" alt="Brand Relations · 品牌联名工具" /><img className="u-brand-symbol" src="/brand-relations/assets/mark-black.svg" alt="Brand Relations · 品牌联名工具" /></div><div className="u-project-switch"><button onClick={() => void openHistory()}><span>{projectTitle}</span><ChevronDown size={14} /></button><small>{projectId ? '已有项目' : session?.mode === 'demo' ? '交互演示' : '联名创作空间'}</small></div><div className="u-header-actions"><span className={`u-connection ${runtime?.configured ? 'ready' : ''}`}><i />{runtime?.transport === 'grok-cli' ? 'Grok CLI · ' : runtime?.transport === 'codex-cli' ? 'Codex CLI · ' : ''}{runtime?.model || '连接中'}</span><button title="项目简报与资料" aria-label="项目简报与资料" onClick={() => setModal('brief')}><FileText size={16} /></button><button title="工作方法" aria-label="工作方法" onClick={() => setModal('skills')}><Settings2 size={16} /></button><button className="u-new" aria-label="新建项目" onClick={newProject} disabled={busy}><Plus size={15} /><span>新建</span></button>{session && <a className="u-export" aria-label="导出当前方案" href={`/api/sessions/${session.id}/export`}><ArrowDownToLine size={14} /><span>导出</span></a>}</div></header>)}
+    <div ref={workspaceRef} className="u-workspace" style={{ '--u-dialogue-width': `${initialDialogueWidth}px` } as CSSProperties}><section id="canvas-results" className="u-canvas-area" aria-label="项目成果画布"><ProductionWorkspace session={session} projectId={projectId} onProjectLoaded={setSourceProject} onDiscuss={discuss} focusNodeId={focusNodeId} followRequest={followRequest} /></section>
+      <div ref={resizeHandleRef} className="u-resize-handle" role="separator" aria-label="调整画布与对话宽度" aria-orientation="vertical" aria-controls="canvas-results canvas-dialogue" aria-valuemin={280} aria-valuemax={720} aria-valuenow={Math.round(initialDialogueWidth)} tabIndex={0} onPointerDown={beginDialogueResize} onPointerMove={updateDialogueResize} onPointerUp={finishDialogueResize} onPointerCancel={finishDialogueResize} onKeyDown={resizeDialogueWithKeyboard} />
+      <aside id="canvas-dialogue" className="u-dialogue" aria-label="多 Agent 协作对话"><div className="u-dialogue-header"><MessageSquare size={17} /><h1>协作对话</h1><span>{running || imageInFlight ? <><i className="u-live-dot" />协作中</> : session ? STATUS[session.status] : projectId ? '成果已同步' : '准备开始'}</span></div><div className="u-agent-team">{Object.entries(ROLE_LABELS).map(([role, label]) => { const Icon = ROLE_ICONS[role as keyof typeof ROLE_ICONS]; return <span key={role} className={activeRole === role && (running || imageInFlight || isNew) ? 'active' : ''} title={role === 'orchestrator' ? '整理简报、分派阶段、汇总结果' : label}><Icon size={12} />{label.replace(' Agent', '')}</span>; })}<button aria-label="显示工作记录" aria-pressed={showSkills} className={showSkills ? 'on' : ''} onClick={() => setShowSkills(!showSkills)}><Workflow size={13} /></button></div>
       {error && <div className="u-error" role="alert"><span>{error}</span><button aria-label="关闭错误提示" onClick={() => setError('')}><X size={14} /></button></div>}
       <div className="u-chat-scroll" ref={scrollRef} onScroll={event => { const el = event.currentTarget; followRef.current = el.scrollHeight - el.scrollTop - el.clientHeight < 90; setShowJump(!followRef.current); }}>
         {restoring ? <div className="loading-state" role="status"><LoaderCircle className="spin" size={18} />正在恢复已保存的协作进度…</div> : isNew ? initialBrief : <div className="u-message-list">
@@ -330,7 +387,7 @@ export default function App() {
         </div>}
       </div>
       {showJump && <button className="u-jump" onClick={() => { followRef.current = true; scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' }); }}><ArrowDown size={13} />最新进度</button>}
-      <div className="u-composer-area">{contextNode && <div className="u-context"><FileText size={12} /><span>正在讨论：{contextNode.title}</span><button aria-label="取消关联成果" onClick={() => setContextNode(null)}><X size={12} /></button></div>}{session && <div className="u-run-controls"><span>简报 v{session.revision} · {session.constraints.length} 条标准</span>{running ? <button disabled={busy} onClick={() => void mutate('pause')}><Pause size={12} />暂停</button> : ['paused', 'idle'].includes(session.status) ? <button disabled={busy} onClick={() => void mutate('run')}><Play size={12} />继续</button> : null}</div>}<form className="u-composer" onSubmit={event => void intervene(event)}><textarea ref={inputRef} aria-label="给联名团队补充标准" value={input} maxLength={1800} rows={2} placeholder={isNew ? '补充合作目标、受众或你想试试的方向…' : '补充标准、调整方向，或聊聊这张图…'} onChange={event => setInput(event.target.value)} onKeyDown={event => { if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); void intervene(); } }} /><div><button type="button" className="u-attach" title="品牌资料" aria-label="品牌资料" onClick={() => isNew ? setEditingBrand('a') : setModal('brief')}><Plus size={18} /></button><small>交给总策划，协调下一步</small><button className="u-send" aria-label="发送新标准" disabled={!input.trim() || busy || (isNew && startUnavailable)}>{busy ? <LoaderCircle size={16} className="spin" /> : <ArrowUp size={18} />}</button></div></form><div className="u-composer-foot"><span>消息不会自动回退进度；重做请指定步骤</span><span>↵ 发送</span></div></div>
+      <div className="u-composer-area">{contextNode && <div className="u-context"><FileText size={12} /><span>正在讨论：{contextNode.title}</span><button aria-label="取消关联成果" onClick={() => setContextNode(null)}><X size={12} /></button></div>}{session && <div className="u-run-controls"><span>简报 v{session.revision} · {session.constraints.length} 条标准</span>{running ? <button disabled={busy} onClick={() => void mutate('pause')}><Pause size={12} />暂停</button> : ['paused', 'idle'].includes(session.status) ? <button disabled={busy} onClick={() => void mutate('run')}><Play size={12} />继续</button> : null}</div>}<form className="u-composer" onSubmit={event => void intervene(event)}><textarea ref={inputRef} aria-label="给联名团队补充标准" value={input} maxLength={1800} rows={2} placeholder={channelPreviewMode ? '例如：咖啡渠道突出周末阅读，书店渠道突出日常咖啡；各自保留原 VI。' : isNew ? '补充合作目标、受众或你想试试的方向…' : '补充标准、调整方向，或聊聊这张图…'} onChange={event => setInput(event.target.value)} onKeyDown={event => { if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); void intervene(); } }} /><div><button type="button" className="u-attach" title="品牌资料" aria-label="品牌资料" onClick={() => isNew ? setEditingBrand('a') : setModal('brief')}><Plus size={18} /></button><small>交给总策划，协调下一步</small><button className="u-send" aria-label={channelPreviewMode ? "生成或更新双方渠道预演" : "发送新标准"} disabled={!input.trim() || busy || (isNew && startUnavailable)}>{busy ? <LoaderCircle size={16} className="spin" /> : <ArrowUp size={18} />}{channelPreviewMode && <span className="u-send-label">{session?.proposal ? '更新预演' : '生成预演'}</span>}</button></div></form><div className="u-composer-foot"><span>{channelPreviewMode ? (runtime?.imageConfigured ? '提交后按新要求重新生成；历史成果会保留' : '图像生成未连接 · 生成方案与提示词') : '消息不会自动回退进度；重做请指定步骤'}</span><span>↵ 发送</span></div></div>
       </aside>
     </div>
     {toast && <div className="toast u-toast" role="status"><Check size={15} />{toast}</div>}

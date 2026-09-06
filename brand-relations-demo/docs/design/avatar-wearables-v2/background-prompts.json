@@ -1,0 +1,4 @@
+{
+  "alphaAttempt": "Background extraction ONLY. Preserve the exact character and all clothing pixels, proportions, materials, pose and framing. Remove the visible checkerboard pattern completely: it is NOT transparency. Return a PNG with a REAL alpha transparency channel outside the character, with clean anti-aliased edges. No checkerboard, no white backdrop, no replacement background, no added halo. Preserve the entire character including all hair, fingers, fabric and shoes.",
+  "finalBackground": "只修改背景：把这张角色图中人物外部所有灰白棋盘格替换成完全纯白色 #FFFFFF。保持人物、服装、五官、姿势、构图和鞋子完全不变。不要透明背景，不要棋盘格，不要阴影，不要任何图案。背景就是均匀纯白。输出完整单个人物。"
+}

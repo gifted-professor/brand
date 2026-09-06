@@ -14,6 +14,19 @@ COLLIDER 面向品牌策划、创意与设计协作：从合作目标出发，�
 
 *实际页面截图：MANNER × 王者荣耀概念探索项目，读取本机已有制作文件。图中为 AI 概念设计与效果探索，非官方联名发布；具体选案、审查和制作状态以节点记录为准。*
 
+## 品牌发现与渠道预演入口
+
+已接入 KAI-NEX 的 Brand Relations：品牌资料 → 引力匹配／抽卡 → 建联预演 → 当前 COLLIDER 画布。代码位于 `brand-relations-demo/`，直接复用本仓库工作台与最新媒体能力。原工作台仍可独立运行。
+
+```bash
+npm --prefix brand-collider-skills-design ci
+cd brand-relations-demo
+npx --yes pnpm@10.11.0 install --frozen-lockfile
+npx --yes pnpm@10.11.0 dev
+```
+
+打开 [品牌发现](http://127.0.0.1:5174/)。建联为本地演示；模型调用需要配置该入口的 `.env.local`。详见 [接入说明](docs/BRAND_RELATIONS_MERGE.md)。
+
 ## 内容导航
 
 - [项目能做什么](#项目能做什么)

@@ -34,19 +34,26 @@
   --studio-mint: var(--brand-blue);
 }
 .u-topbar { height: 88px; padding: 0 32px; gap: 32px; }
-.u-logo { flex-shrink: 0; }
-.u-brand-lockup { display: block; width: 218px; height: auto; }
-.u-brand-symbol { display: none; width: 40px; height: 40px; }
+.u-logo { flex-shrink: 0; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.u-brand-lockup { display: none; }
+.u-brand-symbol { display: block; width: 40px; height: 40px; }
 .u-project-switch { padding-left: 24px; gap: 12px; }
 .u-project-switch button { min-height: 44px; font-size: 14px; font-weight: 600; }
+.u-project-title { max-width: 340px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; font-weight: 600; }
 .u-project-switch small { border: 0; padding: 0; font-size: 12px; }
 .u-connection { font-size: 12px; margin-right: 8px; max-width: 220px; overflow: hidden; text-overflow: ellipsis; }
 .u-connection i, .u-connection.ready i, .u-live-dot { background: var(--brand-black); box-shadow: none; }
 .u-header-actions > button, .u-export { min-width: 44px; height: 44px; border-radius: 8px; font-size: 14px; }
 .u-export { background: var(--brand-blue); color: var(--brand-white); padding: 0 16px; font-weight: 600; }
-.u-workspace { grid-template-columns: minmax(0, 1fr) clamp(380px, 31vw, 460px); padding: 0; gap: 0; }
+.u-workspace { grid-template-columns: minmax(280px, 1fr) 12px minmax(280px, var(--u-dialogue-width, 390px)); padding: 0; gap: 0; }
 .u-canvas-area { border: 0; border-radius: 0; }
 .u-dialogue { border: 0; border-left: 1px solid var(--brand-black); border-radius: 0; }
+.u-resize-handle { position: relative; z-index: 10; display: grid; place-items: center; width: 12px; min-width: 12px; height: 100%; cursor: col-resize; touch-action: none; user-select: none; background: var(--brand-white); border-inline: 1px solid transparent; }
+.u-resize-handle::before { content: ''; width: 2px; height: 48px; border-radius: 99px; background: var(--brand-black); opacity: .34; transition: height .15s ease, opacity .15s ease, background .15s ease; }
+.u-resize-handle:hover::before,
+.u-resize-handle:focus-visible::before,
+.u-resize-handle[data-dragging='true']::before { height: 72px; opacity: 1; background: var(--brand-blue); }
+.u-resize-handle:focus-visible { outline: 2px solid var(--brand-blue); outline-offset: -2px; }
 .u-dialogue-header { height: 64px; padding: 0 24px; }
 .u-dialogue-header h1 { font-size: 16px; font-weight: 600; }
 .u-dialogue-header > span { font-size: 12px; }
@@ -156,7 +163,7 @@
   .u-topbar { gap: 20px; padding: 0 24px; }
   .u-brand-lockup { width: 190px; }
   .u-connection, .u-project-switch small { display: none; }
-  .u-workspace { grid-template-columns: minmax(0, 1fr) 380px; }
+  .u-workspace { grid-template-columns: minmax(280px, 1fr) 12px minmax(280px, var(--u-dialogue-width, 380px)); }
 }
 @media (max-width: 700px) {
   .u-topbar { height: 72px; padding: 0 16px; gap: 12px; }
@@ -165,9 +172,11 @@
   .u-project-switch { padding-left: 12px; flex: 1; }
   .u-project-switch button { font-size: 12px; }
   .u-project-switch button span { max-width: 100px; }
+  .u-project-title { max-width: 120px; font-size: 12px; }
   .u-header-actions { gap: 0; }
   .u-header-actions > button, .u-export { min-width: 44px; width: 44px; }
   .u-workspace { grid-template-columns: 1fr; grid-template-rows: minmax(200px, 36%) minmax(0, 1fr); padding: 0; gap: 0; }
+  .u-resize-handle { display: none; }
   .u-dialogue { border-left: 0; border-top: 1px solid var(--brand-black); border-radius: 0; }
   .u-dialogue-header { height: 44px; }
   .u-agent-team { min-height: 44px; padding: 0 16px; }

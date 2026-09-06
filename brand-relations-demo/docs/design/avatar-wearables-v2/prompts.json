@@ -1,0 +1,21 @@
+{
+  "method": "Built-in image_gen, identity-preserving edits; originals kept.",
+  "base": "Use case: background-extraction / identity-preserve. Edit the attached character as the exact fixed base model for a brand collaboration app. Preserve the new reference's large head, short body proportions, rose brown bob hair, face, dark eyes, pose, blue shirt, black knit vest, grey trousers, olive crossbody bag and sneakers EXACTLY. This reference has NO hat and NO glasses: do not add either. Isolate the complete single full body character on a genuinely transparent RGBA background, no floor or shadow outside feet, no text or extra objects. Center in portrait 2:3 canvas with small consistent margins above hair and under shoes. Premium soft 3D toy render with crisp clothing detail. This is the base for later product try-on.",
+  "variants": [
+    {
+      "id": "scarf",
+      "change": "Add a chunky knitted cobalt-blue scarf around the neck with a short loose tail over the vest, illustrating a fictional recycled-textile brand's scarf product. Keep the existing clothes and olive bag.",
+      "prompt": "Use case: identity-preserve product try-on. Edit this exact reference character. Keep the same face, rose-brown bob hair, dark eyes, short chibi body, pose and camera. No hat, no glasses. One full-body soft premium 3D character, truly transparent RGBA background, no ground shadow outside feet, no text or logos. Keep full hair and shoes visible with consistent narrow margins, portrait 2:3 framing. The wearable must be convincingly worn on the body, integrated with fabric folds, lighting and occlusion, never a floating icon. Add a chunky knitted cobalt-blue scarf around the neck with a short loose tail over the vest, illustrating a fictional recycled-textile brand's scarf product. Keep the existing clothes and olive bag."
+    },
+    {
+      "id": "jacket",
+      "change": "Replace the black vest and blue shirt with a cobalt-blue cropped technical utility jacket with white seam details and two practical pockets. Keep grey trousers and sneakers; remove the olive shoulder bag so the jacket is clear. Illustrates a fictional apparel brand's jacket product.",
+      "prompt": "Use case: identity-preserve product try-on. Edit this exact reference character. Keep the same face, rose-brown bob hair, dark eyes, short chibi body, pose and camera. No hat, no glasses. One full-body soft premium 3D character, truly transparent RGBA background, no ground shadow outside feet, no text or logos. Keep full hair and shoes visible with consistent narrow margins, portrait 2:3 framing. The wearable must be convincingly worn on the body, integrated with fabric folds, lighting and occlusion, never a floating icon. Replace the black vest and blue shirt with a cobalt-blue cropped technical utility jacket with white seam details and two practical pockets. Keep grey trousers and sneakers; remove the olive shoulder bag so the jacket is clear. Illustrates a fictional apparel brand's jacket product."
+    },
+    {
+      "id": "bag",
+      "change": "Replace the olive crossbody bag with a large cobalt-blue structured modular messenger bag with white stitch details worn across the body at the hip. Keep the dark vest and blue shirt, grey trousers and sneakers. Illustrates a fictional carry-goods brand's bag product.",
+      "prompt": "Use case: identity-preserve product try-on. Edit this exact reference character. Keep the same face, rose-brown bob hair, dark eyes, short chibi body, pose and camera. No hat, no glasses. One full-body soft premium 3D character, truly transparent RGBA background, no ground shadow outside feet, no text or logos. Keep full hair and shoes visible with consistent narrow margins, portrait 2:3 framing. The wearable must be convincingly worn on the body, integrated with fabric folds, lighting and occlusion, never a floating icon. Replace the olive crossbody bag with a large cobalt-blue structured modular messenger bag with white stitch details worn across the body at the hip. Keep the dark vest and blue shirt, grey trousers and sneakers. Illustrates a fictional carry-goods brand's bag product."
+    }
+  ]
+}

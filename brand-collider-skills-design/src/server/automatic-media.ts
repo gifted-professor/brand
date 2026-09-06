@@ -3,7 +3,7 @@ import { constants } from 'node:fs';
 import { lstat, mkdir, open, readFile, readdir, rename, rm, stat, writeFile } from 'node:fs/promises';
 import { basename, join, relative, resolve, sep } from 'node:path';
 import sharp from 'sharp';
-import type { AutomaticMediaState, MediaBinding, MediaMaterial, MediaReference, MediaReferenceInspection, MediaSourceClass } from '../automation-types.ts';
+import type { AutomaticMediaState, MediaBinding, MediaReference, MediaReferenceInspection, MediaSourceClass } from '../automation-types.ts';
 import type { MaterialPlan, MaterialVisual } from '../material-plan.ts';
 import { collectVisualReference, discoverVisualReferenceImages, publicReferenceUrl, REFERENCE_SOURCE_CLASSES } from '../visual-reference.ts';
 import type { DiscoveredReferencePage, VisualReference, VisualReferenceInput } from '../visual-reference.ts';

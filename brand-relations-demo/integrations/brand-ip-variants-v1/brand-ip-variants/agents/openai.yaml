@@ -1,0 +1,4 @@
+interface:
+  display_name: "品牌 IP 本体换装"
+  short_description: "固定角色本体，为不同品牌更换服装、手饰、手持物、发饰和发色"
+  default_prompt: "使用 $brand-ip-variants，基于已保存的角色本体，按我提供的品牌生成 IP 形象，保持五官和头身比例一致。"
