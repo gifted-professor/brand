@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { CSSProperties, PointerEvent as ReactPointerEvent } from 'react';
-import { AlertCircle, ArrowDownToLine, ArrowLeft, ArrowRight, ArrowUpRight, AudioLines, Check, ChevronDown, ChevronRight, CircleDot, Eye, EyeOff, FileText, Film, Flag, Focus, Grip, Image as ImageIcon, Layers3, LayoutGrid, Link2, LoaderCircle, Maximize2, MessageSquare, Minus, MousePointer2, Pause, Plus, RefreshCw, RotateCcw, Search, Sparkles, Workflow, X } from 'lucide-react';
+import { AlertCircle, ArrowDownToLine, ArrowLeft, ArrowUpRight, AudioLines, Check, ChevronDown, ChevronRight, CircleDot, Eye, EyeOff, FileText, Film, Flag, Focus, Grip, Image as ImageIcon, Layers3, LayoutGrid, Link2, LoaderCircle, Maximize2, MessageSquare, Minus, MousePointer2, Pause, Plus, RefreshCw, Search, Sparkles, Workflow, X } from 'lucide-react';
 import type { ProductionAsset, ProductionLaneId, ProductionNode, ProductionNodeKind, ProductionProject, ProductionProjectSummary, ProductionStatus, ProductionWorkflow } from '../../src/production-types';
 import { CANVAS_LAYERS, CANVAS_CARD_WIDTH, canvasLayerOrigin, nodeLayer, reconcileInfinitePositions } from '../infinite-layout';
 import type { CanvasLayerId } from '../infinite-layout';
@@ -35,8 +35,6 @@ const defaultViewport = (): Viewport => ({ x: typeof window !== 'undefined' && w
 const KIND_NAMES: Record<ProductionNodeKind, string> = { brief: '项目简报', concept: '联名方向', story: '故事与脚本', material: '设计素材', image: '图像资产', video: '视频', audio: '音频', review: '审查记录', document: '制作文档' };
 const KIND_ICONS = { brief: Flag, concept: Sparkles, story: FileText, material: Layers3, image: ImageIcon, video: Film, audio: AudioLines, review: Check, document: FileText };
 const LANE_ICONS = { strategy: Flag, story: FileText, materials: Layers3, media: ImageIcon, video: Film, review: Check };
-const STAGE_NAMES: Record<ProductionLaneId, string> = { strategy: '研究与方向', story: '故事文案', materials: '产品物料', media: '视觉创作', video: '视频', review: '审查' };
-const STAGE_IDS: ProductionLaneId[] = ['strategy', 'story', 'materials', 'media', 'video', 'review'];
 const STATUS_NAMES: Record<ProductionStatus, string> = { available: '已有产出', planned: '制作计划', running: '制作中', needs_revision: '待修订', unverified: '待核验', reference: '参考资料', failed: '未完成' };
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 

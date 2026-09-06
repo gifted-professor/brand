@@ -2,7 +2,7 @@ export const MATERIAL_CATEGORIES = {
   product: '主营产品', packaging: '包装与随附', communication: '传播物料', merchandise: '延伸周边', experience: '场景与体验',
 } as const;
 export const MATERIAL_PRIORITIES = { core: '核心项', recommended: '推荐项', optional: '可选项' } as const;
-export const MATERIAL_ASPECT_RATIOS = ['1:1', '4:3', '3:4', '3:2', '2:3', '16:9', '9:16'] as const;
+export const MATERIAL_ASPECT_RATIOS = ['1:1', '4:3', '3:4', '4:5', '3:2', '2:3', '16:9', '9:16'] as const;
 
 export type MaterialItem = {
   id: string; name: string; category: keyof typeof MATERIAL_CATEGORIES; priority: keyof typeof MATERIAL_PRIORITIES;

@@ -179,11 +179,11 @@ test('each visual maps to exactly one current material and legacy sessions accep
 test('explicit per-material aspect ratios survive validation while absent ratios preserve legacy visuals', () => {
   const plan = materialPlanFixture(), visuals = materialVisualFixtures(plan);
   assert.deepEqual(validateMaterialVisuals(visuals, plan), visuals, 'missing ratios remain absent for the runner 4:3 default');
-  for (const aspectRatio of ['1:1', '4:3', '3:4', '3:2', '2:3', '16:9', '9:16']) {
+  for (const aspectRatio of ['1:1', '4:3', '3:4', '4:5', '3:2', '2:3', '16:9', '9:16']) {
     const input = visuals.map((visual, index) => index === 0 ? { ...visual, aspectRatio } : visual);
     assert.deepEqual(validateMaterialVisuals(input, plan), input);
   }
-  for (const aspectRatio of ['vertical', '3/4', '4:5', '', ' 3:4', null, 1, ['3:4'], {}]) {
+  for (const aspectRatio of ['vertical', '3/4', '5:7', '', ' 3:4', null, 1, ['3:4'], {}]) {
     assert.throws(() => validateMaterialVisuals([{ ...visuals[0], aspectRatio }, ...visuals.slice(1)], plan), /画幅/);
   }
 });
