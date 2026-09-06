@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
-import type { ReactNode, FormEvent } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import type { CSSProperties, FormEvent, KeyboardEvent, PointerEvent as ReactPointerEvent, ReactNode } from 'react';
 import { ArrowDown, ArrowDownToLine, ArrowRight, ArrowUp, Check, ChevronDown, ChevronRight, FileText, Image as ImageIcon, LoaderCircle, MessageSquare, Pause, Play, Plus, Search, Settings2, ShieldCheck, Sparkles, Upload, Workflow, X } from 'lucide-react';
 import { SKILLS } from '../src/collider-types';
 import type { Brand, Message, RuntimeInfo, Session, SkillId } from '../src/collider-types';
-import type { ProductionNode, ProductionProject, ProductionProjectSummary } from '../src/production-types';
+import type { ProductionNode, ProductionProject } from '../src/production-types';
 import { ProductionWorkspace } from './components/ProductionWorkspace';
 import { api, isServiceUnavailable, uploadFile } from './api';
 import { currentSessionAutomation, isSessionFinalReviewPending, isSessionMediaComplete, isSessionMediaRunning, mediaProgressLabel } from './session-automation';
@@ -18,6 +18,14 @@ const STATUS: Record<Session['status'], string> = { idle: '准备就绪', runnin
 const ROLE_LABELS = { orchestrator: '联名总策划', research: '研究 Agent', creative: '创作 Agent', review: '审查 Agent' };
 const ROLE_ICONS = { orchestrator: Workflow, research: Search, creative: Sparkles, review: ShieldCheck };
 const RECONNECTING = '本地服务连接中断，正在核对已保存的协作进度。本次操作不会自动重复提交。';
+const DIALOGUE_WIDTH_KEY = 'brand-relations.canvas.dialogue-width.v1';
+const DEFAULT_DIALOGUE_WIDTH = 390;
+function storedDialogueWidth() {
+  try {
+    const value = Number(localStorage.getItem(DIALOGUE_WIDTH_KEY));
+    return Number.isFinite(value) && value >= 280 && value <= 720 ? value : DEFAULT_DIALOGUE_WIDTH;
+  } catch { return DEFAULT_DIALOGUE_WIDTH; }
+}
 function messageRole(message: Message) {
   return message.agentRole || (message.role === 'system' ? 'orchestrator' : message.skill === 'brand-profile' ? 'research' : message.skill === 'quality-review' ? 'review' : 'creative');
 }
@@ -110,18 +118,15 @@ export default function App({ channelPreviewMode = false }: { channelPreviewMode
   const [restoring, setRestoring] = useState(true);
   const [brands, setBrands] = useState<[Brand, Brand]>(emptyBrands);
   const [goal, setGoal] = useState('');
-  const [constraints, setConstraints] = useState<string[]>([]);
+  const [constraints] = useState<string[]>([]);
   const [session, setSession] = useState<Session | null>(null);
-  const [projectId, setProjectId] = useState<string | null>(() => new URLSearchParams(location.search).get('project'));
+  const [projectId] = useState<string | null>(() => new URLSearchParams(location.search).get('project'));
   const [sourceProject, setSourceProject] = useState<ProductionProject | null>(null);
   const [runtime, setRuntime] = useState<RuntimeInfo | null>(null);
   const [mode, setMode] = useState<'live' | 'demo'>('live');
-  const [modal, setModal] = useState<'skills' | 'history' | 'help' | 'brief' | null>(null);
+  const [modal, setModal] = useState<'skills' | 'help' | 'brief' | null>(null);
   const [editingBrand, setEditingBrand] = useState<'a' | 'b' | null>(null);
   const [selectedSkill, setSelectedSkill] = useState<SkillId>('brand-profile');
-  const [history, setHistory] = useState<Session[]>([]);
-  const [projects, setProjects] = useState<ProductionProjectSummary[]>([]);
-  const [historyLoading, setHistoryLoading] = useState(false);
   const [input, setInput] = useState('');
   const [working, setBusy] = useState(false);
   const [showSkills, setShowSkills] = useState(true);
@@ -135,6 +140,11 @@ export default function App({ channelPreviewMode = false }: { channelPreviewMode
   const [showJump, setShowJump] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const workspaceRef = useRef<HTMLDivElement>(null);
+  const resizeHandleRef = useRef<HTMLDivElement>(null);
+  const [initialDialogueWidth] = useState(storedDialogueWidth);
+  const dialogueWidthRef = useRef(initialDialogueWidth);
+  const resizeRef = useRef<{ pointerId: number; startX: number; startWidth: number } | null>(null);
   const followRef = useRef(true);
   const navigationRef = useRef(0);
   const requestRef = useRef(0);
@@ -152,6 +162,24 @@ export default function App({ channelPreviewMode = false }: { channelPreviewMode
   const automaticProductionError = isNew && mode === 'live' && runtime?.autoProductionConfigured === false
     ? runtime.automaticProductionError || '自动素材采集与图像制作暂未就绪，请先检查本地服务配置。' : '';
   const activeRole = session?.activeSkill === 'brand-profile' ? 'research' : session?.activeSkill === 'quality-review' ? 'review' : session?.activeSkill || imageInFlight ? 'creative' : 'orchestrator';
+
+  const applyDialogueWidth = useCallback((requestedWidth: number) => {
+    const workspace = workspaceRef.current;
+    if (!workspace) return requestedWidth;
+    const maxWidth = Math.max(280, Math.min(720, workspace.clientWidth - 356));
+    const nextWidth = Math.round(Math.min(maxWidth, Math.max(280, requestedWidth)));
+    dialogueWidthRef.current = nextWidth;
+    workspace.style.setProperty('--u-dialogue-width', `${nextWidth}px`);
+    resizeHandleRef.current?.setAttribute('aria-valuenow', String(nextWidth));
+    return nextWidth;
+  }, []);
+
+  useEffect(() => {
+    applyDialogueWidth(initialDialogueWidth);
+    const fitToViewport = () => applyDialogueWidth(dialogueWidthRef.current);
+    window.addEventListener('resize', fitToViewport, { passive: true });
+    return () => window.removeEventListener('resize', fitToViewport);
+  }, [applyDialogueWidth, initialDialogueWidth]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -286,42 +314,40 @@ export default function App({ channelPreviewMode = false }: { channelPreviewMode
     } catch (err) { if (navigation === navigationRef.current) handleOperationError(err, currentId); }
     finally { if (navigation === navigationRef.current) setBusy(false); }
   }
-  function resetNavigation() {
-    navigationRef.current += 1; requestRef.current += 1; setBusy(false); setInput(''); setError(''); setReconcileId(null); setRestoring(false); setContextNode(null); setFocusNodeId(null); followRef.current = true;
+  function beginDialogueResize(event: ReactPointerEvent<HTMLDivElement>) {
+    if (window.matchMedia('(max-width: 700px)').matches) return;
+    resizeRef.current = { pointerId: event.pointerId, startX: event.clientX, startWidth: document.getElementById('canvas-dialogue')?.getBoundingClientRect().width || dialogueWidthRef.current };
+    event.currentTarget.setPointerCapture(event.pointerId);
+    event.currentTarget.dataset.dragging = 'true';
   }
-  function newProject() { resetNavigation(); setSession(null); setProjectId(null); setSourceProject(null); setBrands(emptyBrands()); setGoal(''); setConstraints([]); setMode('live'); setModal(null); }
-  async function openHistory() {
-    setModal('history'); setHistoryLoading(true);
-    const results = await Promise.allSettled([api<Session[]>('/sessions'), api<ProductionProjectSummary[]>('/production/projects')]);
-    if (results[0].status === 'fulfilled') setHistory(results[0].value);
-    if (results[1].status === 'fulfilled') setProjects(results[1].value);
-    if (results.some(r => r.status === 'rejected')) setError('部分项目未能读取，可以重试。');
-    setHistoryLoading(false);
+  function updateDialogueResize(event: ReactPointerEvent<HTMLDivElement>) {
+    const resize = resizeRef.current;
+    if (!resize || resize.pointerId !== event.pointerId) return;
+    applyDialogueWidth(resize.startWidth + resize.startX - event.clientX);
   }
-  async function loadProject(id: string) {
-    resetNavigation(); setSession(null); setSourceProject(null); setProjectId(id); setModal(null);
-    const navigation = navigationRef.current;
-    let savedId: string | null = null;
-    try { savedId = localStorage.getItem(`collider.discussion.v1.${id}`); } catch { /* optional */ }
-    if (!savedId) return;
-    setBusy(true);
-    try {
-      const saved = await api<Session>(`/sessions/${encodeURIComponent(savedId)}`);
-      if (navigation === navigationRef.current) { setSession(saved); setMode(saved.mode); }
-    } catch (err) {
-      if (navigation === navigationRef.current && isServiceUnavailable(err)) handleOperationError(err, savedId);
-      // Missing archived discussions can be started again; temporary outages must be reconciled first.
-    }
-    finally { if (navigation === navigationRef.current) setBusy(false); }
+  function finishDialogueResize(event: ReactPointerEvent<HTMLDivElement>) {
+    if (resizeRef.current?.pointerId !== event.pointerId) return;
+    resizeRef.current = null;
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
+    delete event.currentTarget.dataset.dragging;
+    try { localStorage.setItem(DIALOGUE_WIDTH_KEY, String(dialogueWidthRef.current)); } catch { /* optional preference */ }
+  }
+  function resizeDialogueWithKeyboard(event: KeyboardEvent<HTMLDivElement>) {
+    const delta = event.key === 'ArrowLeft' ? 24 : event.key === 'ArrowRight' ? -24 : 0;
+    if (!delta && event.key !== 'Home') return;
+    event.preventDefault();
+    const nextWidth = applyDialogueWidth(event.key === 'Home' ? DEFAULT_DIALOGUE_WIDTH : dialogueWidthRef.current + delta);
+    try { localStorage.setItem(DIALOGUE_WIDTH_KEY, String(nextWidth)); } catch { /* optional preference */ }
   }
   function discuss(node?: ProductionNode) { setContextNode(node || null); inputRef.current?.focus(); }
   function focusArtifact(id: string) { setFocusNodeId(null); requestAnimationFrame(() => setFocusNodeId(id)); }
   const initialBrief = <div className="u-setup"><div className="u-welcome-symbol"><img src="/brand-relations/assets/mark-blue-black.svg" width="48" height="48" alt="" /></div><h2>从两个品牌开始。</h2><p>从真实品牌素材开始，自动完成研究、设计、逐件出图与审查，成果会逐步呈现在画布上。</p><div className="u-brand-inputs">{brands.map((brand, i) => <button key={brand.id} onClick={() => setEditingBrand(brand.id)}><span>{brand.name.slice(0, 1) || (i ? 'B' : 'A')}</span><div><strong>{brand.name || `添加品牌 ${i ? 'B' : 'A'}`}</strong><small>{brand.name ? `${brand.files.length} 份资料 · 点击编辑` : '品牌介绍 / 上传资料'}</small></div><Plus size={15} /></button>)}</div><label className="u-goal-label">这次想一起做什么？<textarea rows={3} value={goal} maxLength={5000} onChange={event => setGoal(event.target.value)} placeholder="例如：围绕年轻人的日常，做一款让双方都有辨识度的联名饮品。" /></label><div className="u-setup-actions"><select aria-label="协作模式" value={mode} onChange={event => setMode(event.target.value as 'live' | 'demo')}><option value="live">{runtime?.transport?.endsWith('-cli') ? '本地 CLI 协作' : 'AI 实时协作'}</option><option value="demo">交互演示</option></select><button onClick={() => { setBrands(structuredClone(EXAMPLE_BRANDS)); setGoal('让咖啡与主题阅读形成具体关联，增加周末到店。'); setMode('demo'); }}>填入演示品牌</button></div><button className="u-primary u-start" disabled={busy || !runtime || startUnavailable} onClick={() => void start()}>{busy ? <LoaderCircle size={15} className="spin" /> : <Sparkles size={15} />}开始联名协作<ArrowRight size={15} /></button><small className="u-setup-note">{mode === 'demo' ? '演示九步协作流程 · 使用固定示例内容' : '九步自动协作 · 核心与推荐物料最多 4 并发生图'}</small>{mode === 'live' && <small className="u-setup-note">自动采集真实素材并附图验收。可在目标中限定制作范围，可选物料保留为候选。</small>}{automaticProductionError && <p className="form-error" role="alert">{automaticProductionError}</p>}</div>;
 
   return <div className={`unified-app${isNew ? ' is-new' : ''}`}>
-    <header className="u-topbar"><div className="u-logo"><img className="u-brand-lockup" src="/brand-relations/assets/lockup-black.svg" alt="Brand Relations · 品牌联名工具" /><img className="u-brand-symbol" src="/brand-relations/assets/mark-black.svg" alt="Brand Relations · 品牌联名工具" /></div><div className="u-project-switch"><button onClick={() => void openHistory()}><span>{projectTitle}</span><ChevronDown size={14} /></button><small>{projectId ? '已有项目' : session?.mode === 'demo' ? '交互演示' : '联名创作空间'}</small></div><div className="u-header-actions"><span className={`u-connection ${runtime?.configured ? 'ready' : ''}`}><i />{runtime?.transport === 'grok-cli' ? 'Grok CLI · ' : runtime?.transport === 'codex-cli' ? 'Codex CLI · ' : ''}{runtime?.model || '连接中'}</span><button title="项目简报与资料" aria-label="项目简报与资料" onClick={() => setModal('brief')}><FileText size={16} /></button><button title="工作方法" aria-label="工作方法" onClick={() => setModal('skills')}><Settings2 size={16} /></button><button className="u-new" aria-label="新建项目" onClick={newProject} disabled={busy}><Plus size={15} /><span>新建</span></button>{session && <a className="u-export" aria-label="导出当前方案" href={`/api/sessions/${session.id}/export`}><ArrowDownToLine size={14} /><span>导出</span></a>}</div></header>
-    <div className="u-workspace"><section className="u-canvas-area" aria-label="项目成果画布"><ProductionWorkspace session={session} projectId={projectId} onProjectLoaded={setSourceProject} onDiscuss={discuss} focusNodeId={focusNodeId} followRequest={followRequest} /></section>
-      <aside className="u-dialogue" aria-label="多 Agent 协作对话"><div className="u-dialogue-header"><MessageSquare size={17} /><h1>协作对话</h1><span>{running || imageInFlight ? <><i className="u-live-dot" />协作中</> : session ? STATUS[session.status] : projectId ? '成果已同步' : '准备开始'}</span></div><div className="u-agent-team">{Object.entries(ROLE_LABELS).map(([role, label]) => { const Icon = ROLE_ICONS[role as keyof typeof ROLE_ICONS]; return <span key={role} className={activeRole === role && (running || imageInFlight || isNew) ? 'active' : ''} title={role === 'orchestrator' ? '整理简报、分派阶段、汇总结果' : label}><Icon size={12} />{label.replace(' Agent', '')}</span>; })}<button aria-label="显示工作记录" aria-pressed={showSkills} className={showSkills ? 'on' : ''} onClick={() => setShowSkills(!showSkills)}><Workflow size={13} /></button></div>
+    <header className="u-topbar"><button className="u-logo" type="button" aria-label="返回第一页" onClick={() => window.location.assign('/')}><img className="u-brand-symbol" src="/brand-relations/assets/mark-black.svg" alt="" /></button><div className="u-project-switch"><span className="u-project-title">{projectTitle}</span><small>{projectId ? '已有项目' : session?.mode === 'demo' ? '交互演示' : '联名创作空间'}</small></div><div className="u-header-actions"><span className={`u-connection ${runtime?.configured ? 'ready' : ''}`}><i />{runtime?.transport === 'grok-cli' ? 'Grok CLI · ' : runtime?.transport === 'codex-cli' ? 'Codex CLI · ' : ''}{runtime?.model || '连接中'}</span><button title="项目简报与资料" aria-label="项目简报与资料" onClick={() => setModal('brief')}><FileText size={16} /></button><button title="工作方法" aria-label="工作方法" onClick={() => setModal('skills')}><Settings2 size={16} /></button>{session && <a className="u-export" aria-label="导出当前方案" href={`/api/sessions/${session.id}/export`}><ArrowDownToLine size={14} /><span>导出</span></a>}</div></header>
+    <div ref={workspaceRef} className="u-workspace" style={{ '--u-dialogue-width': `${initialDialogueWidth}px` } as CSSProperties}><section id="canvas-results" className="u-canvas-area" aria-label="项目成果画布"><ProductionWorkspace session={session} projectId={projectId} onProjectLoaded={setSourceProject} onDiscuss={discuss} focusNodeId={focusNodeId} followRequest={followRequest} /></section>
+      <div ref={resizeHandleRef} className="u-resize-handle" role="separator" aria-label="调整画布与对话宽度" aria-orientation="vertical" aria-controls="canvas-results canvas-dialogue" aria-valuemin={280} aria-valuemax={720} aria-valuenow={Math.round(initialDialogueWidth)} tabIndex={0} onPointerDown={beginDialogueResize} onPointerMove={updateDialogueResize} onPointerUp={finishDialogueResize} onPointerCancel={finishDialogueResize} onKeyDown={resizeDialogueWithKeyboard} />
+      <aside id="canvas-dialogue" className="u-dialogue" aria-label="多 Agent 协作对话"><div className="u-dialogue-header"><MessageSquare size={17} /><h1>协作对话</h1><span>{running || imageInFlight ? <><i className="u-live-dot" />协作中</> : session ? STATUS[session.status] : projectId ? '成果已同步' : '准备开始'}</span></div><div className="u-agent-team">{Object.entries(ROLE_LABELS).map(([role, label]) => { const Icon = ROLE_ICONS[role as keyof typeof ROLE_ICONS]; return <span key={role} className={activeRole === role && (running || imageInFlight || isNew) ? 'active' : ''} title={role === 'orchestrator' ? '整理简报、分派阶段、汇总结果' : label}><Icon size={12} />{label.replace(' Agent', '')}</span>; })}<button aria-label="显示工作记录" aria-pressed={showSkills} className={showSkills ? 'on' : ''} onClick={() => setShowSkills(!showSkills)}><Workflow size={13} /></button></div>
       {error && <div className="u-error" role="alert"><span>{error}</span><button aria-label="关闭错误提示" onClick={() => setError('')}><X size={14} /></button></div>}
       <div className="u-chat-scroll" ref={scrollRef} onScroll={event => { const el = event.currentTarget; followRef.current = el.scrollHeight - el.scrollTop - el.clientHeight < 90; setShowJump(!followRef.current); }}>
         {restoring ? <div className="loading-state" role="status"><LoaderCircle className="spin" size={18} />正在恢复已保存的协作进度…</div> : isNew ? initialBrief : <div className="u-message-list">
@@ -336,7 +362,6 @@ export default function App({ channelPreviewMode = false }: { channelPreviewMode
     {toast && <div className="toast u-toast" role="status"><Check size={15} />{toast}</div>}
     {editingBrand && <BrandEditor brand={brands[editingBrand === 'a' ? 0 : 1]} onClose={() => setEditingBrand(null)} onSave={next => { setBrands(current => current.map(brand => brand.id === next.id ? next : brand) as [Brand, Brand]); setEditingBrand(null); }} />}
     {modal === 'skills' && <Modal title="团队共用的创作方法" wide onClose={() => setModal(null)}><p className="modal-description">总策划维护简报与阶段顺序。研究、创作、审查角色共用项目资料，按当前任务调用以下 Skill。</p><div className="skill-browser"><nav>{SKILLS.map((skill, index) => <button key={skill.id} className={selectedSkill === skill.id ? 'selected' : ''} onClick={() => setSelectedSkill(skill.id)}><span>0{index + 1}</span>{skill.name}<ChevronRight size={14} /></button>)}</nav><section><h3>{SKILLS.find(skill => skill.id === selectedSkill)?.name}</h3><p className="muted">{SKILLS.find(skill => skill.id === selectedSkill)?.description}</p><pre>{runtime?.skills.find(skill => skill.id === selectedSkill)?.content || '正在读取…'}</pre></section></div></Modal>}
-    {modal === 'history' && <Modal title="打开项目" onClose={() => setModal(null)}><div className="history-list">{historyLoading ? <div className="loading-state"><LoaderCircle className="spin" />正在读取…</div> : <>{projects.map(project => <button key={project.id} onClick={() => loadProject(project.id)}><div className="history-icon"><ImageIcon size={20} /></div><span><strong>{project.title}</strong><small>{project.assetCount} 个真实文件 · {project.nodeCount} 项成果</small></span><ChevronRight size={15} /></button>)}{history.map(item => <button key={item.id} onClick={() => { resetNavigation(); setProjectId(null); setSourceProject(null); setSession(item); setMode(item.mode); setModal(null); }}><div className="history-icon"><MessageSquare size={20} /></div><span><strong>{item.title}</strong><small>{new Date(item.updatedAt).toLocaleString('zh-CN')} · {item.mode === 'demo' ? '演示' : 'AI 协作'} · {STATUS[item.status]}</small></span><ChevronRight size={15} /></button>)}{!projects.length && !history.length && <p className="loading-state">还没有保存的项目。</p>}</>}</div></Modal>}
     {modal === 'brief' && <Modal title="项目简报与共同资料" onClose={() => setModal(null)}><div className="u-brief"><p>{sourceProject?.summary || session?.goal || goal || '先在右侧添加两个品牌和合作目标。'}</p>{(sourceProject && !session ? sourceProject.brandNames.map((name, i) => ({ id: i ? 'b' : 'a', name, description: '研究报告可从画布左下角的研究图层查看。', files: [] })) : shownBrands).map(brand => <section key={brand.id}><h3>{brand.name || `品牌 ${brand.id.toUpperCase()}`}</h3><p>{brand.description || '还未添加品牌介绍。'}</p>{brand.files.map(file => <p key={file.name}><FileText size={12} /> {file.name}</p>)}{isNew && <button className="u-primary" onClick={() => { setModal(null); setEditingBrand(brand.id as 'a' | 'b'); }}>编辑品牌资料</button>}</section>)}{(session?.constraints || constraints).length > 0 && <section><h3>当前标准</h3>{(session?.constraints || constraints).map((constraint, i) => <p key={i}>{constraint}</p>)}</section>}<p className="muted">研究成果、选定方向与审查意见均保留在本项目中。运行后可直接在对话中追加或修改标准。</p></div></Modal>}
   </div>;
 }
