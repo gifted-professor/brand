@@ -1,3 +1,4 @@
+import { sessionVideoArtifacts } from './session-video.ts';
 import { SKILLS, type Session } from '../src/collider-types.ts';
 import { MATERIAL_CATEGORIES, MATERIAL_PRIORITIES, materialItemMarkdown, type MaterialPlan } from '../src/material-plan.ts';
 import type { ProductionProject, ProductionNode } from '../src/production-types.ts';
@@ -174,6 +175,8 @@ export function sessionProduction(session: Session): ProductionProject {
   nodes.push(...media.nodes);
   assets.push(...media.assets);
   edges.push(...media.edges);
+  const video = sessionVideoArtifacts(session);
+  nodes.push(...video.nodes); assets.push(...video.assets); edges.push(...video.edges);
   const nodeIds = new Set(nodes.map(node => node.id));
   const connect = (source: string, target: string, label: string) => {
     if (nodeIds.has(source) && nodeIds.has(target)) edges.push({ id: `${source}-to-${target}`, source, target, label });

@@ -58,13 +58,14 @@ async function fixture(t, hooks = {}) {
             assert.equal(task.purpose, 'visual-inspection'); assert.equal(task.images.length, 1);
             assert.equal(digest(await readFile(task.images[0].path)), task.images[0].hash);
             assert.ok(data.input.sourcePageExcerpt.includes('source.png'));
-            return { status: 'verified', sourceClass: 'official', sourceRelationship: 'verified', identityVerified: true,
+            return { status: 'verified', sourceClass: 'official', sourceRelationship: 'verified', identityVerified: true, targetMatch: 'matched', assetType: 'character',
               subject: data.input.reference.subject, version: 'Release 1', evidence: 'Fixture CLI opened the exact attached source and checked the matching original page.',
               limitations: [], imageHash: data.input.imageHash, sourcePageHash: data.input.sourcePageHash };
           }
           if (data.task === 'reference-binding') {
             const reference = data.input.references.find(item => item.brandId === 'b');
             return { bindings: plan.items.map(item => ({ materialId: item.id, referenceIds: reference ? [reference.referenceId] : [], referenceTasks: item.dependencies,
+              identityTargets: [{ subject: 'Fixture character', assetType: 'character', referenceIds: reference ? [reference.referenceId] : [] }],
               identityRequired: true, identityReferenceIds: reference ? [reference.referenceId] : [], identityRequirements: ['Official element outline'],
               rationale: 'Use the original official identity for this exact material.', status: 'ready', reason: '' })), limitations: [] };
           }
@@ -148,6 +149,11 @@ test('click-to-run HTTP path executes all nine CLI stages with early parallel di
   assert.ok(creativeInput.references.every(reference => reference.inspection?.status === 'verified'), 'ideation receives actual inspected references, not only future collection plans');
   assert.ok(f.events.lastIndexOf('image-review') < f.events.indexOf('review-a'));
   assert.ok(f.events.includes('review-a-observed-completed'));
+  const finalAudit = f.calls.find(call => call.stage === 'review-a');
+  assert.match(finalAudit.messages[0].content, /第9步出图后最终验收汇总/);
+  assert.doesNotMatch(finalAudit.messages[0].content, /pass 只表示当前文本方案可进入概念图步骤/);
+  assert.match(finalAudit.data.handoff.task, /哈希匹配的真实附图验收记录/);
+  assert.ok(finalAudit.data.automation.materials.filter(item => item.status !== 'out_of_scope').every(item => item.outputHash && item.review));
   const evidenceResponse = await fetch(f.base + `/api/sessions/${session.id}/media/evidence?v=1`); assert.equal(evidenceResponse.status, 200);
   const evidence = await evidenceResponse.json(); assert.deepEqual(evidence, completed.automation);
   assert.doesNotMatch(JSON.stringify(evidence), /"(?:path|localPath|metadataPath|sourcePagePath)"|data:image|base64/);
@@ -706,4 +712,70 @@ test('a terminal failed paid request cannot be erased by a zero-image draft amen
   const response = await f.post(`/api/sessions/${session.id}/amend-production-draft`, amendmentBody(saved));
   assert.equal(response.status, 409); assert.match(await response.text(), /after_paid_work/);
   assert.equal(await readFile(path, 'utf8'), original); assert.equal(f.runtime.get(session.id).revision, 1);
+});
+
+test('named chat revision repairs only the rejected image without restarting the design', async t => {
+  let rejected = false;
+  const f = await fixture(t, { plan(plan) { for (const item of plan.items) item.dependencies = []; }, async cli({ data }) {
+    if (data.task === 'image-review' && data.input.material.id === 'material-0' && !rejected) {
+      rejected = true;
+      return { status: 'needs_revision', outputHash: data.input.outputHash, inspectedReferenceHashes: data.input.referenceHashes,
+        evidence: 'Actual image review found the original wordmark distorted; restore its required proportions.', limitations: [] };
+    }
+  } });
+  const generate = f.options.imageProvider.generate;
+  let attempt = 0;
+  f.options.imageProvider.generate = async input => {
+    const asset = await generate(input);
+    asset.requestId += `-attempt-${++attempt}`; asset.assetId += `-attempt-${attempt}`;
+    await writeFile(asset.metadataPath, JSON.stringify(asset)); return asset;
+  };
+  const session = await f.start(); await f.runtime.waitForIdle(session.id);
+  const initial = f.runtime.get(session.id), target = initial.automation.materials.find(item => item.materialId === 'material-0');
+  const beforeCount = f.generated.length;
+  const stages = f.calls.filter(call => call.stage && call.stage !== 'review-a').length;
+  for (const text of [`${target.name}不需要修订`, `${target.name}重新修订一下，改成另一个角色`]) {
+    assert.equal((await f.post(`/api/sessions/${session.id}/intervene`, { text })).status, 200);
+    assert.equal(f.generated.length, beforeCount);
+  }
+  const response = await f.post(`/api/sessions/${session.id}/intervene`, { text: `${target.name}我觉得需要重新修订一下` });
+  assert.equal(response.status, 200, await response.clone().text());
+  await f.runtime.waitForIdle(session.id);
+  const done = f.runtime.get(session.id);
+  assert.equal(done.revision, initial.revision);
+  assert.equal(done.status, 'completed', done.error);
+  assert.equal(f.generated.length, beforeCount + 1);
+  assert.equal(f.generated.filter(id => id === target.materialId).length, 2);
+  assert.equal(f.calls.filter(call => call.stage && call.stage !== 'review-a').length, stages);
+  assert.deepEqual(done.constraints, initial.constraints);
+});
+
+test('promo-video chat reuses approved material files in one Flova project and preserves nine-stage outputs', async t => {
+  const f = await fixture(t), calls = [], gate = deferred(), release = deferred();
+  t.after(() => release.resolve());
+  f.options.flovaExecutor = async (args, line) => {
+    calls.push(args);
+    if (args[0] === 'project') return { code: 0, data: { project_id: 'flova-fixture', project_url: 'https://www.flova.ai/project/?id=flova-fixture' } };
+    if (args[0] === 'upload') { assert.ok((await readFile(args[1])).length); return { code: 0, data: { name: 'fixture.png' } }; }
+    if (args[0] === 'run') {
+      line('stream_chat_id=stream-fixture'); gate.resolve(); await release.promise;
+      return { code: 0, data: { terminal: false, pending_actions: [{ action_id: 'confirm-fixture', resume_message_id: 'message-fixture', blocking: true, message: '确认制作视频', options: [{ id: 'approve', effect: 'resume' }] }] } };
+    }
+    throw new Error('Unexpected command');
+  };
+  const first = await f.start(); await f.runtime.waitForIdle(first.id);
+  const original = f.runtime.get(first.id), images = f.generated.length, stages = f.calls.length;
+  const text = '现在我希望基于这一套物料来生成一只宣传视频';
+  assert.equal((await f.post(`/api/sessions/${first.id}/intervene`, { text })).status, 200); await gate.promise;
+  assert.equal((await f.post(`/api/sessions/${first.id}/intervene`, { text })).status, 200);
+  assert.equal(calls.filter(args => args[0] === 'project').length, 1);
+  assert.equal(calls.filter(args => args[0] === 'run').length, 1);
+  release.resolve(); await f.runtime.waitForIdle(first.id);
+  const current = f.runtime.get(first.id);
+  assert.equal(current.video.status, 'awaiting_input'); assert.equal(current.video.aspectRatio, '16:9');
+  assert.equal(current.revision, original.revision); assert.deepEqual(current.proposal, original.proposal);
+  assert.equal(f.generated.length, images); assert.equal(f.calls.length, stages);
+  assert.equal(current.video.sources.filter(source => source.kind === 'material').length, 6);
+  assert.equal((await f.post(`/api/sessions/${first.id}/run`)).status, 200);
+  assert.equal(calls.filter(args => args[0] === 'run').length, 1, 'generic continue never approves a blocking video action');
 });

@@ -1,11 +1,14 @@
 /** Public, persisted media progress. Local paths and provider credentials never
  * cross this boundary; URLs address only files registered by the host. */
 export type MediaSourceClass = 'official' | 'brand_approved' | 'third_party' | 'reference_only' | 'ai_generated' | 'unknown';
+export type MediaAssetType = 'character' | 'logo' | 'product' | 'scene' | 'other';
 export type MediaReferenceInspection = {
   status: 'verified' | 'rejected' | 'unverified'; sourceClass: MediaSourceClass;
   sourceRelationship: 'verified' | 'unverified'; identityVerified: boolean;
   subject: string; version: string; evidence: string; limitations: string[];
   imageHash: string; sourcePageHash: string; inspectedAt: string;
+  /** Optional only for historical records; new inspections must supply both. */
+  targetMatch?: 'matched' | 'mismatched' | 'uncertain'; assetType?: MediaAssetType;
 };
 export type MediaReference = {
   referenceId: string; brandId: 'a' | 'b'; sourcePageUrl: string; sourcePageFinalUrl: string;
@@ -18,6 +21,7 @@ export type MediaBinding = {
   materialId: string; referenceIds: string[]; referenceTasks: string[];
   identityRequired: boolean; identityReferenceIds: string[];
   identityRequirements: string[]; rationale: string; status: 'ready' | 'blocked'; reason: string;
+  identityTargets?: { subject: string; assetType: MediaAssetType; referenceIds: string[] }[];
   mappingHash: string;
 };
 export type MediaAttachmentEvidence = {

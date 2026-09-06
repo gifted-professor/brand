@@ -47,17 +47,19 @@ async function fixture(t, items, hooks = {}) {
       if (task.purpose === 'reference-discovery') return { candidates: [{ sourcePageUrl: `https://example.com/${task.input.brandId}/page`,
         imageUrl: `https://example.com/${task.input.brandId}/source.png`, subject: `${task.input.brandId} official element`, version: 'Release 1',
         publisher: 'Fixture official', title: 'Fixture published artwork', sourceClass: 'official', purpose: 'Identity outline and structure' }], limitations: [] };
+      if (task.purpose === 'reference-selection') return { candidateIds: task.input.candidates.slice(0, task.input.limit).map(item => item.candidateId), rationale: 'Fixture selects observed candidates for actual inspection.' };
       if (task.purpose === 'reference-inspection') {
         assert.equal(task.images.length, 1);
         assert.equal(digest(await readFile(task.images[0].path)), task.images[0].hash);
         assert.match(task.input.sourcePageExcerpt, /html/);
-        return { status: 'verified', sourceClass: 'official', sourceRelationship: 'verified', identityVerified: true,
+        return { status: 'verified', sourceClass: 'official', sourceRelationship: 'verified', identityVerified: true, targetMatch: 'matched', assetType: 'character',
           subject: task.input.reference.subject, version: 'Release 1', evidence: 'Fixture visual comparison opened the exact original and matched its official page.',
           limitations: [], imageHash: task.input.imageHash, sourcePageHash: task.input.sourcePageHash };
       }
       if (task.purpose === 'reference-binding') {
         const identity = task.input.references.find(ref => ref.brandId === 'b');
         return { bindings: items.map(material => ({ materialId: material.id, referenceIds: identity ? [identity.referenceId] : [], referenceTasks: material.referenceTasks ?? [],
+          identityTargets: [{ subject: 'Fixture character', assetType: 'character', referenceIds: identity ? [identity.referenceId] : [] }],
           identityRequired: true, identityReferenceIds: identity ? [identity.referenceId] : [], identityRequirements: ['Official element outline'],
           rationale: 'Each material carries the verified original identity.', status: 'ready', reason: '' })), limitations: [] };
       }
@@ -480,7 +482,7 @@ test('empty real sources block exact identities while an explicitly original ind
     invoke(task) {
       if (task.purpose === 'reference-discovery') return { candidates: [], limitations: ['Fixture has no observed source.'] };
       if (task.purpose === 'reference-binding') return { bindings: ['identity', 'original'].map(id => ({ materialId: id, referenceIds: [], referenceTasks: [],
-        identityRequired: id === 'identity', identityReferenceIds: [], identityRequirements: id === 'identity' ? ['Official element'] : [],
+        identityTargets: id === 'identity' ? [{ subject: 'Missing character', assetType: 'character', referenceIds: [] }] : [], identityRequired: id === 'identity', identityReferenceIds: [], identityRequirements: id === 'identity' ? ['Official element'] : [],
         rationale: id === 'original' ? 'An explicitly original geometric scene without branded identifiers.' : 'Requires actual official identity.', status: 'ready', reason: '' })), limitations: [] };
     },
   });
@@ -622,7 +624,7 @@ test('source-page-only SPA gaps remain partial with the observed source URL reta
 test('a draft revision inherits verified source bytes and original inspections, then binds and reviews with separate corrections without new discovery', async t => {
   const f = await fixture(t, [item('core')], {
     invoke(task) {
-      if (task.purpose === 'reference-inspection') return { status: 'verified', sourceClass: 'official', sourceRelationship: 'verified', identityVerified: true,
+      if (task.purpose === 'reference-inspection') return { status: 'verified', sourceClass: 'official', sourceRelationship: 'verified', identityVerified: true, targetMatch: 'matched', assetType: 'character',
         subject: task.input.reference.subject, version: 'Release 1', evidence: 'Historical fixture inspection asserted a pink bow on the subject hat.', limitations: [],
         imageHash: task.input.imageHash, sourcePageHash: task.input.sourcePageHash };
     },
@@ -691,7 +693,7 @@ test('draft source inheritance rejects incomplete collection, paid outcomes, cor
 test('cancelled inheritance remains retryable and omits rejected references without rewriting their historical inspection', async t => {
   const f = await fixture(t, [item('core')], {
     invoke(task) {
-      if (task.purpose === 'reference-inspection' && task.input.reference.brandId === 'a') return { status: 'rejected', sourceClass: 'third_party', sourceRelationship: 'verified', identityVerified: false,
+      if (task.purpose === 'reference-inspection' && task.input.reference.brandId === 'a') return { status: 'rejected', sourceClass: 'third_party', sourceRelationship: 'verified', identityVerified: false, targetMatch: 'mismatched', assetType: 'logo',
         subject: task.input.reference.subject, version: 'Release 1', evidence: 'This fixture source does not depict the requested identity.', limitations: [], imageHash: task.input.imageHash, sourcePageHash: task.input.sourcePageHash };
     },
   });
@@ -750,4 +752,104 @@ test('draft inheritance copies the actual associated discovery pages with their 
     assert.equal(digest(await readFile(page.sourcePagePath)), page.sourcePageContentHash);
     assert.equal(JSON.parse(await readFile(page.metadataPath, 'utf8')).sourcePagePath, page.sourcePagePath);
   }
+});
+
+test('semantic selection can reach a character after site chrome and cannot invent image addresses', async t => {
+  const f = await fixture(t, [item('core')], {
+    invoke(task) {
+      if (task.purpose === 'reference-discovery') return { candidates: [{ sourcePageUrl: `https://example.com/${task.input.brandId}/character`, imageUrl: '',
+        subject: 'Target character', version: 'Release 1', title: 'Official character page', publisher: 'Publisher', sourceClass: 'official', purpose: 'Full character shape' }], limitations: [] };
+      if (task.purpose === 'reference-selection') {
+        assert.ok(task.input.candidates.some(candidate => candidate.imageUrl.endsWith('/header-logo.png')));
+        const character = task.input.candidates.find(candidate => candidate.observedTag.includes('ipPreviewImage'));
+        return { candidateIds: character ? [character.candidateId] : [], rationale: 'Character preview is a better candidate than publisher logo or section headings.' };
+      }
+    },
+    async discoverPage(input) {
+      assert.equal(input.maxCandidates, 64);
+      return { schemaVersion: 1, sourcePageUrl: input.sourcePageUrl, sourcePageFinalUrl: input.sourcePageUrl,
+        sourcePageContentHash: 'a'.repeat(64), pageRetrievedAt: new Date().toISOString(), sourcePagePath: '/fixture/source.html', metadataPath: '/fixture/discovery.json', title: 'Character page', publisher: 'Publisher', excerpt: '',
+        candidates: ['header-logo', 'heading', 'slogan', 'character', 'wordmark'].map((name, index) => ({ imageUrl: `${input.sourcePageUrl}/${name}.png`, source: 'img', label: '', observedTag: index === 3 ? '<img id="ipPreviewImage">' : '<img>' })) };
+    },
+  });
+  await f.pipeline.discover({ brands });
+  assert.equal(f.collected.length, 2);
+  assert.ok(f.collected.every(candidate => candidate.imageUrl.endsWith('/character.png')));
+  assert.ok(f.pipeline.snapshot().references.every(reference => reference.inspection.targetMatch === 'matched'));
+  assert.equal(f.generated.length, 0);
+});
+
+test('a wrong publisher logo is rejected even if the model says verified, then a bounded recovery obtains the character', async t => {
+  const f = await fixture(t, [item('core')], {
+    invoke(task) {
+      if (task.purpose === 'reference-discovery') {
+        const recovering = task.input.knownReferences.some(reference => reference.inspection?.targetMatch === 'mismatched');
+        return { candidates: [{ sourcePageUrl: `https://example.com/${task.input.brandId}/page`, imageUrl: `https://example.com/${task.input.brandId}/${recovering ? 'character' : 'publisher-logo'}.png`,
+          subject: 'Target character', version: 'Release 1', title: 'Official page', publisher: 'Publisher', sourceClass: 'official', purpose: 'Character identity' }], limitations: [] };
+      }
+      if (task.purpose === 'reference-inspection' && task.input.reference.sourceImageUrl.endsWith('/publisher-logo.png')) return {
+        status: 'verified', identityVerified: true, sourceClass: 'official', sourceRelationship: 'verified', targetMatch: 'mismatched', assetType: 'logo',
+        subject: 'Publisher company logo', version: 'Release 1', evidence: 'Actual attached image is the company wordmark, not the requested character.', limitations: [], imageHash: task.input.imageHash, sourcePageHash: task.input.sourcePageHash };
+    },
+  });
+  const state = await f.pipeline.discover({ brands });
+  assert.equal(f.calls.filter(task => task.purpose === 'reference-discovery').length, 4);
+  const rejected = state.references.filter(reference => reference.sourceImageUrl.endsWith('/publisher-logo.png'));
+  assert.ok(rejected.every(reference => reference.inspection.status === 'rejected' && !reference.inspection.identityVerified));
+  assert.equal(state.references.filter(reference => reference.inspection.identityVerified).length, 2);
+  const restored = new AutomaticMediaPipeline(f.options), before = f.calls.length;
+  await restored.discover({ brands });
+  assert.equal(f.calls.length, before, 'restart reuses completed rounds and does not repeat discovery');
+});
+
+test('an official matching logo cannot satisfy a character target or disable its required identity gate', async t => {
+  const f = await fixture(t, [item('core')], {
+    invoke(task) {
+      if (task.purpose === 'reference-inspection') return { status: 'verified', identityVerified: true, targetMatch: 'matched', assetType: 'logo',
+        sourceClass: 'official', sourceRelationship: 'verified', subject: 'Official company logo', version: 'Release 1',
+        evidence: 'The attached source is a valid official logo, not a character rendering.', limitations: [], imageHash: task.input.imageHash, sourcePageHash: task.input.sourcePageHash };
+      if (task.purpose === 'reference-binding') {
+        const id = task.input.references[0].referenceId;
+        return { bindings: [{ materialId: 'core', referenceIds: [id], referenceTasks: [], identityRequired: false, identityReferenceIds: [id], identityRequirements: ['Character silhouette'],
+          identityTargets: [{ subject: 'Target character', assetType: 'character', referenceIds: [id] }], rationale: 'Incorrect model approval fixture.', status: 'ready', reason: '' }], limitations: [] };
+      }
+    },
+  });
+  await f.prepare();
+  const state = await f.pipeline.execute();
+  assert.equal(state.materials[0].binding.identityRequired, true);
+  assert.equal(state.materials[0].binding.status, 'blocked');
+  assert.match(state.materials[0].binding.reason, /character/);
+  assert.equal(f.generated.length, 0);
+});
+
+test('failed subject search has a persisted two-round bound and never creates speculative images', async t => {
+  const f = await fixture(t, [item('core')], { invoke(task) {
+    if (task.purpose === 'reference-discovery') return { candidates: [], limitations: ['No real source found.'] };
+  } });
+  await f.pipeline.discover({ brands });
+  assert.equal(f.calls.length, 4);
+  const restored = new AutomaticMediaPipeline(f.options);
+  await restored.discover({ brands });
+  assert.equal(f.calls.length, 4);
+  const saved = JSON.parse(await readFile(join(f.directory, 'automation.json'), 'utf8'));
+  assert.equal(saved.discoveryRounds['initial-a'], 2);
+  assert.equal(saved.discoveryRounds['initial-b'], 2);
+  assert.equal(f.collected.length, 0);
+});
+
+test('a selector cannot introduce an unobserved candidate or cause unbounded downloads', async t => {
+  const f = await fixture(t, [item('core')], {
+    invoke(task) {
+      if (task.purpose === 'reference-discovery') return { candidates: [{ sourcePageUrl: `https://example.com/${task.input.brandId}/page`, imageUrl: '', subject: 'Character', version: '1', title: 'Page', publisher: 'Publisher', sourceClass: 'official', purpose: 'Identity' }], limitations: [] };
+      if (task.purpose === 'reference-selection') return { candidateIds: ['999'], rationale: 'Invalid out-of-pool model choice.' };
+    },
+    async discoverPage(input) { return { schemaVersion: 1, sourcePageUrl: input.sourcePageUrl, sourcePageFinalUrl: input.sourcePageUrl,
+      sourcePageContentHash: 'a'.repeat(64), pageRetrievedAt: '2026-09-06', sourcePagePath: '/fixture/source.html', metadataPath: '/fixture/discovery.json', title: 'Page', publisher: 'Publisher', excerpt: '',
+      candidates: [{ imageUrl: 'https://example.com/observed.png', source: 'img', label: '', observedTag: '<img>' }] }; }
+  });
+  await f.pipeline.discover({ brands });
+  assert.equal(f.collected.length, 0);
+  assert.equal(f.calls.filter(task => task.purpose === 'reference-selection').length, 4);
+  assert.deepEqual(f.pipeline.snapshot().discovery, { a: 'failed', b: 'failed' });
 });

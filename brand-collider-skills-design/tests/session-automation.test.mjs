@@ -56,6 +56,23 @@ test('parallel collection shows saved original images and provenance without cla
   assertValidEdges(project);
 });
 
+test('nine collected originals remain on the canvas when media becomes idle during ideation', () => {
+  const references = Array.from({ length: 9 }, (_, index) => reference({ referenceId: `original-${index}`,
+    imageUrl: `/api/sessions/auto-web/media/references/original-${index}?v=2` }));
+  const collecting = sessionProduction(session('collecting', { activeSkill: 'brand-profile' }, { references, materials: [] }));
+  const ideating = sessionProduction(session('idle', { activeSkill: 'collab-ideation', completedSkills: ['brand-profile'] }, { references, materials: [] }));
+  const originals = project => project.nodes.filter(node => node.id.startsWith('media-reference-'));
+  assert.equal(originals(ideating).length, 9);
+  assert.deepEqual(originals(ideating).map(node => node.id), originals(collecting).map(node => node.id));
+  assert.deepEqual(ideating.assets.filter(asset => asset.id.startsWith('media-reference-')), collecting.assets.filter(asset => asset.id.startsWith('media-reference-')));
+  assertValidEdges(ideating);
+});
+
+test('an empty idle media state does not manufacture reference cards', () => {
+  const project = sessionProduction(session('idle', {}, { references: [], materials: [] }));
+  assert.equal(project.nodes.some(node => node.id.startsWith('media-')), false);
+});
+
 test('uninspected, rejected and hash-mismatched source images retain honest reference states', () => {
   for (const [input, expected] of [
     [reference({ inspection: undefined }), 'unverified'],
@@ -67,6 +84,20 @@ test('uninspected, rejected and hash-mismatched source images retain honest refe
     assert.equal(project.nodes.find(node => node.id === 'media-reference-official-a').status, expected);
     assert.match(project.nodes.find(node => node.id === 'media-references').summary, /0 张通过/);
   }
+});
+
+test('a character page title does not relabel a downloaded publisher logo as the requested character', () => {
+  const candidate = reference({ title: '角色官网', subject: '目标角色全身图', inspection: undefined });
+  let project = sessionProduction(session('collecting', {}, { references: [candidate], materials: [] }));
+  let node = project.nodes.find(node => node.id === 'media-reference-official-a');
+  assert.match(node.title, /待核对/);
+  assert.match(node.content, /实际可见主体：尚未核对/);
+  candidate.inspection = { ...reference().inspection, status: 'rejected', identityVerified: false, targetMatch: 'mismatched', assetType: 'logo', subject: '出品方公司 Logo' };
+  project = sessionProduction(session('collecting', {}, { references: [candidate], materials: [] }));
+  node = project.nodes.find(node => node.id === 'media-reference-official-a');
+  assert.equal(node.title, '出品方公司 Logo');
+  assert.equal(node.status, 'needs_revision');
+  assert.match(node.content, /所需主体：目标角色全身图/);
 });
 
 test('per-item bindings connect saved sources to generated images and dependent materials', () => {
@@ -120,7 +151,7 @@ test('wrong-output approval never marks an image or nine-step workflow complete'
   assert.equal(project.nodes.find(node => node.id === 'media-material-cup').status, 'unverified');
   assert.equal(project.nodes.find(node => node.id === 'media-review-cup').status, 'needs_revision');
   assert.equal(project.workflow.status, 'paused');
-  assert.equal(project.workflow.completedSteps, 7);
+  assert.equal(project.workflow.completedSteps, 8);
   assert.notEqual(project.workflow.phase, 'finished');
 });
 
@@ -190,4 +221,19 @@ test('expanded provenance and per-item evidence nodes occupy distinct desktop an
     }
   }
   assertValidEdges(project);
+});
+
+
+test('all saved images enter final acceptance even when one needs revision', () => {
+  const current = session('partial', { status: 'paused', activeSkill: undefined }, {
+    materials: [approvedMaterial(), approvedMaterial({ materialId: 'poster', status: 'needs_revision',
+      review: { ...approvedMaterial().review, status: 'needs_revision' } })],
+  });
+  const workflow = sessionProduction(current).workflow;
+  assert.equal(workflow.completedSteps, 8);
+  assert.equal(workflow.currentStepId, 'review-a');
+  assert.equal(workflow.steps[7].status, 'completed');
+  assert.equal(workflow.steps[8].status, 'paused');
+  assert.equal(resolveSessionStage(current), 'review');
+  assert.match(workflow.currentAction, /第九步验收/);
 });

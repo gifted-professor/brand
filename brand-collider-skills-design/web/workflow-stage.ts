@@ -1,6 +1,6 @@
 import { AGENT_ROLES, SKILLS, agentRoleForSkill, type Message, type Session, type SkillId } from '../src/collider-types.ts';
 import type { ProductionLaneId, ProductionProject, ProductionWorkflow, ProductionWorkflowStep } from '../src/production-types.ts';
-import { automationProgressNode, currentSessionAutomation, isSessionFinalReviewPending, isSessionMediaComplete, isSessionMediaRunning, mediaProgressLabel } from './session-automation.ts';
+import { automationProgressNode, currentSessionAutomation, isSessionFinalReviewPending, isSessionGenerationComplete, isSessionMediaComplete, isSessionMediaRunning, mediaProgressLabel } from './session-automation.ts';
 
 export const skillLane: Record<SkillId, ProductionLaneId> = {
   'brand-profile': 'strategy',
@@ -37,12 +37,14 @@ export function isSessionOrchestratorCurrent(session: Session): boolean {
   return !latestCall || session.messages.indexOf(dispatch) > session.messages.indexOf(latestCall);
 }
 
-// The runtime records image requests as system skill calls. Brand-role calls to
-// visual-production only write a plan and must never imply a running image job.
+// A Skill identifies a method, not an image request. Reference binding also
+// runs as a system visual-production call; its completion produces no image.
 export function latestSessionImageCall(session: Session): Message | undefined {
   return session.messages.findLast(message => message.kind === 'skill'
     && message.role === 'system' && message.skill === 'visual-production'
-    && message.revision === session.revision);
+    && message.revision === session.revision
+    && (message.operation === 'image-generation' || (!message.operation
+      && !message.execution && (!message.agentName || message.agentName === '生图 Agent'))));
 }
 
 export function hasCurrentSessionImage(session: Session): boolean {
@@ -66,8 +68,10 @@ export function sessionHasProgress(session: Session): boolean {
 /** Resolve an actual session artifact, keeping shared lanes from hiding progress. */
 export function resolveSessionProgressNode(session: Session | null): string | null {
   if (!session || !sessionHasProgress(session)) return null;
+  if (session.video?.revision === session.revision) return 'promo-video';
   const automation = currentSessionAutomation(session);
-  if (automation?.phase === 'completed' && isSessionFinalReviewPending(session)) return 'quality-review';
+  if (isSessionGenerationComplete(session)) return session.completedSkills.includes('quality-review')
+    || session.activeSkill === 'quality-review' ? 'quality-review' : 'media-evidence';
   if (automation && ['generating', 'reviewing', 'partial', 'paused'].includes(automation.phase)
     && (!session.activeSkill || session.activeSkill === 'visual-production' || session.status !== 'running')) {
     return automationProgressNode(session) || null;
@@ -96,6 +100,7 @@ export function resolveSessionProgressNode(session: Session | null): string | nu
 /** Choose the work currently worth showing without inventing future stages. */
 export function resolveSessionStage(session: Session | null): ProductionLaneId | null {
   const node = resolveSessionProgressNode(session);
+  if (node === 'promo-video') return 'video';
   if (node) return node === 'generated-image' || node.startsWith('media-material-') ? 'media'
     : node === 'media-evidence' ? 'review' : node === 'workflow-brief' || node === 'media-references' ? 'strategy' : skillLane[node as SkillId];
   return session && sessionHasProgress(session) ? 'strategy' : null;
@@ -108,7 +113,8 @@ export function sessionWorkflow(session: Session, nodeIds: ReadonlySet<string>):
   const orchestrating = isSessionOrchestratorCurrent(session);
   const automation = currentSessionAutomation(session);
   const mediaComplete = !session.autoProduce || isSessionMediaComplete(session);
-  const mediaPending = !mediaComplete && session.completedSkills.includes('visual-production');
+  const generationComplete = isSessionGenerationComplete(session);
+  const mediaPending = session.autoProduce && !generationComplete && session.completedSkills.includes('visual-production');
   const reviewPending = isSessionFinalReviewPending(session);
   const steps: ProductionWorkflowStep[] = workflowSteps.map(step => {
     const completed = session.completedSkills.includes(step.skill);
@@ -123,9 +129,12 @@ export function sessionWorkflow(session: Session, nodeIds: ReadonlySet<string>):
       status = step.skill === 'quality-review' ? 'pending' : session.status === 'paused' || automation?.phase === 'partial' || automation?.phase === 'paused' ? 'paused'
         : session.status === 'error' ? 'failed' : session.status === 'running' || isSessionMediaRunning(session) ? 'running' : 'pending';
     }
-    if (!mediaPending && reviewPending && step.skill === 'quality-review') status = session.status === 'running' && session.activeSkill === 'quality-review' ? 'running' : 'paused';
+    if (generationComplete && step.skill === 'visual-production') status = 'completed';
+    if (!mediaPending && (reviewPending || (generationComplete && !mediaComplete)) && step.skill === 'quality-review') {
+      status = session.status === 'running' ? 'running' : 'paused';
+    }
     const brand = session.brands.find(brand => brand.id === step.standpoint)?.name || `品牌 ${step.standpoint.toUpperCase()}`;
-    return { ...step, ...(session.autoProduce && step.skill === 'visual-production' ? { label: '绑定参考图、逐件生成并验收' } : {}), agentName: `${AGENT_ROLES[agentRoleForSkill(step.skill)].name} · ${brand}`, status,
+    return { ...step, ...(session.autoProduce && step.skill === 'visual-production' ? { label: '绑定参考图并逐件生成' } : {}), agentName: `${AGENT_ROLES[agentRoleForSkill(step.skill)].name} · ${brand}`, status,
       ...(nodeIds.has(step.skill) && status !== 'pending' ? { nodeId: step.skill } : {}) };
   });
   const next = steps.find(step => step.status !== 'completed');
@@ -151,7 +160,7 @@ export function sessionWorkflow(session: Session, nodeIds: ReadonlySet<string>):
     : session.status === 'awaiting_selection' ? 'selection'
     : session.status === 'completed' && mediaComplete && !reviewPending ? 'finished' : mediaPending ? 'specialist' : orchestrating ? 'orchestrator' : 'specialist';
   const current = phase === 'finished' ? undefined : phase === 'selection' ? steps[3]
-    : orchestrating ? next : steps.find(step => step.status === 'running') || (status === 'failed' || status === 'paused' ? callStep : undefined) || next;
+    : orchestrating ? next : steps.find(step => step.status === 'running') || (status === 'failed' || status === 'paused' ? callStep?.status !== 'completed' ? callStep : undefined : undefined) || next;
   const focus = resolveSessionProgressNode(session);
   const currentNodeId = focus && nodeIds.has(focus) ? focus : undefined;
   const activeCall = session.messages.findLast(message => message.kind === 'skill' && message.role !== 'system'
@@ -167,8 +176,14 @@ export function sessionWorkflow(session: Session, nodeIds: ReadonlySet<string>):
   else if (status === 'failed' && !orchestrating) currentAction = session.error || currentCall?.detail || currentAction;
   else if (status === 'paused') currentAction = orchestrating ? '主控交接已暂停，当前简报与已保存成果保留。' : '协作已暂停，已完成的阶段成果保留。';
   if (mediaPending && mediaProgressLabel(session)) currentAction = mediaProgressLabel(session)!;
+  else if (generationComplete && !mediaComplete) currentAction = `图像已生成，当前处于第九步验收。${mediaProgressLabel(session) || '请查看逐件验收记录。'}`;
   else if (reviewPending) currentAction = '范围内图像已保存，全案审查仍有待修订或待确认事项，请查看审查意见。';
   else if (phase === 'finished' && session.autoProduce) currentAction = '本轮方案与范围内物料已完成，原图来源、附图证据及审查意见已保存。';
+  const video = session.video?.revision === session.revision ? session.video : undefined;
+  if (video) return { revision: session.revision, status: video.status === 'completed' ? 'completed'
+      : ['preparing', 'running', 'exporting'].includes(video.status) && session.status === 'running' ? 'running' : 'paused',
+    phase: video.status === 'completed' ? 'finished' : 'specialist', currentStepId: 'promo-video', currentNodeId: 'promo-video',
+    currentAction: `宣传视频 · ${video.summary}`, completedSteps: steps.filter(step => step.status === 'completed').length, totalSteps: steps.length, steps };
   return { revision: session.revision, status, phase, currentStepId: current?.id, currentNodeId, currentAction,
     completedSteps: steps.filter(step => step.status === 'completed').length, totalSteps: steps.length, steps };
 }

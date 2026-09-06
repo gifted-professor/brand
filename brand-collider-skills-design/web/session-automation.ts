@@ -18,6 +18,13 @@ export function isMaterialImageApproved(material: MediaMaterial): boolean {
     && material.review?.status === 'approved' && material.review.outputHash === material.outputHash);
 }
 
+/** Saved output completes production; acceptance remains a separate final gate. */
+export function isSessionGenerationComplete(session: Session): boolean {
+  const state = currentSessionAutomation(session);
+  const scoped = state?.materials.filter(material => material.status !== 'out_of_scope');
+  return Boolean(scoped?.length && scoped.every(material => material.imageUrl && material.outputHash));
+}
+
 export function isSessionMediaComplete(session: Session): boolean {
   const state = currentSessionAutomation(session);
   return Boolean(state?.phase === 'completed' && state.materials.every(material => material.status === 'out_of_scope' || isMaterialImageApproved(material)));
@@ -74,7 +81,11 @@ function materialNodeStatus(material: MediaMaterial, session: Session): Producti
 export function sessionAutomationArtifacts(session: Session): Pick<ProductionProject, 'nodes' | 'edges' | 'assets'> {
   const nodes: ProductionProject['nodes'] = [], edges: ProductionProject['edges'] = [], assets: ProductionProject['assets'] = [];
   const state = currentSessionAutomation(session);
-  if (!state || state.phase === 'idle' || session.status === 'idle') return { nodes, edges, assets };
+  if (!state) return { nodes, edges, assets };
+  // Collection returns to idle while creative stages run. Job activity does
+  // not determine whether saved reference files remain on the canvas.
+  const hasSavedArtifacts = state.references.length > 0 || state.materials.length > 0 || Boolean(state.discoveryPages?.length);
+  if (!hasSavedArtifacts && (state.phase === 'idle' || session.status === 'idle')) return { nodes, edges, assets };
   const refById = new Map(state.references.map(reference => [reference.referenceId, reference]));
   const materialById = new Map(state.materials.map(material => [material.materialId, material]));
   const link = (source: string, target: string, label: string) => edges.push({ id: `${source}-to-${target}`, source, target, label });
@@ -91,13 +102,16 @@ export function sessionAutomationArtifacts(session: Session): Pick<ProductionPro
     const id = `media-reference-${reference.referenceId}`, assetId = `${id}-image`;
     const inspection = reference.inspection;
     const checked = inspection?.imageHash === reference.contentHash && inspection.sourcePageHash === reference.sourcePageContentHash;
-    if (reference.imageUrl) assets.push({ id: assetId, name: reference.title || reference.subject, kind: 'image', url: reference.imageUrl, downloadUrl: reference.imageUrl,
+    const actualSubject = checked ? inspection?.subject : undefined;
+    const displayTitle = actualSubject || '候选原图 · 待核对主体';
+    if (reference.imageUrl) assets.push({ id: assetId, name: displayTitle, kind: 'image', url: reference.imageUrl, downloadUrl: reference.imageUrl,
       mimeType: reference.mimeType, size: 0, width: reference.width, height: reference.height, sha256: reference.contentHash });
-    nodes.push({ id, kind: 'image', lane: 'strategy', title: reference.title || reference.subject,
-      summary: `${reference.subject}${reference.version ? ` · ${reference.version}` : ''}\n${inspection?.evidence || '已下载原图，等待图像与来源核对。'}`,
+    nodes.push({ id, kind: 'image', lane: 'strategy', title: displayTitle,
+      summary: `所需主体：${reference.subject}\n${checked ? inspection?.evidence : '已下载候选原图，实际主体尚待看图确认。'}`,
       status: checked && inspection?.status === 'verified' ? 'reference' : checked && inspection?.status === 'rejected' ? 'needs_revision' : 'unverified',
       statusLabel: checked && inspection?.status === 'verified' ? '来源原图 · 已核对' : checked && inspection?.status === 'rejected' ? '来源原图 · 不适用' : '来源原图 · 待核对',
-      content: [`对象：${inspection?.subject || reference.subject}`, `版本：${inspection?.version || reference.version || '尚未核实'}`,
+      content: [`所需主体：${reference.subject}`, `实际可见主体：${actualSubject || '尚未核对'}`, `来源页面：${reference.title || reference.sourcePageUrl}`,
+        `版本：${checked ? inspection?.version || '尚未核实' : '尚未核实'}`,
         `发布者：${reference.publisher || '尚未核实'}`, `来源分类${checked && inspection?.status === 'verified' ? '' : '（待核对）'}：${SOURCE_LABELS[checked && inspection ? inspection.sourceClass : reference.sourceClass]}`,
         `采集时间：${reference.retrievedAt}`, inspection?.evidence, ...(inspection?.limitations || [])].filter(Boolean).join('\n\n'),
       assetIds: reference.imageUrl ? [assetId] : [], ...(reference.imageUrl ? { primaryAssetId: assetId } : {}),

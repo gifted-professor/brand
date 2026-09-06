@@ -1,4 +1,5 @@
 import type { MaterialPlan, MaterialVisual } from './material-plan.ts';
+import type { SessionVideo } from './video-types.ts';
 import type { AutomaticMediaState } from './automation-types.ts';
 
 export const SKILLS = [
@@ -52,6 +53,7 @@ export type Message = {
   id: string; role: 'a' | 'b' | 'user' | 'system'; kind: 'message' | 'skill' | 'notice';
   content: string; createdAt: string; revision: number; skill?: SkillId;
   status?: 'running' | 'done' | 'error'; detail?: string; model?: string;
+  operation?: 'image-generation' | 'media-task';
   // The role is a stage responsibility; a/b continues to identify brand standpoint.
   // Absent on historical messages whose professional role was not recorded.
   agentRole?: AgentRole; agentName?: string;
@@ -68,7 +70,7 @@ export type Session = {
   revision: number; constraints: string[]; messages: Message[]; concepts: Concept[];
   selectedConceptId?: string; selectionSource?: 'user' | 'orchestrator'; autoAdvance?: boolean; combineCreativeStages?: boolean; proposal?: Proposal; activeSkill?: SkillId;
   // Explicit for new production entrypoints; absent historical/API sessions remain text-only.
-  autoProduce?: boolean; automation?: AutomaticMediaState;
+  autoProduce?: boolean; automation?: AutomaticMediaState; video?: SessionVideo;
   artifactContext?: ArtifactContext;
   completedSkills: SkillId[]; error?: string; createdAt: string; updatedAt: string;
 };

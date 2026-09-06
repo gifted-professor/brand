@@ -237,7 +237,9 @@ export async function discoverVisualReferenceImages(input: { sourcePageUrl: stri
   network: ReferenceNetwork = {}): Promise<DiscoveredReferencePage> {
   const sourcePageUrl = publicReferenceUrl(input.sourcePageUrl).href;
   const maximum = input.maxCandidates ?? 3;
-  if (!Number.isInteger(maximum) || maximum < 1 || maximum > 3 || !input.outputDir?.trim()) throw new VisualReferenceError('invalid_reference_discovery');
+  // This bounds metadata, not downloads or model inspections. Truncating to
+  // one/three DOM images here loses the actual subject behind site chrome.
+  if (!Number.isInteger(maximum) || maximum < 1 || maximum > 64 || !input.outputDir?.trim()) throw new VisualReferenceError('invalid_reference_discovery');
   const page = await downloadPublicReference(sourcePageUrl, 'page', network);
   const html = page.bytes.toString('utf8'), metadata = pageMetadata(page.bytes);
   const markup = html.replace(/<!--[\s\S]*?-->/g, '').replace(/<(?:script|style)\b[^>]*>[\s\S]*?<\/(?:script|style)\s*>/gi, '');
@@ -259,7 +261,7 @@ export async function discoverVisualReferenceImages(input: { sourcePageUrl: stri
       const width = Number(attrs.width), height = Number(attrs.height);
       if ((width > 0 && width < 16) || (height > 0 && height < 16)) return;
       seen.add(url.href);
-      candidates.push({ imageUrl: url.href, source, label: (attrs.alt || attrs.title || metadata.title || '').slice(0, 500),
+      candidates.push({ imageUrl: url.href, source, label: (attrs.alt || attrs.title || '').slice(0, 500),
         ...(Number.isInteger(width) && width > 0 ? { width } : {}), ...(Number.isInteger(height) && height > 0 ? { height } : {}), observedTag: tag.slice(0, 2000) });
     } catch { /* Invalid, private or non-HTTP image candidates are discarded. */ }
   };

@@ -82,6 +82,20 @@ function createRequestHandler(runtime: ColliderRuntime, cwd: string, production 
       if (path === '/api/uploads' && method === 'POST') return json(response, await parseUpload(await readJson(request, 12 * 1024 * 1024)));
       if (path === '/api/sessions' && method === 'GET') return json(response, runtime.list());
       if (path === '/api/sessions' && method === 'POST') return json(response, await runtime.create(await readJson(request, 2 * 1024 * 1024)), 201);
+      const videoMatch = /^\/api\/sessions\/(session-[a-f0-9-]+)\/video\/assets\/(video-[a-f0-9-]+)$/.exec(path);
+      if (videoMatch && (method === 'GET' || method === 'HEAD')) {
+        const file = runtime.videoFile(videoMatch[1], videoMatch[2], url.searchParams.get('v'));
+        const bytes = await readFile(file.path);
+        if (createHash('sha256').update(bytes).digest('hex') !== file.contentHash) throw new RuntimeError('视频文件校验不一致。', 409);
+        const range = request.headers.range;
+        const parts = range ? /^bytes=(\d+)-(\d*)$/.exec(range) : null;
+        const start = parts ? Number(parts[1]) : 0, end = parts?.[2] ? Math.min(Number(parts[2]), bytes.length - 1) : bytes.length - 1;
+        if (range && (!parts || start > end || start >= bytes.length)) { response.writeHead(416, { 'Content-Range': `bytes */${bytes.length}` }); response.end(); return; }
+        response.writeHead(parts ? 206 : 200, { 'Content-Type': file.mimeType, 'Content-Length': end - start + 1, 'Accept-Ranges': 'bytes', 'Cache-Control': 'no-store',
+          ...(parts ? { 'Content-Range': `bytes ${start}-${end}/${bytes.length}` } : {}),
+          ...(url.searchParams.get('download') === '1' ? { 'Content-Disposition': `attachment; filename="${videoMatch[2]}.${file.mimeType.split('/')[1]}"` } : {}) });
+        response.end(method === 'HEAD' ? undefined : bytes.subarray(start, end + 1)); return;
+      }
       const mediaMatch = /^\/api\/sessions\/(session-[a-f0-9-]+)\/media\/(evidence|references|materials)(?:\/([A-Za-z0-9][A-Za-z0-9_-]{0,79}))?$/.exec(path);
       if (mediaMatch && (method === 'GET' || method === 'HEAD')) {
         const [, id, kind, itemId] = mediaMatch;
@@ -95,7 +109,7 @@ function createRequestHandler(runtime: ColliderRuntime, cwd: string, production 
           response.end(method === 'HEAD' ? undefined : bytes); return;
         }
       }
-      const match = /^\/api\/sessions\/(session-[a-f0-9-]+)(?:\/(run|pause|intervene|select|image|export|retry-media|correct-media|postprocess-media|amend-production-draft))?$/.exec(path);
+      const match = /^\/api\/sessions\/(session-[a-f0-9-]+)(?:\/(run|pause|intervene|select|image|export|video-direct|retry-media|correct-media|postprocess-media|amend-production-draft))?$/.exec(path);
       if (match) {
         const [, id, action] = match;
         if (!action && method === 'GET') return json(response, runtime.get(id));
@@ -115,6 +129,7 @@ function createRequestHandler(runtime: ColliderRuntime, cwd: string, production 
           if (action === 'run') return json(response, await runtime.run(id));
           if (action === 'amend-production-draft') return json(response, await runtime.amendProductionDraft(id, body));
           if (action === 'retry-media') return json(response, await runtime.retryMedia(id, body));
+          if (action === 'video-direct') return json(response, await runtime.directVideo(id, body));
           if (action === 'correct-media') return json(response, await runtime.correctMedia(id, body));
           if (action === 'postprocess-media') return json(response, await runtime.postprocessMedia(id, body));
           if (action === 'pause') return json(response, await runtime.pause(id));

@@ -13,6 +13,24 @@ function imageCall(status, overrides = {}) {
   return { id: 'image-request', kind: 'skill', role: 'system', skill: 'visual-production', status, revision: 2,
     content: '用户已手动发起概念图生成', createdAt: '2026-09-05', ...overrides };
 }
+
+test('reference binding never appears as a single-image request while running or after completion', () => {
+  for (const status of ['running', 'done', 'error']) {
+    for (const typed of [false, true]) {
+      const current = session({ status: 'running', activeSkill: 'visual-production', completedSkills: ['brand-profile', 'design-spec'],
+        messages: [imageCall(status, { agentName: '参考绑定 Agent', execution: { agentId: 'media-reference-binding-test' }, ...(typed ? { operation: 'media-task' } : {}) })] });
+      assert.equal(sessionProduction(current).nodes.some(node => node.id === 'generated-image'), false);
+    }
+  }
+});
+
+test('an explicit image request remains visible even when a later reference task uses the same Skill', () => {
+  const current = session({ status: 'running', messages: [imageCall('running', { operation: 'image-generation' }),
+    imageCall('done', { id: 'binding', operation: 'media-task', agentName: '参考绑定 Agent' })] });
+  const image = sessionProduction(current).nodes.find(node => node.id === 'generated-image');
+  assert.equal(image.status, 'running');
+  assert.equal(image.statusLabel, '图片生成中');
+});
 function dispatch(status, overrides = {}) {
   return { id: 'orchestrator-request', kind: 'notice', role: 'system', agentRole: 'orchestrator', status, revision: 2,
     content: '主控 CLI 正在整理第 2 版简报，准备交给研究 Agent · A。', createdAt: '2026-09-05',

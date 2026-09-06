@@ -56,12 +56,12 @@ test('a JavaScript-only official page is saved with no invented image paths or A
   assert.equal(await readFile(result.sourcePagePath, 'utf8'), html);
 });
 
-test('page-only discovery retains public-network validation and a hard three-image bound', async t => {
+test('page-only discovery retains public-network validation and a bounded metadata pool', async t => {
   const f = await fixture(t, '<img src="/actual.png">');
   await assert.rejects(discoverVisualReferenceImages({ sourcePageUrl: 'https://example.com/source', outputDir: f.outputDir }, {
     ...f.network, resolveHost: async () => [{ address: '10.1.2.3', family: 4 }] }), /reference_private_address/);
   assert.equal(f.count(), 0);
-  await assert.rejects(discoverVisualReferenceImages({ sourcePageUrl: 'https://example.com/source', outputDir: f.outputDir, maxCandidates: 4 }, f.network), /invalid_reference_discovery/);
+  await assert.rejects(discoverVisualReferenceImages({ sourcePageUrl: 'https://example.com/source', outputDir: f.outputDir, maxCandidates: 65 }, f.network), /invalid_reference_discovery/);
   assert.equal(f.count(), 0);
 });
 
@@ -72,4 +72,16 @@ test('relative image addresses follow the observed HTML base while private base 
   const privateBase = await fixture(t, '<base href="http://127.0.0.1/private/"><img src="secret.png"><img src="https://example.com/actual.png">');
   const safe = await discoverVisualReferenceImages({ sourcePageUrl: 'https://example.com/source', outputDir: privateBase.outputDir }, privateBase.network);
   assert.deepEqual(safe.candidates.map(item => item.imageUrl), ['https://example.com/actual.png']);
+});
+
+test('an expanded pool retains the actual character behind header logos without inheriting the page title as image identity', async t => {
+  const f = await fixture(t, `<title>Character official page</title>
+    <img class="logo" src="/publisher-logo.png" title="Publisher">
+    <img src="/section-title.png"><img src="/slogan.png">
+    <img id="ipPreviewImage" src="/character-original.png"><img src="/character-wordmark.png">`);
+  const result = await discoverVisualReferenceImages({ sourcePageUrl: 'https://example.com/source', outputDir: f.outputDir, maxCandidates: 64 }, f.network);
+  assert.equal(result.candidates.length, 5);
+  assert.equal(result.candidates[3].imageUrl, 'https://example.com/character-original.png');
+  assert.equal(result.candidates[3].label, '');
+  assert.match(result.candidates[3].observedTag, /ipPreviewImage/);
 });
