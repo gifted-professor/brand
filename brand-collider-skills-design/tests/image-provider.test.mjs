@@ -5,8 +5,10 @@ import { createServer } from 'node:http';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
+import sharp from 'sharp';
 import { loadImageConfig } from '../src/providers/image-config.ts';
 import { ImageProviderError, OpenAIImageProvider, referenceDataUrl } from '../src/providers/openai-image-provider.ts';
+import { imageGenerationQueue, reconcileUnknownImageRequest } from '../src/providers/image-queue.ts';
 
 // All endpoints in these tests are ephemeral loopback servers. Never read .env.local.
 const key = 'sk-test-local-only-do-not-use';
@@ -48,6 +50,8 @@ async function fixture(t, handler = (_req, res) => respondImage(res)) {
   t.after(async () => {
     server.closeAllConnections();
     await new Promise((resolve) => server.close(resolve));
+    for (const request of requests) reconcileUnknownImageRequest({ requestId: request.headers['x-request-id'], outcome: 'cancelled',
+      evidence: 'Local fixture HTTP server and all connections have been closed; no upstream generation exists.' });
     await rm(directory, { recursive: true, force: true });
   });
   const origin = `http://127.0.0.1:${server.address().port}`;
@@ -86,6 +90,7 @@ async function assertFailureRecord(config, error) {
   assert.equal(saved.error, error.code);
   assert.equal(saved.generationStatus, error.generationStatus);
   assert.equal(saved.retryable, false);
+  assert.deepEqual(saved.diagnostics.upstreamFailure, error.upstreamFailure);
   assert.ok(!raw.includes(key) && !raw.includes(prompt));
 }
 
@@ -112,7 +117,91 @@ test('configuration rejects unsafe URL forms, missing keys, unsupported models a
     { IMAGE_MODEL: 'deepseek-v4-flash' }, { IMAGE_RESPONSES_MODEL: 'bad model' },
     { IMAGE_TIMEOUT_MS: '0' }, { IMAGE_TIMEOUT_MS: '1000.5' }, { IMAGE_TIMEOUT_MS: '1800001' },
     { IMAGE_CONNECT_IP: 'not-an-ip' },
+    { IMAGE_REASONING_EFFORT: 'super' }, { IMAGE_OPTIMIZE_REFERENCES: 'yes' },
+    { IMAGE_FINAL_IMAGE_GRACE_MS: '-1' }, { IMAGE_FINAL_IMAGE_GRACE_MS: '10001' },
   ]) assert.throws(() => loadImageConfig({ ...env, ...change }, tmpdir()));
+});
+
+test('reasoning can use upstream default and reference optimization and tail grace can be disabled', () => {
+  const config = loadImageConfig({ OPENAI_BASE_URL: 'http://127.0.0.1:12345', OPENAI_API_KEY: key,
+    IMAGE_REASONING_EFFORT: 'auto', IMAGE_OPTIMIZE_REFERENCES: 'false', IMAGE_FINAL_IMAGE_GRACE_MS: '0' });
+  assert.equal(config.reasoningEffort, undefined);
+  assert.equal(config.optimizeReferences, false);
+  assert.equal(config.finalImageGraceMs, 0);
+  assert.equal(loadImageConfig({ OPENAI_BASE_URL: config.baseUrl, OPENAI_API_KEY: key, IMAGE_RESPONSES_MODEL: 'other-model' }).reasoningEffort, undefined);
+});
+
+test('complete SSE events return before an open HTTP stream ends, with measured progress', async (t) => {
+  for (const ending of ['completed', 'done', 'item_only']) {
+    const { config, requests } = await fixture(t, (_req, res) => {
+      res.writeHead(200, { 'Content-Type': 'text/event-stream' });
+      res.write(frame({ type: 'response.created', response: { id: 'resp_local' } }));
+      res.write(frame({ type: 'response.image_generation_call.generating' }));
+      const item = frame({ type: 'response.output_item.done', item: { type: 'image_generation_call', status: 'completed', result: png.toString('base64') } });
+      res.write(item + (ending === 'completed' ? frame({ type: 'response.completed', response: { id: 'resp_local', status: 'completed', output: [] } }) : ending === 'done' ? 'data: [DONE]\n\n' : ''));
+      // Deliberately never res.end(): recreates the CPA tail stall.
+    });
+    const progress = [];
+    const provider = new OpenAIImageProvider({ ...config, finalImageGraceMs: 60 });
+    const asset = await provider.generate({ prompt }, (event) => { progress.push(event); });
+    assert.ok(asset.diagnostics.totalMs < 650, `must return before 1000ms timeout: ${JSON.stringify(asset.diagnostics)}`);
+    assert.equal(asset.diagnostics.completionReason, { completed: 'response_completed', done: 'stream_done', item_only: 'image_tail_grace' }[ending]);
+    assert.equal(asset.diagnostics.responseCompleted, ending === 'completed');
+    assert.ok(asset.diagnostics.finalImageMs >= 0);
+    assert.ok(asset.diagnostics.headersReceivedMs >= 0);
+    assert.equal(asset.diagnostics.requestBytes, Buffer.byteLength(requests[0].body));
+    assert.equal(progress[0].stage, 'preparing');
+    assert.equal(progress.at(-1).stage, 'completed');
+    assert.ok(progress.some(event => event.stage === 'image_received'));
+    assert.equal(requests.length, 1);
+    t.diagnostic(`${ending}: local hanging-stream request returned in ${asset.diagnostics.totalMs}ms`);
+  }
+});
+
+test('tail grace observes delayed failures and additional images before publishing', async (t) => {
+  for (const [tail, code, status] of [
+    [frame({ type: 'response.failed' }), 'image_upstream_failed', 'failed'],
+    [frame({ type: 'response.incomplete' }), 'image_upstream_incomplete', 'unknown'],
+    [frame({ type: 'response.output_item.done', item: { type: 'image_generation_call', status: 'completed', result: Buffer.concat([png, Buffer.from([0])]).toString('base64') } }), 'image_multiple_results', 'unknown'],
+  ]) {
+    const { config, requests } = await fixture(t, (_req, res) => {
+      res.writeHead(200, { 'Content-Type': 'text/event-stream' });
+      res.write(frame({ type: 'response.output_item.done', item: { type: 'image_generation_call', status: 'completed', result: png.toString('base64') } }));
+      setTimeout(() => res.write(tail), 30);
+    });
+    const provider = new OpenAIImageProvider({ ...config, finalImageGraceMs: 100 });
+    const error = await expectFailure(() => provider.generate({ prompt }), code, status);
+    await assertFailureRecord(config, error);
+    assert.equal(requests.length, 1);
+  }
+});
+
+test('partial images never trigger tail grace and progress callback errors cannot retry a request', async (t) => {
+  const { config, requests } = await fixture(t, (_req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/event-stream' });
+    res.write(frame({ type: 'response.image_generation_call.partial_image', partial_image_b64: png.toString('base64') }));
+  });
+  const provider = new OpenAIImageProvider({ ...config, finalImageGraceMs: 20 });
+  const error = await expectFailure(() => provider.generate({ prompt }, () => { throw new Error('observer'); }), 'image_upstream_timeout');
+  assert.equal(error.diagnostics.finalImageMs, undefined);
+  assert.ok(error.diagnostics.requestMs >= 900);
+  assert.equal(requests.length, 1);
+});
+
+test('a malformed final candidate does not announce an image or shorten the wait for a valid result', async (t) => {
+  const { config, requests } = await fixture(t, (_req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/event-stream' });
+    res.write(frame({ type: 'response.output_item.done', item: { type: 'image_generation_call', status: 'completed', result: 'not an image' } }));
+    setTimeout(() => res.end(frame({ type: 'response.completed', response: { status: 'completed', output: [
+      { type: 'image_generation_call', status: 'completed', result: png.toString('base64') },
+    ] } })), 100);
+  });
+  const stages = [];
+  const asset = await new OpenAIImageProvider({ ...config, finalImageGraceMs: 20 }).generate({ prompt }, progress => stages.push(progress));
+  assert.deepEqual(await readFile(asset.path), png);
+  assert.equal(asset.diagnostics.completionReason, 'response_completed');
+  assert.ok(!stages.some(event => event.stage === 'image_received' && event.elapsedMs < 80));
+  assert.equal(requests.length, 1);
 });
 
 test('generation sends the exact authenticated Responses wire payload with independent models', async (t) => {
@@ -129,6 +218,7 @@ test('generation sends the exact authenticated Responses wire payload with indep
   assert.match(asset.requestId, uuid);
   assert.deepEqual(JSON.parse(request.body), {
     model: 'gpt-5.5', stream: true, tool_choice: { type: 'image_generation' },
+    reasoning: { effort: 'low' },
     input: [{ role: 'user', content: [{ type: 'input_text', text: `${prompt}\n\nOutput composition ratio: 3:4.\n\nRequested detail tier: 4K.\n\nAvoid these elements: no text` }] }],
     tools: [{ type: 'image_generation', model: 'gpt-image-2', action: 'generate', output_format: 'png' }],
   });
@@ -185,12 +275,37 @@ test('catalog check only performs GET and reports listing separately from genera
 test('local reference images produce an edit tool call and input_image data URLs', async (t) => {
   const { provider, requests } = await fixture(t);
   const reference = referenceDataUrl(png);
-  await provider.generate({ prompt, references: [reference] });
+  const asset = await provider.generate({ prompt, references: [reference] });
   const payload = JSON.parse(requests[0].body);
   assert.deepEqual(payload.tools, [{ type: 'image_generation', model: 'gpt-image-2', action: 'edit', output_format: 'png' }]);
   assert.deepEqual(payload.input[0].content[1], { type: 'input_image', image_url: reference });
   assert.equal(payload.input[0].content.length, 2);
   assert.match(payload.input[0].content[0].text, /preserve the subject and product details/);
+  assert.deepEqual(asset.referenceInputs, [{ contentHash: createHash('sha256').update(png).digest('hex'), mimeType: 'image/png', bytes: png.length }]);
+});
+
+test('transparent API reference persists distinct source and actual submission hashes with presentation provenance', async t => {
+  const { provider, requests } = await fixture(t);
+  const raw = Buffer.alloc(32 * 8 * 4);
+  raw.set([4, 0, 0, 255], 0);
+  const source = await sharp(raw, { raw: { width: 32, height: 8, channels: 4 } }).png().toBuffer();
+  const asset = await provider.generate({ prompt, references: [referenceDataUrl(source)] });
+  assert.equal(requests.length, 1);
+  const submittedUrl = JSON.parse(requests[0].body).input[0].content[1].image_url;
+  const submitted = Buffer.from(submittedUrl.slice(submittedUrl.indexOf(',') + 1), 'base64');
+  const sourceHash = createHash('sha256').update(source).digest('hex');
+  const submittedHash = createHash('sha256').update(submitted).digest('hex');
+  assert.notEqual(sourceHash, submittedHash);
+  assert.equal(asset.referenceInputs[0].contentHash, submittedHash);
+  const [preparation] = asset.diagnostics.referencePreparation;
+  assert.equal(preparation.originalHash, sourceHash);
+  assert.equal(preparation.preparedHash, submittedHash);
+  assert.deepEqual(preparation.presentation, { type: 'alpha-composite', background: '#ffffff' });
+  assert.deepEqual([preparation.width, preparation.height, preparation.resized], [32, 8, false]);
+  const saved = JSON.parse(await readFile(asset.metadataPath, 'utf8'));
+  assert.deepEqual(saved.diagnostics.referencePreparation, asset.diagnostics.referencePreparation);
+  const actual = await sharp(submitted).raw().toBuffer();
+  assert.deepEqual([...actual.subarray(0, 6)], [4, 0, 0, 255, 255, 255]);
 });
 
 test('invalid input and references fail before any HTTP request or output directory is created', async (t) => {
@@ -216,6 +331,44 @@ test('HTTP 500 has unknown outcome, one attempt and a redacted durable failure r
   });
   const error = await expectFailure(() => provider.generate({ prompt }), 'image_upstream_http_500');
   assert.match(error.requestId, uuid);
+  assert.equal(requests.length, 1);
+  await assertFailureRecord(config, error);
+});
+
+test('terminal, disconnect, JSON and HTTP failures durably retain safe categories without raw diagnostics or retry', async (t) => {
+  const privateMessage = `${key} ${prompt} private-upstream-diagnostic`;
+  const payload = { type: 'response.failed', response: { status: 'failed',
+    error: { code: 'server_error', type: 'api_error', message: privateMessage, param: privateMessage } } };
+  for (const ending of ['terminal', 'disconnect', 'json', 'http']) {
+    const { provider, config, requests } = await fixture(t, (_req, res) => {
+      res.writeHead(ending === 'http' ? 503 : 200, { 'Content-Type': ['http', 'json'].includes(ending) ? 'application/json' : 'text/event-stream' });
+      if (ending === 'terminal') res.write(frame(payload)); // Terminal frame must settle an open stream.
+      if (ending === 'disconnect') {
+        res.write(frame(payload).trimEnd()); // Parser still reads a complete final event at disconnected EOF.
+        setTimeout(() => res.destroy(), 20);
+      }
+      if (ending === 'json' || ending === 'http') res.end(JSON.stringify(payload.response));
+    });
+    const error = await expectFailure(() => provider.generate({ prompt }), ending === 'http' ? 'image_upstream_http_503' : 'image_upstream_failed', ending === 'http' ? 'unknown' : 'failed');
+    assert.deepEqual(error.upstreamFailure, { ...(['terminal', 'disconnect'].includes(ending) ? { event: 'response.failed' } : {}),
+      status: 'failed', code: 'server_error', type: 'api_error' });
+    assert.equal(error.diagnostics.httpStatus, ending === 'http' ? 503 : 200);
+    assert.equal(error.diagnostics.responseCompleted, false);
+    assert.equal(requests.length, 1);
+    await assertFailureRecord(config, error);
+    const folders = await readdir(config.outputDir);
+    const saved = await readFile(join(config.outputDir, folders[0], 'request.json'), 'utf8');
+    assert.ok(!saved.includes(privateMessage) && !saved.includes('private-upstream-diagnostic'));
+  }
+});
+
+test('unknown upstream error codes and types cannot exfiltrate content through saved diagnostics', async (t) => {
+  const { provider, config, requests } = await fixture(t, (_req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/event-stream' });
+    res.end(frame({ type: 'error', code: key, error: { code: key, type: prompt, message: 'private-upstream-diagnostic' } }));
+  });
+  const error = await expectFailure(() => provider.generate({ prompt }), 'image_upstream_failed', 'failed');
+  assert.deepEqual(error.upstreamFailure, { event: 'error', code: 'unrecognized', type: 'unrecognized' });
   assert.equal(requests.length, 1);
   await assertFailureRecord(config, error);
 });
@@ -288,7 +441,7 @@ test('a fully received final SSE image survives later disconnect or deadline wit
 test('explicit failure or incomplete after a final SSE image cannot be salvaged on disconnect', async (t) => {
   for (const [event, code, status] of [
     ['response.failed', 'image_upstream_failed', 'failed'],
-    ['response.incomplete', 'image_upstream_connection_lost', 'unknown'],
+    ['response.incomplete', 'image_upstream_incomplete', 'unknown'],
   ]) {
     const { provider, config, requests } = await fixture(t, (_req, res) => {
       res.writeHead(200, { 'Content-Type': 'text/event-stream' });
@@ -301,24 +454,62 @@ test('explicit failure or incomplete after a final SSE image cannot be salvaged 
   }
 });
 
-test('one provider rejects overlapping generations, then releases the lock after completion', async (t) => {
-  const firstArrived = deferred();
-  let heldResponse;
-  let calls = 0;
-  const { provider, requests } = await fixture(t, (_req, res) => {
-    if (++calls === 1) { heldResponse = res; firstArrived.resolve(); }
-    else respondImage(res);
+test('providers share four FIFO slots, refill on failure, and isolate independent requests', async (t) => {
+  const fourArrived = deferred(), fifthArrived = deferred();
+  const held = [];
+  let live = 0, peak = 0, releaseRest = false;
+  const finish = (res) => { live -= 1; respondImage(res); };
+  const { provider, config, requests } = await fixture(t, (_req, res) => {
+    live += 1; peak = Math.max(peak, live); held.push(res);
+    if (held.length === 4) fourArrived.resolve();
+    if (held.length === 5) fifthArrived.resolve();
+    if (releaseRest) finish(res);
   });
-  const first = provider.generate({ prompt });
-  await firstArrived.promise;
-  await expectFailure(() => provider.generate({ prompt: 'second image' }), 'image_provider_busy', 'failed');
-  assert.equal(requests.length, 1);
-  respondImage(heldResponse);
-  const firstAsset = await first;
-  const nextAsset = await provider.generate({ prompt: 'next image' });
-  assert.equal(requests.length, 2);
-  assert.notEqual(firstAsset.assetId, nextAsset.assetId);
-  assert.notEqual(firstAsset.requestId, nextAsset.requestId);
+  const otherProvider = new OpenAIImageProvider(config);
+  const inputs = Array.from({ length: 7 }, (_, index) => ({ prompt: `independent image ${index}` }));
+  const results = Promise.allSettled(inputs.map((input, index) => (index % 2 ? provider : otherProvider).generate(input)));
+  await fourArrived.promise;
+  assert.equal(requests.length, 4, 'the entire process shares the limit across instances');
+  // Mutations after enqueue must not change the request eventually submitted.
+  inputs[4].prompt = 'mutated after queueing';
+  live -= 1;
+  held[0].writeHead(401); held[0].end();
+  await fifthArrived.promise;
+  assert.equal(requests.length, 5, 'failure promptly frees a slot');
+  assert.match(requests[4].body, /independent image 4/);
+  assert.doesNotMatch(requests[4].body, /mutated after queueing/);
+  releaseRest = true;
+  held.slice(1).forEach(finish);
+  const completed = await results;
+  assert.equal(peak, 4);
+  assert.equal(completed.filter(result => result.status === 'fulfilled').length, 6);
+  const failure = completed.find(result => result.status === 'rejected').reason;
+  assert.equal(failure.code, 'image_upstream_http_401');
+  assert.equal(failure.generationStatus, 'failed');
+  assert.equal(requests.length, 7, 'each task submits exactly one request');
+  const successes = completed.filter(result => result.status === 'fulfilled').map(result => result.value);
+  assert.equal(new Set(successes.map(asset => asset.requestId)).size, 6);
+});
+
+test('unknown requests retain all four slots until the host reconciles a confirmed terminal outcome', async t => {
+  let release = false;
+  const { provider, requests } = await fixture(t, (_req, res) => { if (release) respondImage(res); });
+  const results = await Promise.allSettled(Array.from({ length: 5 }, (_, id) => provider.generate({ prompt: `unknown slot ${id}` })));
+  assert.equal(requests.length, 4, 'a timeout does not prove that upstream generation has stopped');
+  assert.equal(results.filter(result => result.status === 'rejected' && result.reason.generationStatus === 'unknown').length, 4);
+  assert.equal(results.at(-1).reason.code, 'image_provider_waiting_capacity');
+  const capacity = imageGenerationQueue.status();
+  assert.equal(capacity.active, 0); assert.equal(capacity.unknown, 4);
+  await expectFailure(() => provider.generate({ prompt: 'must remain blocked' }), 'image_provider_waiting_capacity', 'failed');
+  assert.equal(requests.length, 4);
+  assert.throws(() => reconcileUnknownImageRequest({ requestId: capacity.unknownRequestIds[0], outcome: 'failed', evidence: '' }), /invalid_reconciliation/);
+  release = true;
+  reconcileUnknownImageRequest({ requestId: capacity.unknownRequestIds[0], outcome: 'cancelled',
+    evidence: 'Local test fixture has no background work; its timed-out request is confirmed terminated.' });
+  const asset = await provider.generate({ prompt: 'one reconciled slot' });
+  assert.equal(asset.generationStatus, 'succeeded');
+  assert.equal(requests.length, 5);
+  assert.equal(imageGenerationQueue.status().unknown, 3);
 });
 
 test('GET and POST redirects are not followed or given credentials at their target', async (t) => {

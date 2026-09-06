@@ -1,0 +1,51 @@
+/* Brand Relations VI V3.1. Strict three-color execution tokens; not imported into the app. */
+:root {
+  /* The only three execution colors. */
+  --brand-black: #111111;
+  --brand-white: #ffffff;
+  --brand-blue: #2457f5;
+  /* Semantic aliases do not create additional colors. */
+  --brand-ink: var(--brand-black);
+  --brand-canvas: var(--brand-white);
+  --brand-divider: var(--brand-black);
+  --brand-primary-hover: var(--brand-blue);
+  --brand-font: "Manrope", "Noto Sans SC", system-ui, sans-serif;
+  --brand-weight-body: 400;
+  --brand-weight-strong: 600;
+  --brand-body: 1rem;
+  --brand-small: .875rem;
+  --brand-leading: 1.6;
+  --brand-display: clamp(2.25rem, 1rem + 5vw, 5.5rem);
+  --brand-gutter: clamp(1.5rem, 5vw, 4.5rem);
+  --brand-radius-control: 8px;
+  --brand-radius-opportunity: 12px;
+  --brand-touch-target: 44px;
+  --brand-space-1: 4px;
+  --brand-space-2: 8px;
+  --brand-space-3: 16px;
+  --brand-space-4: 24px;
+  --brand-space-5: 32px;
+  --brand-space-6: 48px;
+  --brand-space-7: 64px;
+  --brand-space-8: 96px;
+  --brand-motion-feedback: 180ms;
+  --brand-motion-reveal: 240ms;
+  --brand-motion-hero: 1400ms;
+  --brand-ease: cubic-bezier(.22, 1, .36, 1);
+}
+:lang(zh-Hant), :lang(zh-TW), :lang(zh-HK) {
+  --brand-font: "Manrope", "Noto Sans TC", system-ui, sans-serif;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --brand-motion-feedback: 0ms;
+    --brand-motion-reveal: 0ms;
+    --brand-motion-hero: 0ms;
+  }
+}
+/* All states need text and icons. Blue alone never means consent or success.
+   Use a contrasting, offset focus indicator for the immediate surface.
+   Keep body links underlined. Load and license fonts explicitly in production. */
+
+/* Hover uses underline, border or geometry, not a different blue.
+   Disabled uses readable black labels and explicit state text, not gray tint. */

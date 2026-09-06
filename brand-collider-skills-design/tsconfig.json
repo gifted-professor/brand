@@ -10,5 +10,5 @@
     "skipLibCheck": true,
     "types": ["node"]
   },
-  "include": ["src/**/*.ts", "scripts/image-cli.ts"]
+  "include": ["src/**/*.ts", "scripts/image-cli.ts", ".claude/skills/brand-profile/scripts/*.ts"]
 }

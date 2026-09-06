@@ -5,14 +5,15 @@ import { loadImageConfig } from '../src/providers/image-config.ts';
 const savedGateway = { OPENAI_BASE_URL: 'https://gateway.invalid/v1', OPENAI_API_KEY: 'old-gateway-key', IMAGE_CONNECT_IP: '100.84.130.17' };
 const cpa = { baseUrl: 'http://100.84.194.46:8317/v1', apiKey: 'test-cpa-key' };
 
-test('CPA uses its own endpoint and credential, clears the unrelated gateway DNS override, and defaults to Astra', () => {
+test('CPA isolates its credential and defaults image orchestration to GPT-5.5 independently of text', () => {
   const config = loadImageConfig({ ...savedGateway, OPENAI_PROVIDER: 'cpa' }, '/tmp', () => cpa);
   assert.equal(config.provider, 'cpa');
   assert.equal(config.baseUrl, cpa.baseUrl);
   assert.equal(config.apiKey, cpa.apiKey);
   assert.equal(config.connectIp, undefined);
   assert.equal(config.textModel, 'gpt-6-astra');
-  assert.equal(config.responsesModel, 'gpt-6-astra');
+  assert.equal(config.responsesModel, 'gpt-5.5');
+  assert.equal(config.reasoningEffort, 'low');
   assert.equal(config.imageModel, 'gpt-image-2');
 });
 

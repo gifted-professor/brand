@@ -1,8 +1,8 @@
 # Image 2 API 接入
 
-当前本地配置：**CPA → `gpt-6-astra` → `gpt-image-2`**，2026-09-05 已完成真实文本和生图验证。工作台与 CLI 共用此配置。历史 HNCloud 接入保留为显式可选模式，不自动回退。
+当前本地配置：**CPA → `gpt-5.5` → `gpt-image-2`**。2026-09-05 的旧 GPT-5.5 联名批次已有一张成功、一张超时；成功记录恰在 780 秒超时点落盘，旧实现可能一直等连接收尾才取出已返回图片。新版本处理完整 SSE 事件并记录阶段耗时；用户授权的同素材单张实测已在 257.788 秒保存成功，完整图收到后约 1 秒交付。工作台与 CLI 共用配置。历史 HNCloud 接入保留为显式可选模式，不自动回退。
 
-本项目已实现服务端 `ImageProvider` 和本地命令行，可直接通过用户提供的 OpenAI-compatible 网关生成图片，保存图片文件、素材 ID、SHA-256 和供应商请求 ID。运行需要 Node.js 24+；生图本身没有第三方运行依赖。
+本项目已实现服务端 `ImageProvider` 和本地命令行，可直接通过用户提供的 OpenAI-compatible 网关生成图片，保存图片文件、素材 ID、SHA-256 和供应商请求 ID。运行需要 Node.js 24+；参考图预处理使用 `sharp`，安装依赖请运行 `npm ci`。
 
 ## 参考实现与模型配置
 
@@ -13,7 +13,8 @@ CPA 配置方式：
 ```dotenv
 OPENAI_PROVIDER=cpa
 OPENAI_MODEL=gpt-6-astra
-IMAGE_RESPONSES_MODEL=gpt-6-astra
+IMAGE_RESPONSES_MODEL=gpt-5.5
+IMAGE_REASONING_EFFORT=low
 IMAGE_MODEL=gpt-image-2
 ```
 
@@ -31,6 +32,9 @@ IMAGE_MODEL=gpt-image-2
 | `OPENAI_MODEL` | 工作台文本创意模型 | `gpt-5.6-sol` |
 | `IMAGE_RESPONSES_MODEL` | Responses 顶层模型，调用生图工具 | `gpt-5.5` |
 | `IMAGE_MODEL` | 实际生图工具模型 | `gpt-image-2` |
+| `IMAGE_REASONING_EFFORT` | 顶层模型推理强度；`auto` 不发送该字段 | GPT-5.5 为 `low`，其他模型 `auto` |
+| `IMAGE_OPTIMIZE_REFERENCES` | 本地压缩参考图；`false` 原样发送 | `true` |
+| `IMAGE_FINAL_IMAGE_GRACE_MS` | 完整图片收到后等待尾部事件；`0` 关闭提前收尾 | `1000` |
 | `IMAGE_TIMEOUT_MS` | 单次请求的总超时，包含响应读取 | `780000` |
 | `IMAGE_OUTPUT_DIR` | 图片与元数据存储目录 | `./outputs/images` |
 | `IMAGE_CONNECT_IP` | 可选、已核实的网关 IP，解决本机 DNS 异常 | 默认不设置 |
@@ -62,6 +66,36 @@ npm run image:generate -- --prompt-file prompt.txt --negative "礼盒、赠品�
 
 `image:check` 中的 `generationVerified: false` 表示该命令只检查模型目录；实际成功生成的结果以 `image:generate` 返回和已保存图片为准。
 
+## 逐件批量生成与参考证据
+
+本地完整用法维护在原 Skill 的 [LOCAL_EXECUTION.md](../.claude/skills/visual-production/references/LOCAL_EXECUTION.md)。执行入口：
+
+```bash
+node scripts/image-cli.ts batch --manifest /absolute/material-jobs.json --state /absolute/batch-state.json --concurrency 4
+```
+
+清单逐件写 `id`、`prompt`、本地 `references`，以及需要时的 `dependencies` 和 `referenceTasks`。最多 4 个独立就绪任务并行，完成一件即补位。上游失败/未知只阻断依赖项；作为参考的生成上游先完成实际视觉检查并登记与输出哈希绑定的审核，未审核的下游为 `waiting_review`，不阻止独立项。再次运行同清单与状态文件复用成功项，不自动重复失败或未知计费项。
+
+批量状态保存原始参考文件路径与 SHA-256；provider 的 `referenceInputs` 记录实际送出的参考图片字节哈希、格式与大小，包括预处理后的变化。两层记录通过同一参考索引关联；请求里有真实 `input_image` 才能称为附图生成。此证据不能证明模型完全遵守参考，也不替代身份与排版检查。
+
+## 速度与实测
+
+- GPT-5.5 显式发送 `reasoning: { effort: "low" }`。这是[官方模型指南](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-5.5)建议低延迟工具调用优先评估的设置；代理是否执行该设置、实际提速多少仍需用真实请求测量。兼容性问题可设 `IMAGE_REASONING_EFFORT=auto`，不自动改模型或重发。
+- 普通超大参考图按比例缩至长边 2048；长宽比超过 3:1 的长图保留尺寸。非透明图片尝试 JPEG 质量 90、4:4:4；透明图片保留 PNG；压缩结果更大、动画或解码失败则原样发送。不会裁剪、改写原文件、删除参考图或截断提示词。
+- 酷态科联名的三张参考图，本地预处理约 140ms，图片总字节从 2,752,524 降至 1,181,787，减少 57.07%；这组三张都保持原尺寸。这个数字是上传体积改善，不能当成模型生成速度提升。
+- 增量处理流式事件。收到 `response.completed` 或 `[DONE]` 后立即校验完整已收数据并交图；如果只收到包含最终图片的 `output_item.done`，默认等待最多 1 秒尾部，再校验并保存。局部预览不触发收尾。
+- CLI 在 stderr 输出阶段与耗时，最终 JSON 留在 stdout；工作台更新当前图像请求的阶段。仅显示实际收到的阶段，没有估算百分比。
+
+成功素材和失败记录都带 `diagnostics`：本地准备、请求、总耗时，上传/响应字节，以及首次阶段、生成开始、最终图片和响应完成事件的时间。`uploadFinishedMs` 表示本地请求流已写出，不保证远端已接收；`headersReceivedMs`、其他请求阶段时间都从开始 POST 计时。CLI 进程启动及 CPA 凭证解析时间不在其中。没有上游队列遥测时，不能将首响应等待精确拆成排队或推理。
+
+`completionReason` 区分响应完成、流结束、图片尾部等待结束、HTTP 结束及断流保留；`responseCompleted` 仅标记是否观察到 `response.completed` 事件。`image_tail_grace` 确认的是已收到的最终图片，不宣称顶层响应已完成。关闭连接之后的事件无法观察；需要等待完整响应的调用可将 `IMAGE_FINAL_IMAGE_GRACE_MS=0`。在交付前已收到的失败、incomplete、不同的多张图片仍阻止成功。
+
+本地挂流回归测试：模拟图片已完成但 HTTP 永不结束，完整响应事件即时交付，只有最终图片时在测试设置的 60ms 尾部窗口后交付，而不是等 1000ms 测试超时。
+
+2026-09-05 用户授权的真实单张测速（同一 compact prompt、三张来源参考图、3:4 / 2K）：准备 148ms；POST 本地写出结束 119,891ms；收到响应头 159,507ms；收到生成开始事件 161,119ms；收到完整图片 256,610ms；从 provider 开始到保存总计 257,788ms。`completionReason=image_tail_grace`，未观察到顶层 `response.completed`，但最终图片已完整校验保存，证实提前收尾生效。结果与输入 SHA-256 记录在 `../outputs/brand-toy-prompts/cuktech-hok/generated-speed-test/speed-report.json`。
+
+这一次应用交付时间约 4 分 18 秒，比旧成功图观察到的约 13 分钟减少约 67%；旧轮两张并发、本轮单张，且推理/压缩/收尾同时改变，不能当成严格 A/B 测试或保证后续固定提速。1.58 MB 请求写出耗时约 120 秒值得继续排查，但仅凭客户端时间无法确定是网络、代理背压还是其他原因。
+
 ## 后续接入服务或 Agent 工具
 
 ```ts
@@ -80,7 +114,7 @@ const asset = await provider.generate({
 });
 ```
 
-`references` 接受宿主从已授权素材解析出的 data URL，不接受 Agent 指定 endpoint、Key 或输出目录。`referenceDataUrl(buffer)` 可将本地素材 bytes 校验并编码。`generate` 每次只发一个请求，同一实例一次只允许一个在途请求，忙时返回 `image_provider_busy`。跨实例、跨进程的并发和预算控制仍由后续任务服务实现。
+`references` 接受宿主从已授权素材解析出的 data URL，不接受 Agent 指定 endpoint、Key 或输出目录。`referenceDataUrl(buffer)` 可将本地素材 bytes 校验并编码。`generate` 每次只发一个请求，同一 Node 进程的所有 provider 实例共用最多 4 个在途请求的队列，第 5 个等待空槽。不同 CLI 进程不共享该队列；整套物料通过一个 `batch` 命令提交，不能启动四个各带四槽的进程冒充总并发 4。单批可用 `--concurrency 1` 到 `4` 服从更小限额，并发数不增加用户授权的制作数量或预算。
 
 这个适配器不等于已经注册的 `mcp__collider__image_generate`。现有[工具契约](../contracts/CONTRACTS.md)中的身份、版本、用户选择、审核、限额及幂等守卫仍需由宿主实现，然后将这里返回的真实素材登记进任务状态。此轮没有新增 HTTP 服务、网页、Agent SDK 运行时或海报渲染器。
 
@@ -88,14 +122,14 @@ const asset = await provider.generate({
 
 仅提取 Responses 的最终 `image_generation_call.result` 或顶层兼容 `data[].b64_json`，不把局部预览、输入图片或任意 URL 当作最终结果。校验 base64 与 PNG/JPEG/WebP 文件签名；这不是图像内容审核或完整文件解码验证。
 
-所有请求均不自动重试。超时、断流、HTTP 408/499/5xx、缺少最终图片等返回 `generationStatus: unknown`，因为上游可能已经处理和计费；明确 HTTP 拒绝或上游失败返回 `failed`。若断流或超时前已经完整接收到最终图片，且没有明确失败或 incomplete 事件，则保留这张图片并返回成功。错误输出只包含固定错误码、本地请求 ID 和状态，不包含上游原始错误体、Key 或请求内容。
+所有请求均不自动重试。超时、断流、HTTP 408/499/5xx、缺少最终图片等返回 `generationStatus: unknown`，因为上游可能已经处理和计费；明确 HTTP 拒绝或上游失败返回 `failed`。若断流或超时前已经完整接收到最终图片，且已收数据中没有明确失败或 incomplete 事件，则保留这张图片并返回成功。错误输出包含固定错误码、本地请求 ID、状态和耗时诊断，不包含上游原始错误体、Key 或请求内容。
 
-发送前先确认输出目录可写并保存 `request.json`；成功后保存 `image.png`（或相应格式）及 `asset.json`，移除在途记录。失败保留 `request.json`。如果进程被强制结束而留下 `pending`，按状态未知处理。先通过请求 ID 检查供应商记录，再决定是否手动重发，不能仅根据本地失败提示判断未计费。该记录目前用于排查，不是可恢复的任务队列。
+发送前先确认输出目录可写并保存 `request.json`；成功后保存 `image.png`（或相应格式）及 `asset.json`，移除在途记录。失败保留 `request.json`。如果进程被强制结束而留下 `pending`，按状态未知处理。先通过请求 ID 检查供应商记录，再决定是否手动重发，不能仅根据本地失败提示判断未计费。单张调用记录用于排查；批量执行另用持久状态与锁处理恢复，未知结果仍不自动重发。
 
 ## 验证命令
 
 ```bash
-# 只安装开发检查依赖，运行生图不需要安装这些依赖。
+# 安装运行与开发检查依赖。
 npm ci
 npm run typecheck
 npm test

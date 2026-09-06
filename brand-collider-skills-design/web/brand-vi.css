@@ -1,0 +1,217 @@
+@import url('/brand-relations/fonts.css');
+@import url('/brand-relations/vi-tokens.css');
+
+/* V3.1: identity belongs to the platform; participant artwork keeps its own colors. */
+:root {
+  font-family: var(--brand-font);
+  color: var(--brand-black);
+  background: var(--brand-white);
+  color-scheme: light;
+  --ink: var(--brand-black);
+  --muted: var(--brand-black);
+  --line: var(--brand-black);
+  --paper: var(--brand-white);
+  --green: var(--brand-blue);
+  --blue: var(--brand-blue);
+  --coral: var(--brand-white);
+}
+::selection { color: var(--brand-white); background: var(--brand-blue); }
+.unified-app {
+  --u-bg: var(--brand-white);
+  --u-panel: var(--brand-white);
+  --u-line: var(--brand-black);
+  --u-text: var(--brand-black);
+  --u-muted: var(--brand-black);
+  --u-accent: var(--brand-blue);
+  font-family: var(--brand-font);
+}
+.production-studio {
+  --studio-bg: var(--brand-white);
+  --studio-surface: var(--brand-white);
+  --studio-line: var(--brand-black);
+  --studio-text: var(--brand-black);
+  --studio-muted: var(--brand-black);
+  --studio-mint: var(--brand-blue);
+}
+.u-topbar { height: 88px; padding: 0 32px; gap: 32px; }
+.u-logo { flex-shrink: 0; }
+.u-brand-lockup { display: block; width: 218px; height: auto; }
+.u-brand-symbol { display: none; width: 40px; height: 40px; }
+.u-project-switch { padding-left: 24px; gap: 12px; }
+.u-project-switch button { min-height: 44px; font-size: 14px; font-weight: 600; }
+.u-project-switch small { border: 0; padding: 0; font-size: 12px; }
+.u-connection { font-size: 12px; margin-right: 8px; max-width: 220px; overflow: hidden; text-overflow: ellipsis; }
+.u-connection i, .u-connection.ready i, .u-live-dot { background: var(--brand-black); box-shadow: none; }
+.u-header-actions > button, .u-export { min-width: 44px; height: 44px; border-radius: 8px; font-size: 14px; }
+.u-export { background: var(--brand-blue); color: var(--brand-white); padding: 0 16px; font-weight: 600; }
+.u-workspace { grid-template-columns: minmax(0, 1fr) clamp(380px, 31vw, 460px); padding: 0; gap: 0; }
+.u-canvas-area { border: 0; border-radius: 0; }
+.u-dialogue { border: 0; border-left: 1px solid var(--brand-black); border-radius: 0; }
+.u-dialogue-header { height: 64px; padding: 0 24px; }
+.u-dialogue-header h1 { font-size: 16px; font-weight: 600; }
+.u-dialogue-header > span { font-size: 12px; }
+.u-agent-team { min-height: 56px; padding: 8px 16px; gap: 4px; border-bottom: 0; }
+.u-agent-team > span { font-size: 12px; padding: 6px; border-radius: 0; }
+.u-agent-team > span.active { background: var(--brand-white); color: var(--brand-blue); border: 0; border-bottom: 2px solid var(--brand-blue); }
+.u-agent-team button { min-width: 32px; min-height: 44px; }
+.u-message-list { padding: 24px; }
+.u-message { margin-bottom: 32px; }
+.u-message-head { gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.u-message-head strong { font-size: 14px; font-weight: 600; }
+.u-message-head small, .u-message-head time { font-size: 12px; }
+.u-agent-avatar { width: 32px; height: 32px; border: 1px solid var(--brand-black); border-radius: 8px; }
+.u-message-content { font-size: 16px; line-height: 1.8; }
+.u-message.is-user .u-message-content { border: 0; border-left: 3px solid var(--brand-blue); border-radius: 0; padding: 0 0 0 16px; }
+.u-skill-event { padding: 12px 0; border: 0; border-top: 1px solid var(--brand-black); border-radius: 0; font-size: 12px; }
+.u-skill-event p, .u-skill-event pre, .u-cli-execution pre { font-size: 14px; line-height: 1.7; }
+.u-session-label { margin-top: 0; }
+.u-composer-area { padding: 16px 24px; }
+.u-composer { padding: 16px; border-radius: 8px; }
+.u-composer:focus-within { border-color: var(--brand-blue); outline: 1px solid var(--brand-blue); }
+.u-composer textarea { font-size: 16px; min-height: 64px; line-height: 1.6; }
+.u-composer > div > small, .u-composer-foot { font-size: 12px; }
+.u-composer-foot { line-height: 1.6; gap: 8px; flex-wrap: wrap; }
+.u-attach, .u-send { min-width: 44px; min-height: 44px; border-radius: 8px; }
+.u-send { background: var(--brand-blue); color: var(--brand-white); }
+.u-run-controls { font-size: 12px; padding-bottom: 8px; }
+.u-run-controls button { min-height: 44px; font-size: 14px; }
+.u-jump { background: var(--brand-black); color: var(--brand-white); border-radius: 8px; min-height: 44px; bottom: 240px; }
+.u-primary, .unified-app .modal .primary, .production-inspector__footer > button {
+  background: var(--brand-blue); color: var(--brand-white); border-radius: 8px; min-height: 44px; font-size: 14px; font-weight: 600;
+}
+.u-primary:hover:not(:disabled), .unified-app .modal .primary:hover:not(:disabled), .production-inspector__footer > button:hover { background: var(--brand-blue); color: var(--brand-white); text-decoration: underline; text-underline-offset: 4px; }
+.unified-app button:disabled, .production-studio button:disabled, .unified-app .u-send:disabled {
+  opacity: 1; color: var(--brand-black); background: var(--brand-white); cursor: not-allowed;
+}
+.unified-app .u-send:disabled, .unified-app .u-start:disabled { border: 1px dashed var(--brand-black); }
+.unified-app button:not(:disabled):hover, .unified-app a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.unified-app :is(button, a, summary, [tabindex]):focus-visible { outline: 2px solid var(--brand-blue); outline-offset: 3px; }
+.unified-app :is(.u-primary, .u-send, .u-export):focus-visible { outline-color: var(--brand-black); }
+.unified-app :is(input, textarea, select):focus { outline: 2px solid var(--brand-blue); outline-offset: 2px; }
+.unified-app .u-composer textarea:focus { outline: none; }
+.unified-app a { text-decoration: underline; text-underline-offset: 3px; }
+.unified-app .u-export { text-decoration: none; }
+.u-setup { padding: 32px 24px; }
+.u-welcome-symbol { background: none; border: 0; border-radius: 0; width: 56px; height: 56px; margin-bottom: 24px; }
+.u-setup h2 { font-size: 28px; font-weight: 600; line-height: 1.4; max-width: 340px; margin-bottom: 16px; }
+.u-setup > p { font-size: 16px; line-height: 1.7; }
+.u-brand-inputs { gap: 12px; }
+.u-brand-inputs > button { padding: 16px; min-height: 76px; }
+.u-brand-inputs strong { font-size: 16px; font-weight: 600; }
+.u-brand-inputs small, .u-setup-note { font-size: 12px; line-height: 1.6; }
+.u-brand-inputs > button > span { font-family: var(--brand-font); border: 1px solid var(--brand-black); }
+.u-goal-label, .u-goal-label textarea { font-size: 16px; }
+.u-setup-actions select, .u-setup-actions button { min-height: 44px; font-size: 12px; }
+.u-setup-actions select { max-width: 180px; }
+.production-studio--embedded .production-studio__workspace { background: var(--brand-white); }
+/* The existing viewport coordinates keep the dot grid anchored while panning and zooming. */
+.production-studio--embedded .production-viewport {
+  background-color: var(--brand-white);
+  background-image: radial-gradient(circle, rgb(17 17 17 / 22%) 0.75px, transparent 1px);
+  background-repeat: repeat;
+}
+.production-studio--embedded .production-node { border-radius: 12px; border: 1px solid var(--brand-black); padding: 20px 20px 0; }
+.production-studio--embedded .production-node:hover { border-color: var(--brand-blue); }
+.production-studio--embedded .production-node.is-selected { border: 2px solid var(--brand-blue); }
+.production-studio--embedded .production-node.is-running { border-color: var(--brand-blue); }
+.production-studio--embedded .production-node__title { font-size: 20px; font-weight: 600; line-height: 1.4; max-height: 56px; }
+.production-studio--embedded .production-node__summary { font-size: 14px; line-height: 1.6; min-height: 40px; }
+.production-studio--embedded .production-node__preview { border: 0; border-top: 1px solid var(--brand-black); border-radius: 0; }
+.production-studio--embedded .production-node__text-preview { padding: 16px 0; }
+.production-studio--embedded .production-node__text-preview > p { font-size: 14px; line-height: 1.7; }
+.production-node__footer { height: 48px; min-height: 48px; }
+.production-node__footer > span:last-child { text-decoration: underline; text-underline-offset: 3px; }
+.production-node-status { max-width: 170px; font-size: 12px; }
+.production-node__asset-count { background: var(--brand-white); color: var(--brand-black); }
+.infinite-group > strong { font-size: 16px; font-weight: 600; }
+.infinite-group > span, .infinite-group > small { font-size: 12px; }
+.canvas-workflow { top: 24px; left: 24px; border-radius: 12px; }
+.canvas-workflow__toggle { min-height: 76px; padding: 16px; }
+.canvas-workflow__summary > span:last-child { font-size: 14px; }
+.canvas-workflow__summary strong { font-size: 12px; font-weight: 600; }
+.canvas-workflow__steps .is-current > button { border-left: 3px solid var(--brand-blue); border-radius: 0; }
+.canvas-workflow__steps .is-running .canvas-workflow__step-number { border-color: var(--brand-blue); color: var(--brand-blue); }
+.infinite-toolbar, .infinite-follow { bottom: 24px; }
+.infinite-layers-toggle, .infinite-toolbar .production-controls, .infinite-follow.production-follow { border-radius: 8px; background: var(--brand-white); }
+.infinite-layers-toggle, .infinite-follow.production-follow { min-height: 44px; font-size: 12px; }
+.infinite-toolbar .production-controls button { width: 44px; height: 44px; border-radius: 8px; }
+.infinite-toolbar .production-controls .production-controls__zoom { width: 52px; font-size: 12px; }
+.infinite-sync { top: 24px; right: 24px; width: 44px; height: 44px; border-radius: 8px; }
+.infinite-layer-panel { bottom: 88px; }
+.infinite-layer-row.is-current, .infinite-layer-node.is-selected { border-left: 3px solid var(--brand-blue); border-radius: 0; }
+.infinite-layer-focus, .infinite-layer-expand, .infinite-layer-eye { min-height: 44px; }
+.production-studio--embedded .production-inspector { border: 2px solid var(--brand-black); background: var(--brand-white); }
+.production-inspector__header > button { width: 44px; height: 44px; }
+.production-studio--embedded .production-inspector__summary, .production-studio--embedded .production-inspector__readable { font-size: 16px; line-height: 1.8; }
+.production-studio--embedded .production-inspector__readable h4 { font-size: 16px; font-weight: 600; }
+.production-empty-symbol { width: 160px; height: 160px; display: grid; place-items: center; }
+.production-studio--embedded .production-canvas-empty > h2 { font-size: 36px; font-weight: 600; line-height: 1.3; }
+.production-studio--embedded .production-canvas-empty > p { font-size: 16px; line-height: 1.8; }
+.unified-app .modal { border: 2px solid var(--brand-black); border-radius: 12px; font-family: var(--brand-font); }
+.unified-app .modal :is(input, textarea, label, p), .u-brief { font-size: 16px; }
+.unified-app .modal :is(h3, strong) { font-weight: 600; }
+.unified-app .modal :is(.form-hint, .file-size, .modal-description, .muted) { color: var(--brand-black); }
+.unified-app .modal :is(button, a, select) { min-height: 44px; }
+@media (max-width: 1150px) {
+  .u-topbar { gap: 20px; padding: 0 24px; }
+  .u-brand-lockup { width: 190px; }
+  .u-connection, .u-project-switch small { display: none; }
+  .u-workspace { grid-template-columns: minmax(0, 1fr) 380px; }
+}
+@media (max-width: 700px) {
+  .u-topbar { height: 72px; padding: 0 16px; gap: 12px; }
+  .u-brand-lockup { display: none; }
+  .u-brand-symbol { display: block; }
+  .u-project-switch { padding-left: 12px; flex: 1; }
+  .u-project-switch button { font-size: 12px; }
+  .u-project-switch button span { max-width: 100px; }
+  .u-header-actions { gap: 0; }
+  .u-header-actions > button, .u-export { min-width: 44px; width: 44px; }
+  .u-workspace { grid-template-columns: 1fr; grid-template-rows: minmax(200px, 36%) minmax(0, 1fr); padding: 0; gap: 0; }
+  .u-dialogue { border-left: 0; border-top: 1px solid var(--brand-black); border-radius: 0; }
+  .u-dialogue-header { height: 44px; }
+  .u-agent-team { min-height: 44px; padding: 0 16px; }
+  .u-message-list { padding: 24px; }
+  .u-message-content { font-size: 16px; }
+  .u-composer-area { padding: 8px 16px; }
+  .u-composer { padding: 8px 12px; }
+  .u-composer textarea { min-height: 32px; height: 32px; font-size: 16px; }
+  .u-composer-foot { display: none; }
+  .u-run-controls { padding-bottom: 4px; }
+  .u-run-controls button { min-height: 32px; }
+  .u-jump { bottom: 170px; }
+  .u-setup { padding: 24px; }
+  .u-setup h2 { font-size: 24px; }
+  .u-setup > p { font-size: 16px; }
+  .u-brand-inputs { grid-template-columns: 1fr; }
+  .u-brand-inputs small { max-width: none; }
+  .production-studio--embedded .production-canvas-empty > h2 { font-size: 24px; margin: 8px 0; }
+  .production-studio--embedded .production-canvas-empty > p { font-size: 14px; }
+  .production-empty-symbol { width: 56px; height: 56px; }
+  .production-empty-symbol img { width: 56px; height: 56px; }
+  .canvas-workflow { top: 12px; left: 16px; }
+  .canvas-workflow__toggle { min-height: 60px; padding: 10px; }
+  .canvas-workflow__summary > span:last-child { font-size: 12px; }
+  .infinite-toolbar { bottom: 12px; left: 16px; }
+  .infinite-follow { bottom: 12px; right: 16px; }
+  .infinite-layers-toggle { width: 44px; }
+  .infinite-toolbar .production-controls { padding: 0; }
+  .infinite-toolbar .production-controls button { width: 36px; }
+  .infinite-toolbar .production-controls .production-controls__zoom { width: 44px; }
+  .infinite-follow.production-follow { padding: 0 8px; font-size: 12px; }
+  .infinite-sync { top: 12px; right: 16px; }
+  .infinite-layer-panel { bottom: 64px; max-height: calc(100% - 76px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .unified-app *, .production-studio * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* The initial brief owns input until a collaboration exists. */
+.unified-app.is-new .u-composer-area { display: none; }
+.unified-app.is-new .u-welcome-symbol { display: none; }
+.unified-app .modal :is(.icon-button, .history-status, .history-list > button > svg, .skill-source-meta, .form-hint, .loading-state) { color: var(--brand-black); }
+.unified-app .modal .skill-source-meta code { color: var(--brand-black); background: var(--brand-white); border-color: var(--brand-black); }
+.production-studio--compact .infinite-sync { width: 44px; height: 44px; }
+.unified-app :is(input, textarea)::placeholder { color: var(--brand-black); opacity: 1; }
+.unified-app .modal :is(small, .upload-zone span, .upload-zone strong, .modal-foot > span) { font-size: 14px; line-height: 1.6; }
+.unified-app .modal .primary:disabled { color: var(--brand-black); background: var(--brand-white); border: 1px dashed var(--brand-black); }

@@ -2,9 +2,22 @@ import { request as httpsRequest } from 'node:https';
 import { request as httpRequest } from 'node:http';
 import { isIP } from 'node:net';
 import type { ImageConfig } from '../providers/image-config.ts';
+import type { AgentExecution } from '../collider-types.ts';
 
 export type ChatMessage = { role: 'system' | 'user' | 'assistant'; content: string };
-export interface TextProvider { readonly model?: string; complete(messages: ChatMessage[]): Promise<unknown> }
+/** Attachments are built by the trusted host from its material registry, never from model paths. */
+export type AgentImage = { path: string; hash: string; label: string };
+export type AgentTask = { sessionId: string; agentId: string; revision: number; schema: Record<string, unknown>;
+  // One host-assigned context per stage attempt, reused only for its bounded repair.
+  contextId?: string;
+  // Trusted host stage identity for per-stage provider settings, not user prose.
+  stageKey?: string;
+  purpose?: 'reference-discovery' | 'visual-inspection'; images?: AgentImage[];
+  recovery?: 'deliver-current-evidence';
+  signal?: AbortSignal; onExecution?: (execution: AgentExecution) => void | Promise<void> };
+export interface TextProvider { readonly model?: string; readonly transport?: 'codex-cli' | 'grok-cli' | 'api'; readonly version?: string;
+  readonly supportsVisualInspection?: boolean; readonly supportsWebDiscovery?: boolean;
+  complete(messages: ChatMessage[], task?: AgentTask): Promise<unknown>; shutdown?(): Promise<void> }
 export type TextOptions = { maxTokens: number; timeoutMs: number; reasoningEffort: 'none' | 'low' | 'medium' | 'high' };
 export class RuntimeError extends Error {
   status: number;
@@ -44,11 +57,14 @@ function gatewayMessages(messages: ChatMessage[], model: string): ChatMessage[] 
 
 // The adapter only returns assistant content; reasoning_content is deliberately discarded.
 export class OpenAITextProvider implements TextProvider {
+  readonly supportsVisualInspection = false;
+  readonly supportsWebDiscovery = false;
   #config: ImageConfig;
   #options: TextOptions;
   constructor(config: ImageConfig, options: TextOptions = loadTextOptions()) { this.#config = { ...config }; this.#options = { ...options }; }
   get model(): string { return this.#config.textModel; }
-  async complete(messages: ChatMessage[]): Promise<unknown> {
+  async complete(messages: ChatMessage[], task?: AgentTask): Promise<unknown> {
+    if (task?.images?.length || task?.purpose) throw new RuntimeError('当前文本 API 未提供真实看图或网页素材发现能力，请使用支持该能力的本地 CLI。', 503);
     const config = this.#config;
     const url = new URL(`${config.baseUrl}/chat/completions`);
     // Reserve output for both thinking and the compact JSON artifact. Reasoning models
@@ -98,6 +114,6 @@ export class OpenAITextProvider implements TextProvider {
       // syntax and stage schema decide validity; partial JSON is never committed.
       if (!result || typeof result !== 'object' || Array.isArray(result)) throw new Error('object required');
       return result;
-    } catch { throw new RuntimeError('模型未返回完整且有效的结构化结果，当前步骤未提交。可以重试或补充资料。', 502); }
+    } catch { throw new RuntimeError('模型未返回完整且有效的结构化结果，当前步骤未提交。已有成果保留，可重试此步骤。', 502); }
   }
 }

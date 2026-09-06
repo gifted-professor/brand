@@ -8,6 +8,7 @@ function node(id, lane, overrides = {}) {
 
 test('agent layers distinguish research from ideation and cover every work category', () => {
   const examples = [
+    [node('workflow-brief', 'strategy', { kind: 'brief' }), 'orchestrator'],
     [node('brand-a', 'strategy', { kind: 'brief' }), 'research'],
     [node('research-report', 'strategy'), 'research'],
     [node('direction-a', 'strategy', { kind: 'concept' }), 'ideation'],
@@ -24,7 +25,7 @@ test('agent layers distinguish research from ideation and cover every work categ
     [node('export', 'review'), 'review'],
   ];
   for (const [item, expected] of examples) assert.equal(nodeLayer(item), expected, item.id);
-  assert.equal(new Set(CANVAS_LAYERS.map(layer => layer.id)).size, 7);
+  assert.equal(new Set(CANVAS_LAYERS.map(layer => layer.id)).size, 8);
   assert.ok(CANVAS_LAYERS.every(layer => layer.label && layer.agent && layer.description));
 });
 
@@ -54,12 +55,20 @@ test('hiding layers can reuse world positions without packing visible layers tog
 
 test('large layers retain unique finite coordinates on the same infinite plane', () => {
   const lanes = ['strategy', 'strategy', 'materials', 'story', 'media', 'video', 'review'];
-  const nodes = CANVAS_LAYERS.flatMap((layer, layerIndex) => Array.from({ length: 31 }, (_, index) =>
+  const nodes = CANVAS_LAYERS.filter(layer => layer.id !== 'orchestrator').flatMap((layer, layerIndex) => Array.from({ length: 31 }, (_, index) =>
     node(`${layer.id}-${index}`, lanes[layerIndex], layer.id === 'ideation' ? { kind: 'concept' } : {})));
+  nodes.unshift(node('workflow-brief', 'strategy', { kind: 'brief' }));
   const positions = Object.values(arrangeInfiniteNodes(nodes));
   assert.equal(positions.length, nodes.length);
   assert.equal(new Set(positions.map(point => `${point.x},${point.y}`)).size, nodes.length);
   assert.ok(positions.every(point => Number.isFinite(point.x) && Number.isFinite(point.y)));
+});
+
+test('adding the controller layer preserves all seven existing layer world origins', () => {
+  ['research', 'ideation', 'design', 'copy', 'image', 'video', 'review'].forEach((id, index) => {
+    assert.deepEqual(canvasLayerOrigin(id), { x: index * 1160, y: 84 });
+  });
+  assert.deepEqual(canvasLayerOrigin('orchestrator'), { x: -1160, y: 84 });
 });
 
 test('explicit source order puts primary outputs first and preserves ties without mutating input', () => {

@@ -7,8 +7,8 @@
     "node": ">=24"
   },
   "scripts": {
-    "dev": "concurrently -k -n api,web \"node --watch src/server/index.ts\" \"vite\"",
-    "dev:api": "node --watch src/server/index.ts",
+    "dev": "concurrently -k -n api,web \"node src/server/index.ts\" \"vite\"",
+    "dev:api": "node src/server/index.ts",
     "build": "npm run typecheck && vite build",
     "start": "node src/server/index.ts",
     "image:check": "node scripts/image-cli.ts check",
@@ -31,6 +31,7 @@
     "mammoth": "^1.12.2",
     "pdf-parse": "^2.4.5",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "sharp": "0.35.4"
   }
 }

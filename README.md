@@ -6,6 +6,10 @@ COLLIDER 面向品牌策划、创意与设计协作：从合作目标出发，�
 
 项目同时包含可追溯的品牌合作案例库、案例检索工具，以及图片生成与已有制作物料接入能力。当前定位为 **本地单用户工作台**。
 
+联名适配通过六个 Skill 共用的 [开放品类方法](brand-collider-skills-design/.claude/skills/brand-profile/references/CATEGORY_ADAPTATION.md) 推导：从业务、产品线和用户场景拆解可设计部位及体验，再发散主营、邻近与探索产物。它不依赖品牌名单；具体行业示例按需参考，方法全文会进入实际模型上下文。
+
+六个原始 Skill 的 1.5.0 版加入 [真实素材依据](brand-collider-skills-design/.claude/skills/brand-profile/references/VISUAL_EVIDENCE.md)：从研究阶段并行采集来源图片，逐件绑定真实参考，生成后对照身份与设计。[本地执行方法](brand-collider-skills-design/.claude/skills/visual-production/references/LOCAL_EXECUTION.md) 提供可复用采集器和最多 4 并发的批量生成、检查与恢复；网页单图入口的接入范围见 [工作流说明](brand-collider-skills-design/docs/AGENT_WORKFLOW.md)。
+
 ![已有项目的产品效果图与持续协作对话](docs/screenshots/06-production.png)
 
 *实际页面截图：MANNER × 王者荣耀概念探索项目，读取本机已有制作文件。图中为 AI 概念设计与效果探索，非官方联名发布；具体选案、审查和制作状态以节点记录为准。*
@@ -32,7 +36,7 @@ COLLIDER 面向品牌策划、创意与设计协作：从合作目标出发，�
 | 持续协作 | 在同一对话里补充标准、调整方向、暂停或继续；记录角色、阶段和实际使用的方法 |
 | 无限成果画布 | 成果逐步出现并保留；支持拖动、缩放、图层显隐、定位、进度跟随与整体鸟瞰 |
 | 完整成果查看 | 从卡片打开原文、媒体、来源和依赖，围绕具体节点继续讨论 |
-| 方案与视觉制作 | 汇总设计、传播文案、视觉计划和文本审查；满足条件后由用户触发真实生图 |
+| 方案与视觉制作 | 以主营产品为核心展开物料候选，逐件查看设计与视觉提示词；满足条件后由用户触发主图生图 |
 | 已有制作项目 | 读取已接入项目的文档、图片、媒体和物料清单，展示文件状态并支持下载 |
 | 研究资料复用 | 独立维护案例来源、断言和差异，通过命令行检索并导出任务资料包 |
 | 本地保存与导出 | 保存会话及阶段结果，恢复历史项目，导出方案与对话 Markdown |
@@ -134,7 +138,7 @@ flowchart TD
 
 Skill 源码位于 [`.claude/skills/`](brand-collider-skills-design/.claude/skills/)。六个 Skill 是专业方法，由主控按阶段使用。
 
-创意方法文件已包含「十二候选评审、最多三个成熟方案」的赛马规则，制作方法已扩展到逐件 Campaign Kit。**网页运行时目前仍采用固定阶段和三个方向校验**，尚未完整自动编排十二进三、独立冷评与逐件制作。详见 [赛马方法](brand-collider-skills-design/.claude/skills/collab-ideation/references/TOURNAMENT.md) 与 [制作包方法](brand-collider-skills-design/.claude/skills/visual-production/references/CAMPAIGN_KIT.md)。
+创意方法文件已包含「十二候选评审、最多三个成熟方案」的赛马规则。网页已接入以核心产品、内容或服务为中心的物料候选清单、逐件视觉提示词、画布与导出；支持双方品牌共同开发，品类开放，可按咖啡、3C、首饰、鞋服、美妆、家居或数字服务等实际业务展开。默认充分探索约 20–30 个适配项目，并服从用户范围和资源限制；服务不强制配实体周边，角色或尺寸变体单列。**网页运行时仍采用两方输入、固定阶段和三个方向校验**，尚未完整自动编排十二进三、独立冷评或逐件批量生图；开放品类不等于所有组合已实际验证。详见 [物料策划说明](brand-collider-skills-design/docs/MATERIAL_PLANNING.md)、[67 个案例的合作产物研究及首饰补充例](brand-collider-skills-design/docs/COLLABORATION_PRODUCTS.md)、[赛马方法](brand-collider-skills-design/.claude/skills/collab-ideation/references/TOURNAMENT.md) 与 [制作包方法](brand-collider-skills-design/.claude/skills/visual-production/references/CAMPAIGN_KIT.md)。
 
 ## 案例库与研究工具
 

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { CSSProperties, PointerEvent as ReactPointerEvent } from 'react';
-import { ArrowDownToLine, ArrowLeft, ArrowRight, ArrowUpRight, AudioLines, Check, ChevronDown, ChevronRight, CircleDot, Eye, EyeOff, FileText, Film, Flag, Focus, Grip, Image as ImageIcon, Layers3, LayoutGrid, Link2, LoaderCircle, Maximize2, MessageSquare, Minus, MousePointer2, Plus, RefreshCw, RotateCcw, Search, Sparkles, Workflow, X } from 'lucide-react';
-import type { ProductionAsset, ProductionLaneId, ProductionNode, ProductionNodeKind, ProductionProject, ProductionProjectSummary, ProductionStatus } from '../../src/production-types';
+import { AlertCircle, ArrowDownToLine, ArrowLeft, ArrowRight, ArrowUpRight, AudioLines, Check, ChevronDown, ChevronRight, CircleDot, Eye, EyeOff, FileText, Film, Flag, Focus, Grip, Image as ImageIcon, Layers3, LayoutGrid, Link2, LoaderCircle, Maximize2, MessageSquare, Minus, MousePointer2, Pause, Plus, RefreshCw, RotateCcw, Search, Sparkles, Workflow, X } from 'lucide-react';
+import type { ProductionAsset, ProductionLaneId, ProductionNode, ProductionNodeKind, ProductionProject, ProductionProjectSummary, ProductionStatus, ProductionWorkflow } from '../../src/production-types';
 import { CANVAS_LAYERS, CANVAS_CARD_WIDTH, canvasLayerOrigin, nodeLayer, reconcileInfinitePositions } from '../infinite-layout';
 import type { CanvasLayerId } from '../infinite-layout';
 import '../production-canvas.css';
@@ -16,6 +16,7 @@ export type ProductionCanvasProps = {
   onProjectChange?: (id: string) => void;
   embedded?: boolean;
   activeLane?: ProductionLaneId | null;
+  progressNodeId?: string | null;
   focusNodeId?: string | null;
   followRequest?: number;
 };
@@ -260,7 +261,8 @@ function Inspector({ node, project, onClose, onDiscuss, onNavigate }: { node: Pr
       {node.sources.length > 0 && <section className="production-inspector__section"><h3>内容来源 <span>{node.sources.length}</span></h3>{node.sources.map((source, index) => {
         const asset = project.assets.find(item => item.id === source.assetId);
         const download = asset ? assetUrl(asset.downloadUrl) : undefined;
-        return <div className="production-inspector__source" key={`${index}-${source.label}`}><p><FileText size={12} />{source.label}</p>{source.path && <code>{source.path}</code>}{source.sha256 && <small>SHA-256 · {source.sha256.slice(0, 16)}…</small>}{download && <a href={download} download={asset?.name}>下载来源文档<ArrowDownToLine size={11} /></a>}</div>;
+        const sourceUrl = source.path && /^https?:\/\//i.test(source.path) ? assetUrl(source.path) : undefined;
+        return <div className="production-inspector__source" key={`${index}-${source.label}`}><p><FileText size={12} />{source.label}</p>{sourceUrl ? <a href={sourceUrl} target="_blank" rel="noreferrer">查看来源网页<ArrowUpRight size={11} /></a> : source.path && <code>{source.path}</code>}{source.sha256 && <small>SHA-256 · {source.sha256.slice(0, 16)}…</small>}{download && <a href={download} download={asset?.name}>下载来源{asset?.kind === 'image' ? '原图' : '文档'}<ArrowDownToLine size={11} /></a>}</div>;
       })}</section>}
       <p className="production-inspector__node-id">NODE / {node.id}</p>
     </div>
@@ -486,8 +488,48 @@ function ProductionBoard({ project, refreshing, onRefresh, onBack, onDiscuss, pr
   </section>;
 }
 
+
+const WORKFLOW_STATUS_LABELS: Record<ProductionWorkflow['status'], string> = {
+  running: '进行中', paused: '已暂停', failed: '需要处理', awaiting_selection: '等待选方向', completed: '已完成',
+};
+const WORKFLOW_STEP_LABELS = { pending: '待开始', running: '进行中', paused: '已暂停', failed: '未完成', completed: '已完成' };
+
+/** A fixed progress summary keeps real work visible without moving the camera. */
+function CanvasWorkflowProgress({ workflow, onLocate }: { workflow: ProductionWorkflow; onLocate: (id: string) => void }) {
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const StatusIcon = workflow.status === 'running' ? LoaderCircle : workflow.status === 'failed' ? AlertCircle
+    : workflow.status === 'paused' ? Pause : workflow.status === 'completed' ? Check : CircleDot;
+  useEffect(() => {
+    if (!open) return;
+    const dismiss = (event: PointerEvent) => { if (!rootRef.current?.contains(event.target as Node)) setOpen(false); };
+    const escape = (event: KeyboardEvent) => { if (event.key === 'Escape') { setOpen(false); toggleRef.current?.focus(); } };
+    document.addEventListener('pointerdown', dismiss); window.addEventListener('keydown', escape);
+    return () => { document.removeEventListener('pointerdown', dismiss); window.removeEventListener('keydown', escape); };
+  }, [open]);
+  function locate(id?: string) { if (id) { onLocate(id); setOpen(false); } }
+  return <div ref={rootRef} className={`canvas-workflow is-${workflow.status}${open ? ' is-open' : ''}`} data-workflow-status={workflow.status}>
+    <button ref={toggleRef} type="button" className="canvas-workflow__toggle" onClick={() => setOpen(value => !value)} aria-label="查看项目流程" aria-expanded={open} aria-controls="canvas-workflow-detail" title={workflow.currentAction}>
+      <StatusIcon size={15} className={workflow.status === 'running' ? 'production-spin' : ''} />
+      <span className="canvas-workflow__summary"><span><strong>简报 v{workflow.revision}</strong><small>{WORKFLOW_STATUS_LABELS[workflow.status]}</small><i>{workflow.completedSteps} / {workflow.totalSteps} 步</i></span><span aria-live="polite" aria-atomic="true">{workflow.currentAction}</span></span>
+      <ChevronDown size={13} className="canvas-workflow__chevron" />
+    </button>
+    {open && <section id="canvas-workflow-detail" className="canvas-workflow__detail" aria-label="本轮项目流程">
+      <div className="canvas-workflow__current"><div><Workflow size={14} /><strong>{workflow.phase === 'orchestrator' ? '主控整理与交接' : workflow.phase === 'selection' ? '方向选择' : workflow.phase === 'finished' ? '本轮交付' : '当前工作'}</strong></div><p>{workflow.currentAction}</p>{workflow.currentNodeId && <button type="button" onClick={() => locate(workflow.currentNodeId)}><Focus size={12} />定位当前工作</button>}</div>
+      <ol className="canvas-workflow__steps">{workflow.steps.map((step, index) => <li key={step.id} className={`is-${step.status}${step.id === workflow.currentStepId ? ' is-current' : ''}`}>
+        <button type="button" disabled={!step.nodeId} onClick={() => locate(step.nodeId)} aria-label={`${step.label}，${step.agentName}，${WORKFLOW_STEP_LABELS[step.status]}${step.nodeId ? '，定位成果' : ''}`} aria-current={step.id === workflow.currentStepId ? 'step' : undefined}>
+          <span className="canvas-workflow__step-number">{step.status === 'completed' ? <Check size={11} /> : step.status === 'running' ? <LoaderCircle size={11} className="production-spin" /> : step.status === 'failed' ? <AlertCircle size={11} /> : index + 1}</span>
+          <span className="canvas-workflow__step-label"><strong>{step.label}</strong><small>{step.agentName}</small></span><span className="canvas-workflow__step-status">{WORKFLOW_STEP_LABELS[step.status]}</span>{step.nodeId && <ArrowUpRight size={11} />}
+        </button>
+      </li>)}</ol>
+      <p className="canvas-workflow__note">主控维护简报、协调交接，按当前方向推进制作和审查。你可以随时暂停并补充标准。</p>
+    </section>}
+  </div>;
+}
+
 const INFINITE_CARD_HEIGHT = 336;
-const LAYER_ICONS = { research: Search, ideation: Sparkles, design: Layers3, copy: FileText, image: ImageIcon, video: Film, review: Check };
+const LAYER_ICONS = { orchestrator: Workflow, research: Search, ideation: Sparkles, design: Layers3, copy: FileText, image: ImageIcon, video: Film, review: Check };
 type InfiniteState = { positions: Positions; viewport: Viewport; hidden: CanvasLayerId[]; following: boolean; showEdges: boolean };
 function loadInfiniteState(id: string): InfiniteState {
   const fallback: InfiniteState = { positions: {}, viewport: { x: 0, y: 0, zoom: 1 }, hidden: [], following: true, showEdges: false };
@@ -507,11 +549,11 @@ function loadInfiniteState(id: string): InfiniteState {
 function orderedLayerNodes(project: ProductionProject, layer: CanvasLayerId) {
   return project.nodes.filter(node => nodeLayer(node) === layer).sort((a, b) => (a.displayOrder ?? Number.MAX_SAFE_INTEGER) - (b.displayOrder ?? Number.MAX_SAFE_INTEGER));
 }
-function currentProgressNode(project: ProductionProject, lane?: ProductionLaneId | null): ProductionNode | undefined {
-  return project.nodes.find(node => node.status === 'running') || [...project.nodes].filter(node => (!lane || node.lane === lane) && node.id !== 'export')
+function currentProgressNode(project: ProductionProject, lane?: ProductionLaneId | null, preferredId?: string | null): ProductionNode | undefined {
+  return project.nodes.find(node => node.id === preferredId) || project.nodes.find(node => node.status === 'running') || [...project.nodes].filter(node => (!lane || node.lane === lane) && node.id !== 'export')
     .sort((a, b) => (a.displayOrder ?? Number.MAX_SAFE_INTEGER) - (b.displayOrder ?? Number.MAX_SAFE_INTEGER))[0] || project.nodes[0];
 }
-function InfiniteProductionBoard({ project, refreshing, onRefresh, onDiscuss, activeLane, focusNodeId, followRequest }: ProductionCanvasProps) {
+function InfiniteProductionBoard({ project, refreshing, onRefresh, onDiscuss, activeLane, progressNodeId, focusNodeId, followRequest }: ProductionCanvasProps) {
   const [saved] = useState(() => loadInfiniteState(project.id));
   const [savedPositions, setSavedPositions] = useState<Positions>(saved.positions);
   const positions = useMemo(() => reconcileInfinitePositions(savedPositions, project.nodes), [savedPositions, project.nodes]);
@@ -524,7 +566,7 @@ function InfiniteProductionBoard({ project, refreshing, onRefresh, onDiscuss, ac
   const [expanded, setExpanded] = useState<CanvasLayerId[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [cameraTarget, setCameraTarget] = useState<{ id: string; serial: number } | null>(() => {
-    const node = currentProgressNode(project, activeLane);
+    const node = currentProgressNode(project, activeLane, progressNodeId);
     return saved.following && node ? { id: node.id, serial: 0 } : null;
   });
   const [size, setSize] = useState({ width: 0, height: 0 });
@@ -535,6 +577,7 @@ function InfiniteProductionBoard({ project, refreshing, onRefresh, onDiscuss, ac
   const pointer = useRef<{ id: number; start: Point; origin: Point; zoom: number; nodeId?: string; moved: boolean } | null>(null);
   const previousNodes = useRef(new Map(project.nodes.map(node => [node.id, `${node.status}:${node.assetIds.join(',')}:${node.content?.length || 0}`])));
   const previousLane = useRef(activeLane);
+  const previousProgressNode = useRef(progressNodeId);
   const handledFocus = useRef<string | null>(null);
   const previousFollowRequest = useRef(followRequest || 0);
   const compact = size.height > 0 && size.height < 420;
@@ -543,9 +586,11 @@ function InfiniteProductionBoard({ project, refreshing, onRefresh, onDiscuss, ac
   const visibleNodes = useMemo(() => project.nodes.filter(node => !hiddenSet.has(nodeLayer(node))), [project.nodes, hiddenSet]);
   const visibleIds = useMemo(() => new Set(visibleNodes.map(node => node.id)), [visibleNodes]);
   const selected = project.nodes.find(node => node.id === selectedId);
-  const progressNode = currentProgressNode(project, activeLane);
+  const progressNode = currentProgressNode(project, activeLane, progressNodeId);
   const progressLayer = progressNode ? nodeLayer(progressNode) : null;
   const runningCount = project.nodes.filter(node => node.status === 'running').length;
+  const latestLayout = useRef<InfiniteState>({ positions, viewport, hidden, following, showEdges });
+  latestLayout.current = { positions, viewport, hidden, following, showEdges };
 
   useEffect(() => { if (positions !== savedPositions) setSavedPositions(positions); }, [positions, savedPositions]);
   useEffect(() => {
@@ -554,6 +599,11 @@ function InfiniteProductionBoard({ project, refreshing, onRefresh, onDiscuss, ac
     }, 180);
     return () => clearTimeout(timer);
   }, [positions, viewport, hidden, following, showEdges, project.id]);
+  useEffect(() => {
+    const flush = () => { try { localStorage.setItem(`collider.infinite-layout.v1.${project.id}`, JSON.stringify(latestLayout.current)); } catch { /* Optional local layout storage. */ } };
+    window.addEventListener('pagehide', flush);
+    return () => { window.removeEventListener('pagehide', flush); flush(); };
+  }, [project.id]);
   useEffect(() => {
     const element = viewportRef.current;
     if (!element) return;
@@ -574,7 +624,7 @@ function InfiniteProductionBoard({ project, refreshing, onRefresh, onDiscuss, ac
     const minX = Math.min(...points.map(point => point.x)), minY = Math.min(...points.map(point => point.y));
     const width = Math.max(...points.map(point => point.x)) + CANVAS_CARD_WIDTH - minX;
     const height = Math.max(...points.map(point => point.y)) + cardHeight - minY;
-    const marginTop = compact ? 47 : 100, marginBottom = compact ? 58 : 85;
+    const marginTop = project.workflow ? compact ? 83 : 119 : compact ? 47 : 100, marginBottom = compact ? 58 : 85;
     const availableHeight = Math.max(100, size.height - marginTop - marginBottom);
     const zoom = clamp(Math.min((size.width - (compact ? 40 : 76)) / width, availableHeight / height, overview ? 1 : 1.08), overview ? MIN_ZOOM : 0.55, MAX_ZOOM);
     setViewport({ zoom, x: (size.width - width * zoom) / 2 - minX * zoom, y: marginTop + Math.max(0, (availableHeight - height * zoom) / 2) - minY * zoom });
@@ -586,7 +636,8 @@ function InfiniteProductionBoard({ project, refreshing, onRefresh, onDiscuss, ac
     const origin = positions[target.id];
     const capacity = clamp(Math.floor((size.width - 56 + 28) / (CANVAS_CARD_WIDTH + 28)), 1, 3);
     // Follow a readable local area. Every other artifact keeps its world position.
-    const nearby = visibleNodes.filter(node => nodeLayer(node) === nodeLayer(target) && Math.abs(positions[node.id].y - origin.y) < 1)
+    const nearby = visibleNodes.filter(node => nodeLayer(node) === nodeLayer(target) && Math.abs(positions[node.id].y - origin.y) < 1
+      && Math.abs(positions[node.id].x - origin.x) <= (capacity - 1) * (CANVAS_CARD_WIDTH + 28))
       .sort((a, b) => Math.abs(positions[a.id].x - origin.x) - Math.abs(positions[b.id].x - origin.x)).slice(0, capacity);
     focusNodes(nearby.length ? nearby : [target]);
   }, [cameraTarget, size.width, size.height, compact]);
@@ -594,10 +645,11 @@ function InfiniteProductionBoard({ project, refreshing, onRefresh, onDiscuss, ac
     const changed = project.nodes.filter(node => previousNodes.current.get(node.id) !== `${node.status}:${node.assetIds.join(',')}:${node.content?.length || 0}`);
     previousNodes.current = new Map(project.nodes.map(node => [node.id, `${node.status}:${node.assetIds.join(',')}:${node.content?.length || 0}`]));
     const laneChanged = previousLane.current !== activeLane; previousLane.current = activeLane;
-    if (!followingRef.current || (!changed.length && !laneChanged)) return;
-    const node = project.nodes.find(node => node.status === 'running') || changed.filter(node => (!activeLane || node.lane === activeLane) && node.id !== 'export').at(-1) || (laneChanged ? currentProgressNode(project, activeLane) : undefined);
+    const progressChanged = previousProgressNode.current !== progressNodeId; previousProgressNode.current = progressNodeId;
+    if (!followingRef.current || (!changed.length && !laneChanged && !progressChanged)) return;
+    const node = project.nodes.find(node => node.id === progressNodeId) || project.nodes.find(node => node.status === 'running') || changed.filter(node => (!activeLane || node.lane === activeLane) && node.id !== 'export').at(-1) || (laneChanged ? currentProgressNode(project, activeLane) : undefined);
     if (node) aimAt(node);
-  }, [project.nodes, activeLane]);
+  }, [project.nodes, activeLane, progressNodeId]);
   useEffect(() => {
     if (!focusNodeId) { handledFocus.current = null; return; }
     if (handledFocus.current === focusNodeId) return;
@@ -607,7 +659,7 @@ function InfiniteProductionBoard({ project, refreshing, onRefresh, onDiscuss, ac
   }, [focusNodeId, project.nodes]);
   function resumeFollowing() {
     followingRef.current = true; setFollowing(true); setSelectedId(null);
-    const node = currentProgressNode(project, activeLane); if (node) aimAt(node);
+    const node = currentProgressNode(project, activeLane, progressNodeId); if (node) aimAt(node);
   }
   useEffect(() => {
     if (!followRequest || previousFollowRequest.current === followRequest) return;
@@ -725,9 +777,10 @@ function InfiniteProductionBoard({ project, refreshing, onRefresh, onDiscuss, ac
           })}
         </div>
       </div>
-      {project.nodes.length > 0 && <div className="infinite-status"><CircleDot size={12} /><span>{runningCount && following ? `正在推进 · ${CANVAS_LAYERS.find(layer => layer.id === progressLayer)?.label || '联名创作'}` : `无限画布 · ${visibleNodes.length} 项成果`}</span></div>}
+      {project.workflow && <CanvasWorkflowProgress workflow={project.workflow} onLocate={id => { const node = project.nodes.find(item => item.id === id); if (node) navigateNode(node); }} />}
+      {!project.workflow && project.nodes.length > 0 && <div className="infinite-status"><CircleDot size={12} /><span>{runningCount && following ? `正在推进 · ${CANVAS_LAYERS.find(layer => layer.id === progressLayer)?.label || '联名创作'}` : `无限画布 · ${visibleNodes.length} 项成果`}</span></div>}
       <button className="infinite-sync" type="button" onClick={onRefresh} disabled={refreshing} title="同步最新成果" aria-label="同步最新成果">{refreshing ? <LoaderCircle size={14} className="production-spin" /> : <RefreshCw size={14} />}</button>
-      {!project.nodes.length && <div className="production-canvas-empty"><div className="production-empty-symbol" aria-hidden="true"><span /><span /></div><h2>好作品，从一次碰撞开始</h2><p><span className="production-empty-side">在右侧</span><span className="production-empty-below">在下方</span>补充品牌，成果会逐步加入这张无限画布</p></div>}
+      {!project.nodes.length && <div className="production-canvas-empty"><div className="production-empty-symbol" aria-hidden="true"><img src="/brand-relations/assets/mark-blue-black.svg" width="144" height="144" alt="" /></div><h2>让品牌之间，有了下文。</h2><p><span className="production-empty-side">在右侧</span><span className="production-empty-below">在下方</span>补充品牌，成果会逐步加入这张无限画布</p></div>}
       {!!project.nodes.length && !visibleNodes.length && <div className="production-canvas-empty"><Layers3 size={28} strokeWidth={1} /><h2>图层已隐藏</h2><p>成果仍保留在原位，可以随时重新显示。</p><button onClick={() => { setHidden([]); resumeFollowing(); }}>显示全部图层</button></div>}
       {layersOpen && <div ref={layerPanelRef} id="infinite-layer-panel" className="infinite-layer-panel" role="region" aria-label="Agent 图层">
         <div className="infinite-layer-panel__head"><strong>图层</strong><small>按 Agent 工作分类</small><button aria-label="关闭图层" onClick={() => { setLayersOpen(false); layerButtonRef.current?.focus(); }}><X size={14} /></button></div>

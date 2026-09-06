@@ -85,6 +85,62 @@ test('explicit failed and error events are failed, including after image bytes',
   }
 });
 
+test('a later public refusal explains a failed tool without exposing assistant text', () => {
+  const failed = sse({ type: 'response.output_item.done', item: { type: 'image_generation_call', status: 'failed' } });
+  for (const content of [
+    [{ type: 'output_text', text: 'Sorry, I can’t help create that mockup. private prompt details' }],
+    [{ type: 'refusal', refusal: 'private refusal details' }],
+  ]) {
+    const raw = failed + sse({ type: 'response.completed', response: { status: 'completed', output: [{ type: 'message', role: 'assistant', content }] } });
+    assert.throws(() => parseImageResponse('text/event-stream', raw), error => {
+      assert.equal(error.code, 'image_upstream_declined');
+      assert.equal(error.generationStatus, 'failed');
+      assert.equal(error.upstreamFailure.assistantDeclined, true);
+      assert.ok(!JSON.stringify(error).includes('private'));
+      return true;
+    });
+  }
+  for (const item of [
+    { type: 'message', role: 'user', content: [{ type: 'output_text', text: 'Sorry, I cannot help create this.' }] },
+    { type: 'reasoning', role: 'assistant', content: [{ type: 'refusal', refusal: 'not public' }] },
+    { type: 'message', role: 'assistant', content: [{ type: 'output_text', text: 'The server failed to generate the image.' }] },
+  ]) rejects(failed + sse({ type: 'response.output_item.done', item }), 'image_upstream_failed', 'failed');
+});
+
+test('failure diagnostics retain only allowlisted upstream categories across error envelope shapes', () => {
+  for (const [raw, contentType, expected] of [
+    [sse({ type: 'response.failed', response: { status: 'failed', error: { code: 'server_error', type: 'api_error', message: 'private diagnostic' } } }),
+      'text/event-stream', { event: 'response.failed', status: 'failed', code: 'server_error', type: 'api_error' }],
+    [sse({ code: 'rate_limit_exceeded', message: 'private diagnostic' }, 'error'),
+      'text/event-stream', { event: 'error', code: 'rate_limit_exceeded' }],
+    [JSON.stringify({ error: { code: 'content_policy_violation', type: 'invalid_request_error', message: 'private diagnostic' } }),
+      'application/json', { code: 'content_policy_violation', type: 'invalid_request_error' }],
+    [sse({ type: 'response.completed', response: response({ output: [imageItem({ status: 'failed', error: { code: 'image_generation_failed' } })] }) }),
+      'text/event-stream', { event: 'response.completed', status: 'failed', code: 'image_generation_failed' }],
+  ]) {
+    assert.throws(() => parseImageResponse(contentType, raw), error => {
+      assert.equal(error.code, 'image_upstream_failed');
+      assert.deepEqual(error.upstreamFailure, expected);
+      assert.doesNotMatch(JSON.stringify(error), /private diagnostic/);
+      return true;
+    });
+  }
+});
+
+test('arbitrary upstream categories are not copied and incomplete reason does not authorize retry', () => {
+  const secret = 'sk-private-upstream-token';
+  const raw = sse({ type: 'response.incomplete', response: { status: 'incomplete',
+    error: { code: secret, type: { message: secret }, message: secret }, incomplete_details: { reason: 'max_output_tokens' } } });
+  assert.throws(() => parseImageResponse('text/event-stream', raw), error => {
+    assert.equal(error.code, 'image_upstream_incomplete');
+    assert.equal(error.generationStatus, 'unknown');
+    assert.deepEqual(error.upstreamFailure, { event: 'response.incomplete', status: 'incomplete',
+      code: 'unrecognized', type: 'unrecognized', incompleteReason: 'max_output_tokens' });
+    assert.doesNotMatch(JSON.stringify(error), /sk-private/);
+    return true;
+  });
+});
+
 test('incomplete is unknown even if a final image preceded it', () => {
   rejects(sse({ type: 'response.incomplete', response: { status: 'incomplete' } }), 'image_upstream_incomplete');
   rejects(sse({ type: 'response.output_item.done', item: imageItem() }) + sse({ type: 'response.incomplete' }), 'image_upstream_incomplete');

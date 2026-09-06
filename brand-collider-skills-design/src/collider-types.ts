@@ -1,3 +1,6 @@
+import type { MaterialPlan, MaterialVisual } from './material-plan.ts';
+import type { AutomaticMediaState } from './automation-types.ts';
+
 export const SKILLS = [
   { id: 'brand-profile', name: '品牌解读', description: '梳理品牌特点、资源与待确认信息' },
   { id: 'collab-ideation', name: '联名创意', description: '碰撞三个有实质差异的合作方向' },
@@ -19,6 +22,32 @@ export function agentRoleForSkill(skill: SkillId): Exclude<AgentRole, 'orchestra
 }
 export type Brand = { id: 'a' | 'b'; name: string; description: string; files: { name: string; text: string }[] };
 export type ArtifactContext = { title: string; content: string; sources: string[] };
+export type AgentExecution = {
+  transport: 'codex-cli' | 'grok-cli'; agentId: string; runId: string; revision: number;
+  state: 'starting' | 'running' | 'completed' | 'failed' | 'interrupted';
+  pid?: number; threadId?: string; startedAt: string; finishedAt?: string;
+  contextId?: string;
+  metrics?: {
+    attempt: number; recovery?: 'deliver-current-evidence' | 'missing-web-activity';
+    // Explicit CLI argument; separate from the CLI's persisted selected effort below.
+    requestedReasoningEffort?: 'low' | 'medium';
+    // Observed in this activation's CLI session metadata; absent if unavailable.
+    reasoningEffort?: 'low' | 'medium' | 'high' | 'xhigh';
+    // UTF-16 code units in the new text prompt; excludes images, schema and resumed history.
+    inputChars?: number;
+    // Local setup, image preparation and prompt writes before spawning this attempt.
+    preparationMs?: number;
+    // Spawn invocation to OS spawn event; does not measure CLI or model readiness.
+    processStartupMs?: number;
+    // Spawn invocation to first stdout data, which may be metadata or buffered final JSON.
+    // This is not first-token latency and cannot separate reasoning, queueing or generation.
+    firstStdoutMs?: number;
+    // Spawn invocation through process close, including any cancellation grace period.
+    processDurationMs?: number;
+    // Per-attempt elapsed time including preparation, process and result handling.
+    totalDurationMs?: number;
+  };
+};
 export type Message = {
   id: string; role: 'a' | 'b' | 'user' | 'system'; kind: 'message' | 'skill' | 'notice';
   content: string; createdAt: string; revision: number; skill?: SkillId;
@@ -26,18 +55,21 @@ export type Message = {
   // The role is a stage responsibility; a/b continues to identify brand standpoint.
   // Absent on historical messages whose professional role was not recorded.
   agentRole?: AgentRole; agentName?: string;
+  execution?: AgentExecution;
   // Only attached after a stage result passed validation and was committed.
   artifact?: { section: string; card?: ProposalCard };
 };
 export type Concept = { id: string; title: string; tagline: string; description: string; contributionA: string; contributionB: string; consumerValue: string };
 export type ProposalCard = { skill: SkillId; title: string; summary: string; points: { label: string; content: string }[] };
-export type Proposal = { title: string; summary: string; sections: { skill: SkillId; title: string; content: string }[]; cards?: ProposalCard[]; pendingConfirmations: string[]; imagePrompt?: string; imageUrl?: string; reviewStatus?: 'unverified' | 'needs_revision' | 'passed' };
+export type Proposal = { title: string; summary: string; sections: { skill: SkillId; title: string; content: string }[]; cards?: ProposalCard[]; pendingConfirmations: string[]; materialPlan?: MaterialPlan; materialVisuals?: MaterialVisual[]; imagePrompt?: string; imageUrl?: string; reviewStatus?: 'unverified' | 'needs_revision' | 'passed' };
 export type Session = {
   id: string; title: string; brands: [Brand, Brand]; goal: string;
   mode: 'live' | 'demo'; model?: string; status: 'idle' | 'running' | 'paused' | 'awaiting_selection' | 'completed' | 'error';
   revision: number; constraints: string[]; messages: Message[]; concepts: Concept[];
-  selectedConceptId?: string; proposal?: Proposal; activeSkill?: SkillId;
+  selectedConceptId?: string; selectionSource?: 'user' | 'orchestrator'; autoAdvance?: boolean; combineCreativeStages?: boolean; proposal?: Proposal; activeSkill?: SkillId;
+  // Explicit for new production entrypoints; absent historical/API sessions remain text-only.
+  autoProduce?: boolean; automation?: AutomaticMediaState;
   artifactContext?: ArtifactContext;
   completedSkills: SkillId[]; error?: string; createdAt: string; updatedAt: string;
 };
-export type RuntimeInfo = { configured: boolean; model: string; skills: { id: SkillId; name: string; description: string; version: string; digest: string; content: string }[]; uploadFormats: string[] };
+export type RuntimeInfo = { configured: boolean; model: string; transport?: 'codex-cli' | 'grok-cli' | 'api'; executionError?: string; cliVersion?: string; imageConfigured?: boolean; autoProductionConfigured?: boolean; automaticProductionError?: string; skills: { id: SkillId; name: string; description: string; version: string; digest: string; content: string }[]; uploadFormats: string[] };

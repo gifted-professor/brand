@@ -2,6 +2,14 @@
 
 本文所有类型都是本项目定义，不是 Agent Skills 标准或 SDK 自动实现的字段。实现时应为每个类型编写 JSON Schema 或 Zod，并让服务端验证。
 
+本文的 `BrandProfileSet`、`ConceptSet`、`DesignSpec`、`CopyPack`、`RenderPlan` 与 `ReviewReport` 是完整业务产物契约。网页工作台采用独立的简化结构（包括下文 MaterialPlan/MaterialVisual），不能将工作台字段直接添加到这些 1.0 payload，也不能把计划保存视为真实图片制作完成。
+
+## 开放品类适配方法的承载
+
+六阶段按 [开放品类适配方法](../.claude/skills/brand-profile/references/CATEGORY_ADAPTATION.md) 衔接资料、能力、用户动作、核心产品解剖、资产转译、开放发散与适配复核。该方法不设行业白名单，不要求现有模板或实物；固定物料分类仅组织推导结果。
+
+品类画像和适配依据属于既有内容：网页保存在现有研究/设计 section；完整路径在 BrandProfileSet.interpretations、ConceptSet 的产品/场景描述、DesignSpec 的产品/组件描述中延续，并由文案、视觉与检查引用。不得为此新增结构字段、ArtifactRecord 类型或自报保存状态。已知能力与探索提案分别标记；未知生产参数不阻塞概念，纯文案修订复用已确定依据。
+
 ## 公共提交协议
 
 逻辑工具：submit_artifact。默认 SDK 映射为 mcp__collider__submit_artifact。
@@ -24,6 +32,7 @@ ArtifactRecord 的 ID、时间、版本、哈希由后端生成。以下描述�
 - interpretations 项：`{ text, basedOnClaimIds }`，不得混为已核实事实。
 - resources 项：保留输入资源的 `id`、`label`、`status`、`description`，不能新增确认状态。
 - unknowns：字符串数组。
+- 档案应能定位双方多产品线与业务能力、用户动作和使用环境、资产与功能边界。品类画像和适配依据属于既有解释内容；已知能力保留事实来源，推导与探索提案写入 interpretations，未经确认的生产或服务条件留在 unknowns。
 
 ## ConceptSet
 
@@ -36,6 +45,7 @@ ArtifactRecord 的 ID、时间、版本、哈希由后端生成。以下描述�
 - `productIdea` 与 `scenario` 必须足以说明成品组成与消费者完整过程；`consumerValue` 说明目标作用路径；`differentiator` 同时说明与其余入围方案及相似案例的差异。
 - 随任务附件提供真实候选池、逐项淘汰／入围依据，以及各入围方案的最小执行、经济逻辑、视觉场景和验证方式；引用宿主实际支持的附件，不编造新增产物 ID。
 - 少于三个合格方案不构成失败；不得通过相似方案补位。旧宿主若仍只接受恰好三个，保留真实结果并报告兼容缺口，不能伪造达标。
+- 每个方向以双方共同创造的核心产品或体验及资产融合为核心，再按实际触点展开包装、传播及相关延伸；不要求虚拟 IP，数字、内容和服务不强制实物产品。十二进三是概念方案数量，不是物料上限；丰富候选规划按下文共用方法保存，不冒充新 ConceptSet 字段或已完成图片。
 
 ## DesignSpec
 
@@ -43,6 +53,7 @@ ArtifactRecord 的 ID、时间、版本、哈希由后端生成。以下描述�
 - `product`：`{ name, category, description }`。
 - `components[]`：每项 `{ id, name, kind, requiresNewItem, requiresNewPrinting, resourceIds, description }`。
 - `kind` 首版使用 `cup | sleeve | gift-box | bag | digital | other`；other 仍需语义检查，不能用来躲避礼盒规则。
+- `kind` 是兼容枚举，不是品类白名单或创意模板。未单列的实体品类可用 `other`，数字产物适用 `digital`，在名称和描述中写明主体与适配依据，不擅自扩充枚举。`product.category` 为自由文本；网页 MaterialPlan 的 category 与组件 kind 不是同一字段。
 - 两个 requires 字段使用 `yes | no | unknown`，不能用布尔值隐藏未知。
 - `brandRoles[]`：`{ brandId, contribution }`。
 - `visual`：`{ palette: string[], materials: string[], motifs: string[], composition: string, avoid: string[] }`。
@@ -56,6 +67,7 @@ ArtifactRecord 的 ID、时间、版本、哈希由后端生成。以下描述�
 - `title`、`slogan`、`story`、`posterTitle`、`posterSubtitle`、`socialCaption`。
 - `disclosure`：固定为 `AI 概念设计 · 非官方联名`。
 - 不得增加设计中没有的产品、赠品、价格、授权或日期。
+- 物料候选中的可选项不代表已承诺售卖或赠送。逐件文案沿用真实物料 ID 和本轮范围，未确认的参数、材质、工艺、配方、功效、认证或服务范围不能成为宣传卖点。
 
 ## RenderPlan
 
@@ -79,13 +91,30 @@ ArtifactRecord 的 ID、时间、版本、哈希由后端生成。以下描述�
 
 ## 整套联名制作附件（方法扩展）
 
-用户要求方案锁定后整套制作时，在既有 DesignSpec、CopyPack、RenderPlan 与 ReviewReport 之外保存任务附件，统一引用当前概念、设计版本和真实内容哈希。详细字段与分工见 [整套制作方法](../.claude/skills/visual-production/references/CAMPAIGN_KIT.md)。此扩展没有注册新工具或产物类型，当前网页尚需实现附件编排与逐件产物展示。
+用户要求丰富物料规划或方向确定后整套制作时，在既有 DesignSpec、CopyPack、RenderPlan 与 ReviewReport 之外保存任务附件，统一引用当前概念、设计版本和真实内容哈希。详细字段与分工见 [整套制作方法](../.claude/skills/visual-production/references/CAMPAIGN_KIT.md)。附件和网页的结构化物料候选没有注册新的完整 ArtifactRecord 类型，也不等于实现批量生图、完整制作编排或真实产物导出。
 
-- 故事与视觉设定：主题、叙事动因、角色关系、情节推进与收束，以及配色、字体、角色/产品不变量。
-- 物料清单：按真实物料家族划分，记录用途、设计面、尺寸变体、精确文案、素材依赖、制作方式、文件和状态；总览图及其尺寸不算新增实物家族。
-- 逐件设计：效果探索先交杯托、饮品、折页、海报等独立效果图和对应内容；尺寸、刀版与完整印刷面规格在用户进入打样/生产阶段后再补。结构稿可留附录，不能代替当前效果图；效果图也不等于可生产刀版。
+- 产品与视觉设定：核心产品或体验锚点、双方资产到风味/造型/材质/工艺/功能/内容/服务体验的具体融合，以及双方辨识度、配色、字体和核心不变量；涉及 IP 时再固定角色版本。外观、风味、工艺或功能型联名使用匹配的主题说明；剧情型方案再展开动因、角色关系与完整情节。
+- 物料清单：依开放品类适配方法从用户旅程和具体作用推导候选，再按物料分类和核心/推荐/可选组织结果，不要求每类齐全。允许核心深化、邻近延伸和探索提案，以实际用途、输入范围和有效条件决定规模，区分已知能力与提案；同一物品换角色、配色、画幅或视角记为 variants。
+- 逐件设计：记录核心产品解剖、可改变部位、需保留功能及资产转译，纳入制作的产物先交独立效果与对应内容；非实物交付相应内容或体验表达。未知生产参数不阻塞概念，效果图不证明可生产或已上线；尺寸、刀版、工艺与履约验证在进入对应范围后补。
 - 视频筹备：脚本、分镜、旁白、镜头所需角色/道具/空间与关键帧，区分真实素材、示意图、待制素材和实际成片。视频 Prompt 不能替代素材或视频文件。
 - 交付与检查：一次性交付的是共用设定驱动的一套相互一致的产物；各件可在内部依赖顺序中分别生成。局部修订只使受影响的下游产物失效，不把无关素材重做。
+
+## 网页工作台 MaterialPlan / MaterialVisual（简化结构）
+
+字段定义见 `src/material-plan.ts`，使用于网页 `design-b` 与 `visual-b`，不走上述完整产物 payload 的字段扩展。
+
+- `MaterialPlan.productAnchor`：`{ brandId: "a" | "b" | "both", category, coreProduct, rationale, ipAssets: string[], translation }`。`brandId` 表示任一方承载或双方共同提供，`category` 为自由文本品类，`coreProduct` 可描述核心产品、内容、服务或体验。`ipAssets` 为兼容保留旧名，指双方合作资产，不限定 IP。
+- `MaterialPlan.deliveryScope?`：`full_collaboration | focused_deliverables`。存储字段可选，旧记录缺省按 `full_collaboration` 解释，读取或保存旧对象不自动补写该字段；新生成请求的 schema 必须明确范围。它只扩展网页 MaterialPlan，不扩展完整业务 Artifact。
+- `MaterialPlan.scopeNote`：范围、创意假设与候选数量取舍；`focused_deliverables` 必须说明用户明确限定的本轮交付和复用的既有核心设计依据。
+- `MaterialPlan.items[]`：`{ id, name, category, priority, role, design, ipExpression, dependencies: string[], variants: string[], feasibility }`。
+- `category` 为 `product | packaging | communication | merchandise | experience`，分别表示核心产品（含数字产品和内容）、包装与随附、传播物料、延伸周边、场景与体验（含服务）。`full_collaboration` 至少有一项 `priority: core` 且 `category` 为 `product` 或 `experience`；`focused_deliverables` 仅用于用户明确限制本轮交付、核心已有设计依据的任务，可只列本轮所需产物，不为校验添加虚假核心项。两种范围均不强制实体 SKU。
+- `priority` 为 `core | recommended | optional`，表示制作建议，不表示用户已选定、已生成或可量产。
+- 物料 `id` 稳定且唯一；`dependencies` 只引用同一计划内的物料 ID，不得自引用或循环；`role`、`design`、`ipExpression`、`feasibility` 分别写用途、具体设计、双方资产融合和执行条件。`ipExpression` 保留旧字段名以兼容存储，融合可以来自审美、工艺、原料配方、技术、功能、内容、渠道服务或 IP。变体不拆成额外候选。
+- `MaterialVisual`：`{ materialId, prompt }`。`visual-b` 的逐件提示词与当前清单 ID 一一对应，并另保留主视觉 `imagePrompt`；逐件内容必须表现对应设计，不能复制总览提示词冒充完整制作计划。
+
+计划与提示词完成不触发批量真实生图。候选数量、实际制作物料数量、文件数量和变体数量分别统计；真实生成与检查状态只能来自实际工具与文件证据。
+
+deliveryScope 修复网页计划的范围校验，不改变完整业务契约或全新任务的固定三个方向路由；不能据此宣称新窄任务已跳过该路由。已有纯文案修订继续复用当前流程、清单和适配依据，不要求重建计划。品类画像仍使用原研究/设计 section。
 
 ## get_context
 
