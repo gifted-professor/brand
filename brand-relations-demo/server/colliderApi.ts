@@ -12,6 +12,7 @@ import { ColliderRuntime } from '../../brand-collider-skills-design/src/server/r
 import { OpenAITextProvider, RuntimeError, loadTextOptions } from '../../brand-collider-skills-design/src/server/text-provider.ts';
 import type { TextProvider } from '../../brand-collider-skills-design/src/server/text-provider.ts';
 import { loadImageConfig } from '../../brand-collider-skills-design/src/providers/image-config.ts';
+import { GrokCliProvider } from '../../brand-collider-skills-design/src/server/grok-cli-provider';
 import { CodexCliProvider } from '../../brand-collider-skills-design/src/server/codex-cli-provider';
 
 export const PROPOSAL_FIELDS = ['title', 'concept', 'contribution', 'ask', 'diagnostic0', 'diagnostic1', 'diagnostic2'] as const;
@@ -52,14 +53,23 @@ export function createColliderService(env: NodeJS.ProcessEnv) {
     const cwd = resolve('../brand-collider-skills-design');
     let provider: TextProvider | undefined;
     let imageProvider: OpenAIImageProvider | undefined;
-    if (env.BRAND_AI_PROVIDER === 'codex') {
+    let executionError: string | undefined;
+    if (!env.BRAND_AI_PROVIDER && ['grok-cli', 'codex-cli'].includes(env.COLLIDER_AGENT_TRANSPORT || '')) {
+      try {
+        const options = { cwd, env: { ...process.env, ...env }, outputDir: resolve('outputs/collider-cli-agents') };
+        const native = env.COLLIDER_AGENT_TRANSPORT === 'grok-cli'
+          ? new GrokCliProvider({ ...options, binary: env.GROK_CLI_BIN, model: env.GROK_CLI_MODEL, timeoutMs: Number(env.GROK_CLI_TIMEOUT_MS || 600000) })
+          : new CodexCliProvider({ ...options, binary: env.CODEX_CLI_BIN, model: env.CODEX_CLI_MODEL || env.OPENAI_MODEL, timeoutMs: Number(env.CODEX_CLI_TIMEOUT_MS || 600000) });
+        await native.probe(); provider = native;
+      } catch { executionError = '本地协作服务未就绪，请检查原工作台的模型配置与登录状态。'; }
+    } else if (env.BRAND_AI_PROVIDER === 'codex') {
       const local = new CodexTextProvider(env.CODEX_BIN || 'codex', 180000, loadCodexOptions(env));
       if (await local.available()) provider = local;
     } else if (env.OPENAI_API_KEY || env.OPENAI_PROVIDER === 'cpa') {
       try { provider = new OpenAITextProvider(loadImageConfig({ ...env, OPENAI_BASE_URL: env.OPENAI_BASE_URL || 'https://api.openai.com/v1' }, cwd), loadTextOptions(env)); } catch { /* Configuration details and secrets stay server-side. */ }
     }
     const imageOutputDir = resolve('outputs/collider-images');
-    try { imageProvider = new OpenAIImageProvider(loadImageConfig({...env,OPENAI_BASE_URL:env.OPENAI_BASE_URL || 'https://api.openai.com/v1',IMAGE_TIMEOUT_MS:'180000',IMAGE_OUTPUT_DIR:imageOutputDir},cwd)); } catch { /* Leave image generation unavailable. */ }
+    try { imageProvider = new OpenAIImageProvider(loadImageConfig({...env,OPENAI_BASE_URL:env.OPENAI_BASE_URL || 'https://api.openai.com/v1',IMAGE_TIMEOUT_MS:env.IMAGE_TIMEOUT_MS || '780000',IMAGE_OUTPUT_DIR:imageOutputDir},cwd)); } catch { /* Leave image generation unavailable. */ }
     let runtimeProvider = provider;
     // Keep quick form generation lightweight. Full material production needs the
     // original CLI's real source discovery and image inspection capabilities.
@@ -68,7 +78,7 @@ export function createColliderService(env: NodeJS.ProcessEnv) {
         outputDir: resolve('outputs/collider-cli-agents'), env: { ...process.env, ...env } });
       try { await native.probe(); runtimeProvider = native; } catch { /* The original runtime reports media capability as unavailable. */ }
     }
-    const runtime = new ColliderRuntime({ cwd, provider: runtimeProvider, imageProvider, imageOutputDir, outputDir: resolve('outputs/collider-sessions') });
+    const runtime = new ColliderRuntime({ cwd, provider: runtimeProvider, executionError, imageProvider, imageOutputDir, outputDir: resolve('outputs/collider-sessions') });
     await runtime.init(); return { runtime, provider, imageProvider };
   })();
 }

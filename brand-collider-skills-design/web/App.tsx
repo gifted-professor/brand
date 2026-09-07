@@ -1,3 +1,4 @@
+import { sessionWorkflow, workflowSteps } from './workflow-stage';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { CSSProperties, FormEvent, KeyboardEvent, PointerEvent as ReactPointerEvent, ReactNode } from 'react';
 import { ArrowDown, ArrowDownToLine, ArrowRight, ArrowUp, Check, ChevronDown, ChevronRight, FileText, Image as ImageIcon, LoaderCircle, MessageSquare, Pause, Play, Plus, Search, Settings2, ShieldCheck, Sparkles, Upload, Workflow, X } from 'lucide-react';
@@ -115,6 +116,8 @@ function DialogueMessage({ message, brands, showSkills, onArtifact }: { message:
 
 export default function App({ channelPreviewMode = false }: { channelPreviewMode?: boolean } = {}) {
   const initialRoute = useRef(new URLSearchParams(location.search));
+  const [fullWorkflow, setFullWorkflow] = useState(() => new URLSearchParams(location.search).get('workflow') === 'full');
+  const previewOnly = channelPreviewMode && !fullWorkflow;
   const [restoring, setRestoring] = useState(true);
   const [brands, setBrands] = useState<[Brand, Brand]>(emptyBrands);
   const [goal, setGoal] = useState('');
@@ -152,6 +155,7 @@ export default function App({ channelPreviewMode = false }: { channelPreviewMode
   const navigationRef = useRef(0);
   const requestRef = useRef(0);
   const sessionId = session?.id;
+  const fullProgress = fullWorkflow && session ? sessionWorkflow(session, new Set()) : undefined;
   const mediaRunning = isSessionMediaRunning(session);
   const automation = currentSessionAutomation(session);
   const running = session?.status === 'running' || mediaRunning;
@@ -264,6 +268,25 @@ export default function App({ channelPreviewMode = false }: { channelPreviewMode
     catch (err) { if (navigation === navigationRef.current) handleOperationError(err, session.id); }
     finally { if (navigation === navigationRef.current) setBusy(false); }
   }
+  async function startFullWorkflow() {
+    if (busy || running || !projectId || !runtime?.configured) return;
+    const navigation = navigationRef.current;
+    setBusy(true); setError('');
+    let currentId: string | undefined;
+    try {
+      const result = await api<{ session: Session; url: string }>('/canvas/workflow', { projectId });
+      if (navigation !== navigationRef.current) return;
+      currentId = result.session.id;
+      window.history.replaceState(null, '', result.url);
+      setFullWorkflow(true); applySession(result.session); followRef.current = true;
+      setFollowRequest(value => value + 1);
+      if (['idle', 'paused', 'error'].includes(result.session.status)) {
+        const updated = await api<Session>(`/sessions/${currentId}/run`, {});
+        if (navigation === navigationRef.current) applySession(updated);
+      }
+    } catch (err) { if (navigation === navigationRef.current) handleOperationError(err, currentId); }
+    finally { if (navigation === navigationRef.current) setBusy(false); }
+  }
   async function start(initialText?: string) {
     if (busy) return;
     if (startUnavailable) { setError(automaticProductionError || '本地协作服务尚未就绪，请稍后重试。'); return; }
@@ -304,7 +327,7 @@ export default function App({ channelPreviewMode = false }: { channelPreviewMode
         content: [`状态：${contextNode.statusLabel || contextNode.status}`, contextNode.summary, contextNode.content || ''].join('\n\n').slice(0, 12000),
         sources: contextNode.sources.slice(0, 20).map(source => `${source.label}${source.path ? ` · ${source.path}` : ''}`.slice(0, 300)),
       } : undefined;
-      const updated = await api<Session>(`/sessions/${current.id}/intervene`, { text: value, artifactContext, ...(channelPreviewMode ? { restartFrom: 1 } : {}) });
+      const updated = await api<Session>(`/sessions/${current.id}/intervene`, { text: value, artifactContext, ...(previewOnly ? { restartFrom: 1 } : {}) });
       if (navigation !== navigationRef.current) return;
       applySession(updated); setInput(v => v === value ? '' : v); setContextNode(null); setFollowRequest(value => value + 1); followRef.current = true;
       if (updated.status === 'paused' && current.status !== 'paused' && !imageInFlight) {
@@ -374,7 +397,7 @@ export default function App({ channelPreviewMode = false }: { channelPreviewMode
   function focusArtifact(id: string) { setFocusNodeId(null); requestAnimationFrame(() => setFocusNodeId(id)); }
   const initialBrief = <div className="u-setup"><div className="u-welcome-symbol"><img src="/brand-relations/assets/mark-blue-black.svg" width="48" height="48" alt="" /></div><h2>从两个品牌开始。</h2><p>从真实品牌素材开始，自动完成研究、设计、逐件出图与审查，成果会逐步呈现在画布上。</p><div className="u-brand-inputs">{brands.map((brand, i) => <button key={brand.id} onClick={() => setEditingBrand(brand.id)}><span>{brand.name.slice(0, 1) || (i ? 'B' : 'A')}</span><div><strong>{brand.name || `添加品牌 ${i ? 'B' : 'A'}`}</strong><small>{brand.name ? `${brand.files.length} 份资料 · 点击编辑` : '品牌介绍 / 上传资料'}</small></div><Plus size={15} /></button>)}</div><label className="u-goal-label">这次想一起做什么？<textarea rows={3} value={goal} maxLength={5000} onChange={event => setGoal(event.target.value)} placeholder="例如：围绕年轻人的日常，做一款让双方都有辨识度的联名饮品。" /></label><div className="u-setup-actions"><select aria-label="协作模式" value={mode} onChange={event => setMode(event.target.value as 'live' | 'demo')}><option value="live">{runtime?.transport?.endsWith('-cli') ? '本地 CLI 协作' : 'AI 实时协作'}</option><option value="demo">交互演示</option></select><button onClick={() => { setBrands(structuredClone(EXAMPLE_BRANDS)); setGoal('让咖啡与主题阅读形成具体关联，增加周末到店。'); setMode('demo'); }}>填入演示品牌</button></div><button className="u-primary u-start" disabled={busy || !runtime || startUnavailable} onClick={() => void start()}>{busy ? <LoaderCircle size={15} className="spin" /> : <Sparkles size={15} />}开始联名协作<ArrowRight size={15} /></button><small className="u-setup-note">{mode === 'demo' ? '演示九步协作流程 · 使用固定示例内容' : '九步自动协作 · 核心与推荐物料最多 4 并发生图'}</small>{mode === 'live' && <small className="u-setup-note">自动采集真实素材并附图验收。可在目标中限定制作范围，可选物料保留为候选。</small>}{automaticProductionError && <p className="form-error" role="alert">{automaticProductionError}</p>}</div>;
 
-  return <div className={`unified-app${isNew ? ' is-new' : ''}`}>
+  return <div className={`unified-app${isNew ? ' is-new' : ''}${channelPreviewMode ? ' has-cocreation' : ''}`}>
     {channelPreviewMode ? (<header className="u-topbar"><button className="u-logo" type="button" aria-label="返回第一页" onClick={() => window.location.assign('/')}><img className="u-brand-symbol" src="/brand-relations/assets/mark-black.svg" alt="" /></button><div className="u-project-switch"><span className="u-project-title">{projectTitle}</span><small>{projectId ? '已有项目' : session?.mode === 'demo' ? '交互演示' : '联名创作空间'}</small></div><div className="u-header-actions"><span className={`u-connection ${runtime?.configured ? 'ready' : ''}`}><i />{runtime?.transport === 'grok-cli' ? 'Grok CLI · ' : runtime?.transport === 'codex-cli' ? 'Codex CLI · ' : ''}{runtime?.model || '连接中'}</span><button title="项目简报与资料" aria-label="项目简报与资料" onClick={() => setModal('brief')}><FileText size={16} /></button><button title="工作方法" aria-label="工作方法" onClick={() => setModal('skills')}><Settings2 size={16} /></button>{session && <a className="u-export" aria-label="导出当前方案" href={`/api/sessions/${session.id}/export`}><ArrowDownToLine size={14} /><span>导出</span></a>}</div></header>) : (<header className="u-topbar"><div className="u-logo"><img className="u-brand-lockup" src="/brand-relations/assets/lockup-black.svg" alt="Brand Relations · 品牌联名工具" /><img className="u-brand-symbol" src="/brand-relations/assets/mark-black.svg" alt="Brand Relations · 品牌联名工具" /></div><div className="u-project-switch"><button onClick={() => void openHistory()}><span>{projectTitle}</span><ChevronDown size={14} /></button><small>{projectId ? '已有项目' : session?.mode === 'demo' ? '交互演示' : '联名创作空间'}</small></div><div className="u-header-actions"><span className={`u-connection ${runtime?.configured ? 'ready' : ''}`}><i />{runtime?.transport === 'grok-cli' ? 'Grok CLI · ' : runtime?.transport === 'codex-cli' ? 'Codex CLI · ' : ''}{runtime?.model || '连接中'}</span><button title="项目简报与资料" aria-label="项目简报与资料" onClick={() => setModal('brief')}><FileText size={16} /></button><button title="工作方法" aria-label="工作方法" onClick={() => setModal('skills')}><Settings2 size={16} /></button><button className="u-new" aria-label="新建项目" onClick={newProject} disabled={busy}><Plus size={15} /><span>新建</span></button>{session && <a className="u-export" aria-label="导出当前方案" href={`/api/sessions/${session.id}/export`}><ArrowDownToLine size={14} /><span>导出</span></a>}</div></header>)}
     <div ref={workspaceRef} className="u-workspace" style={{ '--u-dialogue-width': `${initialDialogueWidth}px` } as CSSProperties}><section id="canvas-results" className="u-canvas-area" aria-label="项目成果画布"><ProductionWorkspace session={session} projectId={projectId} onProjectLoaded={setSourceProject} onDiscuss={discuss} focusNodeId={focusNodeId} followRequest={followRequest} /></section>
       <div ref={resizeHandleRef} className="u-resize-handle" role="separator" aria-label="调整画布与对话宽度" aria-orientation="vertical" aria-controls="canvas-results canvas-dialogue" aria-valuemin={280} aria-valuemax={720} aria-valuenow={Math.round(initialDialogueWidth)} tabIndex={0} onPointerDown={beginDialogueResize} onPointerMove={updateDialogueResize} onPointerUp={finishDialogueResize} onPointerCancel={finishDialogueResize} onKeyDown={resizeDialogueWithKeyboard} />
@@ -387,7 +410,15 @@ export default function App({ channelPreviewMode = false }: { channelPreviewMode
         </div>}
       </div>
       {showJump && <button className="u-jump" onClick={() => { followRef.current = true; scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' }); }}><ArrowDown size={13} />最新进度</button>}
-      <div className="u-composer-area">{contextNode && <div className="u-context"><FileText size={12} /><span>正在讨论：{contextNode.title}</span><button aria-label="取消关联成果" onClick={() => setContextNode(null)}><X size={12} /></button></div>}{session && <div className="u-run-controls"><span>简报 v{session.revision} · {session.constraints.length} 条标准</span>{running ? <button disabled={busy} onClick={() => void mutate('pause')}><Pause size={12} />暂停</button> : ['paused', 'idle'].includes(session.status) ? <button disabled={busy} onClick={() => void mutate('run')}><Play size={12} />继续</button> : null}</div>}<form className="u-composer" onSubmit={event => void intervene(event)}><textarea ref={inputRef} aria-label="给联名团队补充标准" value={input} maxLength={1800} rows={2} placeholder={channelPreviewMode ? '例如：咖啡渠道突出周末阅读，书店渠道突出日常咖啡；各自保留原 VI。' : isNew ? '补充合作目标、受众或你想试试的方向…' : '补充标准、调整方向，或聊聊这张图…'} onChange={event => setInput(event.target.value)} onKeyDown={event => { if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); void intervene(); } }} /><div><button type="button" className="u-attach" title="品牌资料" aria-label="品牌资料" onClick={() => isNew ? setEditingBrand('a') : setModal('brief')}><Plus size={18} /></button><small>交给总策划，协调下一步</small><button className="u-send" aria-label={channelPreviewMode ? "生成或更新双方渠道预演" : "发送新标准"} disabled={!input.trim() || busy || (isNew && startUnavailable)}>{busy ? <LoaderCircle size={16} className="spin" /> : <ArrowUp size={18} />}{channelPreviewMode && <span className="u-send-label">{session?.proposal ? '更新预演' : '生成预演'}</span>}</button></div></form><div className="u-composer-foot"><span>{channelPreviewMode ? (runtime?.imageConfigured ? '提交后按新要求重新生成；历史成果会保留' : '图像生成未连接 · 生成方案与提示词') : '消息不会自动回退进度；重做请指定步骤'}</span><span>↵ 发送</span></div></div>
+      <div className="u-composer-area">{channelPreviewMode && projectId && <section className="u-full-workflow" aria-label="完整联名协作流程">
+        <div className="u-full-workflow-heading"><strong>完整联名方案</strong><span>{fullProgress?.completedSteps || 0} / 9 步</span></div>
+        <details><summary>品牌研究 → 创意 → 设计 → 文案 → 视觉 → 审查</summary><ol>{workflowSteps.map((step, index) => {
+          const progress = fullProgress?.steps.find(item => item.id === step.id);
+          return <li key={step.id} data-status={progress?.status || 'pending'}><span>{index + 1}. {step.label}</span><small>{progress?.status === 'completed' ? '已完成' : progress?.status === 'running' ? '进行中' : progress?.status === 'failed' ? '待重试' : progress?.status === 'paused' ? '已暂停' : '待开始'}</small></li>;
+        })}</ol></details>
+        {!fullWorkflow ? <><p>已带入双方资料，自动选择方向并推进整套方案。</p><button className="u-primary u-full-workflow-start" disabled={busy || running || !runtime?.configured} onClick={() => void startFullWorkflow()}>{busy ? <LoaderCircle size={15} className="spin" /> : <Sparkles size={15} />}一键生成完整联名方案</button><small>{!runtime ? '正在连接协作服务…' : !runtime.configured ? runtime.executionError || '协作模型尚未连接，请检查工作台配置。' : runtime.autoProductionConfigured ? '包含真实素材采集与逐件出图，可随时暂停。' : '当前生成方案与逐件提示词；自动出图服务尚未就绪。'}</small></>
+        : <p role="status">{fullProgress?.currentAction || '九步协作已准备，点击继续开始。'}</p>}
+      </section>}{contextNode && <div className="u-context"><FileText size={12} /><span>正在讨论：{contextNode.title}</span><button aria-label="取消关联成果" onClick={() => setContextNode(null)}><X size={12} /></button></div>}{session && <div className="u-run-controls"><span>简报 v{session.revision} · {session.constraints.length} 条标准</span>{running ? <button disabled={busy} onClick={() => void mutate('pause')}><Pause size={12} />暂停</button> : ['paused', 'idle'].includes(session.status) ? <button disabled={busy} onClick={() => void mutate('run')}><Play size={12} />{previewOnly ? '继续渠道预演' : '继续完整流程'}</button> : null}</div>}<form className="u-composer" onSubmit={event => void intervene(event)}><textarea ref={inputRef} aria-label="给联名团队补充标准" value={input} maxLength={1800} rows={2} placeholder={previewOnly ? '例如：咖啡渠道突出周末阅读，书店渠道突出日常咖啡；各自保留原 VI。' : isNew ? '补充合作目标、受众或你想试试的方向…' : '补充标准、调整方向，或聊聊这张图…'} onChange={event => setInput(event.target.value)} onKeyDown={event => { if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); void intervene(); } }} /><div><button type="button" className="u-attach" title="品牌资料" aria-label="品牌资料" onClick={() => isNew ? setEditingBrand('a') : setModal('brief')}><Plus size={18} /></button><small>交给总策划，协调下一步</small><button className="u-send" aria-label={previewOnly ? "生成或更新双方渠道预演" : "发送新标准"} disabled={!input.trim() || busy || (isNew && startUnavailable)}>{busy ? <LoaderCircle size={16} className="spin" /> : <ArrowUp size={18} />}{previewOnly && <span className="u-send-label">{session?.proposal ? '更新预演' : '生成预演'}</span>}</button></div></form><div className="u-composer-foot"><span>{previewOnly ? (runtime?.imageConfigured ? '提交后按新要求重新生成；历史成果会保留' : '图像生成未连接 · 生成方案与提示词') : '消息不会自动回退进度；重做请指定步骤'}</span><span>↵ 发送</span></div></div>
       </aside>
     </div>
     {toast && <div className="toast u-toast" role="status"><Check size={15} />{toast}</div>}

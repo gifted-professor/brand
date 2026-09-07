@@ -224,3 +224,19 @@
 .unified-app :is(input, textarea)::placeholder { color: var(--brand-black); opacity: 1; }
 .unified-app .modal :is(small, .upload-zone span, .upload-zone strong, .modal-foot > span) { font-size: 14px; line-height: 1.6; }
 .unified-app .modal .primary:disabled { color: var(--brand-black); background: var(--brand-white); border: 1px dashed var(--brand-black); }
+
+.u-full-workflow { padding: 12px 0; border-bottom: 1px solid #dfe3ed; margin-bottom: 10px; }
+.u-full-workflow-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.u-full-workflow-heading strong { font-size: 15px; }
+.u-full-workflow-heading > span { color: var(--brand-blue); font-size: 12px; white-space: nowrap; }
+.u-full-workflow p, .u-full-workflow > small { display: block; font-size: 12px; line-height: 1.6; margin: 7px 0; }
+.u-full-workflow details { margin-top: 6px; font-size: 11px; }
+.u-full-workflow summary { cursor: pointer; line-height: 1.6; }
+.u-full-workflow ol { padding: 0; margin: 8px 0; list-style: none; max-height: 160px; overflow-y: auto; }
+.u-full-workflow li { display: flex; justify-content: space-between; gap: 6px; padding: 4px 0; }
+.u-full-workflow li[data-status='running'] { color: var(--brand-blue); font-weight: 600; }
+.u-full-workflow li[data-status='completed'] small { color: #22733c; }
+.u-full-workflow .u-full-workflow-start { width: 100%; justify-content: center; min-height: 44px; margin: 5px 0; background: var(--brand-blue); color: white; }
+
+.has-cocreation .u-composer-area { max-height: calc(100% - 200px); overflow-y: auto; }
+.u-full-workflow p[role='status'] { max-height: 72px; overflow-y: auto; }

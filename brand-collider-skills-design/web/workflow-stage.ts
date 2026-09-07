@@ -13,7 +13,7 @@ export const skillLane: Record<SkillId, ProductionLaneId> = {
 
 // These are the nine specialist stages in the runtime's fixed workflow. The
 // host dispatch is immediate; both research steps may be running together.
-const workflowSteps: readonly { id: string; skill: SkillId; standpoint: 'a' | 'b'; label: string }[] = [
+export const workflowSteps: readonly { id: string; skill: SkillId; standpoint: 'a' | 'b'; label: string }[] = [
   { id: 'profile-a', skill: 'brand-profile', standpoint: 'a', label: '品牌 A 研究' },
   { id: 'profile-b', skill: 'brand-profile', standpoint: 'b', label: '品牌 B 研究' },
   { id: 'ideation-a', skill: 'collab-ideation', standpoint: 'a', label: '提出创意初稿' },

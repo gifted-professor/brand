@@ -35,6 +35,20 @@ export function canvasBrief(project: Project, prompt = '') {
   };
 }
 
+/** Full product workflow reuses brand evidence without the channel-only restrictions. */
+export function fullWorkflowBrief(project: Project) {
+  const brief = canvasBrief(project);
+  return { ...brief,
+    goal: `${project.invitation.draft.title}\n${project.invitation.draft.concept}\n基于双方品牌的主营产品、能力与用户场景，完成品牌研究、方向选择、产品与体验设计、逐件物料清单、传播文案、视觉制作和质量审查。`.slice(0, 5000),
+    constraints: [
+      '从双方主营产品和用户场景推导联名产物；允许探索产品、包装、传播与体验，不限于两张渠道图。已有预演仅作参考，不能当作本轮已完成的研究或产物。',
+      '保持双方品牌辨识度，依据真实素材与规范设计；缺少资料时标明待确认，不虚构资源、授权或生产承诺。',
+      '当前为联名概念探索，未发送邀请，不代表品牌授权、双方同意或正式发布。',
+      `已有合作简报：${JSON.stringify(project.invitation.draft)}`,
+    ],
+  };
+}
+
 /** Adapt saved partner data into the upstream canvas contract; no canvas fork. */
 export function productionProject(project: Project): ProductionProject {
   const preview = currentPreview(project);
@@ -88,43 +102,55 @@ export class RelationsProductionRepository extends ProductionRepository {
   }
 }
 
-export function canvasIntegration(initialize: ReturnType<typeof createColliderService>, store = new ProjectStore()): Plugin {
-  const cwd = resolve('../brand-collider-skills-design');
-  const repository = new RelationsProductionRepository(store);
-  let upstream: ReturnType<typeof createHttpServer> | undefined;
-  const opening = new Map<string, Promise<{ url: string }>>();
-  const open = async (id: string) => {
+export function createCanvasOpener(initialize: ReturnType<typeof createColliderService>, store: ProjectStore, folder = resolve('outputs/canvas-links')) {
+  const opening = new Map<string, Promise<{ url: string; session: ReturnType<ColliderRuntime['get']> }>>();
+  const open = async (id: string, full = false) => {
     const project = await store.get(id), { runtime } = await initialize();
-    const folder = resolve('outputs/canvas-links'), file = resolve(folder, `${project.id}-r${project.revision}.json`);
+    const workflowFile = resolve(folder, `${project.id}-r${project.revision}-workflow.json`);
+    if (!full) {
+      try { await readFile(workflowFile, 'utf8'); full = true; }
+      catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error; }
+    }
+    const file = full ? workflowFile : resolve(folder, `${project.id}-r${project.revision}.json`);
     let sessionId: string | undefined;
     try { sessionId = JSON.parse(await readFile(file, 'utf8')).sessionId; runtime.get(sessionId!); }
     catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw new RuntimeError('已有画板会话暂不可读，已保留原记录，请重试。', 409); }
     if (!sessionId) {
-      const brief = canvasBrief(project);
-      const session = await runtime.create({ ...brief, autoProduce: id === PRELOADED_COTTI_NAILONG_PROJECT_ID ? false : runtime.info().autoProductionConfigured === true });
+      if (full && !runtime.info().configured) throw new RuntimeError('协作模型尚未连接，请先检查工作台配置。', 503);
+      const brief = full ? fullWorkflowBrief(project) : canvasBrief(project);
+      const session = await runtime.create({ ...brief, autoProduce: (full || id !== PRELOADED_COTTI_NAILONG_PROJECT_ID) && runtime.info().autoProductionConfigured === true });
       sessionId = session.id;
       await mkdir(folder, { recursive: true });
       await writeFile(file, JSON.stringify({ sessionId, projectId: id, revision: project.revision }), { flag: 'wx', mode: 0o600 });
     }
-    return { url: `/canvas.html?relation=${encodeURIComponent(id)}&project=${encodeURIComponent(id)}&session=${encodeURIComponent(sessionId)}` };
+    return { session: runtime.get(sessionId), url: `/canvas.html?relation=${encodeURIComponent(id)}&project=${encodeURIComponent(id)}&session=${encodeURIComponent(sessionId)}${full ? '&workflow=full' : ''}` };
   };
-  const openOnce = (id: string) => {
-    let work = opening.get(id);
-    if (!work) { work = open(id); opening.set(id, work); }
-    return work.finally(() => { if (opening.get(id) === work) opening.delete(id); });
+  const openOnce = (id: string, full = false) => {
+    const key = `${id}:${full}`;
+    let work = opening.get(key);
+    if (!work) { work = open(id, full); opening.set(key, work); }
+    return work.finally(() => { if (opening.get(key) === work) opening.delete(key); });
   };
+  return openOnce;
+}
+
+export function canvasIntegration(initialize: ReturnType<typeof createColliderService>, store = new ProjectStore()): Plugin {
+  const cwd = resolve('../brand-collider-skills-design');
+  const repository = new RelationsProductionRepository(store);
+  let upstream: ReturnType<typeof createHttpServer> | undefined;
+  const openOnce = createCanvasOpener(initialize, store);
   const middleware = async (req: IncomingMessage, res: ServerResponse, next: () => void) => {
     const path = req.url?.split('?')[0] ?? '';
-    if (!/^\/api\/(?:canvas\/open|runtime|sessions(?:\/.*)?|production(?:\/.*)?|uploads)$/.test(path)) { next(); return; }
+    if (!/^\/api\/(?:canvas\/(?:open|workflow)|runtime|sessions(?:\/.*)?|production(?:\/.*)?|uploads)$/.test(path)) { next(); return; }
     const json = (status: number, data: unknown) => { res.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }); res.end(JSON.stringify(data)); };
     if (!['127.0.0.1', '::1', '::ffff:127.0.0.1'].includes(req.socket.remoteAddress || '') || !/^(?:127\.0\.0\.1|localhost|\[::1\])(?::\d+)?$/.test(req.headers.host || '') || (req.headers.origin && ![`http://${req.headers.host}`, `https://${req.headers.host}`].includes(req.headers.origin))) { json(403, { error: '请从本机当前页面发起请求。' }); return; }
     try {
-      if (path === '/api/canvas/open') {
+      if (path === '/api/canvas/open' || path === '/api/canvas/workflow') {
         if (req.method !== 'POST' || !req.headers['content-type']?.startsWith('application/json')) { json(405, { error: '请使用 JSON POST。' }); return; }
         let body = ''; for await (const chunk of req) { body += chunk; if (body.length > 1024) throw new RuntimeError('请求过长。', 413); }
         const { projectId } = JSON.parse(body);
         if (typeof projectId !== 'string' || !/^project-[a-f0-9-]{36}$/.test(projectId)) throw new RuntimeError('项目编号无效。');
-        json(200, await openOnce(projectId));
+        json(200, await openOnce(projectId, path === '/api/canvas/workflow'));
         return;
       }
       // Execute the original HTTP router and runtime, including uploads, dialogue,
