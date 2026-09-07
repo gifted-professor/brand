@@ -78,3 +78,11 @@ python scripts/validate_bundle.py
 项目另提供 [brand-case-research](../brand-case-research/SKILL.md)，负责导入报告、维护证据、检索历史案例。资料库位于 `../品牌物料/案例库/`，由该研究 Skill 在创作任务之外维护；本包仍保留六个创作 Skill 的运行时白名单。
 
 六个 Skill 可通过 `get_context.researchContext` 消费按任务筛选的案例。已提供本地检索及资料包生成脚本；将资料包放入真实 `get_context` 的服务适配仍待实现。案例不会自动成为当前品牌事实、可用资源或授权素材。详见研究 Skill 的 [消费接口](../brand-case-research/references/consumer-contract.md)。
+
+## 在画布选择本地 CLI
+
+点击画布右上角的 CLI / 模型名称，检测服务所在电脑的 Codex、Grok、Claude Code 和 Gemini CLI。当前支持选择 Codex 或 Grok 执行共创流程；Claude Code 和 Gemini CLI 仅显示安装情况，暂未接入执行适配器。
+
+Codex 会检查本机登录状态；Grok 的登录状态与模型可用性需要在实际执行时确认。保存选择只检查 CLI，不发送模型请求。模型名称需要填写当前 CLI 支持的值。CLI 仍连接对应模型服务并使用其账号额度，图像生成仍由单独的图像 API 配置提供。
+
+选择仅保存 CLI ID 和模型名到会话输出目录下的 `local-cli.json`（权限 0600，输出目录默认被 Git 忽略），重启恢复。接口不返回凭据、环境变量或原始 CLI 输出。正在运行的任务必须先暂停并等待进程退出才能切换；已完成成果保持不变。检测的是运行服务的电脑，网页本身不能扫描另一台访问者电脑上的软件。

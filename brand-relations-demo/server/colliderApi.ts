@@ -78,8 +78,8 @@ export function createColliderService(env: NodeJS.ProcessEnv) {
         outputDir: resolve('outputs/collider-cli-agents'), env: { ...process.env, ...env } });
       try { await native.probe(); runtimeProvider = native; } catch { /* The original runtime reports media capability as unavailable. */ }
     }
-    const runtime = new ColliderRuntime({ cwd, provider: runtimeProvider, executionError, imageProvider, imageOutputDir, outputDir: resolve('outputs/collider-sessions') });
-    await runtime.init(); return { runtime, provider, imageProvider };
+    const runtime = new ColliderRuntime({ cwd, localCli: { env: { ...process.env, ...env }, outputDir: resolve('outputs/collider-cli-agents') }, provider: runtimeProvider, executionError, imageProvider, imageOutputDir, outputDir: resolve('outputs/collider-sessions') });
+    await runtime.init(); await runtime.restoreLocalCli(); return { runtime, provider, imageProvider };
   })();
 }
 export function colliderApi(env: NodeJS.ProcessEnv, initialize = createColliderService(env)): Plugin {

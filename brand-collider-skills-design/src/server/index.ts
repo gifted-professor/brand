@@ -78,6 +78,8 @@ function createRequestHandler(runtime: ColliderRuntime, cwd: string, production 
         if (action === 'discuss' && method === 'POST') return json(response, await production.discuss(projectId, await readJson(request, 16 * 1024), runtime), 201);
         if (assetId && (method === 'GET' || method === 'HEAD')) return await production.serveAsset(projectId, assetId, request, response, url.searchParams.get('download') === '1');
       }
+      if (path === '/api/local-cli' && method === 'GET') return json(response, await runtime.localClis());
+      if (path === '/api/local-cli' && method === 'POST') return json(response, await runtime.selectLocalCli(await readJson(request, 1024)));
       if (path === '/api/runtime' && method === 'GET') return json(response, runtime.info());
       if (path === '/api/uploads' && method === 'POST') return json(response, await parseUpload(await readJson(request, 12 * 1024 * 1024)));
       if (path === '/api/sessions' && method === 'GET') return json(response, runtime.list());
@@ -192,7 +194,7 @@ export async function createConfiguredRuntime(cwd = process.cwd(), signal?: Abor
   signal?.throwIfAborted();
   const runtime = new ColliderRuntime({ cwd, provider, model, transport, executionError,
     ...(config ? { imageProvider: new OpenAIImageProvider(config), imageOutputDir: config.outputDir } : {}) });
-  try { await runtime.init(); }
+  try { await runtime.init(); await runtime.restoreLocalCli(); }
   catch (error) { await runtime.shutdown('initialization_failed'); throw error; }
   return runtime;
 }

@@ -1,3 +1,5 @@
+import { detectLocalClis, localCliSelection, openLocalCli, type LocalCliOptions } from './local-cli.ts';
+import type { LocalCliInventory } from '../local-cli-types.ts';
 import { requestsPromoVideo, videoBrief, runVideo, executeFlova, type FlovaExecutor, type VideoFile } from './flova-video.ts';
 import { createHash, randomUUID } from 'node:crypto';
 import { mkdir, readFile, readdir, rename, writeFile } from 'node:fs/promises';
@@ -32,7 +34,7 @@ type SavedSession = { schemaVersion: 1; session: Session; pins: SkillPin[]; reco
   pinHistory?: { revision: number; pins: SkillPin[] }[]; imageAsset?: ImageAsset; imageRevision?: number;
   productionDraftAmendments?: ProductionDraftAmendment[]; videoFiles?: Record<string, VideoFile> };
 export type RuntimeOptions = { cwd: string; provider?: TextProvider; imageProvider?: ImageProvider; imageOutputDir?: string; model?: string; outputDir?: string; demoDelayMs?: number;
-  transport?: 'codex-cli' | 'grok-cli' | 'api'; executionError?: string; flovaExecutor?: FlovaExecutor;
+  localCli?: LocalCliOptions; transport?: 'codex-cli' | 'grok-cli' | 'api'; executionError?: string; flovaExecutor?: FlovaExecutor;
   mediaPipelineFactory?: (options: ConstructorParameters<typeof AutomaticMediaPipeline>[0]) => AutomaticMediaPipeline };
 
 const MAX_TURNS = 24;
@@ -255,6 +257,8 @@ function draftReferenceIds(value: unknown): string[] {
 
 export class ColliderRuntime {
   #options: RuntimeOptions;
+  #changingCli = false;
+  #closing = false;
   #directory: string;
   #pins: SkillPin[] = [];
   #sessions = new Map<string, SavedSession>();
@@ -335,6 +339,46 @@ export class ColliderRuntime {
       } catch { /* Ignore corrupt unrelated files; never log user materials or credentials. */ }
     }
   }
+  async restoreLocalCli(): Promise<void> {
+    let input: unknown;
+    try {
+      try { input = JSON.parse(await readFile(join(this.#directory, 'local-cli.json'), 'utf8')); }
+      catch (error) { if ((error as NodeJS.ErrnoException).code === 'ENOENT') return; throw error; }
+      await this.selectLocalCli(input);
+    }
+    catch (error) {
+      await this.#options.provider?.shutdown?.(); this.#options.provider = undefined;
+      this.#options.executionError = error instanceof RuntimeError ? error.message : '已保存的本地 CLI 配置暂不可用，请重新选择。';
+    }
+  }
+  #cliBusy(): boolean {
+    return this.#closing || this.#changingCli || [this.#tasks, this.#images, this.#videoTasks, this.#mediaRetries, this.#draftAmendments, this.#mediaDiscovery, this.#planReferences].some(work => work.size > 0)
+      || [...this.#sessions.values()].some(saved => saved.session.status === 'running');
+  }
+  async localClis(): Promise<LocalCliInventory> {
+    const entries = await detectLocalClis(this.#options.localCli);
+    const info = this.info();
+    return { entries, selected: info.transport === 'codex-cli' ? 'codex' : info.transport === 'grok-cli' ? 'grok' : undefined, model: info.model, busy: this.#cliBusy() };
+  }
+  async selectLocalCli(input: unknown): Promise<RuntimeInfo> {
+    const selection = localCliSelection(input);
+    if (this.#cliBusy()) throw new RuntimeError('请先暂停正在运行的任务，等待本地进程停止后再切换 CLI。', 409);
+    this.#changingCli = true;
+    let provider: TextProvider | undefined;
+    try {
+      provider = await openLocalCli(selection, this.#options.cwd, this.#options.localCli);
+      if (this.#closing) throw new RuntimeError('服务正在关闭，请稍后再切换。', 409);
+      const temporary = join(this.#directory, `local-cli-${randomUUID()}.tmp`);
+      await writeFile(temporary, JSON.stringify(selection), { mode: 0o600 });
+      await rename(temporary, join(this.#directory, 'local-cli.json'));
+      const previous = this.#options.provider;
+      this.#options.provider = provider; this.#options.model = provider.model;
+      this.#options.transport = provider.transport; this.#options.executionError = undefined;
+      provider = undefined;
+      await previous?.shutdown?.();
+      return this.info();
+    } finally { await provider?.shutdown?.(); this.#changingCli = false; }
+  }
   info(): RuntimeInfo {
     const automaticProductionError = !this.#options.imageProvider ? '图像服务尚未配置。'
       : !this.#options.provider?.supportsWebDiscovery ? '当前 CLI 未提供真实网页素材检索能力。'
@@ -348,6 +392,7 @@ export class ColliderRuntime {
   list(): Session[] { return [...this.#sessions.values()].sort((a, b) => b.session.updatedAt.localeCompare(a.session.updatedAt)).map(saved => clone(saved.session)); }
   get(id: string): Session { return clone(this.#get(id).session); }
   #get(id: string): SavedSession {
+    if (this.#changingCli) throw new RuntimeError('正在切换 CLI，请稍后重试。', 409);
     const saved = this.#sessions.get(id);
     if (!saved) throw new RuntimeError('未找到此会话。', 404);
     return saved;
@@ -575,6 +620,7 @@ export class ColliderRuntime {
     throw new RuntimeError('本轮自动修复次数已用完，已有成果已保存。', 502);
   }
   async create(input: unknown): Promise<Session> {
+    if (this.#changingCli) throw new RuntimeError('正在切换 CLI，请稍后重试。', 409);
     const value = object(input);
     if (!Array.isArray(value.brands) || value.brands.length !== 2) throw new RuntimeError('请提供两个品牌。');
     if (value.mode !== 'demo' && value.mode !== 'live') throw new RuntimeError('请选择实时模式或演示模式。');
@@ -1357,6 +1403,7 @@ export class ColliderRuntime {
     await this.#writes.get(id);
   }
   async shutdown(_reason = 'service_stopping'): Promise<void> {
+    this.#closing = true;
     for (const controller of this.#videoControllers.values()) controller.abort();
     await Promise.allSettled([...this.#videoTasks.values()]);
     for (const saved of this.#sessions.values()) {

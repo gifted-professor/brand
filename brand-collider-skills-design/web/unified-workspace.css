@@ -14,3 +14,12 @@
 
 .u-cli-execution{margin-top:10px;color:var(--brand-black)}.u-cli-execution pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.7;color:var(--brand-black)}.u-cli-execution>small{display:block;font-size:12px;line-height:1.7}
 .u-direction-picker>summary>span{flex:1;min-width:0;overflow-wrap:anywhere;line-height:1.7}.u-direction-picker>summary>svg{flex:none}.u-direction-picker[open]>summary>svg:last-child{transform:rotate(180deg)}.u-direction-picker .u-concepts>button:disabled{cursor:default}.u-direction-picker .u-concepts>button[aria-pressed=true]{border-width:2px}
+
+.local-cli-settings { display: grid; gap: 16px; }
+.local-cli-settings fieldset { display: grid; gap: 10px; border: 1px solid #ddd; border-radius: 12px; padding: 16px; }
+.local-cli-option { display: flex; align-items: center; gap: 12px; padding: 8px 0; }
+.local-cli-option span { display: grid; gap: 5px; }
+.local-cli-option small { color: #667085; line-height: 1.5; }
+.local-cli-model { display: grid; gap: 8px; }
+.local-cli-model input { padding: 12px; border: 1px solid #aaa; border-radius: 8px; font: inherit; }
+.local-cli-settings [role=alert] { color: #b42318; }

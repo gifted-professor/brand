@@ -141,7 +141,7 @@ export function canvasIntegration(initialize: ReturnType<typeof createColliderSe
   const openOnce = createCanvasOpener(initialize, store);
   const middleware = async (req: IncomingMessage, res: ServerResponse, next: () => void) => {
     const path = req.url?.split('?')[0] ?? '';
-    if (!/^\/api\/(?:canvas\/(?:open|workflow)|runtime|sessions(?:\/.*)?|production(?:\/.*)?|uploads)$/.test(path)) { next(); return; }
+    if (!/^\/api\/(?:canvas\/(?:open|workflow)|runtime|local-cli|sessions(?:\/.*)?|production(?:\/.*)?|uploads)$/.test(path)) { next(); return; }
     const json = (status: number, data: unknown) => { res.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }); res.end(JSON.stringify(data)); };
     if (!['127.0.0.1', '::1', '::ffff:127.0.0.1'].includes(req.socket.remoteAddress || '') || !/^(?:127\.0\.0\.1|localhost|\[::1\])(?::\d+)?$/.test(req.headers.host || '') || (req.headers.origin && ![`http://${req.headers.host}`, `https://${req.headers.host}`].includes(req.headers.origin))) { json(403, { error: '请从本机当前页面发起请求。' }); return; }
     try {
