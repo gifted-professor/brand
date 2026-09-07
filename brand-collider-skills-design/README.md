@@ -1,4 +1,4 @@
-# 联名碰撞器
+# Spark 火花 · 共创工作台
 
 > 完整项目介绍、实际界面截图、操作流程与架构图见 [项目总览 README](../README.md)。当前界面为「无限画布 + 持续协作对话」，交互细节见 [统一工作空间](docs/UNIFIED_WORKSPACE.md)。
 
@@ -6,7 +6,7 @@
 
 页面展示公开角色发言、Skill 使用记录与阶段结果。角色为 AI 模拟；过程透明不包括模型私有推理，也不代表品牌官方发言。
 
-联名设计以双方主营产品、内容或服务为核心，支持品牌 × 品牌、IP、设计师或文化机构等两方合作。品类开放，覆盖咖啡、3C、首饰、鞋服、美妆、家居及数字服务等场景，允许双方共同开发。默认充分展开约 20–30 个有独立用途的候选物料，区分核心、推荐和可选，按用户范围调整；服务项目无需强加实体周边。每件物料都有设计、合作资产表达、执行条件与独立视觉提示词，可在画布查看、讨论并随方案导出。详见 [物料策划说明](docs/MATERIAL_PLANNING.md) 与 [67 个案例的合作产物研究及首饰补充例](docs/COLLABORATION_PRODUCTS.md)。当前生图按钮仍只生成一张概念主视觉，候选清单不代表已批量出图，开放品类也不等于每种组合均已通过真实模型或生产验证。
+联名设计以双方主营产品、内容或服务为核心，支持品牌 × 品牌、IP、设计师或文化机构等两方合作。品类开放，覆盖咖啡、3C、首饰、鞋服、美妆、家居及数字服务等场景，允许双方共同开发。默认充分展开约 20–30 个有独立用途的候选物料，区分核心、推荐和可选，按用户范围调整；服务项目无需强加实体周边。每件物料都有设计、合作资产表达、执行条件与独立视觉提示词，可在画布查看、讨论并随方案导出。详见 [物料策划说明](docs/MATERIAL_PLANNING.md) 与 [67 个案例的合作产物研究及首饰补充例](docs/COLLABORATION_PRODUCTS.md)。完整自动制作流程可按本轮范围逐件生图与审查；候选清单不代表所有物料都已生成或验收。开放品类不等于每种组合均已通过真实模型或生产验证。
 
 六个 Skill 共用 [开放品类适配方法](.claude/skills/brand-profile/references/CATEGORY_ADAPTATION.md)，从业务能力、产品线、用户动作与环境推导可设计部位、双方融合和物料；通过主营深化、邻近延伸及探索提案发散。方法全文实际加载并固定哈希，行业示例按需参考，陌生品类无需先加模板。范围说明、程序检查和行为评估入口见 [物料策划说明](docs/MATERIAL_PLANNING.md)。
 
@@ -23,7 +23,7 @@ npm run dev
 
 打开 [http://localhost:5173](http://localhost:5173)。开发前端将 `/api` 代理到本地 Node 服务的 `4318` 端口。
 
-真实模式读取仅服务端可用的 `.env.local`。当前使用 `OPENAI_PROVIDER=cpa` 与 `OPENAI_MODEL=gpt-6-astra`，通过已安装的 remote-cpa helper 读取本机 CPA 连接与凭证；CPA Key 只进入内存。新机器从 `.env.example` 创建配置并先配置 remote-cpa；原网关方式仍可显式选用 `openai-compatible`。演示模式会明确标注，不需要把演示内容当作真实模型结果。
+真实模式读取仅服务端可用的 `.env.local`。复制 `.env.example` 后，选择本机已登录的 CLI；真实生图需要另填自己的图像服务地址与密钥。默认示例不依赖维护者的 CPA。完整配置与实测边界见 [Spark 火花使用指南](../README.md#配置真实生图)。
 
 生产构建由同一 Node 服务提供网页与 API：
 
@@ -36,7 +36,7 @@ npm start
 
 ## API 生图
 
-当前链路是 **CPA → `gpt-6-astra` → `gpt-image-2`**，已真实出图验证。工作台文本模型也配置为 CPA 的 `gpt-6-astra`。参考 `abtop-dashboard` 的 Responses 生图格式，直接请求 CPA `/v1/responses`；凭证通过现有 remote-cpa helper 获取，不使用原 HNCloud Key。
+图像适配器请求配置服务的 `/v1/responses`，通过 `image_generation` 工具使用 `gpt-image-2`。`IMAGE_RESPONSES_MODEL` 是独立的主模型配置，文字协作使用所选 CLI。2026-09-07 实测通过已配置的 CPA 生成图片；CPA 是可选接入方式，新用户也可配置满足协议的自有服务。
 
 Node.js 24+ 下执行：
 
@@ -51,7 +51,7 @@ npm run image:generate -- --prompt "米白色陶瓷杯，暖灰背景，柔和�
 
 已提供：双品牌工作台、品牌资料上传、角色对话、第三方标准输入、方向选择和方案呈现；六个 Skill 方法与参考契约；本地会话保存；ImageProvider、生图 CLI 和真实素材保存。
 
-完整产物 Schema、五个 MCP 工具协议及其全部业务守卫、独立图片内容检查、模板海报渲染器、数据库、可靠 worker 与多用户服务仍待实现。工作台使用简化会话数据和有界双角色协调，不能视为原技术设计已经全部落地。
+完整技术设计中的全部业务守卫、模板海报渲染器、数据库、可靠 worker 与多用户服务仍待实现。自动制作已接入逐件图像审查，但仍有待核实记录归档等限制。工作台使用简化会话数据和有界双角色协调，不能视为原技术设计已经全部落地。
 
 当前双品牌角色是用户更新后的产品方向，替代早期文档中的单导演设想。[TECHNICAL_DESIGN.md](TECHNICAL_DESIGN.md)、[agent/SYSTEM.md](agent/SYSTEM.md) 和 [CONTRACTS.md](contracts/CONTRACTS.md)保留完整设计与契约参考；`config/runtime.example.json` 仍是草案，不是当前网页配置或可直接传入 SDK 的对象。
 

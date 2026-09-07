@@ -1,320 +1,205 @@
-# 碰撞 COLLIDER · 品牌联名创作工作台
+# Spark 火花
 
-把两个品牌的资料、联名方向、设计、文案和视觉成果，放进同一个可以持续讨论的工作空间。
+从找到合作伙伴，到把联名想法变成可讨论、可修改、可追溯的方案与视觉成果。
 
-COLLIDER 面向品牌策划、创意与设计协作：从合作目标出发，由应用主控协调研究、创作与审查角色，使用六个专业 Skill 推进方案。用户在右侧持续补充要求，在左侧无限画布查看、整理和追溯每一阶段的成果。
+Spark 火花是一个**本地单用户品牌共创工作台**。你选择两个品牌、补充合作目标后，应用协调研究、创作和审查角色推进九步协作；方案、物料、图片与审查记录逐步加入同一张无限画布，可以继续对话修改并导出。
 
-项目同时包含可追溯的品牌合作案例库、案例检索工具，以及图片生成与已有制作物料接入能力。当前定位为 **本地单用户工作台**。
+项目由品牌发现入口与共享共创工作台组成。代码目录及部分历史界面仍保留 Brand Relations、COLLIDER 名称；对外项目名称统一为 **Spark 火花**。
 
-联名适配通过六个 Skill 共用的 [开放品类方法](brand-collider-skills-design/.claude/skills/brand-profile/references/CATEGORY_ADAPTATION.md) 推导：从业务、产品线和用户场景拆解可设计部位及体验，再发散主营、邻近与探索产物。它不依赖品牌名单；具体行业示例按需参考，方法全文会进入实际模型上下文。
+![共创画布中的方案与产品效果图](docs/screenshots/06-production.png)
 
-六个原始 Skill 的 1.5.0 版加入 [真实素材依据](brand-collider-skills-design/.claude/skills/brand-profile/references/VISUAL_EVIDENCE.md)：从研究阶段并行采集来源图片，逐件绑定真实参考，生成后对照身份与设计。[本地执行方法](brand-collider-skills-design/.claude/skills/visual-production/references/LOCAL_EXECUTION.md) 提供可复用采集器和最多 4 并发的批量生成、检查与恢复；网页单图入口的接入范围见 [工作流说明](brand-collider-skills-design/docs/AGENT_WORKFLOW.md)。
+*截图为已有 MANNER × 王者荣耀概念项目，展示画布能力；不代表官方联名，也不是下文库迪 × 奶龙实测的截图。*
 
-![已有项目的产品效果图与持续协作对话](docs/screenshots/06-production.png)
+## 从这里开始
 
-*实际页面截图：MANNER × 王者荣耀概念探索项目，读取本机已有制作文件。图中为 AI 概念设计与效果探索，非官方联名发布；具体选案、审查和制作状态以节点记录为准。*
+- [安装与启动](#安装与启动)
+- [选择本地 CLI](#选择本地-cli)
+- [配置真实生图](#配置真实生图)
+- [从合作品牌到九步共创](#从合作品牌到九步共创)
+- [全链路实测与当前限制](#全链路实测与当前限制)
+- [数据、隐私与日志](#数据隐私与日志)
+- [开发与项目结构](#开发与项目结构)
 
-## 品牌发现与渠道预演入口
+## 安装与启动
 
-已接入 KAI-NEX 的 Brand Relations：品牌资料 → 引力匹配／抽卡 → 建联预演 → 当前 COLLIDER 画布。代码位于 `brand-relations-demo/`，直接复用本仓库工作台与最新媒体能力。原工作台仍可独立运行。
+需要 Git、Node.js **24+**。真实文字协作需要本机已安装并登录的 Codex 或 Grok CLI；真实图片生成还需要你自己的图像服务及额度。克隆源码不会获得维护者的账号、密钥或本机会话。
+
+在终端执行：
 
 ```bash
+git clone https://github.com/gifted-professor/brand.git
+cd brand
 npm --prefix brand-collider-skills-design ci
 cd brand-relations-demo
 npx --yes pnpm@10.11.0 install --frozen-lockfile
+cp .env.example .env.local
 npx --yes pnpm@10.11.0 dev
 ```
 
-打开 [品牌发现](http://127.0.0.1:5174/)。建联为本地演示；模型调用需要配置该入口的 `.env.local`。详见 [接入说明](docs/BRAND_RELATIONS_MERGE.md)。
+打开 [Spark 火花](http://127.0.0.1:5174/)。如果端口被占用，以终端打印的地址为准。再次启动时，在 `brand-relations-demo/` 中运行最后一条命令即可。
 
-## 内容导航
+先体验界面可以浏览内置品牌与渠道预演；也可以打开[空白共创画布](http://127.0.0.1:5174/canvas.html)，点击「填入演示品牌」，用「交互演示」体验固定内容。演示不发起真实模型请求，不代表新生成的方案或图片。
 
-- [项目能做什么](#项目能做什么)
-- [界面与完整使用流程](#界面与完整使用流程)
-- [六个专业 Skill](#六个专业-skill)
-- [案例库与研究工具](#案例库与研究工具)
-- [快速启动](#快速启动)
-- [模型配置与图片生成](#模型配置与图片生成)
-- [架构与数据保存](#架构与数据保存)
-- [项目目录](#项目目录)
-- [当前边界](#当前边界)
-- [检查与文档索引](#检查与文档索引)
+`.env.local` 只在服务端读取，修改后重启服务。发现入口会继承相邻工作台的配置，本入口同名项覆盖继承值，进程环境变量优先级最高。新用户通常只需配置 `brand-relations-demo/.env.local`。
 
-## 项目能做什么
+## 选择本地 CLI
 
-| 能力 | 实际使用方式 |
+点击画布右上角的 **CLI / 模型名称**，检测并选择当前电脑的执行工具。
+
+| CLI | 当前支持 |
 | --- | --- |
-| 品牌资料整理 | 分别填写两个品牌的名称、介绍和可用资源，上传文字、PDF 或 Word 资料 |
-| 联名方向探索 | 研究双方品牌，形成三个可供选择的方向，选定后继续深化 |
-| 持续协作 | 在同一对话里补充标准、调整方向、暂停或继续；记录角色、阶段和实际使用的方法 |
-| 无限成果画布 | 成果逐步出现并保留；支持拖动、缩放、图层显隐、定位、进度跟随与整体鸟瞰 |
-| 完整成果查看 | 从卡片打开原文、媒体、来源和依赖，围绕具体节点继续讨论 |
-| 方案与视觉制作 | 以主营产品为核心展开物料候选，逐件查看设计与视觉提示词；满足条件后由用户触发主图生图 |
-| 已有制作项目 | 读取已接入项目的文档、图片、媒体和物料清单，展示文件状态并支持下载 |
-| 研究资料复用 | 独立维护案例来源、断言和差异，通过命令行检索并导出任务资料包 |
-| 本地保存与导出 | 保存会话及阶段结果，恢复历史项目，导出方案与对话 Markdown |
+| Codex | 检测安装、版本和登录状态；可选择执行共创流程 |
+| Grok | 检测安装和版本；可选择执行，认证状态需在实际运行时验证 |
+| Claude Code | 检测安装和版本，暂未接入执行 |
+| Gemini CLI | 检测安装和版本，暂未接入执行 |
 
-## 界面与完整使用流程
+填写该 CLI 和账号支持的模型名称，点击「使用此 CLI 和模型」。保存时检查 CLI，不发送模型请求，也不保证该模型一定可用。Codex 未登录时先在终端运行 `codex login`。
 
-当前页面统一为 **左侧画布 + 右侧协作对话**。项目资料、历史和工作方法在原页打开，研究到审查的成果始终留在同一张画布中。
+选择会在本机保存并在服务重启后恢复。有任务运行时，需要先暂停并等待进程停止，再切换；已完成的成果保留。检测针对**运行项目服务的电脑**，不是任意访问网页的另一台电脑。
 
-```mermaid
-flowchart TD
-    A[新建项目] --> B[录入品牌 A / B 资料与合作目标]
-    B --> C{选择协作模式}
-    C -->|AI 实时协作| D[模型执行品牌研究与创意阶段]
-    C -->|交互演示| E[使用固定演示内容体验流程]
-    D --> F[查看三个方向并选择]
-    E --> F
-    F --> G[设计方案 → 传播文案 → 视觉计划 → 文本审查]
-    G --> H[画布查看完整成果 / 导出 Markdown]
-    G --> I{真实模式且符合出图条件}
-    I -->|用户主动生成| J[图像服务 → 保存实际图片]
-    J --> H
-    H --> K[围绕成果补充要求]
-    K --> L[递增简报版本，更新受影响阶段]
-    L --> F
+CLI 使用其已有登录，仍会连接对应的远程模型服务并使用账号额度。**CLI 选择影响共创研究、策划、设计与审查，不会替代图像 API。**
+
+## 配置真实生图
+
+目前没有图像服务配置弹窗，需要编辑 `brand-relations-demo/.env.local`。选择一个你有权使用的服务，填写：
+
+```dotenv
+# 文字协作使用本机 CLI；也可以启动后在画布选择。
+COLLIDER_AGENT_TRANSPORT=codex-cli
+CODEX_CLI_MODEL=gpt-5.5
+
+# 图像服务使用自己的地址和密钥。
+OPENAI_PROVIDER=openai-compatible
+OPENAI_BASE_URL=https://your-image-service.example/v1
+OPENAI_API_KEY=replace-with-your-key
+
+# 当前图像适配器只接受 gpt-image-2。
+IMAGE_MODEL=gpt-image-2
+IMAGE_RESPONSES_MODEL=gpt-5.5
+IMAGE_REASONING_EFFORT=auto
+IMAGE_TIMEOUT_MS=780000
 ```
 
-*图中概括一般修改流程；明确只改文案时，保留已选方向与统一设计，更新文案及其后续阶段。*
+上面的地址与密钥是占位符，不能直接调用。`CODEX_CLI_MODEL` 和 `IMAGE_RESPONSES_MODEL` 分别属于文字 CLI 与生图请求的主模型，需按各自服务的实际支持调整；它们不必相同。
 
-### 1. 新建一个联名项目
+服务必须支持 **`POST /v1/responses`、流式响应及 `image_generation` 工具中的 `gpt-image-2`**。仅支持聊天接口或 `/images/generations` 的服务不能直接替换。模型列表中有同名模型，也不等于已支持完整生图链路。当前不能随意把 `IMAGE_MODEL` 改成其他图像模型。
 
-新项目从空画布开始。右侧依次添加品牌 A、品牌 B 和合作目标。想先体验界面，可以点击「填入演示品牌」，确认模式为「交互演示」，再开始协作。
+配置后重启服务，再进入完整共创流程。具备图像与 CLI 素材检索能力时，应用会采集参考、绑定本轮物料、逐件出图并审查。图片服务未配置时，品牌入口的完整流程可生成文字方案与提示词；提示词和预加载图片不会被当作本轮实际出图。已经创建的仅文字会话不会因修改配置自动变成批量生图任务，请核对会话能力与提示。
 
-![空白工作空间与项目入口](docs/screenshots/01-workspace.png)
+已配置私人 CPA 的用户也可以使用 `OPENAI_PROVIDER=cpa`，由本机 remote-cpa helper 获取连接与凭证；这是可选接入方式，普通新用户不需要维护者的 CPA 配置。
 
-演示使用虚构的「早八咖啡 × 留白书店」，适合了解交互，不需要发起真实模型请求。以下流程截图中的演示草稿均为固定占位内容。
+密钥不要加 `VITE_` 前缀，也不要写进 README 或提交 Git。实际调用使用你配置的服务及其额度。
 
-### 2. 补充品牌与合作简报
+## 从合作品牌到九步共创
 
-点击品牌入口填写介绍、用户群体、现有资源和约束，并上传补充资料。建议把目标写成具体任务，例如「让咖啡与主题阅读形成关联，增加周末到店」，同时说明可用触点、不能新增的物料和待确认事项。
+1. **准备品牌资料**：填写品牌介绍、已有能力、合作需求与目标。可上传文字、JSON、PDF、Word；单文件上限 8 MiB，扫描 PDF 没有 OCR，需要补充文字。
+2. **选择合作品牌**：通过品牌发现、关系匹配或案例入口查看合作方，进入共创画布。建联操作是本地演示，不会发送邀约。
+3. **启动完整方案**：点击「一键生成完整联名方案」。预加载渠道预演是参考展示；此按钮会创建或恢复独立的完整工作流会话。
+4. **跟随进度并修改**：右侧显示九步及当前任务，左侧逐步呈现成果。完整入口支持自动选案；手动选案的会话会等待你选择方向。可以暂停、继续或补充标准。
+5. **检查图片与审查意见**：查看物料范围、真实参考、生成文件和逐件验收结果。生成成功不等于验收通过；被阻塞的依赖可能使后续物料等待。
+6. **导出与继续协作**：右上角「导出」下载当前方案与记录的 Markdown；图片等文件从画布素材入口查看、下载。再次进入已有项目可恢复会话。
 
-![品牌资料弹窗](docs/screenshots/02-brand-brief.png)
-
-支持 `.txt`、`.md`、`.json`、`.pdf`、`.docx`，单文件上限 **8 MiB**，提取文本上限 **12 万字符**。文本文件使用 UTF-8，JSON 需语法有效。PDF / Word 当前主要提取文本，扫描件没有 OCR，图片与复杂排版中的重要信息需要补充说明。
-
-### 3. 研究品牌，选择方向
-
-开始协作后，右侧显示阶段交接和公开成果；左侧逐步加入品牌解读与创意节点。三个方向准备好后，在右侧选择一个继续深化。
-
-![创意方向选择，交互演示](docs/screenshots/03-directions.png)
-
-当前应用按预设阶段调用同一配置的模型，并记录专业角色与品牌视角。公开记录包含阶段目标、Skill 和提交结果，不展示模型私有推理。
-
-### 4. 查看完整方案，持续提出修改
-
-方向选定后，继续形成设计、文案、视觉计划和审查成果。点击「查看全部成果」可鸟瞰整个项目；点击卡片打开完整内容。
-
-![完成演示流程后的成果画布](docs/screenshots/04-results.png)
-
-![成果详情与围绕节点继续讨论](docs/screenshots/05-artifact-detail.png)
-
-在底部输入框提交新标准，例如「双方的贡献都要在方案中体现」。也可以在详情中点击「围绕这个节点继续对话」，把该成果作为参考上下文。应用将新要求与来源资料分别保存，按新版本继续工作。
-
-普通修改会重新进入创意阶段；明确只改宣传语等文案要求时，可以保留方向和设计。运行中的旧版本结果不会覆盖新版本。暂停会在当前步骤返回后停止派发下一步。
-
-### 5. 查看制作物料与实际图片
-
-已有制作项目可把研究、故事、物料、传播图、视频筹备和审查记录一起载入画布。当前接入的样板是 **MANNER × 王者荣耀**，包含杯托、双小杯饮品、故事折页、传播海报等已有文件。
-
-![制作物料详情与真实文件预览](docs/screenshots/07-material-preview.png)
-
-节点详情展示主图、附属文件、上下游依赖、来源和下载入口。「已保存」「已审阅·保留限制」「待制作」等状态分别表达文件存在与审查进度。视频脚本和分镜属于筹备资料，只有实际视频文件存在并通过文件校验时才显示播放器。
-
-本机已有样板文件时，可打开 [制作项目](http://localhost:5173/?view=production&project=manner-hok-20260905)。这些文件位于被 Git 忽略的 `outputs/` 中，单独克隆源码不会自动获得完整样板素材；本 README 的截图已单独保存，可随仓库查看。
-
-### 6. 用图层组织长期项目
-
-左下角「图层」提供研究、创意、设计、文案、生图、视频与审查分类。点击名称定位，点击眼睛切换显隐，展开分类查看具体成果。卡片位置与视角按项目保存在当前浏览器。
-
-![图层导航与制作项目](docs/screenshots/08-layers.png)
-
-拖动画布空白处平移；按住 Command / Control 滚轮缩放，也可使用缩放按钮。手动浏览后点击「返回进度」恢复自动跟随。已有项目支持同步来源文件，新物料会进入画布。
-
-小屏幕采用上方画布、下方对话的布局，两部分各自滚动。
-
-<img src="docs/screenshots/09-mobile.png" alt="390 像素宽的小屏工作空间，交互演示" width="390">
-
-## 六个专业 Skill
-
-项目将创作方法存放在受信任的 Skill 文件中。运行时读取当前阶段需要的方法与参考资料，并在会话中固定版本和内容摘要。
-
-| Skill | 职责 | 主要交付 |
-| --- | --- | --- |
-| `brand-profile` | 品牌研究 | 品牌特征、双方资源、来源声明、信息缺口 |
-| `collab-ideation` | 联名创意 | 合作机制、方向与取舍依据 |
-| `design-spec` | 设计方案 | 产品与视觉设定、物料外观、统一设计稿 |
-| `campaign-copy` | 传播文案 | 故事主线、逐件文案与视频叙事筹备 |
-| `visual-production` | 视觉制作 | 物料计划、提示词、视觉素材制作方法 |
-| `quality-review` | 质量审查 | 对照约束检查完整性、一致性与未确认事项 |
-
-Skill 源码位于 [`.claude/skills/`](brand-collider-skills-design/.claude/skills/)。六个 Skill 是专业方法，由主控按阶段使用。
-
-创意方法文件已包含「十二候选评审、最多三个成熟方案」的赛马规则。网页已接入以核心产品、内容或服务为中心的物料候选清单、逐件视觉提示词、画布与导出；支持双方品牌共同开发，品类开放，可按咖啡、3C、首饰、鞋服、美妆、家居或数字服务等实际业务展开。默认充分探索约 20–30 个适配项目，并服从用户范围和资源限制；服务不强制配实体周边，角色或尺寸变体单列。**网页运行时仍采用两方输入、固定阶段和三个方向校验**，尚未完整自动编排十二进三、独立冷评或逐件批量生图；开放品类不等于所有组合已实际验证。详见 [物料策划说明](brand-collider-skills-design/docs/MATERIAL_PLANNING.md)、[67 个案例的合作产物研究及首饰补充例](brand-collider-skills-design/docs/COLLABORATION_PRODUCTS.md)、[赛马方法](brand-collider-skills-design/.claude/skills/collab-ideation/references/TOURNAMENT.md) 与 [制作包方法](brand-collider-skills-design/.claude/skills/visual-production/references/CAMPAIGN_KIT.md)。
-
-## 案例库与研究工具
-
-`brand-case-research/` 负责整理历史品牌合作案例，保留资料来源、可核验断言、方法解释和冲突。资料位于 `品牌物料/案例库/`，原始报告与 CSV / JSON 也保留在 `品牌物料/` 中。
-
-2026-09-05 本次本地校验：**67 个案例、69 条来源记录、40 条方法记录、8 条冲突记录**。来源记录数不等于独立证据数量，案例数也不表示已全部核验。
-
-在仓库根目录执行，工具只依赖 Python 3：
-
-```bash
-# 检查库结构与引用
-python3 brand-case-research/scripts/case_library.py validate 品牌物料/案例库/library.json
-
-# 按任务检索案例
-python3 brand-case-research/scripts/case_library.py query 品牌物料/案例库/library.json \
-  --query "咖啡 数字内容 到店" --limit 5
-
-# 导出给创意阶段使用的研究资料包
-python3 brand-case-research/scripts/case_library.py packet 品牌物料/案例库/library.json \
-  --query "咖啡 数字内容 到店" --consumer collab-ideation --limit 5 \
-  --output research-context.json
-```
-
-研究包目前独立生成，网页尚未自动接入案例检索。历史案例用于参考合作机制；当前品牌的资源、预算与授权仍需单独确认。
-
-相关入口：[案例索引](品牌物料/案例库/案例索引.md) · [使用说明](品牌物料/案例库/使用说明.md) · [资料消费接口](brand-case-research/references/consumer-contract.md)
-
-## 快速启动
-
-需要 **Node.js 24+** 与 npm。以下命令均在仓库根目录执行：
-
-```bash
-npm --prefix brand-collider-skills-design ci
-npm --prefix brand-collider-skills-design run dev
-```
-
-打开 [http://localhost:5173](http://localhost:5173)。开发模式同时启动 Vite 前端与 Node API，前端把 `/api` 请求代理到 `127.0.0.1:4318`。
-
-首次使用可以直接选择「交互演示」。真实模式另需配置文本服务，见下一节。
-
-构建后由 Node 提供网页和 API：
-
-```bash
-npm --prefix brand-collider-skills-design run build
-npm --prefix brand-collider-skills-design start
-```
-
-打开 [http://localhost:4318](http://localhost:4318)。启动前关闭占用同一 API 端口的开发服务。
-
-## 模型配置与图片生成
-
-配置模板是 [`.env.example`](brand-collider-skills-design/.env.example)，本地配置文件为 `brand-collider-skills-design/.env.local`。新环境可复制模板后填写；已有本地配置时保留原文件。配置由服务端读取。
-
-| 配置项 | 用途 |
+| 步骤 | 工作内容 |
 | --- | --- |
-| `OPENAI_PROVIDER` | `cpa` 使用本机 remote-cpa helper；`openai-compatible` 使用显式网关配置 |
-| `OPENAI_BASE_URL` / `OPENAI_API_KEY` | 使用兼容网关时填写自己的服务地址与凭证 |
-| `OPENAI_MODEL` | 文本模型；当前示例为 `gpt-6-astra` |
-| `TEXT_MAX_TOKENS` / `TEXT_TIMEOUT_MS` | 文本输出预算与超时，默认 16384 / 180000 ms |
-| `TEXT_REASONING_EFFORT` | 文本推理强度，默认 `low` |
-| `IMAGE_RESPONSES_MODEL` | 图片请求的 Responses 编排模型，示例为 `gpt-6-astra` |
-| `IMAGE_MODEL` | 图像模型，示例为 `gpt-image-2` |
-| `IMAGE_TIMEOUT_MS` / `IMAGE_OUTPUT_DIR` | 图像请求超时与保存位置 |
+| 1 | 品牌 A 研究 |
+| 2 | 品牌 B 研究 |
+| 3 | 提出创意初稿 |
+| 4 | 比较并收敛方向 |
+| 5 | 深化产品与体验 |
+| 6 | 统一设计与物料清单 |
+| 7 | 完成传播文案 |
+| 8 | 规划视觉与单件效果图，按配置执行物料制作 |
+| 9 | 审查并汇总交付 |
 
-CPA 模式需要另行安装并配置本机 remote-cpa helper；它不是仓库 npm 依赖，凭证由 helper 读取到内存。兼容网关模式需使用支持所需文本或 Responses 图像能力的服务。模型可用性取决于实际网关，配置名称本身不代表调用成功。
+九步由六个专业 Skill 支撑：品牌研究、联名创意、设计规格、传播文案、视觉制作和质量审查。双方研究可并行；九步不是九张图片，物料数量取决于清单及本轮范围。
 
-网页出图需要用户明确触发，并满足选案和出图前文本自检条件。也可独立使用生图 CLI：
+画布支持拖动、缩放、图层显隐和成果定位。点选成果可以继续讨论；补充要求会更新简报版本与受影响阶段。「查看全部成果」用于找回画布中的内容，「同步最新成果」用于刷新已有记录。
 
-```bash
-# 检查连接与模型列表
-npm --prefix brand-collider-skills-design run image:check
+![画布图层与成果导航](docs/screenshots/08-layers.png)
 
-# 实际生成图片，会调用上游服务并可能计费
-npm --prefix brand-collider-skills-design run image:generate -- \
-  --prompt "米白色陶瓷杯，暖灰背景，柔和棚拍光，无文字" --ratio 1:1
-```
+## 全链路实测与当前限制
 
-图片和元数据保存到工作台 `outputs/images/`。超时或断流时应先检查任务状态与已保存文件，避免重复请求。更多配置见 [Image API 说明](brand-collider-skills-design/docs/IMAGE_API.md)。
+**2026-09-07，库迪咖啡 × 奶龙**使用本机 Codex CLI / `gpt-5.5` 进行真实协作，图像经已配置的 CPA / `gpt-image-2` 生成。实测覆盖完整会话恢复、品牌研究、创意与设计、真实素材采集、逐件生图、第九步审查、暂停恢复和 Markdown 导出。
 
-## 架构与数据保存
-
-```mermaid
-flowchart LR
-    UI[React + TypeScript 无限画布与协作对话] -->|HTTP /api| API[Node.js 本地服务]
-    API --> UP[品牌资料文本提取]
-    API --> RT[阶段编排 / 简报版本 / 结构校验]
-    SK[六个可信 Skill 与参考契约] --> RT
-    RT --> TEXT[CPA 或 OpenAI-compatible 文本模型]
-    RT --> IMG[ImageProvider / Responses 图像服务]
-    RT --> SAVE[本地会话与图片文件]
-    API --> PROD[已有制作项目文件适配]
-    PROD --> FILES[manifest / 文档 / 图片 / 媒体]
-    LIB[案例库与原始资料] --> CLI[Python 检索与研究包]
-    CLI -. 独立交接，网页待接入 .-> RT
-```
-
-前端使用 React 19、TypeScript、Vite 与 Lucide 图标；后端使用 Node.js，PDF / DOCX 文本提取分别使用 `pdf-parse` 与 `mammoth`。前后端共享会话与方案类型。
-
-| 数据 | 保存位置 / 行为 |
+| 实测项 | 结果 |
 | --- | --- |
-| 会话、品牌提取文本、消息、阶段成果、Skill 快照 | `brand-collider-skills-design/outputs/sessions/` |
-| 生成图片与元数据 | `brand-collider-skills-design/outputs/images/` |
-| 已有 MANNER 项目制作文件 | 根目录 `outputs/manner-hok-20260905/` |
-| 画布坐标、视野、图层显隐 | 当前浏览器，按项目保存 |
-| 案例库 | `品牌物料/案例库/library.json` |
-| README 页面截图 | `docs/screenshots/`，可随仓库保存 |
+| 方案与物料清单 | 保存 24 项候选，其中 15 项纳入本轮、9 项可选项未制作 |
+| 真实生图 | 生成 3 张图片 |
+| 逐件验收 | 取杯口提示贴通过；主题饮品需修订；随杯小卡待核实 |
+| 未完成物料 | 7 项阻塞，5 项等待上游验收，尚未生成 |
+| 最终状态 | 保留为部分完成、需修订；没有把整轮标成全部通过 |
+| 导出 | 当前方案与记录成功导出 |
 
-会话采用临时文件写入后替换的方式保存。重启时未完成任务恢复为暂停，由用户继续。简报新版本会使过期的异步结果失效。`outputs/` 和 `.env.local` 不纳入 Git；迁移项目时，运行数据需要另行备份。
+这证明流程能到达真实生图、审查和导出，**不代表 15 件物料全部交付，也不保证任意品牌组合都会一次成功**。源码含演示素材；这轮实测的完整会话、原图与原始日志仅保存在本机，不随克隆提供。
 
-## 项目目录
+实测已修复长时间停留 0/9 时诊断不足、CLI 代理变量传递、Codex 输出 Schema 兼容、制作范围校验、已知代理 DNS 识别和透明 PNG 展示转换超限等问题。当前仍有以下限制：
+
+- 单次最多 4 张参考图。身份参考和上游图片合计超限时会阻塞，尚无完整的自动缩减参考机制。
+- 品牌身份、角色准确性和披露文字仍需逐件审阅，不能仅以“图片生成成功”判断可用。
+- 部分“等待审查”实际表示等待上游图验收；未核实证据的归档与跨标签同步仍需改善。
+- 预置头像描述可能混入品牌资料，应核对官方角色身份依据。
+- 图像模型选择、服务连接测试尚无界面入口；CLI 安装状态不能代替模型权限与网络验证。
+
+2026-09-07 的 CLI 选择版本，两项目共 657 项自动化测试、构建及宿主 lint 通过；随后新增的损坏配置恢复用例与 CLI 专项共 6 项通过，类型检查通过。测试通过不代表所有生成内容已验收。
+
+## 数据、隐私与日志
+
+主入口运行数据位于 `brand-relations-demo/outputs/`：
+
+| 位置 | 内容 |
+| --- | --- |
+| `collider-sessions/` | 会话、成果与 `local-cli.json` 选择配置 |
+| `collider-cli-agents/` | CLI 调用工作目录和执行诊断；新选择的 CLI 可增加工具名子目录 |
+| `collider-images/` | 实际图片与生成元数据 |
+
+排查 0/9 时，先看右侧当前任务及错误，再检查 CLI 是否登录、模型是否受当前版本支持、网络是否可达。主控准备阶段尚未完成时也可能显示 0/9，不能只看计数判断进程是否卡死。
+
+每次调用的 `activity.json`、`execution.json` 提供阶段、时间与执行状态。活动日志采用受限元数据记录，不保存原始 CLI 输出；**调用目录中的任务输入、成果及其他文件仍可能包含你的品牌资料**，分享日志前应检查内容。不要上传整个输出目录或本机认证文件。
+
+`.env.local` 和 `outputs/` 默认不被 Git 跟踪；CLI 选择只保存工具 ID 与模型名，不复制登录凭据。实际模型请求仍会把必要的任务资料发送给你选择的服务。
+
+本仓库已有研究资料中的本机路径、飞书案例库记录及文档标识，不能视为完全没有内部信息的空白模板。2026-09-07 常见密钥特征检查未检出真实密钥，但不构成对全部文档、二进制附件及历史内容的保密保证。
+
+当前服务面向本机单用户，没有多用户账号、租户隔离或完整后台任务基础设施。主入口依赖 Node 服务端接口，**只部署 `dist/` 静态文件不能运行完整共创功能**。
+
+## 开发与项目结构
 
 ```text
-brand/
-├── README.md                         # 项目总览与截图导览
-├── docs/screenshots/                  # 可随仓库查看的实际页面截图
-├── brand-collider-skills-design/      # 网页工作台与模型服务
-│   ├── web/                          # 界面、画布与会话成果映射
-│   ├── src/server/                   # HTTP API、阶段运行时、制作文件接入
-│   ├── src/                          # 共享类型与图像服务实现
-│   ├── .claude/skills/                # 六个专业 Skill
-│   ├── contracts/                    # 完整产物契约设计参考
-│   ├── scripts/                      # 生图 CLI 与方法包校验
-│   ├── tests/                        # 运行时、接口及画布逻辑测试
-│   ├── docs/                         # 交互、架构与模型配置说明
-│   └── outputs/                      # 本地运行数据，Git 忽略
-├── brand-case-research/               # 案例研究方法与 Python 工具
-├── 品牌物料/                          # 原始资料、案例库与来源记录
-└── outputs/                          # 项目制作成果，Git 忽略
+brand-relations-demo/          品牌发现入口、宿主接口与共创画布入口
+brand-collider-skills-design/  共享工作台、运行时、CLI 与图像适配器
+brand-case-research/           可追溯案例研究与检索工具
+品牌物料/                     案例资料及证据库
+docs/                         接入记录、说明与历史截图
 ```
 
-## 当前边界
-
-- **本地应用**：没有账户体系、跨用户隔离、数据库任务队列或可靠多进程 worker。
-- **固定阶段编排**：专业角色按顺序调用配置模型，尚未实现独立 Codex 子 agent 自动调度、并行研究或独立模型审查。
-- **研究输入**：网页没有自动联网核验和案例库自动检索；输入资料与历史案例都需要结合来源判断。
-- **制作状态**：视觉计划、已生成文件和图片内容审查分别记录；同模型文本自检通过不等于图像、授权或生产验收通过。
-- **视频与生产文件**：已有媒体可以预览，但完整视频自动生成、模板海报渲染和可直接量产的生产文件输出尚未实现。
-- **完整契约**：当前使用简化会话结构，技术设计中的全部产物 Schema、MCP 工具协议与业务守卫尚未全部落地。
-
-## 检查与文档索引
-
-常用检查命令：
+在仓库根目录检查：
 
 ```bash
-npm --prefix brand-collider-skills-design run typecheck
 npm --prefix brand-collider-skills-design test
 npm --prefix brand-collider-skills-design run build
-
-# 方法包校验额外需要 PyYAML
-cd brand-collider-skills-design
-python3 scripts/validate_bundle.py
+npm --prefix brand-relations-demo test
+npm --prefix brand-relations-demo run build
+npm --prefix brand-relations-demo run lint
 ```
 
-本次 README 制作实际走通了浏览器演示流程：新建 → 品牌资料 → 三方向选择 → 方案完成 → 成果详情；同时读取已有制作项目拍摄物料与图层截图，并执行案例库校验。未为拍摄新增真实文本、生图或视频调用。截图日期为 **2026-09-05**，桌面视口 **1440 × 1000**，小屏视口 **390 × 844**。详见 [截图清单](docs/screenshots/README.md)。
+共享工作台也可独立运行，配置使用它自己的 `.env.local`：
 
-| 文档 | 内容 |
-| --- | --- |
-| [统一工作空间](brand-collider-skills-design/docs/UNIFIED_WORKSPACE.md) | 当前交互与画布行为，优先于早期页面划分 |
-| [角色与阶段交接](brand-collider-skills-design/docs/AGENT_WORKFLOW.md) | 主控、角色、版本与成果交接机制 |
-| [工作台详细说明](brand-collider-skills-design/docs/WORKBENCH.md) | 上传、运行、状态与历史验证记录 |
-| [制作项目接入](brand-collider-skills-design/docs/PRODUCTION_CANVAS.md) | 清单、素材顺序、文件与媒体适配 |
-| [Image API](brand-collider-skills-design/docs/IMAGE_API.md) | 图片参数、CLI、凭证与错误处理 |
-| [技术设计](brand-collider-skills-design/TECHNICAL_DESIGN.md) | 完整架构设计参考，包含尚未实现部分 |
-| [产物契约](brand-collider-skills-design/contracts/CONTRACTS.md) | 产物结构与业务规则设计 |
-| [历史检查记录](brand-collider-skills-design/CHECKS.md) | 对应版本的实际检查证据 |
-| [案例研究方法](brand-case-research/SKILL.md) | 案例整理、检索与证据维护 |
+```bash
+cd brand-collider-skills-design
+cp .env.example .env.local
+npm ci
+npm run dev
+```
+
+开发入口为 [5173](http://localhost:5173)，API 为 4318。独立工作台执行 `npm run build` 后可用 `npm start` 在 [4318](http://localhost:4318) 提供网页与 API。两入口共享代码，但会话存储分别维护。
+
+更多资料：
+
+- [品牌发现入口说明](brand-relations-demo/README.md)
+- [共享工作台说明](brand-collider-skills-design/README.md)
+- [集成来源与历史验证](docs/BRAND_RELATIONS_MERGE.md)
+- [物料策划方法](brand-collider-skills-design/docs/MATERIAL_PLANNING.md)
+- [图像适配技术说明](brand-collider-skills-design/docs/IMAGE_API.md)
+- [案例研究工具](brand-case-research/SKILL.md)
+
+品牌发现模块来自 [KAI-NEX/brand-relations-demo](https://github.com/KAI-NEX/brand-relations-demo)，保留其 [MIT 许可证](brand-relations-demo/LICENSE)。历史设计文档描述的是各阶段设计，不代表其中所有能力已经实现；当前操作以本文与实际界面状态为准。
