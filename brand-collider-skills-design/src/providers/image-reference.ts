@@ -100,7 +100,10 @@ export async function prepareImageReferences(
         record.longImageProtected = Math.max(width, height) / Math.min(width, height) > LONG_IMAGE_RATIO;
         const shouldResize = !record.longImageProtected && Math.max(width, height) > MAX_DIMENSION;
         const presentation = await presentTransparentImage(bytes);
-        if (presentation) {
+        if (presentation && presentation.data.length > 6 * 1024 * 1024) {
+          // Presentation must not invalidate an already accepted original.
+          record.reason = 'not_smaller';
+        } else if (presentation) {
           record.originalWidth = record.width = presentation.width;
           record.originalHeight = record.height = presentation.height;
           record.preparedBytes = presentation.data.length;
