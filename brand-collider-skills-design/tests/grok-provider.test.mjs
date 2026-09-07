@@ -99,6 +99,11 @@ test('Grok probes its executable without an auth command and returns only struct
   assert.ok(f.events.every(event => event.transport === 'grok-cli'));
   assert.doesNotMatch(JSON.stringify(f.events), /PRIVATE_THOUGHT|SECRET_STDERR|APP_SECRET/);
   const execution = f.events.at(-1);
+  const activityRaw = await readFile(join(f.outputDir, f.task.sessionId, 'v1', f.task.agentId, execution.runId, 'activity.json'), 'utf8');
+  const activity = JSON.parse(activityRaw);
+  assert.equal(activity.exitCode, 0); assert.equal(activity.phase, 'closed');
+  assert.ok(activity.stdoutBytes > 0); assert.ok(activity.stderrBytes > 0);
+  assert.doesNotMatch(activityRaw, /SECRET|PRIVATE_THOUGHT|APP_SECRET/);
   const saved = await readFile(join(f.outputDir, f.task.sessionId, 'v1', f.task.agentId, execution.runId, 'result.json'), 'utf8');
   assert.deepEqual(JSON.parse(saved), { message: 'ok' });
   assert.doesNotMatch(saved, /PRIVATE_THOUGHT|SECRET_STDERR|modelUsage|stopReason/);

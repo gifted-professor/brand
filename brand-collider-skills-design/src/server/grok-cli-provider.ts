@@ -1,3 +1,4 @@
+import { createCliActivity } from './cli-activity.ts';
 import { execFile, spawn } from 'node:child_process';
 import { mkdir, readFile, realpath, rename, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
@@ -190,22 +191,24 @@ export class GrokCliProvider implements TextProvider {
         try { result = await new Promise<Record<string, unknown>>((resolveRun, reject) => {
           execution.metrics!.preparationMs = elapsedMs(attemptStarted);
           const processStarted = performance.now();
+          const activity = createCliActivity(runDirectory, { runId, agentId: task.agentId });
           const child = spawn(this.#binary, args, { cwd: directory, env: this.#env, shell: false, detached: process.platform !== 'win32', stdio: ['pipe', 'pipe', 'pipe'] });
           execution.pid = child.pid; execution.state = 'running'; publish();
-          child.once('spawn', () => { execution.metrics!.processStartupMs = elapsedMs(processStarted); publish(); });
+          child.once('spawn', () => { activity.spawned(child.pid); execution.metrics!.processStartupMs = elapsedMs(processStarted); publish(); });
           let output = '', bytes = 0, failure: RuntimeError | undefined, forceTimer: NodeJS.Timeout | undefined;
           let streamPending = '', publicText = '', streamEnvelope: Record<string, any> | undefined;
           const webCalls = new Map<string, { name: 'web_search' | 'web_fetch'; status: string }>();
           const availableTools = new Set<string>();
           const kill = (signal: NodeJS.Signals) => { try { if (child.pid && process.platform !== 'win32') process.kill(-child.pid, signal); else child.kill(signal); } catch { /* Already exited. */ } };
           const stop = (error: RuntimeError) => { if (failure) return; failure = error; kill('SIGTERM'); forceTimer = setTimeout(() => kill('SIGKILL'), 1000); };
-          const cancelled = () => stop(new RuntimeError('本地 Grok CLI 任务已中止，未完成结果不会提交。', 499));
+          const cancelled = () => { activity.stop('cancelled'); stop(new RuntimeError('本地 Grok CLI 任务已中止，未完成结果不会提交。', 499)); };
           controller.signal.addEventListener('abort', cancelled, { once: true });
-          const timer = setTimeout(() => stop(new RuntimeError('Grok CLI 执行超时，进程已停止；可重试此步骤。', 504)), Math.max(1, deadline - Date.now()));
+          const timer = setTimeout(() => { activity.stop('timeout'); stop(new RuntimeError('Grok CLI 执行超时，进程已停止；可重试此步骤。', 504)); }, Math.max(1, deadline - Date.now()));
           const streamLine = (line: string) => {
             if (!line.trim()) return;
             let event;
-            try { event = JSON.parse(line); } catch { stop(new RuntimeError('Grok CLI 检索事件流无效，未提交结果。', 502)); return; }
+            try { event = JSON.parse(line); } catch { activity.stop('invalid_stream'); stop(new RuntimeError('Grok CLI 检索事件流无效，未提交结果。', 502)); return; }
+            activity.event(event);
             if (event.type === 'available_commands' && Array.isArray(event.tools)) {
               for (const name of event.tools) if (['web_search', 'web_fetch'].includes(name)) availableTools.add(name);
             }
@@ -225,9 +228,10 @@ export class GrokCliProvider implements TextProvider {
           };
           child.stdout.setEncoding('utf8');
           child.stdout.on('data', (chunk: string) => {
+            activity.stdout(Buffer.byteLength(chunk));
             if (execution.metrics!.firstStdoutMs === undefined) { execution.metrics!.firstStdoutMs = elapsedMs(processStarted); publish(); }
             bytes += Buffer.byteLength(chunk);
-            if (bytes > 8 * 1024 * 1024) { output = ''; stop(new RuntimeError('Grok CLI 输出超过限制，该步骤未提交。', 502)); return; }
+            if (bytes > 8 * 1024 * 1024) { activity.stop('output_limit'); output = ''; stop(new RuntimeError('Grok CLI 输出超过限制，该步骤未提交。', 502)); return; }
             if (failure) return;
             if (!streaming) output += chunk;
             else {
@@ -235,16 +239,17 @@ export class GrokCliProvider implements TextProvider {
               let end; while ((end = streamPending.indexOf('\n')) !== -1) { streamLine(streamPending.slice(0, end)); streamPending = streamPending.slice(end + 1); }
             }
           });
-          child.stderr.on('data', () => {});
-          child.stdin.on('error', () => stop(new RuntimeError('Grok CLI 无法接收任务，该步骤未提交。', 502)));
-          child.once('error', () => { failure = new RuntimeError('无法启动本地 Grok CLI，请检查 GROK_CLI_BIN。', 503); });
-          child.once('close', async code => {
+          child.stderr.on('data', (chunk: Buffer) => activity.stderr(chunk));
+          child.stdin.on('error', () => { activity.stop('stdin_error'); stop(new RuntimeError('Grok CLI 无法接收任务，该步骤未提交。', 502)); });
+          child.once('error', () => { activity.stop('spawn_error'); failure = new RuntimeError('无法启动本地 Grok CLI，请检查 GROK_CLI_BIN。', 503); });
+          child.once('close', async (code, signal) => {
             execution.metrics!.processDurationMs = elapsedMs(processStarted);
             if (streaming && streamPending.trim()) streamLine(streamPending);
             if (streaming) webEvidence = { attempt: attempt + 1, runId, pid: child.pid, sessionId: activationId, availableTools: [...availableTools],
               calls: [...webCalls.entries()].map(([callId, call]) => ({ callId, ...call })),
               outcome: failure ? 'failed' : webCalls.size ? 'executed' : 'no_web_activity' };
             clearTimeout(timer); if (forceTimer) clearTimeout(forceTimer); controller.signal.removeEventListener('abort', cancelled);
+            await activity.close(code, signal);
             try {
               // Read only selected effort from our exact isolated activation's
               // metadata, never conversation/thought/auth contents. A missing
