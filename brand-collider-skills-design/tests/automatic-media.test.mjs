@@ -853,3 +853,15 @@ test('a selector cannot introduce an unobserved candidate or cause unbounded dow
   assert.equal(f.calls.filter(task => task.purpose === 'reference-selection').length, 4);
   assert.deepEqual(f.pipeline.snapshot().discovery, { a: 'failed', b: 'failed' });
 });
+
+test('binding coverage accepts only selected materials and preserves optional scope', async t => {
+  const f = await fixture(t, [item('core'), item('optional', {priority:'optional'})], {
+    async invoke(task) {
+      if (task.purpose !== 'reference-binding') return;
+      return {bindings: task.input.selectedMaterialIds.map(materialId => ({materialId, referenceIds:[], referenceTasks:[], identityReferenceIds:[], identityTargets:[], identityRequired:false, identityRequirements:[], rationale:'Original typography only; no exact identity requested.', status:'ready', reason:''})), limitations:[]};
+    }
+  });
+  const state = await f.prepare();
+  assert.equal(state.materials.find(m => m.materialId === 'core').status, 'ready');
+  assert.equal(state.materials.find(m => m.materialId === 'optional').status, 'out_of_scope');
+});

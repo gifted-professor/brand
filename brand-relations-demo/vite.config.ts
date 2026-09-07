@@ -7,7 +7,7 @@ import { canvasIntegration } from './server/canvasIntegration';
 import { characterApi } from './server/characterApi';
 import { projectsApi } from './server/projectsApi';
 export default defineConfig(({ mode }) => {
-  const prefixes = ['OPENAI_', 'TEXT_', 'BRAND_AI_', 'CODEX_', 'GROK_', 'COLLIDER_', 'IMAGE_'];
+  const prefixes = ['OPENAI_', 'TEXT_', 'BRAND_AI_', 'CODEX_', 'GROK_', 'COLLIDER_', 'IMAGE_', 'HTTPS_PROXY', 'HTTP_PROXY', 'ALL_PROXY', 'NO_PROXY'];
   const env = { ...loadEnv(mode, resolve('../brand-collider-skills-design'), prefixes), ...loadEnv(mode, process.cwd(), prefixes) };
   const environment = { ...env, ...process.env };
   const initialize = createColliderService(environment);

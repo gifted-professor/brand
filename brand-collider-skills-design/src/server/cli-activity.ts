@@ -38,7 +38,7 @@ export function createCliActivity(directory: string, identity: { runId: string; 
       state.stderrBytes += Buffer.byteLength(chunk); state.lastStderrAt = new Date().toISOString();
       const text = chunk.toString().slice(0, 8192);
       for (const [name, pattern] of [['authentication', /unauthorized|authentication|login required|\b401\b/i],
-        ['rate_limit', /rate.limit|\b429\b/i], ['network', /ECONNRESET|ENOTFOUND|ETIMEDOUT|ECONNREFUSED/],
+        ['rate_limit', /rate.limit|\b429\b/i], ['network', /ECONNRESET|ENOTFOUND|ETIMEDOUT|ECONNREFUSED|reconnecting|stream disconnected|error sending request/i],
         ['tls', /CERT_HAS_EXPIRED|certificate verify|TLS handshake/i]] as const) {
         if (pattern.test(text) && !state.stderrSignals.includes(name)) state.stderrSignals.push(name);
       }

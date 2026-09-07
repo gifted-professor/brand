@@ -31,6 +31,7 @@ function domain(value: unknown): string {
 }
 
 function isFakeAddress(value: Address): boolean {
+  if (value.family === 6 && isIP(value.address) === 6) return /^fdfe:dcba:9876:/i.test(value.address);
   if (value.family !== 4 || isIP(value.address) !== 4) return false;
   const [first, second] = value.address.split('.').map(Number);
   return first === 198 && (second === 18 || second === 19);
@@ -125,7 +126,7 @@ function query(hostname: string, type: 1 | 28, isPublic: PublicAddressCheck, net
   });
 }
 
-/** Preserve normal DNS behavior. Only an exclusively 198.18/15 fake-IP reply
+/** Preserve normal DNS behavior. Only an exclusively 198.18/15 or fdfe:dcba:9876::/48 fake-IP reply
  * for a public domain can use the fixed, certificate-verified DoH connection.
  * The caller validates and pins all returned public addresses before fetching. */
 export async function resolveReferenceHost(hostname: string, isPublic: PublicAddressCheck, network: ReferenceDnsNetwork = {}): Promise<Address[]> {

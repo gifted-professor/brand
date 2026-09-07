@@ -159,3 +159,12 @@ test('collector pins the recovered real public address while retaining the origi
     assert.equal(invalid.requests.length, 0);
   }
 });
+
+test('dual-stack fake DNS uses public resolution but never allows ULA destinations', async () => {
+  const f = fixture(undefined, [fakeA, {address:'fdfe:dcba:9876::9', family:6}]);
+  assert.deepEqual(await resolveReferenceHost(hostname, isPublicReferenceAddress, f.network), [publicA]);
+  assert.equal(isPublicReferenceAddress('fdfe:dcba:9876::9'), false);
+  const other = fixture(undefined, [fakeA, {address:'fd12:3456::9', family:6}]);
+  assert.deepEqual(await resolveReferenceHost(hostname, isPublicReferenceAddress, other.network), await other.network.lookup());
+  assert.equal(other.requests.length, 0);
+});

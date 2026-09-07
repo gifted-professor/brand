@@ -4,7 +4,7 @@ import { mkdtemp, writeFile, readFile, rename, rm, chmod, readdir } from 'node:f
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { randomUUID } from 'node:crypto';
-import { CodexCliProvider, cliEnvironment } from '../src/server/codex-cli-provider.ts';
+import { CodexCliProvider, cliEnvironment, codexOutputSchema } from '../src/server/codex-cli-provider.ts';
 import { ColliderRuntime } from '../src/server/runtime.ts';
 import { stageSchema, handoffSchema } from '../src/server/cli-schema.ts';
 import { materialPlanFixture, materialVisualFixtures } from './material-fixture.mjs';
@@ -245,4 +245,32 @@ test('service shutdown records both research interruptions and restores the paus
 test('development commands do not restart agent processes when source files change', async () => {
   const { scripts } = JSON.parse(await readFile(join(cwd, 'package.json'), 'utf8'));
   assert.doesNotMatch(scripts.dev + scripts['dev:api'], /--watch|nodemon/);
+});
+
+test('Codex persists bounded activity metadata without raw output', async t => {
+  const f = await fixture(t);
+  await f.provider.complete(message, f.task);
+  const execution = f.events.at(-1);
+  const raw = await readFile(join(f.directory, 'agents', f.task.sessionId, 'v1', f.task.agentId, execution.runId, 'activity.json'), 'utf8');
+  const activity = JSON.parse(raw);
+  assert.equal(activity.phase, 'closed');
+  assert.equal(activity.exitCode, 0);
+  assert.ok(activity.stdoutBytes > 0);
+  assert.ok(activity.stderrBytes > 0);
+  assert.ok(activity.eventCount >= 3);
+  assert.ok(activity.timeline.length <= 64);
+  for (const privateText of ['PRIVATE_REASONING_DO_NOT_PUBLISH', 'SECRET_STDERR_DO_NOT_PUBLISH', 'APP_SECRET', 'Two brands']) assert.ok(!raw.includes(privateText));
+});
+
+ test('CLI preserves explicit proxy routing without inheriting application credentials', () => {
+  assert.deepEqual(cliEnvironment({ HTTPS_PROXY: 'http://127.0.0.1:7897', NO_PROXY: 'localhost', OPENAI_API_KEY: 'secret', CODEX_THREAD_ID: 'parent' }), { HTTPS_PROXY: 'http://127.0.0.1:7897', NO_PROXY: 'localhost' });
+});
+
+ test('Codex adapts strict schema without weakening runtime schema', () => {
+  const original = stageSchema('design-spec', false, true);
+  const adapted = codexOutputSchema(original);
+  assert.equal(adapted.properties.materialPlan.properties.items.items.properties.dependencies.uniqueItems, undefined);
+  assert.equal(original.properties.materialPlan.properties.items.items.properties.dependencies.uniqueItems, true);
+  const visual = codexOutputSchema(stageSchema('visual-production'));
+  assert.ok(visual.properties.materialVisuals.items.required.includes('aspectRatio'));
 });

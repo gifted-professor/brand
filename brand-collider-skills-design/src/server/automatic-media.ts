@@ -482,7 +482,7 @@ export class AutomaticMediaPipeline {
       if (!candidates.length) this.#limitation(`${input.brands[side].name}：${supplemental
         ? '本次按方案补采未新增可下载原图；已有核对结果保留，逐件绑定继续记录实际缺口。'
         : '本次检索没有取得可下载的真实图片。'}`);
-      if (!supplemental) saved.state.discovery[side] = signal?.aborted ? 'pending' : 'completed';
+      saved.state.discovery[side] = signal?.aborted ? 'pending' : 'completed';
     } catch {
       if (!supplemental) saved.state.discovery[side] = signal?.aborted ? 'pending' : 'failed';
       if (!signal?.aborted) this.#limitation(`${input.brands[side].name}：真实素材检索未完成，依赖准确身份的图像不能凭想象替代。`);
@@ -511,7 +511,7 @@ export class AutomaticMediaPipeline {
   async #makeBindings(input: MediaPreparationInput, signal?: AbortSignal) {
     const saved = this.#saved;
     const raw = obj(await this.#invoke({ purpose: 'reference-binding', schema: bindingSchema, signal, images: [],
-      instruction: '为materialPlan每个ID提交且仅提交一个binding。只使用本次已登记且实际看过的referenceIds，最多4张合计（原图与referenceTasks），保留最少充分依据。精确角色、服饰版本、元素符号、Logo和指定产品结构必须identityRequired=true，并在identityRequirements列明具体身份特征、identityReferenceIds引用已核实官方/品牌批准的原始依据。风格图与AI图不能替代身份源；缺来源时blocked，不擅自改画近似替身。纯原创非身份表达可identityRequired=false并解释rationale。每个referenceTask必须是当前物料的已设计依赖ID，声明本图实际需要复用的上游生成图；这是未来附图的依赖计划，允许该图尚未生成，宿主会等待其真实生成、验收通过且哈希匹配后再附入。不能因为主图尚未生成而把必要referenceTasks清空，也不能仅为共享同一份文字设计就添加图像依赖。所有角色/元素版本逐一覆盖；不因为存在一张不相关官方图就宣称完整。status只表示参考就绪判断，不是图已生成或验收。',
+      instruction: '为selectedMaterialIds中每个ID提交且仅提交一个binding；范围外可选物料无需绑定。新设计动作、构图和表情可沿用已核实角色身份进行设计，不要求存在一张完全同姿态的官方原图；只有明确指定的既有服装或角色版本才要求对应版本证据。新动作是待品牌审批的设计提案，不能声称官方既有姿态。只使用本次已登记且实际看过的referenceIds，最多4张合计（原图与referenceTasks），保留最少充分依据。精确角色、服饰版本、元素符号、Logo和指定产品结构必须identityRequired=true，并在identityRequirements列明具体身份特征、identityReferenceIds引用已核实官方/品牌批准的原始依据。风格图与AI图不能替代身份源；缺来源时blocked，不擅自改画近似替身。纯原创非身份表达可identityRequired=false并解释rationale。每个referenceTask必须是当前物料的已设计依赖ID，声明本图实际需要复用的上游生成图；这是未来附图的依赖计划，允许该图尚未生成，宿主会等待其真实生成、验收通过且哈希匹配后再附入。不能因为主图尚未生成而把必要referenceTasks清空，也不能仅为共享同一份文字设计就添加图像依赖。所有角色/元素版本逐一覆盖；不因为存在一张不相关官方图就宣称完整。status只表示参考就绪判断，不是图已生成或验收。',
       input: { materialPlan: input.plan, materialVisuals: input.visuals, context: input.context ?? '',
         identityTargetPolicy: '从本件设计与提示词逐一列出需要准确呈现的角色、标识、指定产品作为identityTargets，包含主体、所需assetType、对应原始referenceIds；缺图的目标仍要列出并留空引用，不得删掉目标或设置identityRequired=false绕过。角色造型需要character，出品方logo不能替代；产品结构需要product。只引用targetMatch=matched且identityVerified=true、类型匹配的原图。纯原创无准确身份需求才允许空目标。',
         sourceReviewCorrections: saved.sourceInheritance?.corrections ?? [],
@@ -519,7 +519,8 @@ export class AutomaticMediaPipeline {
         selectedMaterialIds: saved.state.materials.filter(item => item.status !== 'out_of_scope').map(item => item.materialId),
         references: saved.state.references },
     }));
-    if (!Array.isArray(raw.bindings) || raw.bindings.length !== input.plan.items.length) throw new Error('media_binding_coverage');
+    const selectedIds = saved.state.materials.filter(item => item.status !== 'out_of_scope').map(item => item.materialId);
+    if (!Array.isArray(raw.bindings) || raw.bindings.length > input.plan.items.length) throw new Error('media_binding_coverage');
     const seen = new Set<string>();
     const bindings = raw.bindings.map(value => {
       const item = obj(value), materialId = text(item.materialId, 80), material = input.plan.items.find(item => item.id === materialId);
@@ -557,6 +558,7 @@ export class AutomaticMediaPipeline {
       binding.mappingHash = hash(JSON.stringify({ ...binding, references: references.map(item => item ? { id: item.referenceId, hash: item.contentHash, inspection: item.inspection } : null), material, visual: input.visuals.find(item => item.materialId === materialId) }));
       return binding;
     });
+    if (selectedIds.some(id => !seen.has(id))) throw new Error('media_binding_coverage');
     for (const limitation of list(raw.limitations)) this.#limitation(limitation);
     for (const binding of bindings) {
       const material = saved.state.materials.find(item => item.materialId === binding.materialId)!;
